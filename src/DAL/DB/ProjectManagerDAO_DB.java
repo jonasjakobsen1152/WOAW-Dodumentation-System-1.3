@@ -23,7 +23,7 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
 
         try(Connection conn = databaseConnector.getConnection();
             Statement stmt = conn.createStatement()){
-            String sql = "SELECT * FROM User";
+            String sql = "SELECT * FROM Users";
 
             ResultSet rs = stmt.executeQuery(sql);
 
