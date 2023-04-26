@@ -27,7 +27,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
         try(Connection conn = databaseConnector.getConnection();
             Statement stmt = conn.createStatement()){
-            String sql = "SELECT * FROM User";
+            String sql = "Select * from Users";
 
             ResultSet rs = stmt.executeQuery(sql);
 
