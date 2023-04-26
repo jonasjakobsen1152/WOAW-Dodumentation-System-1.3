@@ -13,6 +13,7 @@ public class LoginManager {
 
     public LoginManager(){
         iLoginDAO = new LoginDAO_DB();
+        allUsers = new ArrayList<>();
     }
 
     public ArrayList<User> getAllUsers() {

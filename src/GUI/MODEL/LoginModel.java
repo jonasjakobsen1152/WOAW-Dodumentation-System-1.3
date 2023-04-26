@@ -15,6 +15,7 @@ public class LoginModel {
 
     private LoginModel() {
         loginManager = new LoginManager();
+        allUsers = new ArrayList<>();
     }
 
     public static LoginModel getInstance() {
