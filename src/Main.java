@@ -20,6 +20,7 @@ public class Main extends Application {
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
         }catch (IOException e){
+            e.printStackTrace();
             System.out.println("Could not start the application");
         }
     }
