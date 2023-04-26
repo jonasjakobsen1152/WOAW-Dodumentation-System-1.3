@@ -17,7 +17,7 @@ public class LoginManager {
     }
 
     public ArrayList<User> getAllUsers() {
-    allUsers.addAll(iLoginDAO.getAllUsers());
+    allUsers = iLoginDAO.getAllUsers();
     return allUsers;
     }
 }

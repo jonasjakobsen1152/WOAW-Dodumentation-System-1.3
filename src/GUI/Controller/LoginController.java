@@ -11,13 +11,11 @@ public class LoginController {
     private ArrayList<User> allUsers;
 
     public LoginController(){
-        //allUsers = new ArrayList<>();
-
         loginModel = LoginModel.getInstance();
-        //allUsers = loginModel.getAllUsers();
+
+        //Get a list of all users
+        allUsers = loginModel.getAllUsers();
     }
-
-
 
 
 }
