@@ -26,7 +26,7 @@ public class LoginModel {
     }
 
     public ArrayList<User> getAllUsers() {
-        allUsers.addAll(loginManager.getAllUsers());
+        allUsers = loginManager.allUsers;
         return allUsers;
     }
 }
