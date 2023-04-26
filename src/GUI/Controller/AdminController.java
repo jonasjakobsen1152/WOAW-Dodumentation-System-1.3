@@ -19,6 +19,7 @@ public class AdminController implements Initializable {
     public TableView tblUser;
     public TableColumn clmUsername;
     public TableColumn clmRole;
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
