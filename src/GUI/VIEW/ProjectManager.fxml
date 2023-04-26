@@ -28,7 +28,7 @@
       <MFXButton layoutX="37.0" layoutY="449.0" onAction="#handleAddWork" text="Add Work" />
       <MFXButton layoutX="171.0" layoutY="449.0" onAction="#handleDeleteWork" text="Delete Work" />
       <MFXButton layoutX="14.0" layoutY="412.0" onAction="#handleOpenCreateUser" text="Create Technician" />
-      <Text fill="WHITE" layoutX="463.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Manager Window">
+      <Text fill="WHITE" layoutX="297.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Manager Window">
          <font>
             <Font size="24.0" />
          </font>
@@ -45,6 +45,6 @@
       </TableView>
       <MFXButton layoutX="884.0" layoutY="413.0" text="Show Document" />
       <MFXButton layoutX="1057.0" layoutY="412.0" text="Send PDF" />
-      <TextField fx:id="tfSearch" layoutX="930.0" layoutY="18.0" text="Search" />
+      <TextField fx:id="tfSearch" layoutX="642.0" layoutY="18.0" text="Search" />
    </children>
 </AnchorPane>
