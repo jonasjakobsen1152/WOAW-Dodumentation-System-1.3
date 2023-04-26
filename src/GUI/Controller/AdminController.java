@@ -27,10 +27,10 @@ public class AdminController implements Initializable {
 
     public AdminController() {
         adminModel = AdminModel.getInstance();
-        showUsersAndDocuments();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        showUsersAndDocuments();
 
     }
 
