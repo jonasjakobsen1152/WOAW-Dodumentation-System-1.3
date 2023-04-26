@@ -3,6 +3,7 @@ package GUI.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -12,8 +13,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class ProjectManagerController {
+public class ProjectManagerController implements Initializable {
     @FXML
     private TextField tfSearch;
     @FXML
@@ -32,6 +35,11 @@ public class ProjectManagerController {
     private TableView tblShowDocument;
     @FXML
     private TableColumn clmShowDocument;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 
     public void handleOpenCreateUser(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
@@ -70,4 +78,5 @@ public class ProjectManagerController {
 
     public void handleDeleteSalesmen(ActionEvent actionEvent) {
     }
+
 }
