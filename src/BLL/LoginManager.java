@@ -4,6 +4,7 @@ import BE.User;
 import DAL.DB.LoginDAO_DB;
 import DAL.ILoginDAO;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoginManager {
@@ -16,7 +17,7 @@ public class LoginManager {
         allUsers = new ArrayList<>();
     }
 
-    public ArrayList<User> getAllUsers() {
+    public ArrayList<User> getAllUsers() throws SQLException {
     allUsers = iLoginDAO.getAllUsers();
     return allUsers;
     }

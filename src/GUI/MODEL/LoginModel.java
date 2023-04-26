@@ -3,6 +3,7 @@ package GUI.MODEL;
 import BE.User;
 import BLL.LoginManager;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoginModel {
@@ -25,8 +26,8 @@ public class LoginModel {
             return instance;
     }
 
-    public ArrayList<User> getAllUsers() {
-        allUsers = loginManager.allUsers;
+    public ArrayList<User> getAllUsers() throws SQLException {
+        allUsers = loginManager.getAllUsers();
         return allUsers;
     }
 }
