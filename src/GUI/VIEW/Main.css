@@ -1,0 +1,24 @@
+.background {
+    -fx-background-color: black;
+}
+.button {
+    -fx-background-color: D65A31;
+}
+.text-area {
+    -fx-background-color: white;
+}
+.table-view {
+}
+.table-colum {
+    -fx-background-color: #222831;
+}
+.label{
+    -fx-text-fill: white;
+}
+.table-row-cell .text{
+    -fx-fill: white;
+    -fx-cursor: hand;
+}
+.table-row-cell:selected .text {
+    -fx-fill: orange;
+}
