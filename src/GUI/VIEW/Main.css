@@ -7,8 +7,6 @@
 .text-area {
     -fx-background-color: white;
 }
-.table-view {
-}
 .table-colum {
     -fx-background-color: #222831;
 }
@@ -21,4 +19,7 @@
 }
 .table-row-cell:selected .text {
     -fx-fill: orange;
+}
+.text {
+    -fx-text-fill: white;
 }
