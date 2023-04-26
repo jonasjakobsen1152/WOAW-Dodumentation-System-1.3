@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="GUI.VIEW.ProjectManager"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="501.0" prefWidth="1156.0" styleClass="background" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.ProjectManagerController">
+   <children>
+      <TableView fx:id="tblShowTechnicians" layoutX="39.0" layoutY="58.0" prefHeight="345.0" prefWidth="214.0" styleClass="table-colum">
+        <columns>
+          <TableColumn fx:id="clmShowTechnicians" prefWidth="213.0" styleClass="table-colum" text="Technicians" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tblShowSalesmen" layoutX="324.0" layoutY="58.0" prefHeight="345.0" prefWidth="214.0" styleClass="table-colum">
+         <columns>
+            <TableColumn fx:id="clmShowSalesmen" prefWidth="213.0" styleClass="table-colum" text="Salesmen" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tblShowCustomers" layoutX="609.0" layoutY="58.0" prefHeight="345.0" prefWidth="214.0" styleClass="table-colum">
+         <columns>
+            <TableColumn fx:id="clmShowCustomers" prefWidth="213.0" styleClass="table-colum" text="Customers" />
+         </columns>
+      </TableView>
+      <MFXButton layoutX="37.0" layoutY="449.0" onAction="#handleAddWork" text="Add Work" />
+      <MFXButton layoutX="171.0" layoutY="449.0" onAction="#handleDeleteWork" text="Delete Work" />
+      <MFXButton layoutX="14.0" layoutY="412.0" onAction="#handleOpenCreateUser" text="Create Technician" />
+      <Text fill="WHITE" layoutX="463.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Manager Window">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <MFXButton layoutX="156.0" layoutY="412.0" onAction="#handleDeleteTechnician" text="Delete Technician" />
+      <MFXButton layoutX="308.0" layoutY="412.0" onAction="#handleOpenCreateUser" text="Create Salesmen" />
+      <MFXButton layoutX="729.0" layoutY="412.0" onAction="#handleDeleteCustomer" text="Delete Customer" />
+      <MFXButton layoutX="597.0" layoutY="412.0" onAction="#handleOpenCreateUser" text="Create Customer" />
+      <MFXButton layoutX="444.0" layoutY="412.0" onAction="#handleDeleteSalesmen" text="Delete Salesmen" />
+      <TableView fx:id="tblShowDocument" layoutX="897.0" layoutY="58.0" prefHeight="345.0" prefWidth="214.0" styleClass="table-colum">
+         <columns>
+            <TableColumn fx:id="clmShowDocument" prefWidth="213.0" styleClass="table-colum" text="Documentations" />
+         </columns>
+      </TableView>
+      <MFXButton layoutX="884.0" layoutY="413.0" text="Show Document" />
+      <MFXButton layoutX="1057.0" layoutY="412.0" text="Send PDF" />
+      <TextField fx:id="tfSearch" layoutX="930.0" layoutY="18.0" text="Search" />
+   </children>
 </AnchorPane>
