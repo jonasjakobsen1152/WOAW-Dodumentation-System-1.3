@@ -30,7 +30,7 @@ public class LoginController {
         String usernameText = txtUsername.getText();
         try {
             ArrayList<User> matchingUsernames = loginModel.getAllUsers(usernameText);
-            for (User : matchingUsernames) {
+            for (User passwordToCheck: matchingUsernames) {
 
             }
         } catch (SQLException e) {
