@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,14 +17,17 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
 
-    public TableView tblUser;
+    public TableView<User> tblUser;
     public TableColumn clmUsername;
     public TableColumn clmRole;
     public AdminModel adminModel;
+    private User selectedUser;
 
     public AdminController() {
         adminModel = AdminModel.getInstance();
@@ -32,6 +36,9 @@ public class AdminController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         showUsersAndDocuments();
 
+        tblUser.setOnMouseClicked(event -> {
+            selectedUser = tblUser.getSelectionModel().getSelectedItem();
+        });
     }
 
     /**
@@ -63,6 +70,34 @@ public class AdminController implements Initializable {
     }
 
     public void handleDeleteUser(ActionEvent actionEvent) {
+        selectedUser = tblUser.getSelectionModel().getSelectedItem();
+        if (selectedUser == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select a user");
+            alert.setHeaderText("Choose a user to delete");
+            alert.show();
+        } else if (Objects.equals(selectedUser.getRole(), "Admin")) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("You cant delete an Admin user");
+            alert.show();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedUser.getUsername().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                try {
+                    adminModel.deleteUser(selectedUser);
+                }catch (SQLException e){
+                    alertUser("Could not delete the user");
+                    e.printStackTrace();
+                }
+                //updateUserModel();
+                showUsersAndDocuments();
+            }
+        }
     }
 
     /**

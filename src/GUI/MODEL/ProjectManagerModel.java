@@ -34,6 +34,18 @@ public class ProjectManagerModel {
         return instance;
     }
 
+    public ArrayList<User> getTechnicianList(){
+        return projectManagerManager.getAllUsers("Technician");
+    }
+
+    public ArrayList<User> getSalesmenList(){
+        return projectManagerManager.getAllUsers("Salesmen");
+    }
+
+    public ArrayList<User> getCustomerList(){
+        return projectManagerManager.getAllUsers("Customer");
+    }
+
     public ObservableList<User> getTechnicianToBeViewed(){
         return technicianToBeViewed;
     }

@@ -5,6 +5,7 @@ import BLL.AdminManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AdminModel {
@@ -24,9 +25,23 @@ public class AdminModel {
         return instance;
     }
 
+    public ArrayList<User> getAdminList(){
+        return adminManager.getAllUsers();
+    }
+
     public ObservableList<User> getUsersToBeViewed(){return usersToBeViewed;}
 
     public ArrayList<User> getAllUsers(){
         return adminManager.getAllUsers();
+    }
+
+    public void deleteUser(User selectedUser) throws SQLException {
+        adminManager.deleteUser(selectedUser);
+        showList();
+    }
+    public void showList() {
+        getUsersToBeViewed().clear();
+        getUsersToBeViewed().addAll(adminManager.getAllUsers());
+
     }
 }
