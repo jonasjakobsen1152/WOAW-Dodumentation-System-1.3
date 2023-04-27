@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.User;
+import BLL.UTIL.BCrypt;
 import GUI.MODEL.LoginModel;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
@@ -19,25 +20,45 @@ public class LoginController {
     public MFXTextField txtPassword;
     LoginModel loginModel;
 
-    private ArrayList<User> users;
-
     public LoginController(){
         loginModel = LoginModel.getInstance();
 
     }
 
     public void handleLogin(ActionEvent actionEvent) {
-        String usernameText = txtUsername.getText();
+        String usernameFromText = txtUsername.getText();
+        String passwordFromText = txtPassword.getText();
         try {
-            ArrayList<User> matchingUsernames = loginModel.getAllUsers(usernameText);
-            for (User passwordToCheck: matchingUsernames) {
+            ArrayList<User> matchingUsernames = loginModel.getAllUsers(usernameFromText);
+            for (User userToMatch: matchingUsernames) {
+                String salt = BCrypt.gensalt();
 
+                String password = userToMatch.getPassword();
+
+                if(BCrypt.checkpw(passwordFromText,password)){ // Checks if the password is equal
+                    openBasedOnRole(userToMatch);
+                }
             }
         } catch (SQLException e) {
             alertUser("There was a problem connecting to the database");
             throw new RuntimeException(e);
         }
 
+    }
+
+    private void openBasedOnRole(User user){
+        if(user.getRole().equals("Admin")){
+            handleOpenAdmin(new ActionEvent());
+        }
+        else if (user.getRole().equals("ProjectManager")) {
+            handleOpenProjectManager(new ActionEvent());
+        }
+        else if (user.getRole().equals("Technician")) {
+        //TODO handle open technician
+        }
+        else if (user.getRole().equals("Sales")) {
+            //TODO handle open technician
+        }
     }
 
 

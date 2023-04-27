@@ -26,7 +26,7 @@ public class LoginDAO_DB implements ILoginDAO {
 
             stmt.setString(1,usernameText);
 
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery();
 
 
             while (rs.next()) {
