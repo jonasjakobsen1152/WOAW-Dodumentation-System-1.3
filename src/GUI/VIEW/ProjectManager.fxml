@@ -51,7 +51,7 @@
       <MFXButton layoutX="95.0" layoutY="449.0" onAction="#handleReadJob" text="Read Jobs" AnchorPane.rightAnchor="985.0" />
       <ImageView fitHeight="73.0" fitWidth="149.0" layoutX="-2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/Screenshot_1.png" />
+            <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
    </children>
