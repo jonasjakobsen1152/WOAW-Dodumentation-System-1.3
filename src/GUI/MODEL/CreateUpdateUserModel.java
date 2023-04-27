@@ -11,11 +11,13 @@ import java.util.List;
 
 public class CreateUpdateUserModel {
     CreateUpdateUserManager createUpdateUserManager;
+    AdminModel adminModel;
 
     private static CreateUpdateUserModel instance;
 
     private CreateUpdateUserModel(){
         createUpdateUserManager = new CreateUpdateUserManager();
+        adminModel = AdminModel.getInstance();
 
     }
     public static CreateUpdateUserModel getInstance(){
@@ -25,5 +27,16 @@ public class CreateUpdateUserModel {
         return instance;
     }
 
+
+    public void createUser(String username, String password, String role) {
+        createUpdateUserManager.createUser(username,password,role);
+        showList();
+    }
+
+    public void showList() {
+        adminModel.getUsersToBeViewed().clear();
+        adminModel.getUsersToBeViewed().addAll(adminModel.getAdminList());
+
+    }
 
 }

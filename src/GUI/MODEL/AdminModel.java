@@ -24,6 +24,10 @@ public class AdminModel {
         return instance;
     }
 
+    public ArrayList<User> getAdminList(){
+        return adminManager.getAllUsers();
+    }
+
     public ObservableList<User> getUsersToBeViewed(){return usersToBeViewed;}
 
     public ArrayList<User> getAllUsers(){
