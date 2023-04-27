@@ -68,7 +68,7 @@ public class AdminController implements Initializable {
      * Shows the users and documents in the table views
      */
     private void showUsersAndDocuments(){
-        clmUsername.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
+        clmUsername.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         clmRole.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
 
         tblUser.setItems(adminModel.getUsersToBeViewed());
