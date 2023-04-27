@@ -11,7 +11,7 @@ public class CreateUpdateUserController {
     public CreateUpdateUserController(){
         ArrayList<String> roleList = new ArrayList<>();
         roleList.add("Admin");
-        cbRole.setItems(roleList);
+        //cbRole.setItems(roleList);
     }
 
     public TextField txtUsername;
