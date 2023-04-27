@@ -3,8 +3,10 @@ package GUI.Controller;
 import BE.User;
 import BLL.UTIL.BCrypt;
 import GUI.MODEL.LoginModel;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -16,9 +18,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoginController {
-    public MFXTextField txtUsername;
-    public MFXTextField txtPassword;
-    LoginModel loginModel;
+    @FXML
+    private MFXTextField txtUsername;
+    @FXML
+    private MFXTextField txtPassword;
+    @FXML
+    private MFXButton btnLogin;
+    private LoginModel loginModel;
 
     public LoginController(){
         loginModel = LoginModel.getInstance();
@@ -29,14 +35,13 @@ public class LoginController {
         String usernameFromText = txtUsername.getText();
         String passwordFromText = txtPassword.getText();
 
-        String salt = BCrypt.gensalt(15);
-        
-
+//        String salt = BCrypt.gensalt(15);
+//       String passwordToHash = BCrypt.hashpw("abc",salt);
+//        System.out.println(passwordToHash);
         try {
             ArrayList<User> matchingUsernames = loginModel.getAllUsers(usernameFromText);
             for (User userToMatch: matchingUsernames) {
                 String hashedPassword = userToMatch.getPassword();
-
                 if(BCrypt.checkpw(passwordFromText,hashedPassword)){ // Checks if the password is equal
                     openBasedOnRole(userToMatch);
                 }
@@ -49,17 +54,22 @@ public class LoginController {
     }
 
     private void openBasedOnRole(User user){
+        Stage stage = (Stage) btnLogin.getScene().getWindow();
         if(user.getRole().equals("Admin")){
             handleOpenAdmin(new ActionEvent());
+            stage.close();
         }
         else if (user.getRole().equals("ProjectManager")) {
             handleOpenProjectManager(new ActionEvent());
+            stage.close();
         }
         else if (user.getRole().equals("Technician")) {
         //TODO handle open technician
+            stage.close();
         }
         else if (user.getRole().equals("Sales")) {
             //TODO handle open technician
+            stage.close();
         }
     }
 
