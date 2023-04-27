@@ -47,6 +47,9 @@ public class ProjectManagerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         showTechnician();
+        showSalesmen();
+        showCustomer();
+        //showDocument();
     }
 
     public void handleOpenCreateUser(ActionEvent actionEvent) {
@@ -93,5 +96,15 @@ public class ProjectManagerController implements Initializable {
     private void showTechnician(){
         clmShowTechnicians.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         tblShowTechnicians.setItems(projectManagerModel.getTechnicianToBeViewed());
+    }
+
+    private void showSalesmen(){
+        clmShowSalesmen.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
+        tblShowSalesmen.setItems(projectManagerModel.getSalesmenToBeViewed());
+    }
+
+    private void showCustomer(){
+        clmShowCustomers.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
+        tblShowCustomers.setItems(projectManagerModel.getCustomerToBeViewed());
     }
 }

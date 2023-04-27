@@ -14,6 +14,6 @@ public class ProjectManagerManager {
     }
 
     public ArrayList<User> getAllUsers(String role){
-        return projectManagerDAO.getAllUsers("Technician");
+        return projectManagerDAO.getAllUsers(role);
     }
 }

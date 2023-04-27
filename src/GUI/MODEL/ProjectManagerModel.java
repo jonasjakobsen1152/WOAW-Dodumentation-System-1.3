@@ -10,12 +10,21 @@ import java.util.ArrayList;
 public class ProjectManagerModel {
     ProjectManagerManager projectManagerManager;
     private ObservableList<User> technicianToBeViewed;
+    private ObservableList<User> salesmenToBeViewed;
+    private ObservableList<User> customerToBeViewed;
+    private ObservableList<User> documentToBeViewed;
     private static ProjectManagerModel instance;
 
     private ProjectManagerModel(){
         projectManagerManager = new ProjectManagerManager();
         technicianToBeViewed = FXCollections.observableArrayList();
         technicianToBeViewed.addAll(projectManagerManager.getAllUsers("Technician"));
+
+        salesmenToBeViewed = FXCollections.observableArrayList();
+        salesmenToBeViewed.addAll(projectManagerManager.getAllUsers("Salesmen"));
+
+        customerToBeViewed = FXCollections.observableArrayList();
+        customerToBeViewed.addAll(projectManagerManager.getAllUsers("Customer"));
     }
 
     public static ProjectManagerModel getInstance(){
@@ -29,7 +38,11 @@ public class ProjectManagerModel {
         return technicianToBeViewed;
     }
 
-  //  public ArrayList<User> getAllUsers(){
-     //   return projectManagerManager.getAllUsers();
-   // }
+    public ObservableList<User> getSalesmenToBeViewed() {
+        return salesmenToBeViewed;
+    }
+
+    public ObservableList<User> getCustomerToBeViewed() {
+        return customerToBeViewed;
+    }
 }

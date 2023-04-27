@@ -26,7 +26,7 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
 
             stmt.setString(1, role);
 
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
                 int id = rs.getInt("ID");

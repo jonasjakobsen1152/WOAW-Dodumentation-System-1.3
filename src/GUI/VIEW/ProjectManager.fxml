@@ -45,7 +45,7 @@
       </TableView>
       <MFXButton layoutX="884.0" layoutY="413.0" text="Show Document" />
       <MFXButton layoutX="1057.0" layoutY="412.0" text="Send PDF" />
-      <TextField fx:id="tfSearch" layoutX="642.0" layoutY="18.0" text="Search" />
+      <TextField fx:id="tfSearch" alignment="CENTER" layoutX="642.0" layoutY="18.0" promptText="Search" />
       <MFXButton layoutX="95.0" layoutY="449.0" onAction="#handleReadJob" text="Read Jobs" AnchorPane.rightAnchor="985.0" />
    </children>
 </AnchorPane>
