@@ -31,9 +31,9 @@ public class LoginController {
         try {
             ArrayList<User> matchingUsernames = loginModel.getAllUsers(usernameFromText);
             for (User userToMatch: matchingUsernames) {
-                String password = userToMatch.getPassword();
-                
-                if(BCrypt.checkpw(passwordFromText,password)){ // Checks if the password is equal
+                String hashedPassword = userToMatch.getPassword();
+
+                if(BCrypt.checkpw(passwordFromText,hashedPassword)){ // Checks if the password is equal
                     openBasedOnRole(userToMatch);
                 }
             }
