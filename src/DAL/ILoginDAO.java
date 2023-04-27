@@ -7,5 +7,5 @@ import java.util.ArrayList;
 
 public interface ILoginDAO {
 
-    ArrayList<User> getAllUsers() throws SQLException;
+    ArrayList<User> getAllUsers(String usernameText) throws SQLException;
 }

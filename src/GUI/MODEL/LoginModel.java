@@ -26,8 +26,8 @@ public class LoginModel {
             return instance;
     }
 
-    public ArrayList<User> getAllUsers() throws SQLException {
-        allUsers = loginManager.getAllUsers();
+    public ArrayList<User> getAllUsers(String usernameText) throws SQLException {
+        allUsers = loginManager.getAllUsers(usernameText);
         return allUsers;
     }
 }

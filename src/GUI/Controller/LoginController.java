@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import BE.User;
 import GUI.MODEL.LoginModel;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,24 +15,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LoginController {
+    public MFXTextField txtUsername;
+    public MFXTextField txtPassword;
     LoginModel loginModel;
 
-    private ArrayList<User> allUsers;
+    private ArrayList<User> users;
 
     public LoginController(){
         loginModel = LoginModel.getInstance();
 
-        getAllUsers();
     }
 
-    private void getAllUsers(){
+    public void handleLogin(ActionEvent actionEvent) {
+        String usernameText = txtUsername.getText();
         try {
-            //Get a list of all users
-            allUsers = loginModel.getAllUsers();
+            ArrayList<User> matchingUsernames = loginModel.getAllUsers(usernameText);
+            for (User : matchingUsernames) {
+
+            }
         } catch (SQLException e) {
             alertUser("There was a problem connecting to the database");
             throw new RuntimeException(e);
-    }
+        }
+
     }
 
 

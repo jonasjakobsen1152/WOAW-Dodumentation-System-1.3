@@ -15,7 +15,7 @@ public class LoginDAO_DB implements ILoginDAO {
     }
 
     @Override
-    public ArrayList<User> getAllUsers() throws SQLException {
+    public ArrayList<User> getAllUsers(String usernameText) throws SQLException {
         ArrayList<User> allUsers = new ArrayList<>();
 
         try (Connection conn = databaseConnector.getConnection()) {
@@ -24,7 +24,7 @@ public class LoginDAO_DB implements ILoginDAO {
 
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-            //stmt.setString();
+            stmt.setString(1,usernameText);
 
             ResultSet rs = stmt.executeQuery(sql);
 

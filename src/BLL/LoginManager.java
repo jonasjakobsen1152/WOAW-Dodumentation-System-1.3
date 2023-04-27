@@ -17,8 +17,8 @@ public class LoginManager {
         allUsers = new ArrayList<>();
     }
 
-    public ArrayList<User> getAllUsers() throws SQLException {
-    allUsers = iLoginDAO.getAllUsers();
+    public ArrayList<User> getAllUsers(String usernameText) throws SQLException {
+    allUsers = iLoginDAO.getAllUsers(usernameText);
     return allUsers;
     }
 }
