@@ -47,5 +47,4 @@ public class CreateUpdateUserModel {
         projectManagerModel.getCustomerToBeViewed().clear();
         projectManagerModel.getCustomerToBeViewed().addAll(projectManagerModel.getCustomerList());
     }
-
 }

@@ -5,6 +5,7 @@ import BLL.ProjectManagerManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ProjectManagerModel {
@@ -56,5 +57,22 @@ public class ProjectManagerModel {
 
     public ObservableList<User> getCustomerToBeViewed() {
         return customerToBeViewed;
+    }
+
+    public void deleteUser(User selectedUser) {
+        projectManagerManager.deleteUser(selectedUser);
+        showList();
+    }
+
+    public void showList() {
+        getTechnicianToBeViewed().clear();
+        getTechnicianToBeViewed().addAll(projectManagerManager.getAllUsers("Technician"));
+
+        getSalesmenToBeViewed().clear();
+        getSalesmenToBeViewed().addAll(projectManagerManager.getAllUsers("Salesmen"));
+
+        getCustomerToBeViewed().clear();
+        getCustomerToBeViewed().addAll(projectManagerManager.getAllUsers("Customer"));
+
     }
 }

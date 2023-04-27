@@ -7,38 +7,39 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ProjectManagerController implements Initializable {
     @FXML
     private TextField tfSearch;
     @FXML
-    private TableView tblShowTechnicians;
+    private TableView<User> tblShowTechnicians;
     @FXML
     private TableColumn clmShowTechnicians;
     @FXML
-    private TableView tblShowSalesmen;
+    private TableView<User> tblShowSalesmen;
     @FXML
     private TableColumn clmShowSalesmen;
     @FXML
-    private TableView tblShowCustomers;
+    private TableView<User> tblShowCustomers;
     @FXML
     private TableColumn clmShowCustomers;
     @FXML
-    private TableView tblShowDocument;
+    private TableView<User> tblShowDocument;
     @FXML
     private TableColumn clmShowDocument;
     public ProjectManagerModel projectManagerModel;
+    private User selectedUser;
 
     public ProjectManagerController() {
         projectManagerModel = ProjectManagerModel.getInstance();
@@ -50,6 +51,20 @@ public class ProjectManagerController implements Initializable {
         showSalesmen();
         showCustomer();
         //showDocument();
+
+        tblShowTechnicians.setOnMouseClicked(event -> {
+            selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
+        });
+        tblShowSalesmen.setOnMouseClicked(event -> {
+            selectedUser = tblShowSalesmen.getSelectionModel().getSelectedItem();
+        });
+        tblShowCustomers.setOnMouseClicked(event -> {
+            selectedUser = tblShowCustomers.getSelectionModel().getSelectedItem();
+        });
+        tblShowDocument.setOnMouseClicked(event -> {
+            selectedUser = tblShowDocument.getSelectionModel().getSelectedItem();
+        });
+
     }
 
     public void handleOpenCreateUser(ActionEvent actionEvent) {
@@ -82,13 +97,84 @@ public class ProjectManagerController implements Initializable {
     }
 
     public void handleDeleteTechnician(ActionEvent actionEvent) {
+        selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
+        if (selectedUser == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select a user");
+            alert.setHeaderText("Choose a user to delete");
+            alert.show();
+        } else if (Objects.equals(selectedUser.getRole(), "Admin")) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("You cant delete an Admin user");
+            alert.show();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedUser.getUsername().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                projectManagerModel.deleteUser(selectedUser);
+                //updateUserModel();
+                showTechnician();
+            }
+        }
     }
 
     public void handleDeleteCustomer(ActionEvent actionEvent) {
+        selectedUser = tblShowCustomers.getSelectionModel().getSelectedItem();
+        if (selectedUser == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select a user");
+            alert.setHeaderText("Choose a user to delete");
+            alert.show();
+        } else if (Objects.equals(selectedUser.getRole(), "Admin")) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("You cant delete an Admin user");
+            alert.show();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedUser.getUsername().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                projectManagerModel.deleteUser(selectedUser);
+                //updateUserModel();
+                showCustomer();
+            }
+        }
     }
 
+
     public void handleDeleteSalesmen(ActionEvent actionEvent) {
+        selectedUser = tblShowSalesmen.getSelectionModel().getSelectedItem();
+        if (selectedUser == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select a user");
+            alert.setHeaderText("Choose a user to delete");
+            alert.show();
+        } else if (Objects.equals(selectedUser.getRole(), "Admin")) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("You cant delete an Admin user");
+            alert.show();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedUser.getUsername().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                projectManagerModel.deleteUser(selectedUser);
+                //updateUserModel();
+                showSalesmen();
+            }
+        }
     }
+    
 
     public void handleReadJob(ActionEvent actionEvent) {
     }
