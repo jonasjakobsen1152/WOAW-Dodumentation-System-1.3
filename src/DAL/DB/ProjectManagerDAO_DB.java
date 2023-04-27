@@ -42,9 +42,20 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         }
         return users;
     }
-
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(User selectedUser) {
+        try(Connection conn = databaseConnector.getConnection()) {
+            String sql = "DELETE FROM Users WHERE ID = ? AND Username = ?";
 
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,selectedUser.getId());
+            stmt.setString(2,selectedUser.getUsername());
+
+            stmt.executeUpdate();
+
+        }catch (SQLException e){
+
+        }
     }
 }
