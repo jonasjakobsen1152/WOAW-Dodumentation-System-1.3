@@ -3,10 +3,7 @@ package DAL.DB;
 import BE.User;
 import DAL.ILoginDAO;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class LoginDAO_DB implements ILoginDAO {
@@ -21,12 +18,16 @@ public class LoginDAO_DB implements ILoginDAO {
     public ArrayList<User> getAllUsers() throws SQLException {
         ArrayList<User> allUsers = new ArrayList<>();
 
-        try (Connection conn = databaseConnector.getConnection();
-             Statement stmt = conn.createStatement()) {
+        try (Connection conn = databaseConnector.getConnection()) {
             //SQL string that gets all the information from the User tabel
-            String sql = "Select * From dbo.Users";
+            String sql = "Select * From dbo.Users WHERE Username = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+
+            //stmt.setString();
 
             ResultSet rs = stmt.executeQuery(sql);
+
 
             while (rs.next()) {
                 int id = rs.getInt("ID");
@@ -38,7 +39,6 @@ public class LoginDAO_DB implements ILoginDAO {
                 allUsers.add(user);
             }
         }
-        System.out.println(allUsers);
         return allUsers;
     }
     }
