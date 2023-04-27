@@ -1,5 +1,7 @@
 package GUI.Controller;
 
+import BE.User;
+import GUI.MODEL.ProjectManagerModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -35,10 +38,18 @@ public class ProjectManagerController implements Initializable {
     private TableView tblShowDocument;
     @FXML
     private TableColumn clmShowDocument;
+    public ProjectManagerModel projectManagerModel;
+
+    public ProjectManagerController() {
+        projectManagerModel = ProjectManagerModel.getInstance();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        showTechnician();
+        showSalesmen();
+        showCustomer();
+        //showDocument();
     }
 
     public void handleOpenCreateUser(ActionEvent actionEvent) {
@@ -79,4 +90,21 @@ public class ProjectManagerController implements Initializable {
     public void handleDeleteSalesmen(ActionEvent actionEvent) {
     }
 
+    public void handleReadJob(ActionEvent actionEvent) {
+    }
+
+    private void showTechnician(){
+        clmShowTechnicians.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
+        tblShowTechnicians.setItems(projectManagerModel.getTechnicianToBeViewed());
+    }
+
+    private void showSalesmen(){
+        clmShowSalesmen.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
+        tblShowSalesmen.setItems(projectManagerModel.getSalesmenToBeViewed());
+    }
+
+    private void showCustomer(){
+        clmShowCustomers.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
+        tblShowCustomers.setItems(projectManagerModel.getCustomerToBeViewed());
+    }
 }

@@ -22,7 +22,7 @@ public class LoginDAO_DB implements ILoginDAO {
             //SQL string that gets all the information from the User tabel
             String sql = "Select * From dbo.Users WHERE Username = ?";
 
-            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = conn.prepareStatement(sql);
 
             stmt.setString(1,usernameText);
 
