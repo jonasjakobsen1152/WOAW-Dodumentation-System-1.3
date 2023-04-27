@@ -50,6 +50,7 @@ public class AdminController implements Initializable {
             dialogWindow.show();
         }
          catch (IOException e) {
+            e.printStackTrace();
             alertUser("Error: Could not open the create user window");
         }
     }
