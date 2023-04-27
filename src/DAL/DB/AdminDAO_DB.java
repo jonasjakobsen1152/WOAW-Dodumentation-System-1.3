@@ -3,10 +3,7 @@ package DAL.DB;
 import BE.User;
 import DAL.IAdminDAO;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class AdminDAO_DB implements IAdminDAO {
@@ -17,8 +14,20 @@ public class AdminDAO_DB implements IAdminDAO {
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(User selectedUser) throws SQLException {
+        try(Connection conn = databaseConnector.getConnection()) {
+            String sql = "DELETE FROM Users WHERE ID = ? AND Username = ?";
 
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,selectedUser.getId());
+            stmt.setString(2,selectedUser.getUsername());
+
+            stmt.executeUpdate();
+
+        }catch (SQLException e){
+            throw new SQLException(e);
+        }
     }
 
     @Override
