@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public class ProjectManagerModel {
     ProjectManagerManager projectManagerManager;
-    private ObservableList<User> usersToBeViewed;
+    private ObservableList<User> technicianToBeViewed;
     private static ProjectManagerModel instance;
 
     private ProjectManagerModel(){
         projectManagerManager = new ProjectManagerManager();
-        usersToBeViewed = FXCollections.observableArrayList();
-        usersToBeViewed.addAll(projectManagerManager.getAllUsers());
+        technicianToBeViewed = FXCollections.observableArrayList();
+        technicianToBeViewed.addAll(projectManagerManager.getAllUsers("Technician"));
     }
 
     public static ProjectManagerModel getInstance(){
@@ -25,11 +25,11 @@ public class ProjectManagerModel {
         return instance;
     }
 
-    public ObservableList<User> getUsersToBeViewed(){
-        return usersToBeViewed;
+    public ObservableList<User> getTechnicianToBeViewed(){
+        return technicianToBeViewed;
     }
 
-    public ArrayList<User> getAllUsers(){
-        return projectManagerManager.getAllUsers();
-    }
+  //  public ArrayList<User> getAllUsers(){
+     //   return projectManagerManager.getAllUsers();
+   // }
 }

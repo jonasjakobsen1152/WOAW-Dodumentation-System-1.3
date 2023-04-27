@@ -3,10 +3,8 @@ package DAL.DB;
 import BE.User;
 import DAL.IProjectManagerDAO;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.management.relation.Role;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class ProjectManagerDAO_DB implements IProjectManagerDAO {
@@ -18,12 +16,15 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
     }
 
     @Override
-    public ArrayList<User> getAllUsers() {
+    public ArrayList<User> getAllUsers(String role) {
         ArrayList<User> users = new ArrayList<>();
 
-        try(Connection conn = databaseConnector.getConnection();
-            Statement stmt = conn.createStatement()){
-            String sql = "SELECT * FROM Users";
+        try(Connection conn = databaseConnector.getConnection()){
+            String sql = "SELECT * FROM Users WHERE Role = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, role);
 
             ResultSet rs = stmt.executeQuery(sql);
 
@@ -31,7 +32,7 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
                 int id = rs.getInt("ID");
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
-                String role = rs.getString("Role");
+
 
                 User user = new User(id,username,password,role);
                 users.add(user);

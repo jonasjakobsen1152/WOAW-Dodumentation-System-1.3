@@ -25,8 +25,8 @@
             <TableColumn fx:id="clmShowCustomers" prefWidth="213.0" styleClass="table-colum" text="Customers" />
          </columns>
       </TableView>
-      <MFXButton layoutX="37.0" layoutY="449.0" onAction="#handleAddWork" text="Add Work" />
-      <MFXButton layoutX="171.0" layoutY="449.0" onAction="#handleDeleteWork" text="Delete Work" />
+      <MFXButton layoutX="14.0" layoutY="449.0" onAction="#handleAddWork" text="Add Work" />
+      <MFXButton layoutX="186.0" layoutY="449.0" onAction="#handleDeleteWork" text="Delete Work" />
       <MFXButton layoutX="14.0" layoutY="412.0" onAction="#handleOpenCreateUser" text="Create Technician" />
       <Text fill="WHITE" layoutX="297.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Manager Window">
          <font>
@@ -46,5 +46,6 @@
       <MFXButton layoutX="884.0" layoutY="413.0" text="Show Document" />
       <MFXButton layoutX="1057.0" layoutY="412.0" text="Send PDF" />
       <TextField fx:id="tfSearch" layoutX="642.0" layoutY="18.0" text="Search" />
+      <MFXButton layoutX="95.0" layoutY="449.0" onAction="#handleReadJob" text="Read Jobs" AnchorPane.rightAnchor="985.0" />
    </children>
 </AnchorPane>

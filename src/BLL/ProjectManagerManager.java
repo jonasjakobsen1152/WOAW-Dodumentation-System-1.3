@@ -13,7 +13,7 @@ public class ProjectManagerManager {
         projectManagerDAO = new ProjectManagerDAO_DB();
     }
 
-    public ArrayList<User> getAllUsers(){
-        return projectManagerDAO.getAllUsers();
+    public ArrayList<User> getAllUsers(String role){
+        return projectManagerDAO.getAllUsers("Technician");
     }
 }

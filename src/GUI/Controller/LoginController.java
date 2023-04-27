@@ -63,4 +63,19 @@ public class LoginController {
             alertUser("Cant open admin window");
         }
     }
+
+    public void handleOpenProjectManager(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/VIEW/ProjectManager.fxml"));
+        try {
+            AnchorPane pane = loader.load();
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+            alertUser("Cant open ProjectManager window");
+        }
+    }
 }
