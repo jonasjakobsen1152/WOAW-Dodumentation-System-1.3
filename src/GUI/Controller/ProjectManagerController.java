@@ -40,6 +40,10 @@ public class ProjectManagerController implements Initializable {
     private TableColumn clmShowDocument;
     public ProjectManagerModel projectManagerModel;
 
+    public ProjectManagerController() {
+        projectManagerModel = ProjectManagerModel.getInstance();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         showTechnician();
