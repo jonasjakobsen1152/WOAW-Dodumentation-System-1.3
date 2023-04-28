@@ -34,7 +34,7 @@
       <MFXButton layoutX="385.0" layoutY="278.0" prefHeight="44.0" prefWidth="81.0" text="Show Work" />
       <MFXButton layoutX="556.0" layoutY="342.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="120.0" text="Show Document" />
       <MFXButton layoutX="790.0" layoutY="342.0" onAction="#handlePrintPDF" prefHeight="44.0" prefWidth="81.0" text="Print PDF" />
-      <ImageView fitHeight="55.0" fitWidth="172.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="55.0" fitWidth="172.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />
          </image>
