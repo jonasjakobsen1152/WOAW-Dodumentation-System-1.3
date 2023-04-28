@@ -116,4 +116,10 @@ public class AdminController implements Initializable {
         alert.setHeaderText(error + "");
         alert.showAndWait();
     }
+
+    public void handleShowDocument(ActionEvent actionEvent) {
+    }
+
+    public void handlePrintPDF(ActionEvent actionEvent) {
+    }
 }
