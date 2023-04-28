@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.User;
+import GUI.MODEL.CreateUpdateUserModel;
 import GUI.MODEL.ProjectManagerModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,6 +41,7 @@ public class ProjectManagerController implements Initializable {
     private TableColumn clmShowDocument;
     public ProjectManagerModel projectManagerModel;
     private User selectedUser;
+    CreateUpdateUserModel createUpdateUserModel;
 
     public ProjectManagerController() {
         projectManagerModel = ProjectManagerModel.getInstance();
@@ -54,16 +56,24 @@ public class ProjectManagerController implements Initializable {
 
         tblShowTechnicians.setOnMouseClicked(event -> {
             selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
+            tblShowCustomers.getSelectionModel().clearSelection();
+            tblShowSalesmen.getSelectionModel().clearSelection();
+
         });
         tblShowSalesmen.setOnMouseClicked(event -> {
             selectedUser = tblShowSalesmen.getSelectionModel().getSelectedItem();
+            tblShowTechnicians.getSelectionModel().clearSelection();
+            tblShowCustomers.getSelectionModel().clearSelection();
         });
         tblShowCustomers.setOnMouseClicked(event -> {
             selectedUser = tblShowCustomers.getSelectionModel().getSelectedItem();
+            tblShowSalesmen.getSelectionModel().clearSelection();
+            tblShowTechnicians.getSelectionModel().clearSelection();
         });
         tblShowDocument.setOnMouseClicked(event -> {
             selectedUser = tblShowDocument.getSelectionModel().getSelectedItem();
         });
+
 
     }
 
@@ -174,7 +184,29 @@ public class ProjectManagerController implements Initializable {
             }
         }
     }
-    
+
+    public void handleOpenUpdateUser(ActionEvent actionEvent) {
+        if (selectedUser == null) {
+            alertUser("Please select a user to edit");
+        } else {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CreateUpdateUser.fxml"));
+                AnchorPane pane = loader.load();
+
+                CreateUpdateUserController createUpdateUserController = loader.getController();
+                createUpdateUserController.setupUpdate(selectedUser);
+
+                Stage dialogWindow = new Stage();
+                Scene scene = new Scene(pane);
+                dialogWindow.setScene(scene);
+                dialogWindow.show();
+            } catch (IOException e) {
+                alertUser("Error: Could not open the update user window");
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     public void handleReadJob(ActionEvent actionEvent) {
     }
