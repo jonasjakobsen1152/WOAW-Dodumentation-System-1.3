@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="366.0" prefWidth="331.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateUpdateUserController">
+<AnchorPane prefHeight="366.0" prefWidth="331.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateUpdateUserController">
    <children>
       <TextField fx:id="txtUsername" layoutX="91.0" layoutY="96.0" promptText="Username" />
       <TextField fx:id="txtPassword" layoutX="92.0" layoutY="158.0" promptText="Password" />
@@ -18,8 +15,8 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <MFXButton layoutX="41.0" layoutY="291.0" onAction="#handleCreateUser" prefHeight="46.0" prefWidth="101.0" text="Create" />
-      <MFXButton layoutX="190.0" layoutY="291.0" onAction="#handleUpdateUser" prefHeight="46.0" prefWidth="101.0" text="Update" />
+      <MFXButton fx:id="btnCreate" layoutX="41.0" layoutY="291.0" onAction="#handleCreateUser" prefHeight="46.0" prefWidth="101.0" text="Create" />
+      <MFXButton fx:id="btnUpdate" layoutX="190.0" layoutY="291.0" onAction="#handleUpdateUser" prefHeight="46.0" prefWidth="101.0" text="Update" />
       <ImageView fitHeight="59.0" fitWidth="124.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />
