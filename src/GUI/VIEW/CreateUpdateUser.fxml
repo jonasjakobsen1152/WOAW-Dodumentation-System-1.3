@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="366.0" prefWidth="331.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateUpdateUserController">
+<AnchorPane prefHeight="366.0" prefWidth="331.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateUpdateUserController">
    <children>
-      <TextField fx:id="txtUsername" layoutX="114.0" layoutY="39.0" />
-      <TextField fx:id="txtPassword" layoutX="113.0" layoutY="118.0" />
-      <ChoiceBox fx:id="cbRole" layoutX="113.0" layoutY="201.0" prefWidth="150.0" />
-      <Label layoutX="15.0" layoutY="43.0" text="Username:" />
-      <Label layoutX="17.0" layoutY="122.0" text="Password:" />
-      <Label layoutX="27.0" layoutY="205.0" text="Role:" />
-      <Button layoutX="45.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleCreateUser" text="Create" />
-      <Button layoutX="154.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleUpdateUser" text="Update" />
+      <TextField fx:id="txtUsername" layoutX="91.0" layoutY="39.0" promptText="Username" />
+      <TextField fx:id="txtPassword" layoutX="91.0" layoutY="118.0" promptText="Password" />
+      <ChoiceBox fx:id="cbRole" layoutX="91.0" layoutY="201.0" prefWidth="150.0" />
+      <Label layoutX="123.0" layoutY="173.0" text="Choose a role">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <MFXButton layoutX="27.0" layoutY="268.0" onAction="#handleCreateUser" prefHeight="46.0" prefWidth="101.0" />
+      <MFXButton layoutX="191.0" layoutY="268.0" onAction="#handleUpdateUser" prefHeight="46.0" prefWidth="101.0" />
    </children>
 </AnchorPane>

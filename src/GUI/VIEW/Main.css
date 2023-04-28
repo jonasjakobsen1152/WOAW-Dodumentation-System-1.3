@@ -1,6 +1,10 @@
 .background {
     -fx-background-color: black;
 }
+.backgroundWithBorder {
+    -fx-background-color: black;
+    -fx-border-color: white;
+}
 .button {
     -fx-background-color: D65A31;
 }
