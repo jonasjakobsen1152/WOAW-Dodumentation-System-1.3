@@ -28,4 +28,21 @@ public class CreateUpdateUserDAO_DB implements ICreateUpdateUserDAO {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void updateUser(User user) {
+        try(Connection conn = databaseConnector.getConnection()){
+            String sql = "UPDATE Users SET Username = ?, Password = ?, Role = ? WHERE ID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, user.getUsername());
+            stmt.setString(2, user.getPassword());
+            stmt.setString(3, user.getRole());
+            stmt.setInt(4,user.getId());
+
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }

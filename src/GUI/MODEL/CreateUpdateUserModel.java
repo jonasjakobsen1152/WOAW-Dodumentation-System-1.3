@@ -52,4 +52,10 @@ public class CreateUpdateUserModel {
     public void setSelectedUser(User selectedUser) {
         this.selectedUser = selectedUser;
     }
+
+    public void updateUser(String username,String password,String role) {
+        User user = new User(selectedUser.getId(),username,password,role);
+        createUpdateUserManager.updateUser(user);
+        showList();
+    }
 }

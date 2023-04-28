@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.User;
+import BLL.UTIL.BCrypt;
 import GUI.MODEL.AdminModel;
 import GUI.MODEL.CreateUpdateUserModel;
 import javafx.collections.FXCollections;
@@ -43,8 +44,10 @@ public class CreateUpdateUserController implements Initializable {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         String role = cbRole.getValue();
+        String salt = BCrypt.gensalt(15);
+        String passwordToHash = BCrypt.hashpw(password,salt);
         try{
-            createUpdateUserModel.createUser(username,password,role);
+            createUpdateUserModel.createUser(username,passwordToHash,role);
             Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
             stage.close();
         }catch (Exception e){
@@ -57,6 +60,20 @@ public class CreateUpdateUserController implements Initializable {
 
 
     public void handleUpdateUser(ActionEvent actionEvent) {
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+        String role = cbRole.getValue();
+        String salt = BCrypt.gensalt(15);
+        String passwordToHash = BCrypt.hashpw(password,salt);
+        try {
+            createUpdateUserModel.updateUser(username,passwordToHash,role);
+
+            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.close();
+        }catch (Exception e){
+            alertUser("Could not update the user");
+            e.printStackTrace();
+        }
     }
 
     private void alertUser(String error) {
