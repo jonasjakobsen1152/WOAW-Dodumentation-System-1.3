@@ -29,7 +29,7 @@
       <Button layoutX="561.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleOpenProjectManager" text="Project Window" />
       <ImageView fitHeight="73.0" fitWidth="134.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/Screenshot_1.png" />
+            <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
    </children>
