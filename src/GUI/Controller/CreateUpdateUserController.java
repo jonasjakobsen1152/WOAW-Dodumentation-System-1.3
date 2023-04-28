@@ -1,5 +1,6 @@
 package GUI.Controller;
 
+import BE.User;
 import GUI.MODEL.AdminModel;
 import GUI.MODEL.CreateUpdateUserModel;
 import javafx.collections.FXCollections;
@@ -9,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -23,6 +25,8 @@ public class CreateUpdateUserController implements Initializable {
     @FXML
     public ChoiceBox<String> cbRole;
     public CreateUpdateUserModel createUpdateUserModel;
+    public Button btnUpdate;
+    public Button btnCreate;
 
     public CreateUpdateUserController(){
 
@@ -63,4 +67,15 @@ public class CreateUpdateUserController implements Initializable {
     }
 
 
+    public void removeUpdate() {
+        btnUpdate.setVisible(false);
+    }
+
+
+    public void setupUpdate(User selectedUser){
+        btnCreate.setVisible(false);
+        txtUsername.setText(selectedUser.getUsername());
+        cbRole.setValue(selectedUser.getRole());
+
+    }
 }

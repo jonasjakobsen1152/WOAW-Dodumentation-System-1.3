@@ -13,6 +13,7 @@ public class CreateUpdateUserModel {
     CreateUpdateUserManager createUpdateUserManager;
     AdminModel adminModel;
     ProjectManagerModel projectManagerModel;
+    public User selectedUser;
 
     private static CreateUpdateUserModel instance;
 
@@ -46,5 +47,9 @@ public class CreateUpdateUserModel {
 
         projectManagerModel.getCustomerToBeViewed().clear();
         projectManagerModel.getCustomerToBeViewed().addAll(projectManagerModel.getCustomerList());
+    }
+
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
     }
 }

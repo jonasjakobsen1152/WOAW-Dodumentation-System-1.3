@@ -2,6 +2,7 @@ package GUI.Controller;
 
 import BE.User;
 import GUI.MODEL.AdminModel;
+import GUI.MODEL.CreateUpdateUserModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,6 +29,7 @@ public class AdminController implements Initializable {
     public TableColumn clmRole;
     public AdminModel adminModel;
     private User selectedUser;
+    private CreateUpdateUserModel createUpdateUserModel;
 
     public AdminController() {
         adminModel = AdminModel.getInstance();
@@ -51,6 +53,11 @@ public class AdminController implements Initializable {
         try {
             AnchorPane pane = loader.load();
 
+            CreateUpdateUserController createUpdateUserController =loader.getController();
+            CreateUpdateUserModel.getInstance();
+
+            createUpdateUserController.removeUpdate();
+
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
             dialogWindow.setScene(scene);
@@ -67,6 +74,33 @@ public class AdminController implements Initializable {
      * @param actionEvent
      */
     public void handleOpenUpdateUser(ActionEvent actionEvent) {
+        selectedUser = tblUser.getSelectionModel().getSelectedItem();
+        createUpdateUserModel = CreateUpdateUserModel.getInstance();
+        if (selectedUser == null){
+            alertUser("Please select a user to edit");
+        }else {
+            createUpdateUserModel.setSelectedUser(selectedUser);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateUser.fxml"));
+            try {
+                AnchorPane pane = loader.load();
+
+
+                CreateUpdateUserController createUpdateUserController = loader.getController();
+                CreateUpdateUserModel.getInstance();
+
+                createUpdateUserController.setupUpdate(selectedUser);
+
+                Stage dialogWindow = new Stage();
+                Scene scene = new Scene(pane);
+                dialogWindow.setScene(scene);
+                dialogWindow.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                alertUser("Error: Could not open the update user window");
+            }
+        }
     }
 
     public void handleDeleteUser(ActionEvent actionEvent) {
