@@ -14,9 +14,6 @@
 .table-colum {
     -fx-background-color: #222831;
 }
-.label{
-    -fx-text-fill: white;
-}
 .table-row-cell .text{
     -fx-fill: white;
     -fx-cursor: hand;
@@ -27,7 +24,14 @@
 .text {
     -fx-fill: white;
 }
-.choice-box .text{
-    -fx-fill: black;
+.choice-box .text {
+    -fx-fill: Orange;
+    -fx-font-size: 15;
+}
+.choice-box .menu-item{
+    -fx-background-color: #222831;
+}
+.choice-box{
+    -fx-background-color: #222831;
 }
 
