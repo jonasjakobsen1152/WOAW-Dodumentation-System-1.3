@@ -27,4 +27,7 @@
 .text {
     -fx-fill: white;
 }
+.choice-box .text{
+    -fx-fill: black;
+}
 
