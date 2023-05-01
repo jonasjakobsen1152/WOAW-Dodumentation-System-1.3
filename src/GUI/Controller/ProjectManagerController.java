@@ -45,7 +45,7 @@ public class ProjectManagerController implements Initializable {
     private User selectedUser;
     CreateUpdateUserModel createUpdateUserModel;
     CreateUpdateJobModel createUpdateJobModel;
-    private User selectedTechnian;
+    private User selectedTechnician;
     private Customer selectedCustomer;
 
     public ProjectManagerController() {
@@ -106,10 +106,23 @@ public class ProjectManagerController implements Initializable {
     }
 
     public void handleAddWork(ActionEvent actionEvent) {
-        selectedTechnian = tblShowTechnicians.getSelectionModel().getSelectedItem();
+        selectedTechnician = tblShowTechnicians.getSelectionModel().getSelectedItem();
         selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
-        createUpdateJobModel.setCustomerAndTechnician(selectedTechnian,selectedCustomer);
-        
+        createUpdateJobModel.setCustomerAndTechnician(selectedTechnician,selectedCustomer);
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateJob.fxml"));
+        try {
+            AnchorPane pane = loader.load();
+
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.show();
+        }
+        catch (IOException e) {
+            alertUser("Error: Could not open the job creation window");
+        }
 
     }
 
