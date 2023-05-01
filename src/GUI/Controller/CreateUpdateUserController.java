@@ -44,8 +44,10 @@ public class CreateUpdateUserController implements Initializable {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         String role = cbRole.getValue();
+        String salt = BCrypt.gensalt(15);
+        String passwordToHash = BCrypt.hashpw(password,salt);
         try{
-            createUpdateUserModel.createUser(username,password,role);
+            createUpdateUserModel.createUser(username,passwordToHash,role);
             Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
             stage.close();
         }catch (Exception e){
