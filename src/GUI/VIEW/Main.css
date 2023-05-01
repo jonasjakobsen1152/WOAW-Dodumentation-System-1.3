@@ -24,6 +24,7 @@
 .text {
     -fx-fill: white;
 }
+
 .choice-box .text {
     -fx-fill: Orange;
     -fx-font-size: 15;
@@ -31,7 +32,11 @@
 .choice-box .menu-item{
     -fx-background-color: #222831;
 }
-.choice-box{
+.choice-box {
     -fx-background-color: #222831;
+}
+
+.choice-box{
+    -fx-fill: black;
 }
 
