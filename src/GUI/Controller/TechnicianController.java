@@ -1,8 +1,15 @@
 package GUI.Controller;
 
 import javafx.event.ActionEvent;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class TechnicianController {
+    public TableView tblNotes;
+    public TableColumn clmNotes;
+    public TableView tblImages;
+    public TableColumn clmImages;
+
     public void handleAddNote(ActionEvent actionEvent) {
     }
 
