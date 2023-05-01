@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="366.0" prefWidth="331.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateUpdateJobController">
+   <children>
+      <MFXButton layoutX="227.0" layoutY="308.0" onAction="#handleUpdateJob" text="Update" />
+      <MFXButton layoutX="59.0" layoutY="308.0" onAction="#handleCreateJob" text="Create" />
+      <TextField fx:id="txtTitle" layoutX="91.0" layoutY="171.0" promptText="Title" />
+      <ImageView fitHeight="65.0" fitWidth="131.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/Screenshot_1.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="154.0" layoutY="29.0" text="Creating job for:" />
+      <Label fx:id="lblUser" layoutX="242.0" layoutY="29.0" />
+   </children>
+</AnchorPane>

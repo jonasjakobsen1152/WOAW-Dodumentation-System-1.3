@@ -1,6 +1,8 @@
 package GUI.Controller;
 
+import BE.Customer;
 import BE.User;
+import GUI.MODEL.CreateUpdateJobModel;
 import GUI.MODEL.CreateUpdateUserModel;
 import GUI.MODEL.ProjectManagerModel;
 import javafx.event.ActionEvent;
@@ -32,7 +34,7 @@ public class ProjectManagerController implements Initializable {
     @FXML
     private TableColumn clmShowSalesmen;
     @FXML
-    private TableView<User> tblShowCustomers;
+    private TableView<Customer> tblShowCustomers;
     @FXML
     private TableColumn clmShowCustomers;
     @FXML
@@ -42,9 +44,13 @@ public class ProjectManagerController implements Initializable {
     public ProjectManagerModel projectManagerModel;
     private User selectedUser;
     CreateUpdateUserModel createUpdateUserModel;
+    CreateUpdateJobModel createUpdateJobModel;
+    private User selectedTechnian;
+    private Customer selectedCustomer;
 
     public ProjectManagerController() {
         projectManagerModel = ProjectManagerModel.getInstance();
+        createUpdateJobModel = CreateUpdateJobModel.getInstance();
     }
 
     @Override
@@ -66,9 +72,8 @@ public class ProjectManagerController implements Initializable {
             tblShowCustomers.getSelectionModel().clearSelection();
         });
         tblShowCustomers.setOnMouseClicked(event -> {
-            selectedUser = tblShowCustomers.getSelectionModel().getSelectedItem();
-            tblShowSalesmen.getSelectionModel().clearSelection();
-            tblShowTechnicians.getSelectionModel().clearSelection();
+            selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
+
         });
         tblShowDocument.setOnMouseClicked(event -> {
             selectedUser = tblShowDocument.getSelectionModel().getSelectedItem();
@@ -101,6 +106,11 @@ public class ProjectManagerController implements Initializable {
     }
 
     public void handleAddWork(ActionEvent actionEvent) {
+        selectedTechnian = tblShowTechnicians.getSelectionModel().getSelectedItem();
+        selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
+        createUpdateJobModel.setCustomerAndTechnician(selectedTechnian,selectedCustomer);
+        
+
     }
 
     public void handleDeleteWork(ActionEvent actionEvent) {
@@ -133,7 +143,7 @@ public class ProjectManagerController implements Initializable {
     }
 
     public void handleDeleteCustomer(ActionEvent actionEvent) {
-        selectedUser = tblShowCustomers.getSelectionModel().getSelectedItem();
+        selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
         if (selectedUser == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select a user");
@@ -151,7 +161,7 @@ public class ProjectManagerController implements Initializable {
             alert.setHeaderText("Are you sure you want to delete: " + selectedUser.getUsername().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
-                projectManagerModel.deleteUser(selectedUser);
+                //projectManagerModel.deleteUser(selectedUser);
                 //updateUserModel();
                 showCustomer();
             }
@@ -222,7 +232,7 @@ public class ProjectManagerController implements Initializable {
     }
 
     private void showCustomer(){
-        clmShowCustomers.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
-        tblShowCustomers.setItems(projectManagerModel.getCustomerToBeViewed());
+        //clmShowCustomers.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
+        //tblShowCustomers.setItems(projectManagerModel.getCustomerToBeViewed());
     }
 }
