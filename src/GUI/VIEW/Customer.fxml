@@ -15,8 +15,8 @@
          </image>
       </ImageView>
       <TextField fx:id="txtName" layoutX="91.0" layoutY="104.0" promptText="Name" />
-      <TextField fx:id="txtName" layoutX="91.0" layoutY="171.0" promptText="Phone number" />
-      <TextField fx:id="txtName" layoutX="91.0" layoutY="230.0" promptText="E-mail" />
+      <TextField fx:id="txtPhoneNumber" layoutX="91.0" layoutY="171.0" promptText="Phone number" />
+      <TextField fx:id="txtEmail" layoutX="91.0" layoutY="230.0" promptText="E-mail" />
       <Button fx:id="btnCreate" layoutX="65.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleCreateCustomer" text="Create" />
       <Button fx:id="btnUpdate" layoutX="214.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleUpdateCustomer" text="Update" />
    </children>
