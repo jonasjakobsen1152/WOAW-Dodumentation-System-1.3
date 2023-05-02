@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="GUI.Controller.SalesmenController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="567.0" prefWidth="833.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SalesmenController">
+   <children>
+      <TableView fx:id="tblJobs" layoutX="512.0" layoutY="97.0" prefHeight="393.0" prefWidth="276.0" styleClass="table-colum">
+        <columns>
+          <TableColumn fx:id="clmJobs" prefWidth="275.0" styleClass="table-colum" text="Jobs" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tblCustomer" layoutX="22.0" layoutY="97.0" prefHeight="393.0" prefWidth="400.0" styleClass="table-colum">
+        <columns>
+          <TableColumn fx:id="clmPhone" prefWidth="103.0" styleClass="table-colum" text="Phone" />
+            <TableColumn fx:id="clmEmail" prefWidth="178.0" styleClass="table-colum" text="Email" />
+          <TableColumn fx:id="clmName" prefWidth="118.0" styleClass="table-colum" text="Name" />
+        </columns>
+      </TableView>
+      <Text layoutX="22.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Customer" />
+      <Text layoutX="512.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Jobs for the customer" wrappingWidth="186.1328125" />
+      <MFXButton buttonType="RAISED" layoutX="512.0" layoutY="500.0" prefHeight="41.0" prefWidth="276.0" text="Print PDF" />
+      <MFXTextField fx:id="txtFilter" floatMode="ABOVE" layoutX="131.0" layoutY="63.0" prefHeight="29.0" prefWidth="265.0" promptText="Search" />
+      <Text layoutX="340.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="WUAW Sales Window" wrappingWidth="186.1328125" />
+   </children>
 </AnchorPane>
