@@ -1,5 +1,6 @@
 package GUI.MODEL;
 
+import BE.Job;
 import BE.User;
 import BLL.ProjectManagerManager;
 import javafx.collections.FXCollections;
@@ -13,7 +14,7 @@ public class ProjectManagerModel {
     private ObservableList<User> technicianToBeViewed;
     private ObservableList<User> salesmenToBeViewed;
     private ObservableList<User> customerToBeViewed;
-    private ObservableList<User> documentToBeViewed;
+    private ObservableList<Job> documentToBeViewed;
     private static ProjectManagerModel instance;
 
     private ProjectManagerModel(){
@@ -74,5 +75,12 @@ public class ProjectManagerModel {
         getCustomerToBeViewed().clear();
         getCustomerToBeViewed().addAll(projectManagerManager.getAllUsers("Customer"));
 
+        getDocumentsToBeViewed().clear();
+        getDocumentsToBeViewed().addAll(projectManagerManager.getAllDocuments());
+
+    }
+
+    public ObservableList<Job> getDocumentsToBeViewed() {
+        return documentToBeViewed;
     }
 }

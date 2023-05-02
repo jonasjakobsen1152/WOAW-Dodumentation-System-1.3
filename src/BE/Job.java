@@ -45,4 +45,14 @@ public class Job {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", userId=" + userId +
+                ", customerId=" + customerId +
+                '}';
+    }
 }
