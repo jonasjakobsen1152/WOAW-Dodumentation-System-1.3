@@ -2,10 +2,13 @@ package GUI.MODEL;
 
 import BE.Customer;
 import BLL.CustomerManager;
+import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CustomerModel {
+    ObservableList<Customer> customerToBeViewed;
     CustomerManager customerManager;
     private Customer selectedCustomer;
 
@@ -26,8 +29,12 @@ public class CustomerModel {
         showList();
     }
 
-    public void showList(){
-
+    public void showList() throws SQLException {
+        getCustomerToBeViewed().clear();
+        getCustomerToBeViewed().addAll(customerManager.getAllCustomer());
     }
 
+    public ObservableList<Customer> getCustomerToBeViewed() {
+        return customerToBeViewed;
+    }
 }

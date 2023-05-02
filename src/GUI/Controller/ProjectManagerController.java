@@ -250,8 +250,9 @@ public class ProjectManagerController implements Initializable {
     }
 
     private void showCustomer(){
-        //clmShowCustomers.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
-        //tblShowCustomers.setItems(projectManagerModel.getCustomerToBeViewed());
+        clmShowCustomers.setCellValueFactory(new PropertyValueFactory<Customer, String>("name"));
+        tblShowCustomers.setItems(customerModel.getCustomerToBeViewed());
+
     }
 
     public void handleOpenCustomer(ActionEvent actionEvent) {

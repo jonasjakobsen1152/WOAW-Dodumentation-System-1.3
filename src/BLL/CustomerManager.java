@@ -1,9 +1,11 @@
 package BLL;
 
+import BE.Customer;
 import DAL.DB.CustomerDAO_DB;
 import DAL.ICustomerDAO;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CustomerManager {
 
@@ -15,5 +17,8 @@ public class CustomerManager {
 
     public void createCustomer(String name, int phone, String email) throws SQLException {
         customerDAO.createCustomer(name,phone,email);
+    }
+    public ArrayList<Customer> getAllCustomer() throws SQLException {
+        return customerDAO.getAllCustomer();
     }
 }
