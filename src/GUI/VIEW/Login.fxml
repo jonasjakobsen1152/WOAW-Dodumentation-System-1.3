@@ -30,5 +30,6 @@
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
+      <Button layoutX="562.0" layoutY="108.0" mnemonicParsing="false" onAction="#handleOpenSales" prefHeight="28.0" prefWidth="116.0" text="Sales" />
    </children>
 </AnchorPane>

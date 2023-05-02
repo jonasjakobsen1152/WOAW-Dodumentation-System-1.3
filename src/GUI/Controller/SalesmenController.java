@@ -4,9 +4,12 @@ import BE.Customer;
 import GUI.MODEL.SalesMenModel;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.sql.SQLException;
 
 public class SalesmenController {
     @FXML
@@ -26,7 +29,12 @@ public class SalesmenController {
     SalesMenModel salesMenModel;
 
     public SalesmenController(){
-        salesMenModel = SalesMenModel.getInstance();
+        try {
+            salesMenModel = SalesMenModel.getInstance();
+        }
+        catch (SQLException e) {
+            alertUser("Experienced a problem collecting customer data from the database");
+        }
 
         showCustomers();
     }
@@ -38,6 +46,11 @@ public class SalesmenController {
         tblCustomer.setItems(salesMenModel.getCustomerToBeViewed());
     }
 
-
+    private void alertUser(String error) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(error);
+        alert.setHeaderText(error + "");
+        alert.showAndWait();
+    }
 
 }

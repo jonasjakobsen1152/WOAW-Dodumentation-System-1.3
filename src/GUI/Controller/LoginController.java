@@ -73,14 +73,20 @@ public class LoginController {
         }
     }
 
-
-    private void alertUser(String error) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(error);
-        alert.setHeaderText(error + "");
-        alert.showAndWait();
+    public void handleOpenSalesmen(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("GUI/VIEW/Salesmen.fxml"));
+        try{
+            AnchorPane pane = loader.load();
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            alertUser("Cannot open Sales window");
+        }
     }
-
 
     public void handleOpenAdmin(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
@@ -110,5 +116,12 @@ public class LoginController {
             e.printStackTrace();
             alertUser("Cant open ProjectManager window");
         }
+    }
+
+    private void alertUser(String error) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(error);
+        alert.setHeaderText(error + "");
+        alert.showAndWait();
     }
 }
