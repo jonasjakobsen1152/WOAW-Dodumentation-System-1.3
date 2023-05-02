@@ -38,7 +38,7 @@
       <MFXButton layoutX="156.0" layoutY="412.0" onAction="#handleDeleteTechnician" prefHeight="48.0" prefWidth="115.0" text="Delete Technician" />
       <MFXButton layoutX="401.0" layoutY="412.0" onAction="#handleOpenCreateUser" prefHeight="48.0" prefWidth="115.0" text="Create Salesmen" />
       <MFXButton layoutX="835.0" layoutY="412.0" onAction="#handleDeleteCustomer" prefHeight="48.0" prefWidth="111.0" text="Delete Customer" />
-      <MFXButton layoutX="690.0" layoutY="412.0" onAction="#handleOpenCreateUser" prefHeight="48.0" prefWidth="115.0" text="Create Customer" />
+      <MFXButton layoutX="690.0" layoutY="412.0" onAction="#handleOpenCustomer" prefHeight="48.0" prefWidth="115.0" stylesheets="@Main.css" text="Create Customer" />
       <MFXButton layoutX="536.0" layoutY="412.0" onAction="#handleDeleteSalesmen" prefHeight="48.0" prefWidth="115.0" text="Delete Salesmen" />
       <TableView fx:id="tblShowDocument" layoutX="993.0" layoutY="58.0" prefHeight="345.0" prefWidth="214.0" styleClass="table-colum">
          <columns>

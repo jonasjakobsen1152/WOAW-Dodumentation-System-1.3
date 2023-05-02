@@ -4,6 +4,7 @@ import BE.Customer;
 import BE.User;
 import GUI.MODEL.CreateUpdateJobModel;
 import GUI.MODEL.CreateUpdateUserModel;
+import GUI.MODEL.CustomerModel;
 import GUI.MODEL.ProjectManagerModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,12 +46,15 @@ public class ProjectManagerController implements Initializable {
     private User selectedUser;
     CreateUpdateUserModel createUpdateUserModel;
     CreateUpdateJobModel createUpdateJobModel;
+    CustomerModel customerModel;
     private User selectedTechnician;
     private Customer selectedCustomer;
 
     public ProjectManagerController() {
         projectManagerModel = ProjectManagerModel.getInstance();
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
+        customerModel = CustomerModel.getInstance();
+
     }
 
     @Override
@@ -248,5 +252,21 @@ public class ProjectManagerController implements Initializable {
     private void showCustomer(){
         //clmShowCustomers.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         //tblShowCustomers.setItems(projectManagerModel.getCustomerToBeViewed());
+    }
+
+    public void handleOpenCustomer(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Customer.fxml"));
+            AnchorPane pane = loader.load();
+
+
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.show();
+        }catch (IOException e){
+            e.printStackTrace();
+            alertUser("Could not open the customer window");
+        }
     }
 }
