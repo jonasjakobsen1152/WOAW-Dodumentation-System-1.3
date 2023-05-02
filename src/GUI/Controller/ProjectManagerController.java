@@ -113,6 +113,7 @@ public class ProjectManagerController implements Initializable {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateJob.fxml"));
         try {
+            createUpdateJobModel.setCustomerAndTechnician(selectedTechnician,selectedCustomer);
             AnchorPane pane = loader.load();
 
             Stage dialogWindow = new Stage();
