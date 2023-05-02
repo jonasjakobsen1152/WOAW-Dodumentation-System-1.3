@@ -6,6 +6,7 @@ import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class SalesmenController {
     @FXML
@@ -26,9 +27,16 @@ public class SalesmenController {
 
     public SalesmenController(){
         salesMenModel = SalesMenModel.getInstance();
+
+        showCustomers();
     }
 
-    
+    private void showCustomers(){
+        clmName.setCellValueFactory(new PropertyValueFactory<Customer,String>("Name"));
+        clmPhone.setCellValueFactory(new PropertyValueFactory<Customer,Integer>("Phone"));
+        clmEmail.setCellValueFactory(new PropertyValueFactory<Customer,String>("Email"));
+        tblCustomer.setItems(salesMenModel.getCustomerToBeViewed());
+    }
 
 
 
