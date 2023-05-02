@@ -30,6 +30,9 @@ public class AdminController implements Initializable {
     public TableColumn clmName;
     public TableColumn clmPhone;
     public TableColumn clmEmail;
+    public TableColumn clmDescription;
+    public TableColumn clmTitle;
+    public TableView tblDocument;
     private User selectedUser;
     private Customer selectedCustomer;
     private CreateUpdateUserModel createUpdateUserModel;
@@ -198,5 +201,8 @@ public class AdminController implements Initializable {
     }
 
     public void handleUpdateCustomer(ActionEvent actionEvent) {
+    }
+
+    public void handleShowWork(ActionEvent actionEvent) {
     }
 }
