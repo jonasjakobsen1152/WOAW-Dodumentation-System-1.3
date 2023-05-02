@@ -68,14 +68,14 @@ public class LoginController {
             stage.close();
         }
         else if (user.getRole().equals("Sales")) {
-            //TODO handle open technician
+            handleOpenSales(new ActionEvent());
             stage.close();
         }
     }
 
-    public void handleOpenSalesmen(){
+    public void handleOpenSales(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("GUI/VIEW/Salesmen.fxml"));
+        loader.setLocation(getClass().getResource("/GUI/VIEW/Salesmen.fxml"));
         try{
             AnchorPane pane = loader.load();
             Stage dialogWindow = new Stage();

@@ -40,7 +40,7 @@ public class SalesmenController {
     }
 
     private void showCustomers(){
-        clmName.setCellValueFactory(new PropertyValueFactory<Customer,String>("Name"));
+        clmName.setCellValueFactory(new PropertyValueFactory<Customer,String>("name"));
         clmPhone.setCellValueFactory(new PropertyValueFactory<Customer,Integer>("Phone"));
         clmEmail.setCellValueFactory(new PropertyValueFactory<Customer,String>("Email"));
         tblCustomer.setItems(salesMenModel.getCustomerToBeViewed());
