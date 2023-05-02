@@ -21,13 +21,17 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CreateUpdateUserController implements Initializable {
-    public TextField txtUsername;
-    public TextField txtPassword;
     @FXML
-    public ChoiceBox<String> cbRole;
+    private TextField txtUsername;
+    @FXML
+    private TextField txtPassword;
+    @FXML
+    private ChoiceBox<String> cbRole;
     public CreateUpdateUserModel createUpdateUserModel;
-    public MFXButton btnCreate;
-    public MFXButton btnUpdate;
+    @FXML
+    private MFXButton btnCreate;
+    @FXML
+    private MFXButton btnUpdate;
 
     public CreateUpdateUserController(){
 

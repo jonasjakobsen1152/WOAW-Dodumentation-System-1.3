@@ -14,7 +14,7 @@ public class CreateUpdateUserDAO_DB implements ICreateUpdateUserDAO {
     }
 
     @Override
-    public void createUser(String username, String password, String role) {
+    public void createUser(String username, String password, String role) throws SQLException {
         try (Connection conn = databaseConnector.getConnection()){
             String sql = "INSERT INTO Users (Username, Password, Role) VALUES (?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -25,7 +25,7 @@ public class CreateUpdateUserDAO_DB implements ICreateUpdateUserDAO {
 
             stmt.executeUpdate();
         }catch (SQLException e){
-            throw new RuntimeException(e);
+            throw new SQLException();
         }
     }
     public void updateUser(User user) {

@@ -6,6 +6,7 @@ import BLL.CreateUpdateUserManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class CreateUpdateUserModel {
     }
 
 
-    public void createUser(String username, String password, String role) {
+    public void createUser(String username, String password, String role) throws SQLException {
         createUpdateUserManager.createUser(username,password,role);
         showList();
     }
