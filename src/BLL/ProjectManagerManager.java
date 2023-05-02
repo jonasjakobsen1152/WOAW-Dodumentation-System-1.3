@@ -1,5 +1,6 @@
 package BLL;
 
+import BE.Job;
 import BE.User;
 import DAL.DB.ProjectManagerDAO_DB;
 import DAL.IProjectManagerDAO;
@@ -20,5 +21,9 @@ public class ProjectManagerManager {
 
     public void deleteUser(User selectedUser) {
         projectManagerDAO.deleteUser(selectedUser);
+    }
+
+    public ArrayList<Job> getAllDocuments() {
+        return projectManagerDAO.getAllDocuments();
     }
 }

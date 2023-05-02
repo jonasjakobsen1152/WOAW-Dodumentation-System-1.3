@@ -1,5 +1,6 @@
 package GUI.Controller;
 
+import BE.Customer;
 import BE.User;
 import GUI.MODEL.AdminModel;
 import GUI.MODEL.CreateUpdateUserModel;
@@ -25,11 +26,12 @@ public class AdminController implements Initializable {
     public TableColumn clmUsername;
     public TableColumn clmRole;
     public AdminModel adminModel;
-    public TableView tblCustomer;
+    public TableView<Customer> tblCustomer;
     public TableColumn clmName;
     public TableColumn clmPhone;
     public TableColumn clmEmail;
     private User selectedUser;
+    private Customer selectedCustomer;
     private CreateUpdateUserModel createUpdateUserModel;
 
     public AdminController() {
@@ -159,9 +161,40 @@ public class AdminController implements Initializable {
     }
 
     public void handleCreateCustomer(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Customer.fxml"));
+            AnchorPane pane = loader.load();
+
+
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.show();
+        }catch (IOException e){
+            e.printStackTrace();
+            alertUser("Could not open the customer window");
+        }
     }
 
     public void handleDeleteCustomer(ActionEvent actionEvent) {
+        selectedCustomer = tblCustomer.getSelectionModel().getSelectedItem();
+        if (selectedCustomer == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select a customer");
+            alert.setHeaderText("Choose a customer to delete");
+            alert.show();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedCustomer.getName().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                adminModel.deleteCustomer(selectedCustomer);
+                //updateUserModel();
+                showUsersAndDocuments();
+            }
+        }
     }
 
     public void handleUpdateCustomer(ActionEvent actionEvent) {

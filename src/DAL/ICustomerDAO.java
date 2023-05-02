@@ -11,6 +11,5 @@ public interface ICustomerDAO {
 
     void createCustomer(String name, int phone, String email) throws SQLException;
     void updateCustomer(Customer customer);
-    void deleteCustomer(Customer customer);
     public ArrayList<Customer> getAllCustomer() throws SQLException;
 }

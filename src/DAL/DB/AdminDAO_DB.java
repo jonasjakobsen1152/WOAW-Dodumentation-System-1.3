@@ -1,5 +1,6 @@
 package DAL.DB;
 
+import BE.Customer;
 import BE.User;
 import DAL.IAdminDAO;
 
@@ -28,6 +29,47 @@ public class AdminDAO_DB implements IAdminDAO {
         }catch (SQLException e){
             throw new SQLException(e);
         }
+    }
+
+    @Override
+    public void deleteCustomer(Customer selectedCustomer) {
+        try(Connection conn = databaseConnector.getConnection()) {
+            String sql = "DELETE FROM Customer WHERE ID = ? AND Name = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,selectedCustomer.getId());
+            stmt.setString(2,selectedCustomer.getName());
+
+            stmt.executeUpdate();
+
+        }catch (SQLException e){
+        }
+    }
+
+    @Override
+    public ArrayList<Customer> getAllCustomer() {
+        ArrayList<Customer> customers = new ArrayList<>();
+
+        try(Connection conn = databaseConnector.getConnection();
+            Statement stmt = conn.createStatement()){
+            String sql = "Select * from Customer";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                int id = rs.getInt("ID");
+                String name = rs.getString("Name");
+                int phone = Integer.parseInt(rs.getString("Phone"));
+                String email = rs.getString("Email");
+
+                Customer customer = new Customer(id,name,phone,email);
+                customers.add(customer);
+            }
+        }catch (SQLException ex){
+            throw new RuntimeException();
+        }
+        return customers;
     }
 
     @Override
