@@ -36,7 +36,7 @@ public class CreateUpdateUserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> availableChoices = FXCollections.observableArrayList("Technician", "Salesmen", "Customer", "Project Manager");
+        ObservableList<String> availableChoices = FXCollections.observableArrayList("Technician", "Salesmen", "Project Manager");
         cbRole.setItems(availableChoices);
     }
 
