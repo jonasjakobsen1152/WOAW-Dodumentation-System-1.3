@@ -37,10 +37,6 @@ public class CustomerDAO_DB implements ICustomerDAO {
 
     }
 
-    @Override
-    public void deleteCustomer(Customer customer) {
-
-    }
 
     @Override
     public ArrayList<Customer> getAllCustomer() throws SQLException {

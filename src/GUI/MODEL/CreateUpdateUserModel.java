@@ -41,6 +41,9 @@ public class CreateUpdateUserModel {
         adminModel.getUsersToBeViewed().clear();
         adminModel.getUsersToBeViewed().addAll(adminModel.getAdminList());
 
+        adminModel.getCustomerToBeViewed().clear();
+        adminModel.getCustomerToBeViewed().addAll(adminModel.getCustomerList());
+
         projectManagerModel.getTechnicianToBeViewed().clear();
         projectManagerModel.getTechnicianToBeViewed().addAll(projectManagerModel.getTechnicianList());
 
