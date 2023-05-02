@@ -45,6 +45,7 @@ public class CustomerController implements Initializable {
             Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
             stage.close();
         } catch (Exception e){
+            e.printStackTrace();
             alertUser("Could not create Customer");
         }
     }
