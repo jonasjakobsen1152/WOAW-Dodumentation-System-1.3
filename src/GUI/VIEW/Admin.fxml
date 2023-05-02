@@ -31,8 +31,8 @@
       <MFXButton layoutX="52.0" layoutY="335.0" onAction="#handleOpenCreateUser" prefHeight="44.0" prefWidth="81.0" text="Create" />
       <MFXButton layoutX="169.0" layoutY="336.0" onAction="#handleOpenUpdateUser" prefHeight="44.0" prefWidth="81.0" text="Update" />
       <MFXButton layoutX="287.0" layoutY="335.0" onAction="#handleDeleteUser" prefHeight="44.0" prefWidth="81.0" text="Delete" />
-      <MFXButton layoutX="385.0" layoutY="278.0" prefHeight="44.0" prefWidth="81.0" text="Show Work" />
-      <MFXButton layoutX="487.0" layoutY="335.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="120.0" text="Show Document" />
+      <MFXButton layoutX="378.0" layoutY="278.0" onAction="#handleShowWork" prefHeight="44.0" prefWidth="94.0" text="Show Work" />
+      <MFXButton layoutX="487.0" layoutY="335.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="127.0" text="Show Document" />
       <MFXButton layoutX="721.0" layoutY="335.0" onAction="#handlePrintPDF" prefHeight="44.0" prefWidth="81.0" text="Print PDF" />
       <ImageView fitHeight="55.0" fitWidth="172.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
