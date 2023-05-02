@@ -10,6 +10,7 @@
 }
 .table-colum {
     -fx-background-color: #222831;
+    -fx-border-color: black;
 }
 .table-row-cell .text{
     -fx-fill: white;
