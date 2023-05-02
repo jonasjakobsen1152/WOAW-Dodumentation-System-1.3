@@ -7,10 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -28,6 +25,10 @@ public class AdminController implements Initializable {
     public TableColumn clmUsername;
     public TableColumn clmRole;
     public AdminModel adminModel;
+    public TableView tblCustomer;
+    public TableColumn clmName;
+    public TableColumn clmPhone;
+    public TableColumn clmEmail;
     private User selectedUser;
     private CreateUpdateUserModel createUpdateUserModel;
 
@@ -155,5 +156,14 @@ public class AdminController implements Initializable {
     }
 
     public void handlePrintPDF(ActionEvent actionEvent) {
+    }
+
+    public void handleCreateCustomer(ActionEvent actionEvent) {
+    }
+
+    public void handleDeleteCustomer(ActionEvent actionEvent) {
+    }
+
+    public void handleUpdateCustomer(ActionEvent actionEvent) {
     }
 }

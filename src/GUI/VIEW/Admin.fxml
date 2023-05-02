@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="431.0" prefWidth="908.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
+<AnchorPane prefHeight="431.0" prefWidth="1295.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
    <children>
       <TableView fx:id="tblUser" layoutX="52.0" layoutY="64.0" prefHeight="258.0" prefWidth="315.0" styleClass="table-colum">
         <columns>
@@ -17,27 +17,37 @@
           <TableColumn fx:id="clmRole" prefWidth="162.0" styleClass="table-colum" text="Role" />
         </columns>
       </TableView>
-      <Text fill="WHITE" layoutX="368.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-area" text="Admin Window">
+      <Text fill="WHITE" layoutX="525.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-area" text="Admin Window">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TableView layoutX="556.0" layoutY="64.0" prefHeight="258.0" prefWidth="315.0" styleClass="table-colum">
+      <TableView layoutX="487.0" layoutY="64.0" prefHeight="258.0" prefWidth="315.0" styleClass="table-colum">
         <columns>
           <TableColumn prefWidth="158.0" styleClass="table-colum" text="Title" />
           <TableColumn prefWidth="156.0" styleClass="table-colum" text="Description" />
         </columns>
       </TableView>
       <MFXButton layoutX="52.0" layoutY="335.0" onAction="#handleOpenCreateUser" prefHeight="44.0" prefWidth="81.0" text="Create" />
-      <MFXButton layoutX="163.0" layoutY="335.0" onAction="#handleOpenUpdateUser" prefHeight="44.0" prefWidth="93.0" text="Update" />
+      <MFXButton layoutX="169.0" layoutY="336.0" onAction="#handleOpenUpdateUser" prefHeight="44.0" prefWidth="81.0" text="Update" />
       <MFXButton layoutX="287.0" layoutY="335.0" onAction="#handleDeleteUser" prefHeight="44.0" prefWidth="81.0" text="Delete" />
       <MFXButton layoutX="385.0" layoutY="278.0" prefHeight="44.0" prefWidth="81.0" text="Show Work" />
-      <MFXButton layoutX="556.0" layoutY="342.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="120.0" text="Show Document" />
-      <MFXButton layoutX="790.0" layoutY="342.0" onAction="#handlePrintPDF" prefHeight="44.0" prefWidth="81.0" text="Print PDF" />
+      <MFXButton layoutX="487.0" layoutY="335.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="120.0" text="Show Document" />
+      <MFXButton layoutX="721.0" layoutY="335.0" onAction="#handlePrintPDF" prefHeight="44.0" prefWidth="81.0" text="Print PDF" />
       <ImageView fitHeight="55.0" fitWidth="172.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
+      <TableView fx:id="tblCustomer" layoutX="847.0" layoutY="61.0" prefHeight="258.0" prefWidth="395.0" styleClass="table-colum">
+        <columns>
+          <TableColumn fx:id="clmName" prefWidth="115.0" styleClass="table-colum" text="Name" />
+          <TableColumn fx:id="clmPhone" minWidth="0.0" prefWidth="120.0" styleClass="table-colum" text="Phone" />
+            <TableColumn fx:id="clmEmail" prefWidth="159.0" styleClass="table-colum" text="Email" />
+        </columns>
+      </TableView>
+      <MFXButton layoutX="847.0" layoutY="335.0" onAction="#handleCreateCustomer" prefHeight="44.0" prefWidth="81.0" text="Create" />
+      <MFXButton layoutX="1161.0" layoutY="335.0" onAction="#handleDeleteCustomer" prefHeight="44.0" prefWidth="81.0" text="Delete" />
+      <MFXButton layoutX="1004.0" layoutY="335.0" onAction="#handleUpdateCustomer" prefHeight="44.0" prefWidth="81.0" text="Update" />
    </children>
 </AnchorPane>
