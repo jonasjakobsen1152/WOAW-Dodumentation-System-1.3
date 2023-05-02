@@ -17,9 +17,9 @@
       </TableView>
       <TableView fx:id="tblCustomer" layoutX="22.0" layoutY="97.0" prefHeight="393.0" prefWidth="400.0" styleClass="table-colum">
         <columns>
+          <TableColumn fx:id="clmName" prefWidth="118.0" styleClass="table-colum" text="Name" />
           <TableColumn fx:id="clmPhone" prefWidth="103.0" styleClass="table-colum" text="Phone" />
             <TableColumn fx:id="clmEmail" prefWidth="178.0" styleClass="table-colum" text="Email" />
-          <TableColumn fx:id="clmName" prefWidth="118.0" styleClass="table-colum" text="Name" />
         </columns>
       </TableView>
       <Text layoutX="22.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Customer" />

@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.Customer;
+import BE.Job;
 import BE.User;
 import GUI.MODEL.CreateUpdateJobModel;
 import GUI.MODEL.CreateUpdateUserModel;
@@ -39,7 +40,7 @@ public class ProjectManagerController implements Initializable {
     @FXML
     private TableColumn clmShowCustomers;
     @FXML
-    private TableView<User> tblShowDocument;
+    private TableView<Job> tblShowDocument;
     @FXML
     private TableColumn clmShowDocument;
     public ProjectManagerModel projectManagerModel;
@@ -49,6 +50,7 @@ public class ProjectManagerController implements Initializable {
     CustomerModel customerModel;
     private User selectedTechnician;
     private Customer selectedCustomer;
+    private Job selectedDocument;
 
     public ProjectManagerController() {
         projectManagerModel = ProjectManagerModel.getInstance();
@@ -62,7 +64,7 @@ public class ProjectManagerController implements Initializable {
         showTechnician();
         showSalesmen();
         showCustomer();
-        //showDocument();
+        showDocument();
 
         tblShowTechnicians.setOnMouseClicked(event -> {
             selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
@@ -80,10 +82,15 @@ public class ProjectManagerController implements Initializable {
 
         });
         tblShowDocument.setOnMouseClicked(event -> {
-            selectedUser = tblShowDocument.getSelectionModel().getSelectedItem();
+            selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
         });
 
 
+    }
+
+    private void showDocument() {
+        clmShowDocument.setCellValueFactory(new PropertyValueFactory<Job, String>("title"));
+        tblShowDocument.setItems(projectManagerModel.getDocumentsToBeViewed());
     }
 
     public void handleOpenCreateUser(ActionEvent actionEvent) {
@@ -126,6 +133,7 @@ public class ProjectManagerController implements Initializable {
             dialogWindow.show();
         }
         catch (IOException e) {
+            e.printStackTrace();
             alertUser("Error: Could not open the job creation window");
         }
 

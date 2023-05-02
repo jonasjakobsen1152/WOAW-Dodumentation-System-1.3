@@ -4,14 +4,17 @@ import BE.Customer;
 import GUI.MODEL.SalesMenModel;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class SalesmenController {
+public class SalesmenController implements Initializable {
     @FXML
     private TableView tblJobs;
     @FXML
@@ -35,12 +38,14 @@ public class SalesmenController {
         catch (SQLException e) {
             alertUser("Experienced a problem collecting customer data from the database");
         }
-
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         showCustomers();
     }
 
     private void showCustomers(){
-        clmName.setCellValueFactory(new PropertyValueFactory<Customer,String>("name"));
+        clmName.setCellValueFactory(new PropertyValueFactory<Customer,String>("Name"));
         clmPhone.setCellValueFactory(new PropertyValueFactory<Customer,Integer>("Phone"));
         clmEmail.setCellValueFactory(new PropertyValueFactory<Customer,String>("Email"));
         tblCustomer.setItems(salesMenModel.getCustomerToBeViewed());
@@ -52,5 +57,4 @@ public class SalesmenController {
         alert.setHeaderText(error + "");
         alert.showAndWait();
     }
-
 }
