@@ -27,6 +27,9 @@ public class ProjectManagerModel {
 
         customerToBeViewed = FXCollections.observableArrayList();
         customerToBeViewed.addAll(projectManagerManager.getAllUsers("Customer"));
+
+        documentToBeViewed = FXCollections.observableArrayList();
+        documentToBeViewed.addAll(projectManagerManager.getAllDocuments());
     }
 
     public static ProjectManagerModel getInstance(){
@@ -83,4 +86,6 @@ public class ProjectManagerModel {
     public ObservableList<Job> getDocumentsToBeViewed() {
         return documentToBeViewed;
     }
+
+    public ArrayList<Job> getDocumentList(){return projectManagerManager.getAllDocuments();}
 }

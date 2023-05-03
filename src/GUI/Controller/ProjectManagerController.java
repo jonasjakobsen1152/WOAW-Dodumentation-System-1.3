@@ -68,14 +68,12 @@ public class ProjectManagerController implements Initializable {
 
         tblShowTechnicians.setOnMouseClicked(event -> {
             selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
-            tblShowCustomers.getSelectionModel().clearSelection();
             tblShowSalesmen.getSelectionModel().clearSelection();
 
         });
         tblShowSalesmen.setOnMouseClicked(event -> {
             selectedUser = tblShowSalesmen.getSelectionModel().getSelectedItem();
             tblShowTechnicians.getSelectionModel().clearSelection();
-            tblShowCustomers.getSelectionModel().clearSelection();
         });
         tblShowCustomers.setOnMouseClicked(event -> {
             selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
@@ -121,6 +119,11 @@ public class ProjectManagerController implements Initializable {
         selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
         createUpdateJobModel.setCustomerAndTechnician(selectedTechnician,selectedCustomer);
 
+        if (selectedCustomer == null){
+            alertUser("Choose a customer");
+        } else if (selectedTechnician == null) {
+            alertUser("Choose a technician");
+        }else{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateJob.fxml"));
         try {
@@ -135,6 +138,7 @@ public class ProjectManagerController implements Initializable {
         catch (IOException e) {
             e.printStackTrace();
             alertUser("Error: Could not open the job creation window");
+        }
         }
 
     }

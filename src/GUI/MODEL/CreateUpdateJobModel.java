@@ -1,8 +1,10 @@
 package GUI.MODEL;
 
 import BE.Customer;
+import BE.Job;
 import BE.User;
 import BLL.CreateUpdateJobManager;
+import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 
@@ -11,8 +13,11 @@ public class CreateUpdateJobModel {
     public User selectedTechnician;
     public Customer selectedCustomer;
     public CreateUpdateJobManager createUpdateJobManager;
+    private ObservableList<Job> JobToBeViewed;
+    private ProjectManagerModel projectManagerModel;
     public CreateUpdateJobModel(){
         createUpdateJobManager = new CreateUpdateJobManager();
+        projectManagerModel = ProjectManagerModel.getInstance();
     }
 
 
@@ -36,9 +41,16 @@ public class CreateUpdateJobModel {
 
     public void createJob(String title, User selectedTechnician, Customer selectedCustomer) throws SQLException {
         try {
-        createUpdateJobManager.createJob(title,selectedTechnician,selectedCustomer);
-    }catch (SQLException e){
+            createUpdateJobManager.createJob(title,selectedTechnician,selectedCustomer);
+        }catch (SQLException e){
             throw new SQLException(e);
         }
+        showList();
     }
+
+    public void showList(){
+        projectManagerModel.getDocumentsToBeViewed().clear();
+        projectManagerModel.getDocumentsToBeViewed().addAll(projectManagerModel.getDocumentList());
+    }
+
 }

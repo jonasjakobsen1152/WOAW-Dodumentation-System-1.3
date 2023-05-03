@@ -4,9 +4,11 @@ import BE.Customer;
 import BE.User;
 import GUI.MODEL.CreateUpdateJobModel;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
@@ -42,5 +44,7 @@ public class CreateUpdateJobController {
             e.printStackTrace();
             alertUser("Cant create job");
         }
+        Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        stage.close();
     }
 }
