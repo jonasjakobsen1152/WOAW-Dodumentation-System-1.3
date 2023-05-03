@@ -21,7 +21,7 @@ public class SalesmenManager {
         return salesmenDAO.getAllCustomers();
     }
 
-    public ArrayList<Job> getAllJobs(Customer selectedCustomer){
+    public ArrayList<Job> getAllJobs(Customer selectedCustomer) throws SQLException {
         return salesmenDAO.getAllJobs(selectedCustomer);
     }
 }

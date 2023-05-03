@@ -5,10 +5,7 @@ import BE.Job;
 import DAL.ISalesmenDAO;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class SalesMenDAO_DB implements ISalesmenDAO {
@@ -43,7 +40,29 @@ public class SalesMenDAO_DB implements ISalesmenDAO {
     }
 
     @Override
-    public ArrayList<Job> getAllJobs(Customer selectedCustomer) {
-        return null;
+    public ArrayList<Job> getAllJobs(Customer selectedCustomer) throws SQLException {
+        ArrayList<Job> jobs = new ArrayList<>();
+
+        try(Connection conn = databaseConnector.getConnection()){
+            String sql = "SELECT * FROM Job WHERE ID = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,selectedCustomer.getId());
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()){
+                int id = rs.getInt("ID");
+                String title = rs.getString("Title");
+                int userID = rs.getInt("UserID");
+                int customerID = rs.getInt("CustomerID");
+
+
+                Job job = new Job(id,title,userID,customerID);
+                jobs.add(job);
+            }
+        }
+        return jobs;
     }
-}
+    }

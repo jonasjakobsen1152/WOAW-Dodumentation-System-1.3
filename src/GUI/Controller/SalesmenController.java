@@ -51,7 +51,12 @@ public class SalesmenController implements Initializable {
 
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedCustomer = newValue;
-            tblJobs.setItems(salesMenModel.getJobsToBeViewed(selectedCustomer));
+            try {
+                tblJobs.setItems(salesMenModel.getJobsToBeViewed(selectedCustomer));
+            } catch (SQLException e) {
+                alertUser("There was a problem collecting the jobs");
+                e.printStackTrace();
+            }
         });
     }
 

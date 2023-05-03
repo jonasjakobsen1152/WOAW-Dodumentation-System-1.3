@@ -40,7 +40,8 @@ public class SalesMenModel {
         return customerToBeViewed;
     }
 
-   public ObservableList<Job> getJobsToBeViewed(Customer selectedCustomer){
+   public ObservableList<Job> getJobsToBeViewed(Customer selectedCustomer) throws SQLException {
+        jobsToBeViewed.clear();
         jobsToBeViewed.addAll(salesmenManager.getAllJobs(selectedCustomer));
         return  jobsToBeViewed;
    }

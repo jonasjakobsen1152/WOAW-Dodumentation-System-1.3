@@ -12,5 +12,5 @@ public interface ISalesmenDAO {
 
     ArrayList<Customer> getAllCustomers() throws SQLException;
 
-    ArrayList<Job> getAllJobs(Customer selectedCustomer);
+    ArrayList<Job> getAllJobs(Customer selectedCustomer) throws SQLException;
 }
