@@ -10,6 +10,7 @@ import javafx.collections.ObservableListBase;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SalesMenModel {
 
@@ -45,4 +46,11 @@ public class SalesMenModel {
         jobsToBeViewed.addAll(salesmenManager.getAllJobs(selectedCustomer));
         return  jobsToBeViewed;
    }
+
+    public void searchCustomers(String query) {
+        List<Customer> searchResults = salesmenManager.searchCustomers(query);
+        customerToBeViewed.clear();
+        customerToBeViewed.addAll(searchResults);
+
+    }
 }

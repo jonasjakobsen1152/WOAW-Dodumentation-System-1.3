@@ -49,6 +49,14 @@ public class SalesmenController implements Initializable {
         showCustomers();
         showJobs();
 
+
+        txtFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            Runnable task = () -> salesMenModel.searchCustomers(newValue);
+
+            Thread thread = new Thread(task);
+            thread.start();
+        });
+
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedCustomer = newValue;
             try {
