@@ -1,5 +1,6 @@
 package GUI.MODEL;
 
+import BE.Customer;
 import BE.Job;
 import BE.User;
 import BLL.ProjectManagerManager;
@@ -8,16 +9,17 @@ import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectManagerModel {
     ProjectManagerManager projectManagerManager;
     private ObservableList<User> technicianToBeViewed;
     private ObservableList<User> salesmenToBeViewed;
-    private ObservableList<User> customerToBeViewed;
+    private ObservableList<Customer> customerToBeViewed;
     private ObservableList<Job> documentToBeViewed;
     private static ProjectManagerModel instance;
 
-    private ProjectManagerModel(){
+    private ProjectManagerModel() throws SQLException {
         projectManagerManager = new ProjectManagerManager();
         technicianToBeViewed = FXCollections.observableArrayList();
         technicianToBeViewed.addAll(projectManagerManager.getAllUsers("Technician"));
@@ -26,17 +28,27 @@ public class ProjectManagerModel {
         salesmenToBeViewed.addAll(projectManagerManager.getAllUsers("Salesmen"));
 
         customerToBeViewed = FXCollections.observableArrayList();
-        customerToBeViewed.addAll(projectManagerManager.getAllUsers("Customer"));
+        customerToBeViewed.addAll(projectManagerManager.getAllCustomers());
 
         documentToBeViewed = FXCollections.observableArrayList();
         documentToBeViewed.addAll(projectManagerManager.getAllDocuments());
     }
 
-    public static ProjectManagerModel getInstance(){
+    public static ProjectManagerModel getInstance() throws SQLException {
         if(instance == null){
             instance = new ProjectManagerModel();
         }
         return instance;
+    }
+
+    public ObservableList<Customer> getCustomerToBeViewed() {
+        return customerToBeViewed;
+    }
+
+    public void searchCustomers(String query) {
+        //List<Customer> searchResults = projectManagerManager.searchCustomer(query);
+        customerToBeViewed.clear();
+        //customerToBeViewed.addAll(searchResults);
     }
 
     public ArrayList<User> getTechnicianList(){
@@ -46,21 +58,12 @@ public class ProjectManagerModel {
     public ArrayList<User> getSalesmenList(){
         return projectManagerManager.getAllUsers("Salesmen");
     }
-
-    public ArrayList<User> getCustomerList(){
-        return projectManagerManager.getAllUsers("Customer");
-    }
-
     public ObservableList<User> getTechnicianToBeViewed(){
         return technicianToBeViewed;
     }
 
     public ObservableList<User> getSalesmenToBeViewed() {
         return salesmenToBeViewed;
-    }
-
-    public ObservableList<User> getCustomerToBeViewed() {
-        return customerToBeViewed;
     }
 
     public void deleteUser(User selectedUser) {
@@ -75,12 +78,8 @@ public class ProjectManagerModel {
         getSalesmenToBeViewed().clear();
         getSalesmenToBeViewed().addAll(projectManagerManager.getAllUsers("Salesmen"));
 
-        getCustomerToBeViewed().clear();
-        getCustomerToBeViewed().addAll(projectManagerManager.getAllUsers("Customer"));
-
         getDocumentsToBeViewed().clear();
         getDocumentsToBeViewed().addAll(projectManagerManager.getAllDocuments());
-
     }
 
     public ObservableList<Job> getDocumentsToBeViewed() {
@@ -88,4 +87,5 @@ public class ProjectManagerModel {
     }
 
     public ArrayList<Job> getDocumentList(){return projectManagerManager.getAllDocuments();}
+
 }

@@ -1,5 +1,6 @@
 package BLL;
 
+import BE.Customer;
 import BE.Job;
 import BE.User;
 import DAL.DB.ProjectManagerDAO_DB;
@@ -25,5 +26,9 @@ public class ProjectManagerManager {
 
     public ArrayList<Job> getAllDocuments() {
         return projectManagerDAO.getAllDocuments();
+    }
+
+    public ArrayList<Customer> getAllCustomers() throws SQLException {
+        return projectManagerDAO.getAllCustomers();
     }
 }

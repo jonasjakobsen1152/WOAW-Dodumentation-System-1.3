@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 
 public class ProjectManagerController implements Initializable {
     @FXML
-    private TextField tfSearch;
+    private TextField txtFilter;
     @FXML
     private TableView<User> tblShowTechnicians;
     @FXML
@@ -53,7 +53,11 @@ public class ProjectManagerController implements Initializable {
     private Job selectedDocument;
 
     public ProjectManagerController() {
-        projectManagerModel = ProjectManagerModel.getInstance();
+        try {
+            projectManagerModel = ProjectManagerModel.getInstance();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
         customerModel = CustomerModel.getInstance();
 
@@ -63,7 +67,11 @@ public class ProjectManagerController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         showTechnician();
         showSalesmen();
-        showCustomer();
+        try {
+            showCustomer();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         showDocument();
 
         tblShowTechnicians.setOnMouseClicked(event -> {
@@ -83,7 +91,12 @@ public class ProjectManagerController implements Initializable {
             selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
         });
 
+        txtFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            Runnable task = () -> projectManagerModel.searchCustomers(newValue);
 
+            Thread thread = new Thread(task);
+            thread.start();
+        });
     }
 
     private void showDocument() {
@@ -193,7 +206,11 @@ public class ProjectManagerController implements Initializable {
             if (action.get() == ButtonType.OK) {
                 //projectManagerModel.deleteUser(selectedUser);
                 //updateUserModel();
-                showCustomer();
+                try{
+                    showCustomer();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -261,10 +278,9 @@ public class ProjectManagerController implements Initializable {
         tblShowSalesmen.setItems(projectManagerModel.getSalesmenToBeViewed());
     }
 
-    private void showCustomer(){
-        clmShowCustomers.setCellValueFactory(new PropertyValueFactory<Customer, String>("name"));
-        tblShowCustomers.setItems(customerModel.getCustomerToBeViewed());
-
+    private void showCustomer() throws SQLException {
+        clmShowCustomers.setCellValueFactory(new PropertyValueFactory<Customer, String>("Name"));
+        tblShowCustomers.setItems(projectManagerModel.getCustomerToBeViewed());
     }
 
     public void handleOpenCustomer(ActionEvent actionEvent) {

@@ -1,8 +1,10 @@
 package DAL.DB;
 
+import BE.Customer;
 import BE.Job;
 import BE.User;
 import DAL.IProjectManagerDAO;
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import javax.management.relation.Role;
 import java.sql.*;
@@ -87,5 +89,28 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         }
         return jobs;
     }
+
+    @Override
+    public ArrayList<Customer> getAllCustomers() throws SQLException {
+        ArrayList<Customer> customers = new ArrayList<>();
+
+        try (Connection conn = databaseConnector.getConnection();
+             Statement stmt = conn.createStatement()) {
+            String sql = "Select * from Customer";
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                int id = rs.getInt("ID");
+                String name = rs.getString("Name");
+                int phone = rs.getInt("Phone");
+                String email = rs.getString("Email");
+
+                Customer customer = new Customer(id,name,phone,email);
+                customers.add(customer);
+            }
+        }
+        return customers;
     }
+}
 
