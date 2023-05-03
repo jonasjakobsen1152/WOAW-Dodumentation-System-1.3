@@ -1,6 +1,7 @@
 package DAL;
 
 import BE.Customer;
+import BE.Job;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.sql.SQLException;
@@ -10,4 +11,6 @@ public interface ISalesmenDAO {
 
 
     ArrayList<Customer> getAllCustomers() throws SQLException;
+
+    ArrayList<Job> getAllJobs(Customer selectedCustomer);
 }
