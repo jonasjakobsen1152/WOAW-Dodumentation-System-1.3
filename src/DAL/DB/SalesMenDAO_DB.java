@@ -1,6 +1,7 @@
 package DAL.DB;
 
 import BE.Customer;
+import BE.Job;
 import DAL.ISalesmenDAO;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
@@ -39,5 +40,10 @@ public class SalesMenDAO_DB implements ISalesmenDAO {
             }
         }
         return customers;
+    }
+
+    @Override
+    public ArrayList<Job> getAllJobs(Customer selectedCustomer) {
+        return null;
     }
 }

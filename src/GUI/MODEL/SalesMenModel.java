@@ -1,6 +1,7 @@
 package GUI.MODEL;
 
 import BE.Customer;
+import BE.Job;
 import BE.User;
 import BLL.SalesmenManager;
 import javafx.collections.FXCollections;
@@ -17,11 +18,15 @@ public class SalesMenModel {
     private SalesmenManager salesmenManager;
 
     private ObservableList<Customer> customerToBeViewed;
+
+    private ObservableList<Job> jobsToBeViewed;
     private SalesMenModel() throws SQLException {
        salesmenManager = new SalesmenManager();
 
         customerToBeViewed = FXCollections.observableArrayList();
         customerToBeViewed.addAll(salesmenManager.getAllCustomer());
+
+        jobsToBeViewed = FXCollections.observableArrayList();
     }
 
     public static SalesMenModel getInstance() throws SQLException {
@@ -35,4 +40,8 @@ public class SalesMenModel {
         return customerToBeViewed;
     }
 
+   public ObservableList<Job> getJobsToBeViewed(Customer selectedCustomer){
+        jobsToBeViewed.addAll(salesmenManager.getAllJobs(selectedCustomer));
+        return  jobsToBeViewed;
+   }
 }

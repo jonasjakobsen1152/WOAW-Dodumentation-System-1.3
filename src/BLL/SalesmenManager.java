@@ -1,6 +1,7 @@
 package BLL;
 
 import BE.Customer;
+import BE.Job;
 import DAL.DB.SalesMenDAO_DB;
 import DAL.ICustomerDAO;
 import DAL.ISalesmenDAO;
@@ -18,5 +19,9 @@ public class SalesmenManager {
 
     public ArrayList<Customer> getAllCustomer() throws SQLException {
         return salesmenDAO.getAllCustomers();
+    }
+
+    public ArrayList<Job> getAllJobs(Customer selectedCustomer){
+        return salesmenDAO.getAllJobs(selectedCustomer);
     }
 }

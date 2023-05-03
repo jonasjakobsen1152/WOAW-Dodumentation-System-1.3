@@ -1,8 +1,10 @@
 package GUI.Controller;
 
 import BE.Customer;
+import BE.Job;
 import GUI.MODEL.SalesMenModel;
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -30,6 +32,9 @@ public class SalesmenController implements Initializable {
     @FXML
     private MFXTextField txtFilter;
     SalesMenModel salesMenModel;
+    Customer selectedCustomer;
+
+
 
     public SalesmenController(){
         try {
@@ -42,6 +47,17 @@ public class SalesmenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         showCustomers();
+        showJobs();
+
+        tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedCustomer = newValue;
+            tblJobs.setItems(salesMenModel.getJobsToBeViewed(selectedCustomer));
+        });
+    }
+
+
+    private void showJobs(){
+        clmJobs.setCellValueFactory(new PropertyValueFactory<Job,String>("Title"));
     }
 
     private void showCustomers(){
