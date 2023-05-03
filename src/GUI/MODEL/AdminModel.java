@@ -1,6 +1,7 @@
 package GUI.MODEL;
 
 import BE.Customer;
+import BE.Job;
 import BE.User;
 import BLL.AdminManager;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ public class AdminModel {
     AdminManager adminManager;
     private ObservableList<User> usersToBeViewed;
     private ObservableList<Customer> customerToBeViewed;
+    private ObservableList<Job> documentsToBeViewed;
     private static AdminModel instance;
 
     private AdminModel(){
@@ -22,6 +24,9 @@ public class AdminModel {
 
         customerToBeViewed = FXCollections.observableArrayList();
         customerToBeViewed.addAll(adminManager.getAllCustomer());
+
+        documentsToBeViewed = FXCollections.observableArrayList();
+        documentsToBeViewed.addAll(adminManager.getAllDocuments());
     }
     public static AdminModel getInstance(){
         if(instance == null){
@@ -52,6 +57,8 @@ public class AdminModel {
         return adminManager.getAllCustomer();
     }
 
+    public ArrayList<Job> getAllDocuments(){return  adminManager.getAllDocuments();}
+
     public void deleteUser(User selectedUser) throws SQLException {
         adminManager.deleteUser(selectedUser);
         showList();
@@ -68,5 +75,9 @@ public class AdminModel {
         getCustomerToBeViewed().clear();
         getCustomerToBeViewed().addAll(adminManager.getAllCustomer());
 
+    }
+
+    public ObservableList<Job> getDocumentsToBeViewed() {
+        return documentsToBeViewed;
     }
 }

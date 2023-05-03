@@ -1,6 +1,7 @@
 package DAL.DB;
 
 import BE.Customer;
+import BE.Job;
 import BE.User;
 import DAL.IAdminDAO;
 
@@ -71,6 +72,35 @@ public class AdminDAO_DB implements IAdminDAO {
         }
         return customers;
     }
+
+    @Override
+    public ArrayList<Job> getAllDocuments() {
+        ArrayList<Job> jobs = new ArrayList<>();
+
+        try(Connection conn = databaseConnector.getConnection()){
+            String sql = "SELECT * FROM Job";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()){
+                int id = rs.getInt("ID");
+                String title = rs.getString("Title");
+                int userID = rs.getInt("UserID");
+                int customerID = rs.getInt("CustomerID");
+
+
+                Job job = new Job(id,title,userID,customerID);
+                jobs.add(job);
+            }
+        }catch (SQLException ex){
+            throw new RuntimeException();
+        }
+        return jobs;
+    }
+
 
     @Override
     public ArrayList<User> getAllUsers() {

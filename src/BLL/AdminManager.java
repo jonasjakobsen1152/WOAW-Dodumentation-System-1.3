@@ -1,6 +1,7 @@
 package BLL;
 
 import BE.Customer;
+import BE.Job;
 import BE.User;
 import DAL.DB.AdminDAO_DB;
 import DAL.IAdminDAO;
@@ -25,5 +26,9 @@ public class AdminManager {
 
     public void deleteCustomer(Customer selectedCustomer){
         adminDAO.deleteCustomer(selectedCustomer);
+    }
+
+    public ArrayList<Job> getAllDocuments() {
+        return adminDAO.getAllDocuments();
     }
 }
