@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.Customer;
+import BE.Job;
 import BE.User;
 import GUI.MODEL.AdminModel;
 import GUI.MODEL.CreateUpdateUserModel;
@@ -32,7 +33,7 @@ public class AdminController implements Initializable {
     public TableColumn clmEmail;
     public TableColumn clmDescription;
     public TableColumn clmTitle;
-    public TableView tblDocument;
+    public TableView<Job> tblDocument;
     private User selectedUser;
     private Customer selectedCustomer;
     private CreateUpdateUserModel createUpdateUserModel;
@@ -148,6 +149,16 @@ public class AdminController implements Initializable {
         clmRole.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
 
         tblUser.setItems(adminModel.getUsersToBeViewed());
+
+        clmName.setCellValueFactory(new PropertyValueFactory<Customer,String>("name"));
+        clmPhone.setCellValueFactory(new PropertyValueFactory<Customer,String>("phone"));
+        clmEmail.setCellValueFactory(new PropertyValueFactory<Customer,String>("email"));
+
+        tblCustomer.setItems(adminModel.getCustomerToBeViewed());
+
+        clmTitle.setCellValueFactory(new PropertyValueFactory<Job,String>("title"));
+
+        tblDocument.setItems(adminModel.getDocumentsToBeViewed());
     }
 
     private void alertUser(String error) {

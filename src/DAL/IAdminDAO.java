@@ -1,6 +1,7 @@
 package DAL;
 
 import BE.Customer;
+import BE.Job;
 import BE.User;
 
 import java.sql.SQLException;
@@ -12,4 +13,6 @@ public interface IAdminDAO {
     public void deleteCustomer(Customer customer);
 
     ArrayList<Customer> getAllCustomer();
+
+    ArrayList<Job> getAllDocuments();
 }
