@@ -34,7 +34,19 @@ public class CustomerDAO_DB implements ICustomerDAO {
 
     @Override
     public void updateCustomer(Customer customer) {
+        try(Connection conn = databaseConnector.getConnection()){
+            String sql = "UPDATE Customer SET Name = ?, Phone = ?, Email = ? WHERE ID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
 
+            stmt.setString(1, customer.getName());
+            stmt.setInt(2, customer.getPhone());
+            stmt.setString(3, customer.getEmail());
+            stmt.setInt(4,customer.getId());
+
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
 

@@ -13,12 +13,14 @@ public class CustomerModel {
     private ObservableList<Customer> customerToBeViewed;
     CustomerManager customerManager;
     private Customer selectedCustomer;
+    AdminModel adminModel;
 
     private static CustomerModel instance;
 
     private CustomerModel(){
         customerManager = new CustomerManager();
         customerToBeViewed = FXCollections.observableArrayList();
+        adminModel = AdminModel.getInstance();
         try {
             showList();
         }catch (SQLException e){
@@ -47,15 +49,25 @@ public class CustomerModel {
     }
 
     public void showList() throws SQLException {
-        getCustomerToBeViewed().clear();
-        try {
-            getCustomerToBeViewed().addAll(customerManager.getAllCustomer());
-        }catch (SQLException e){
-            throw new SQLException();
-        }
+        customerToBeViewed.clear();
+        customerToBeViewed.addAll(customerManager.getAllCustomer());
+        adminModel.showList();
+
     }
 
     public ObservableList<Customer> getCustomerToBeViewed() {
         return customerToBeViewed;
+    }
+
+    public Customer getSelectedCustomer(){
+        return selectedCustomer;
+    }
+    public void setCustomer(Customer selectedCustomer) {
+        this.selectedCustomer = selectedCustomer;
+    }
+
+    public void updateCustomer(Customer customer) throws SQLException {
+        customerManager.updateCustomer(customer);
+        showList();
     }
 }

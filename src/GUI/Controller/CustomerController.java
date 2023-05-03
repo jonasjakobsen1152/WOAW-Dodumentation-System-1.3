@@ -1,5 +1,6 @@
 package GUI.Controller;
 
+import BE.Customer;
 import GUI.MODEL.CustomerModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,7 @@ public class CustomerController implements Initializable {
     @FXML
     private TextField txtName;
     public CustomerModel customerModel;
+    public CustomerController customerController;
 
     public CustomerController(){
         customerModel = CustomerModel.getInstance();
@@ -58,7 +60,25 @@ public class CustomerController implements Initializable {
     }
 
     public void handleUpdateCustomer(ActionEvent actionEvent) {
+        String name = txtName.getText();
+        int phone = Integer.parseInt(txtPhoneNumber.getText());
+        String email = txtEmail.getText();
+        Customer customer = new Customer(customerModel.getSelectedCustomer().getId(),name,phone,email);
+        try {
+            customerModel.updateCustomer(customer);
+            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.close();
+        } catch (Exception e){
+            e.printStackTrace();
+            alertUser("Could not update Customer");
+        }
     }
 
 
+    public void setupUpdate(Customer selectedCustomer) {
+        btnCreate.setVisible(false);
+        txtName.setText(selectedCustomer.getName());
+        txtEmail.setText(selectedCustomer.getEmail());
+        txtPhoneNumber.setText(selectedCustomer.getPhone()+"");
+    }
 }

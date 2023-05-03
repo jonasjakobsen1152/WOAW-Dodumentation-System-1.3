@@ -5,13 +5,16 @@ import BE.Job;
 import BE.User;
 import GUI.MODEL.AdminModel;
 import GUI.MODEL.CreateUpdateUserModel;
+import GUI.MODEL.CustomerModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,6 +40,7 @@ public class AdminController implements Initializable {
     private User selectedUser;
     private Customer selectedCustomer;
     private CreateUpdateUserModel createUpdateUserModel;
+    private CustomerModel customerModel;
 
     public AdminController() {
         adminModel = AdminModel.getInstance();
@@ -183,7 +187,8 @@ public class AdminController implements Initializable {
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
             dialogWindow.setScene(scene);
-            dialogWindow.show();
+            dialogWindow.showAndWait();
+            showUsersAndDocuments();
         }catch (IOException e){
             e.printStackTrace();
             alertUser("Could not open the customer window");
@@ -212,6 +217,37 @@ public class AdminController implements Initializable {
     }
 
     public void handleUpdateCustomer(ActionEvent actionEvent) {
+        selectedCustomer = tblCustomer.getSelectionModel().getSelectedItem();
+        customerModel = CustomerModel.getInstance();
+        if(selectedCustomer == null){
+            alertUser("Select a customer to update");
+        }else {
+            customerModel.setCustomer(selectedCustomer);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/Customer.fxml"));
+            try {
+                AnchorPane pane = loader.load();
+
+
+                CustomerController customerController = loader.getController();
+                CustomerModel.getInstance();
+
+                customerController.setupUpdate(selectedCustomer);
+
+                Stage dialogWindow = new Stage();
+                Scene scene = new Scene(pane);
+                dialogWindow.initModality(Modality.WINDOW_MODAL);
+                dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
+                dialogWindow.setScene(scene);
+                dialogWindow.showAndWait();
+                showUsersAndDocuments();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                alertUser("Error: Could not open the update customer window");
+            }
+        }
+
     }
 
     public void handleShowWork(ActionEvent actionEvent) {

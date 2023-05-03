@@ -21,4 +21,8 @@ public class CustomerManager {
     public ArrayList<Customer> getAllCustomer() throws SQLException {
         return customerDAO.getAllCustomer();
     }
+
+    public void updateCustomer(Customer customer) {
+        customerDAO.updateCustomer(customer);
+    }
 }
