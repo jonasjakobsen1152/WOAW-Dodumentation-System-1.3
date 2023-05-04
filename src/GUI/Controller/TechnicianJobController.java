@@ -10,6 +10,17 @@ public class TechnicianJobController {
     public TableColumn clmNotes;
     public TableView tblNotes;
 
+
+    public void handleAddDocumentation(ActionEvent actionEvent) {
+
+    }
+
+    public void handleUpdateDocumentation(ActionEvent actionEvent) {
+    }
+
+    public void handleDeleteDocumentation(ActionEvent actionEvent) {
+    }
+
     public void handleDeleteImage(ActionEvent actionEvent) {
     }
 
@@ -19,12 +30,4 @@ public class TechnicianJobController {
     public void HandleAddImage(ActionEvent actionEvent) {
     }
 
-    public void handleDeleteNote(ActionEvent actionEvent) {
-    }
-
-    public void handleUpdateNote(ActionEvent actionEvent) {
-    }
-
-    public void handleAddNote(ActionEvent actionEvent) {
-    }
 }

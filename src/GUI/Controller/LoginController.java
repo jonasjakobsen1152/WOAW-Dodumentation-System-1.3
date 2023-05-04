@@ -124,4 +124,19 @@ public class LoginController {
         alert.setHeaderText(error + "");
         alert.showAndWait();
     }
+
+    public void handleOpenTechnician(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/VIEW/Technician.fxml"));
+        try {
+            AnchorPane pane = loader.load();
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+            alertUser("Cant open Technician window");
+        }
+    }
 }

@@ -31,5 +31,6 @@
          </image>
       </ImageView>
       <Button layoutX="562.0" layoutY="108.0" mnemonicParsing="false" onAction="#handleOpenSales" prefHeight="28.0" prefWidth="116.0" text="Sales" />
+      <Button layoutX="585.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleOpenTechnician" text="Technician" />
    </children>
 </AnchorPane>
