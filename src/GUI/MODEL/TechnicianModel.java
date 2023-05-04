@@ -45,4 +45,7 @@ public class TechnicianModel {
     public List<Job> getWork() {
         return technicianManager.getWork(getSelectedUser());
     }
+
+
+
 }

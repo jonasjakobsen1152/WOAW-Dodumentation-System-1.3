@@ -3,6 +3,9 @@ package GUI.Controller;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.FileChooser;
+
+import java.io.File;
 
 public class TechnicianJobController {
     public TableColumn clmImages;
@@ -12,7 +15,7 @@ public class TechnicianJobController {
 
 
     public void handleAddDocumentation(ActionEvent actionEvent) {
-
+        
     }
 
     public void handleUpdateDocumentation(ActionEvent actionEvent) {
