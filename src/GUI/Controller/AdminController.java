@@ -6,6 +6,7 @@ import BE.User;
 import GUI.MODEL.AdminModel;
 import GUI.MODEL.CreateUpdateUserModel;
 import GUI.MODEL.CustomerModel;
+import GUI.MODEL.TechnicianModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,6 +42,7 @@ public class AdminController implements Initializable {
     private Customer selectedCustomer;
     private CreateUpdateUserModel createUpdateUserModel;
     private CustomerModel customerModel;
+    private TechnicianModel technicianModel;
 
     public AdminController() {
         adminModel = AdminModel.getInstance();
@@ -254,5 +256,27 @@ public class AdminController implements Initializable {
     }
 
     public void handleShowWork(ActionEvent actionEvent) {
+        selectedUser = tblUser.getSelectionModel().getSelectedItem();
+        if(selectedUser == null || !selectedUser.getRole().equals("Technician")){
+            alertUser("Select a technician from the user table");
+            System.out.println(selectedUser);
+        }else{
+            technicianModel = TechnicianModel.getInstance();
+            technicianModel.setSelectedUser(selectedUser);
+            technicianModel.showList();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/Technician.fxml"));
+            try {
+                AnchorPane pane = loader.load();
+                Stage dialogWindow = new Stage();
+                Scene scene = new Scene(pane);
+                dialogWindow.setScene(scene);
+                dialogWindow.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                alertUser("Error: Could not open the technician window");
+            }
+        }
     }
 }
