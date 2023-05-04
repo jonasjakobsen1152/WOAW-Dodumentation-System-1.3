@@ -157,6 +157,19 @@ public class ProjectManagerController implements Initializable {
     }
 
     public void handleDeleteWork(ActionEvent actionEvent) {
+        selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
+        if (selectedDocument == null){
+            alertUser("Select a job");
+        }else{
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedDocument.getTitle().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK){
+                projectManagerModel.deleteDocument(selectedDocument);
+                showDocument();
+            }
+        }
     }
 
     public void handleDeleteTechnician(ActionEvent actionEvent) {

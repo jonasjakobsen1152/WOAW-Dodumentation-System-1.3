@@ -31,4 +31,8 @@ public class ProjectManagerManager {
     public ArrayList<Customer> getAllCustomers() throws SQLException {
         return projectManagerDAO.getAllCustomers();
     }
+
+    public void deletedDocument(Job selectedDocument) {
+        projectManagerDAO.deleteDocument(selectedDocument);
+    }
 }

@@ -102,4 +102,8 @@ public class ProjectManagerModel {
 
     public ArrayList<Job> getDocumentList(){return projectManagerManager.getAllDocuments();}
 
+    public void deleteDocument(Job selectedDocument) {
+        projectManagerManager.deletedDocument(selectedDocument);
+        showList();
+    }
 }

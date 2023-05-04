@@ -112,5 +112,17 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         }
         return customers;
     }
+
+    @Override
+    public void deleteDocument(Job selectedDocument) {
+        try(Connection conn = databaseConnector.getConnection()) {
+            String sql = "DELETE FROM Job WHERE ID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,selectedDocument.getId());
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException();
+        }
+    }
 }
 
