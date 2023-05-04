@@ -19,12 +19,12 @@ public class CreateUpdateUserModel {
 
     private static CreateUpdateUserModel instance;
 
-    private CreateUpdateUserModel(){
+    private CreateUpdateUserModel() throws SQLException {
         createUpdateUserManager = new CreateUpdateUserManager();
         adminModel = AdminModel.getInstance();
         projectManagerModel = ProjectManagerModel.getInstance();
     }
-    public static CreateUpdateUserModel getInstance(){
+    public static CreateUpdateUserModel getInstance() throws SQLException {
         if(instance == null){
             instance = new CreateUpdateUserModel();
         }
@@ -37,7 +37,7 @@ public class CreateUpdateUserModel {
         showList();
     }
 
-    public void showList() {
+    public void showList() throws SQLException {
         adminModel.getUsersToBeViewed().clear();
         adminModel.getUsersToBeViewed().addAll(adminModel.getAdminList());
 
@@ -56,7 +56,7 @@ public class CreateUpdateUserModel {
     public void setSelectedUser(User selectedUser) {
         this.selectedUser = selectedUser;
     }
-    public void updateUser(String username,String password,String role) {
+    public void updateUser(String username,String password,String role) throws SQLException {
         User user = new User(selectedUser.getId(),username,password,role);
         createUpdateUserManager.updateUser(user);
         showList();

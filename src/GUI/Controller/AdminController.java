@@ -77,6 +77,9 @@ public class AdminController implements Initializable {
          catch (IOException e) {
             e.printStackTrace();
             alertUser("Error: Could not open the create user window");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            alertUser("Error: Could not open the create user window");
         }
     }
 
@@ -84,7 +87,7 @@ public class AdminController implements Initializable {
      * Opens the CreateUpdateUser window without the create button and with the update button
      * @param actionEvent
      */
-    public void handleOpenUpdateUser(ActionEvent actionEvent) {
+    public void handleOpenUpdateUser(ActionEvent actionEvent) throws SQLException {
         selectedUser = tblUser.getSelectionModel().getSelectedItem();
         createUpdateUserModel = CreateUpdateUserModel.getInstance();
         if (selectedUser == null){

@@ -15,13 +15,13 @@ public class CreateUpdateJobModel {
     public CreateUpdateJobManager createUpdateJobManager;
     private ObservableList<Job> JobToBeViewed;
     private ProjectManagerModel projectManagerModel;
-    public CreateUpdateJobModel(){
+    public CreateUpdateJobModel() throws SQLException {
         createUpdateJobManager = new CreateUpdateJobManager();
         projectManagerModel = ProjectManagerModel.getInstance();
     }
 
 
-    public static CreateUpdateJobModel getInstance(){
+    public static CreateUpdateJobModel getInstance() throws SQLException {
         if(instance == null){
             instance = new CreateUpdateJobModel();
         }

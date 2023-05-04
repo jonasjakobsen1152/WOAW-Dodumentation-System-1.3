@@ -17,7 +17,7 @@ public class CreateUpdateJobController {
     public TextField txtTitle;
     public Label lblUser;
     public CreateUpdateJobModel createUpdateJobModel;
-    public CreateUpdateJobController(){
+    public CreateUpdateJobController() throws SQLException {
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
         //lblUser.setText(createUpdateJobModel.getSelectedTechnician().getUsername());
 

@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -33,7 +34,7 @@ public class CreateUpdateUserController implements Initializable {
     @FXML
     private MFXButton btnUpdate;
 
-    public CreateUpdateUserController(){
+    public CreateUpdateUserController() throws SQLException {
 
         createUpdateUserModel = CreateUpdateUserModel.getInstance();
     }

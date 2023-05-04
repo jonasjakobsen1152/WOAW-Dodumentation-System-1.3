@@ -52,7 +52,7 @@ public class ProjectManagerController implements Initializable {
     private Customer selectedCustomer;
     private Job selectedDocument;
 
-    public ProjectManagerController() {
+    public ProjectManagerController() throws SQLException {
         try {
             projectManagerModel = ProjectManagerModel.getInstance();
         } catch (SQLException e) {
