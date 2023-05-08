@@ -311,4 +311,10 @@ public class ProjectManagerController implements Initializable {
             alertUser("Could not open the customer window");
         }
     }
+
+    public void handleShowJobs(ActionEvent actionEvent) {
+    }
+
+    public void handleSendPDF(ActionEvent actionEvent) {
+    }
 }
