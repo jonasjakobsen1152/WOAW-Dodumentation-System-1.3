@@ -83,7 +83,7 @@ public class ProjectManagerController implements Initializable {
             selectedUser = tblShowSalesmen.getSelectionModel().getSelectedItem();
             tblShowTechnicians.getSelectionModel().clearSelection();
             tblShowDocument.getSelectionModel().clearSelection();
-            tblShowCustomers.getSelectionModel().getSelectedItem();
+            tblShowCustomers.getSelectionModel().clearSelection();
         });
         tblShowCustomers.setOnMouseClicked(event -> {
             selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
