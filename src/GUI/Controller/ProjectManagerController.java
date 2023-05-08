@@ -200,25 +200,18 @@ public class ProjectManagerController implements Initializable {
 
     public void handleDeleteCustomer(ActionEvent actionEvent) {
         selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
-        if (selectedUser == null) {
+        if (selectedCustomer == null) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Select a user");
             alert.setHeaderText("Choose a user to delete");
             alert.show();
-        } else if (Objects.equals(selectedUser.getRole(), "Admin")) {
+        }  else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
-            alert.setHeaderText("You cant delete an Admin user");
-            alert.show();
-
-        } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Warning");
-            alert.setHeaderText("Are you sure you want to delete: " + selectedUser.getUsername().concat("?"));
+            alert.setHeaderText("Are you sure you want to delete: " + selectedCustomer.getName().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
-                //projectManagerModel.deleteUser(selectedUser);
-                //updateUserModel();
+                projectManagerModel.deleteUser(selectedUser);
                 try{
                     showCustomer();
                 } catch (SQLException e) {
@@ -313,6 +306,20 @@ public class ProjectManagerController implements Initializable {
     }
 
     public void handleShowJobs(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
+        try {
+            AnchorPane pane = loader.load();
+
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            alertUser("Error: Could not open the technician job window");
+        }
     }
 
     public void handleSendPDF(ActionEvent actionEvent) {
