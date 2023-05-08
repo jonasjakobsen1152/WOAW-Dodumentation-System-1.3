@@ -23,6 +23,11 @@
     -fx-fill: white;
 }
 
+.headline{
+    -fx-fill: white;
+    -fx-font-size: 15;
+}
+
 .choice-box .text {
     -fx-fill: Orange;
     -fx-font-size: 15;
