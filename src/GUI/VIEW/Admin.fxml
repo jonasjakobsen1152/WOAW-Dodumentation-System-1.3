@@ -3,6 +3,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -49,5 +50,6 @@
       <MFXButton layoutX="847.0" layoutY="335.0" onAction="#handleCreateCustomer" prefHeight="44.0" prefWidth="81.0" text="Create" />
       <MFXButton layoutX="1161.0" layoutY="335.0" onAction="#handleDeleteCustomer" prefHeight="44.0" prefWidth="81.0" text="Delete" />
       <MFXButton layoutX="1004.0" layoutY="335.0" onAction="#handleUpdateCustomer" prefHeight="44.0" prefWidth="81.0" text="Update" />
+      <TextField fx:id="txtSearch" layoutX="970.0" layoutY="19.0" promptText="Search" />
    </children>
 </AnchorPane>

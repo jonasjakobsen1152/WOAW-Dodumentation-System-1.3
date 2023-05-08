@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AdminModel {
     AdminManager adminManager;
@@ -79,5 +80,11 @@ public class AdminModel {
 
     public ObservableList<Job> getDocumentsToBeViewed() {
         return documentsToBeViewed;
+    }
+
+    public void searchCustomers(String query) {
+        List<Customer> searchResults = adminManager.searchCustomers(query);
+        customerToBeViewed.clear();
+        customerToBeViewed.addAll(searchResults);
     }
 }

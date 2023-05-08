@@ -38,6 +38,7 @@ public class AdminController implements Initializable {
     public TableColumn clmDescription;
     public TableColumn clmTitle;
     public TableView<Job> tblDocument;
+    public TextField txtSearch;
     private User selectedUser;
     private Customer selectedCustomer;
     private CreateUpdateUserModel createUpdateUserModel;
@@ -53,6 +54,12 @@ public class AdminController implements Initializable {
 
         tblUser.setOnMouseClicked(event -> {
             selectedUser = tblUser.getSelectionModel().getSelectedItem();
+        });
+
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            Runnable task = () -> adminModel.searchCustomers(newValue);
+            Thread thread = new Thread(task);
+            thread.start();
         });
     }
 
