@@ -51,6 +51,5 @@ public class SalesMenModel {
         List<Customer> searchResults = salesmenManager.searchCustomers(query);
         customerToBeViewed.clear();
         customerToBeViewed.addAll(searchResults);
-
     }
 }

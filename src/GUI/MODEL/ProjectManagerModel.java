@@ -57,9 +57,9 @@ public class ProjectManagerModel {
     }
 
     public void searchCustomers(String query) {
-        //List<Customer> searchResults = projectManagerManager.searchCustomer(query);
+        List<Customer> searchResults = projectManagerManager.searchCustomer(query);
         customerToBeViewed.clear();
-        //customerToBeViewed.addAll(searchResults);
+        customerToBeViewed.addAll(searchResults);
     }
 
     public ArrayList<User> getTechnicianList(){
