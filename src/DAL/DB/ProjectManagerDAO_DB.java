@@ -124,5 +124,17 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
             throw new RuntimeException();
         }
     }
+
+    @Override
+    public void deleteCustomer(Customer selectedCustomer) throws SQLException {
+        try(Connection conn = databaseConnector.getConnection()){
+            String sql = "DELETE FROM Customer WHERE ID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,selectedCustomer.getId());
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new SQLException(e);
+        }
+    }
 }
 

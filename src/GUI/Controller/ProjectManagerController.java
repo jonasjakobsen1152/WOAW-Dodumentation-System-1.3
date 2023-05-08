@@ -166,8 +166,14 @@ public class ProjectManagerController implements Initializable {
             alert.setHeaderText("Are you sure you want to delete: " + selectedDocument.getTitle().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK){
-                projectManagerModel.deleteDocument(selectedDocument);
-                showDocument();
+                try {
+
+                    projectManagerModel.deleteDocument(selectedDocument);
+                    showDocument();
+                }catch (SQLException e){
+                    alertUser("Could not delete work");
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -191,9 +197,15 @@ public class ProjectManagerController implements Initializable {
             alert.setHeaderText("Are you sure you want to delete: " + selectedUser.getUsername().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
-                projectManagerModel.deleteUser(selectedUser);
-                //updateUserModel();
-                showTechnician();
+                try {
+
+
+                    projectManagerModel.deleteUser(selectedUser);
+                    //updateUserModel();
+                    showTechnician();
+                }catch (SQLException e){
+                    alertUser("Could not delete technician");
+                }
             }
         }
     }
@@ -211,10 +223,12 @@ public class ProjectManagerController implements Initializable {
             alert.setHeaderText("Are you sure you want to delete: " + selectedCustomer.getName().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
-                projectManagerModel.deleteUser(selectedUser);
                 try{
+                projectManagerModel.deleteCustomer(selectedCustomer);
+
                     showCustomer();
                 } catch (SQLException e) {
+                    alertUser("Could not delete customer");
                     e.printStackTrace();
                 }
             }
@@ -241,9 +255,16 @@ public class ProjectManagerController implements Initializable {
             alert.setHeaderText("Are you sure you want to delete: " + selectedUser.getUsername().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
-                projectManagerModel.deleteUser(selectedUser);
-                //updateUserModel();
-                showSalesmen();
+                try {
+
+
+                    projectManagerModel.deleteUser(selectedUser);
+                    //updateUserModel();
+                    showSalesmen();
+                }catch (SQLException e){
+                    alertUser("Could not delete salesmen");
+                    e.printStackTrace();
+                }
             }
         }
     }

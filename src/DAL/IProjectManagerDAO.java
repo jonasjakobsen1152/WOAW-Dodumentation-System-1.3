@@ -17,4 +17,6 @@ public interface IProjectManagerDAO {
     ArrayList<Customer> getAllCustomers() throws SQLException;
 
     void deleteDocument(Job selectedDocument);
+
+    void deleteCustomer(Customer selectedCustomer) throws SQLException;
 }

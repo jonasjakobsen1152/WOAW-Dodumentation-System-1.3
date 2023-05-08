@@ -35,4 +35,8 @@ public class ProjectManagerManager {
     public void deletedDocument(Job selectedDocument) {
         projectManagerDAO.deleteDocument(selectedDocument);
     }
+
+    public void deleteCustomer(Customer selectedCustomer) throws SQLException {
+        projectManagerDAO.deleteCustomer(selectedCustomer);
+    }
 }

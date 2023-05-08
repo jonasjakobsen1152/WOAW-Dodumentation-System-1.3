@@ -80,12 +80,12 @@ public class ProjectManagerModel {
         return salesmenToBeViewed;
     }
 
-    public void deleteUser(User selectedUser) {
+    public void deleteUser(User selectedUser) throws SQLException {
         projectManagerManager.deleteUser(selectedUser);
         showList();
     }
 
-    public void showList() {
+    public void showList() throws SQLException {
         getTechnicianToBeViewed().clear();
         getTechnicianToBeViewed().addAll(projectManagerManager.getAllUsers("Technician"));
 
@@ -94,6 +94,9 @@ public class ProjectManagerModel {
 
         getDocumentsToBeViewed().clear();
         getDocumentsToBeViewed().addAll(projectManagerManager.getAllDocuments());
+
+        getCustomerToBeViewed().clear();
+        getCustomerToBeViewed().addAll(projectManagerManager.getAllCustomers());
     }
 
     public ObservableList<Job> getDocumentsToBeViewed() {
@@ -102,8 +105,13 @@ public class ProjectManagerModel {
 
     public ArrayList<Job> getDocumentList(){return projectManagerManager.getAllDocuments();}
 
-    public void deleteDocument(Job selectedDocument) {
+    public void deleteDocument(Job selectedDocument) throws SQLException {
         projectManagerManager.deletedDocument(selectedDocument);
+        showList();
+    }
+
+    public void deleteCustomer(Customer selectedCustomer) throws SQLException {
+        projectManagerManager.deleteCustomer(selectedCustomer);
         showList();
     }
 }
