@@ -18,7 +18,7 @@
           <TableColumn fx:id="clmRole" prefWidth="162.0" styleClass="table-colum" text="Role" />
         </columns>
       </TableView>
-      <Text fill="WHITE" layoutX="405.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-area" text="Admin Window">
+      <Text fill="WHITE" layoutX="344.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-area" text="Admin Window">
          <font>
             <Font size="24.0" />
          </font>
@@ -30,7 +30,7 @@
         </columns>
       </TableView>
       <MFXButton layoutX="52.0" layoutY="335.0" onAction="#handleOpenCreateUser" prefHeight="44.0" prefWidth="81.0" text="Create" />
-      <MFXButton layoutX="169.0" layoutY="336.0" onAction="#handleOpenUpdateUser" prefHeight="44.0" prefWidth="81.0" text="Update" />
+      <MFXButton layoutX="169.0" layoutY="336.0" onAction="#handleOpenUpdateUser" prefHeight="44.0" prefWidth="81.0" text="Edit" />
       <MFXButton layoutX="287.0" layoutY="335.0" onAction="#handleDeleteUser" prefHeight="44.0" prefWidth="81.0" text="Delete" />
       <MFXButton layoutX="379.0" layoutY="278.0" onAction="#handleShowWork" prefHeight="44.0" prefWidth="94.0" text="Show Work" />
       <MFXButton layoutX="487.0" layoutY="335.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="127.0" text="Show Document" />
@@ -49,10 +49,10 @@
       </TableView>
       <MFXButton layoutX="847.0" layoutY="335.0" onAction="#handleCreateCustomer" prefHeight="44.0" prefWidth="81.0" text="Create" />
       <MFXButton layoutX="1161.0" layoutY="335.0" onAction="#handleDeleteCustomer" prefHeight="44.0" prefWidth="81.0" text="Delete" />
-      <MFXButton layoutX="1004.0" layoutY="335.0" onAction="#handleUpdateCustomer" prefHeight="44.0" prefWidth="81.0" text="Update" />
-      <TextField fx:id="txtSearch" layoutX="970.0" layoutY="19.0" promptText="Search" />
-      <Text layoutX="191.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Users" />
-      <Text layoutX="656.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Jobs" />
-      <Text layoutX="1138.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer" />
+      <MFXButton layoutX="1004.0" layoutY="335.0" onAction="#handleUpdateCustomer" prefHeight="44.0" prefWidth="81.0" text="Edit" />
+      <TextField fx:id="txtSearch" layoutX="847.0" layoutY="24.0" promptText="Search" />
+      <Text layoutX="191.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Users" />
+      <Text layoutX="633.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Jobs" />
+      <Text layoutX="1013.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer" />
    </children>
 </AnchorPane>

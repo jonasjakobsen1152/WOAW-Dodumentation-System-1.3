@@ -21,13 +21,13 @@
             <TableColumn fx:id="clmImages" prefWidth="205.0" styleClass="table-colum" text="Images" />
          </columns>
       </TableView>
-      <MFXButton layoutX="282.0" layoutY="107.0" onAction="#handleAddDocumentation" prefHeight="49.0" prefWidth="154.0" text="Add Documentation" />
-      <MFXButton layoutX="282.0" layoutY="237.0" onAction="#handleUpdateDocumentation" prefHeight="49.0" prefWidth="154.0" text="Update Documentation" />
+      <MFXButton layoutX="282.0" layoutY="107.0" onAction="#handleAddDocumentation" prefHeight="49.0" prefWidth="154.0" text="Add Device" />
+      <MFXButton layoutX="282.0" layoutY="237.0" onAction="#handleUpdateDocumentation" prefHeight="49.0" prefWidth="154.0" text="Edit Documentation" />
       <MFXButton layoutX="282.0" layoutY="362.0" onAction="#handleDeleteDocumentation" prefHeight="49.0" prefWidth="154.0" text="Delete Documentation" />
       <MFXButton layoutX="892.0" layoutY="107.0" onAction="#HandleAddImage" prefHeight="49.0" prefWidth="114.0" text="Add Image" />
-      <MFXButton layoutX="892.0" layoutY="237.0" onAction="#HandleUpdateImage" prefHeight="49.0" prefWidth="114.0" text="Update Image" />
+      <MFXButton layoutX="892.0" layoutY="237.0" onAction="#HandleUpdateImage" prefHeight="49.0" prefWidth="114.0" text="Edit Image" />
       <MFXButton layoutX="892.0" layoutY="362.0" onAction="#handleDeleteImage" prefHeight="49.0" prefWidth="114.0" text="Delete Image" />
-      <Text fill="WHITE" layoutX="400.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-area" text="Technician Job Window">
+      <Text fill="WHITE" layoutX="460.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-area" text="Job Window">
          <font>
             <Font size="24.0" />
          </font>

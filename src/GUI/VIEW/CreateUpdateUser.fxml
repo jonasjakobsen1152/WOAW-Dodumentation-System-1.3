@@ -19,7 +19,7 @@
             <Font size="14.0" />
          </font></Label>
       <MFXButton fx:id="btnCreate" layoutX="41.0" layoutY="291.0" onAction="#handleCreateUser" prefHeight="46.0" prefWidth="101.0" text="Create" />
-      <MFXButton fx:id="btnUpdate" layoutX="190.0" layoutY="291.0" onAction="#handleUpdateUser" prefHeight="46.0" prefWidth="101.0" text="Update" />
+      <MFXButton fx:id="btnUpdate" layoutX="190.0" layoutY="291.0" onAction="#handleUpdateUser" prefHeight="46.0" prefWidth="101.0" text="Edit" />
       <ImageView fitHeight="59.0" fitWidth="124.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />

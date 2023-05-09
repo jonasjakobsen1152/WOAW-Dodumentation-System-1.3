@@ -54,6 +54,6 @@
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
-      <MFXButton layoutX="270.0" layoutY="318.0" onAction="#handleOpenUpdateUser" prefHeight="48.0" prefWidth="115.0" text="Update Any User" />
+      <MFXButton layoutX="270.0" layoutY="318.0" onAction="#handleOpenUpdateUser" prefHeight="48.0" prefWidth="115.0" text="Edit User" />
    </children>
 </AnchorPane>
