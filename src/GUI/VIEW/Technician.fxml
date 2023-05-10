@@ -28,5 +28,6 @@
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
+      <MFXButton layoutX="475.0" layoutY="8.0" onAction="#handleLogOut" prefHeight="35.0" prefWidth="69.0" text="Log Out" />
    </children>
 </AnchorPane>

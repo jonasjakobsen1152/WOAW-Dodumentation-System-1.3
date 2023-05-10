@@ -12,6 +12,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -413,5 +415,22 @@ public class ProjectManagerController implements Initializable {
         btnShowJobs.setVisible(false);
         btnDeleteCustomer.setVisible(false);
 
+    }
+
+    public void handleLogOut(ActionEvent actionEvent) {
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
+
+        // Show the LogIn window
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Login.fxml"));
+            Parent root = loader.load();
+            Stage loginStage = new Stage();
+            loginStage.setTitle("LogIn");
+            loginStage.setScene(new Scene(root));
+            loginStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

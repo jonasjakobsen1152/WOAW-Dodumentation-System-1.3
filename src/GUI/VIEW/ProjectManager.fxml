@@ -61,7 +61,7 @@
             <MFXButton layoutX="37.0" layoutY="114.0" onAction="#handleShowCustomers" prefHeight="48.0" prefWidth="126.0" text="Customer" />
             <MFXButton layoutX="37.0" layoutY="185.0" onAction="#handleShowSalesmen" prefHeight="48.0" prefWidth="126.0" text="Salesmen" />
             <MFXButton layoutX="37.0" layoutY="260.0" onAction="#handleShowJob" prefHeight="48.0" prefWidth="126.0" text="Jobs" />
-            <MFXButton layoutX="37.0" layoutY="340.0" prefHeight="48.0" prefWidth="126.0" text="Log Out" />
+            <MFXButton layoutX="37.0" layoutY="340.0" onAction="#handleLogOut" prefHeight="48.0" prefWidth="126.0" text="Log Out" />
          </children>
       </AnchorPane>
    </children>

@@ -54,5 +54,6 @@
       <Text layoutX="191.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Users" />
       <Text layoutX="633.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Jobs" />
       <Text layoutX="1013.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer" AnchorPane.rightAnchor="218.00830078125" AnchorPane.topAnchor="26.8134765625" />
+      <MFXButton layoutX="1201.0" layoutY="10.0" onAction="#handleLogOut" prefHeight="44.0" prefWidth="81.0" text="Log Out" />
    </children>
 </AnchorPane>
