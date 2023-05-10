@@ -6,12 +6,12 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="366.0" prefWidth="341.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateUpdateJobController">
+<AnchorPane prefHeight="446.0" prefWidth="594.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateUpdateJobController">
    <children>
-      <MFXButton layoutX="216.0" layoutY="308.0" onAction="#handleUpdateJob" text="Update" />
-      <MFXButton layoutX="70.0" layoutY="308.0" onAction="#handleCreateJob" text="Create" />
-      <TextField fx:id="txtTitle" layoutX="96.0" layoutY="171.0" promptText="Title" />
-      <ImageView fitHeight="65.0" fitWidth="131.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <MFXButton layoutX="345.0" layoutY="270.0" onAction="#handleUpdateJob" prefHeight="48.0" prefWidth="149.0" text="Update" />
+      <MFXButton layoutX="112.0" layoutY="270.0" onAction="#handleCreateJob" prefHeight="48.0" prefWidth="149.0" text="Create" />
+      <TextField fx:id="txtTitle" layoutX="204.0" layoutY="155.0" prefHeight="48.0" prefWidth="187.0" promptText="Title" />
+      <ImageView fitHeight="113.0" fitWidth="172.0" layoutX="26.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />
          </image>
