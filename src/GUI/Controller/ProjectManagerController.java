@@ -40,6 +40,9 @@ public class ProjectManagerController implements Initializable {
     public MFXButton btnSendPDF;
     public MFXButton btnReadJobs;
     public MFXButton btnEditUser;
+    public TextField txtFilterTechnicians;
+    public TextField txtFilterSalesmen;
+    public TextField txtFilterJobs;
     @FXML
     private TextField txtFilter;
     @FXML
@@ -115,6 +118,11 @@ public class ProjectManagerController implements Initializable {
             Thread thread = new Thread(task);
             thread.start();
         });
+        txtFilterTechnicians.textProperty().addListener((observable, oldValue, newValue) ->{
+            Runnable task = () -> projectManagerModel.searchTechnicians(newValue);
+            Thread thread = new Thread(task);
+            thread.start();
+        });
     }
 
     private void showDocument() {
@@ -148,17 +156,15 @@ public class ProjectManagerController implements Initializable {
     public void handleAddWork(ActionEvent actionEvent) {
         selectedTechnician = tblShowTechnicians.getSelectionModel().getSelectedItem();
         selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
-        createUpdateJobModel.setCustomerAndTechnician(selectedTechnician,selectedCustomer);
+        createUpdateJobModel.setTechnician(selectedTechnician);
 
-        if (selectedCustomer == null){
-            alertUser("Choose a customer");
-        } else if (selectedTechnician == null) {
+        if (selectedTechnician == null) {
             alertUser("Choose a technician");
         }else{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateJob.fxml"));
         try {
-            createUpdateJobModel.setCustomerAndTechnician(selectedTechnician,selectedCustomer);
+            createUpdateJobModel.setTechnician(selectedTechnician);
             AnchorPane pane = loader.load();
 
             Stage dialogWindow = new Stage();
@@ -378,6 +384,7 @@ public class ProjectManagerController implements Initializable {
         tblShowCustomers.setVisible(true);
         btnDeleteCustomer.setVisible(true);
         btnCreateCustomer.setVisible(true);
+        txtFilter.setVisible(true);
     }
 
     public void handleShowSalesmen(ActionEvent actionEvent) {
@@ -414,6 +421,8 @@ public class ProjectManagerController implements Initializable {
         btnEditUser.setVisible(false);
         btnShowJobs.setVisible(false);
         btnDeleteCustomer.setVisible(false);
+
+        txtFilter.setVisible(false);
 
     }
 

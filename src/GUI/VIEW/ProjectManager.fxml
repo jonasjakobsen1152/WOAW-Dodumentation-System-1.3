@@ -59,10 +59,16 @@
             <MFXButton layoutX="37.0" layoutY="471.0" onAction="#handleLogOut" prefHeight="48.0" prefWidth="126.0" text="Log Out" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="37.0" />
          </children>
       </AnchorPane>
+
       <TableView fx:id="tblShowCustomers" layoutX="664.0" layoutY="74.0" prefHeight="533.0" prefWidth="350.0" styleClass="table-colum" AnchorPane.bottomAnchor="94.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="73.0">
          <columns>
             <TableColumn fx:id="clmShowCustomers" prefWidth="348.0" styleClass="table-colum" text="Customers" />
          </columns>
       </TableView>
+
+      <TextField fx:id="txtFilterTechnicians" layoutX="530.0" layoutY="21.0" />
+      <TextField fx:id="txtFilterSalesmen" layoutX="530.0" layoutY="21.0" />
+      <TextField fx:id="txtFilterJobs" layoutX="530.0" layoutY="21.0" />
+
    </children>
 </AnchorPane>

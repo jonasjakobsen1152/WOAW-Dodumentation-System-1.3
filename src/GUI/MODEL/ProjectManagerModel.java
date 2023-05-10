@@ -114,4 +114,10 @@ public class ProjectManagerModel {
         projectManagerManager.deleteCustomer(selectedCustomer);
         showList();
     }
+
+    public void searchTechnicians(String query) {
+        List<User> searchResults = projectManagerManager.searchTechnician(query);
+        customerToBeViewed.clear();
+        //customerToBeViewed.addAll(searchResults);
+    }
 }

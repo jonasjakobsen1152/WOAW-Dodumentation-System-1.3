@@ -4,6 +4,7 @@ import BE.Customer;
 import BE.Job;
 import BE.User;
 import BLL.CreateUpdateJobManager;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
@@ -14,10 +15,13 @@ public class CreateUpdateJobModel {
     public Customer selectedCustomer;
     public CreateUpdateJobManager createUpdateJobManager;
     private ObservableList<Job> JobToBeViewed;
+    private ObservableList<Customer> customerToBeViewed;
     private ProjectManagerModel projectManagerModel;
     public CreateUpdateJobModel() throws SQLException {
         createUpdateJobManager = new CreateUpdateJobManager();
         projectManagerModel = ProjectManagerModel.getInstance();
+        customerToBeViewed = FXCollections.observableArrayList();
+        customerToBeViewed.addAll(createUpdateJobManager.getAllCustomers());
     }
 
 
@@ -27,6 +31,11 @@ public class CreateUpdateJobModel {
         }
         return instance;
     }
+
+    public ObservableList<Customer> getCustomerToBeViewed() {
+        return customerToBeViewed;
+    }
+
     public User getSelectedTechnician(){
         return selectedTechnician;
     }
@@ -34,8 +43,7 @@ public class CreateUpdateJobModel {
         return selectedCustomer;
     }
 
-    public void setCustomerAndTechnician(User selectedTechnician, Customer selectedCustomer) {
-        this.selectedCustomer = selectedCustomer;
+    public void setTechnician(User selectedTechnician) {
         this.selectedTechnician = selectedTechnician;
     }
 
