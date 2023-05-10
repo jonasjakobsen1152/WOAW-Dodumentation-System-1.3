@@ -9,18 +9,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="366.0" prefWidth="331.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateUpdateUserController">
+<AnchorPane prefHeight="465.0" prefWidth="462.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CreateUpdateUserController">
    <children>
-      <TextField fx:id="txtUsername" layoutX="91.0" layoutY="96.0" promptText="Username" />
-      <TextField fx:id="txtPassword" layoutX="92.0" layoutY="158.0" promptText="Password" />
-      <ChoiceBox fx:id="cbRole" layoutX="91.0" layoutY="241.0" prefWidth="150.0" styleClass="text" stylesheets="@Main.css" />
-      <Label layoutX="123.0" layoutY="205.0" text="Choose a role">
+      <TextField fx:id="txtUsername" layoutX="142.0" layoutY="106.0" prefHeight="55.0" prefWidth="178.0" promptText="Username" />
+      <TextField fx:id="txtPassword" layoutX="142.0" layoutY="178.0" prefHeight="55.0" prefWidth="178.0" promptText="Password" />
+      <ChoiceBox fx:id="cbRole" layoutX="143.0" layoutY="273.0" prefHeight="43.0" prefWidth="178.0" styleClass="text" stylesheets="@Main.css" />
+      <Label layoutX="189.0" layoutY="241.0" text="Choose a role">
          <font>
             <Font size="14.0" />
          </font></Label>
-      <MFXButton fx:id="btnCreate" layoutX="41.0" layoutY="291.0" onAction="#handleCreateUser" prefHeight="46.0" prefWidth="101.0" text="Create" />
-      <MFXButton fx:id="btnUpdate" layoutX="190.0" layoutY="291.0" onAction="#handleUpdateUser" prefHeight="46.0" prefWidth="101.0" text="Edit" />
-      <ImageView fitHeight="59.0" fitWidth="124.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <MFXButton fx:id="btnCreate" layoutX="57.0" layoutY="334.0" onAction="#handleCreateUser" prefHeight="57.0" prefWidth="132.0" text="Create" />
+      <MFXButton fx:id="btnUpdate" layoutX="274.0" layoutY="334.0" onAction="#handleUpdateUser" prefHeight="57.0" prefWidth="132.0" text="Edit" />
+      <ImageView fitHeight="82.0" fitWidth="149.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />
          </image>

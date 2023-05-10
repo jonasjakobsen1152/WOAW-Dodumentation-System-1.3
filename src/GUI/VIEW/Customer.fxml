@@ -6,18 +6,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="366.0" prefWidth="331.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CustomerController">
+<AnchorPane prefHeight="484.0" prefWidth="495.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.CustomerController">
    <children>
-      <ImageView fitHeight="49.0" fitWidth="127.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="77.0" fitWidth="141.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtName" layoutX="91.0" layoutY="104.0" promptText="Name" />
-      <TextField fx:id="txtPhoneNumber" layoutX="91.0" layoutY="171.0" promptText="Phone number" />
-      <TextField fx:id="txtEmail" layoutX="91.0" layoutY="230.0" promptText="E-mail" />
-      <Button fx:id="btnCreate" layoutX="65.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleCreateCustomer" text="Create" />
-      <Button fx:id="btnUpdate" layoutX="214.0" layoutY="299.0" mnemonicParsing="false" onAction="#handleUpdateCustomer" text="Update" />
+      <TextField fx:id="txtName" layoutX="160.0" layoutY="107.0" prefHeight="47.0" prefWidth="175.0" promptText="Name" />
+      <TextField fx:id="txtPhoneNumber" layoutX="160.0" layoutY="183.0" prefHeight="47.0" prefWidth="175.0" promptText="Phone number" />
+      <TextField fx:id="txtEmail" layoutX="160.0" layoutY="252.0" prefHeight="47.0" prefWidth="175.0" promptText="E-mail" />
+      <Button fx:id="btnCreate" layoutX="92.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleCreateCustomer" prefHeight="47.0" prefWidth="127.0" text="Create" />
+      <Button fx:id="btnUpdate" layoutX="272.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleUpdateCustomer" prefHeight="47.0" prefWidth="127.0" text="Update" />
    </children>
 </AnchorPane>

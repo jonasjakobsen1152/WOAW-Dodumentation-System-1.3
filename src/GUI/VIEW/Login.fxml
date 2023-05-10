@@ -9,16 +9,16 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="449.0" prefWidth="663.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.LoginController">
+<AnchorPane prefHeight="512.0" prefWidth="724.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.LoginController">
    <children>
       <AnchorPane layoutX="101.0" layoutY="63.0" prefHeight="300.0" prefWidth="300.0" styleClass="table-colum" stylesheets="@Main.css" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="101.0" AnchorPane.topAnchor="63.0">
          <children>
-            <MFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="173.0" layoutY="248.0" onAction="#handleLogin" prefHeight="49.0" prefWidth="120.0" text="Login" />
-            <MFXTextField fx:id="txtUsername" alignment="BOTTOM_CENTER" floatMode="ABOVE" layoutX="111.0" layoutY="71.0" prefHeight="49.0" prefWidth="241.0" promptText="Username" />
-            <MFXTextField fx:id="txtPassword" alignment="TOP_CENTER" floatMode="ABOVE" layoutX="111.0" layoutY="150.0" prefHeight="49.0" prefWidth="241.0" promptText="Password" />
+            <MFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="200.0" layoutY="255.0" onAction="#handleLogin" prefHeight="49.0" prefWidth="120.0" text="Login" />
+            <MFXTextField fx:id="txtUsername" alignment="BOTTOM_CENTER" floatMode="ABOVE" layoutX="140.0" layoutY="72.0" prefHeight="49.0" prefWidth="241.0" promptText="Username" />
+            <MFXTextField fx:id="txtPassword" alignment="TOP_CENTER" floatMode="ABOVE" layoutX="140.0" layoutY="155.0" prefHeight="49.0" prefWidth="241.0" promptText="Password" />
          </children>
       </AnchorPane>
-      <Text fill="WHITE" layoutX="208.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Documentation System">
+      <Text fill="WHITE" layoutX="239.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Documentation System">
          <font>
             <Font size="24.0" />
          </font>
