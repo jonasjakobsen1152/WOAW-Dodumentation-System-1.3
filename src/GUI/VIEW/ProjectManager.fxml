@@ -64,5 +64,8 @@
             <MFXButton layoutX="37.0" layoutY="340.0" onAction="#handleLogOut" prefHeight="48.0" prefWidth="126.0" text="Log Out" />
          </children>
       </AnchorPane>
+      <TextField fx:id="txtFilterTechnicians" layoutX="530.0" layoutY="21.0" />
+      <TextField fx:id="txtFilterSalesmen" layoutX="530.0" layoutY="21.0" />
+      <TextField fx:id="txtFilterJobs" layoutX="530.0" layoutY="21.0" />
    </children>
 </AnchorPane>

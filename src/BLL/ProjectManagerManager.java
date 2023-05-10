@@ -17,6 +17,7 @@ public class ProjectManagerManager {
     private CustomerSearcher customerSearcher;
 
     private ArrayList<Customer> allCustomers;
+    private ArrayList<User> allTechnicians;
 
     public ProjectManagerManager(){
         projectManagerDAO = new ProjectManagerDAO_DB();
@@ -53,5 +54,11 @@ public class ProjectManagerManager {
     public List<Customer> searchCustomer(String query) {
         List<Customer> searchResult = customerSearcher.search(allCustomers,query);
         return searchResult;
+    }
+
+    public List<User> searchTechnician(String query) {
+        //List<User> searchResult = technicianSearcher.search(allTechnicians,query);
+        //return searchResult;
+        return null;
     }
 }
