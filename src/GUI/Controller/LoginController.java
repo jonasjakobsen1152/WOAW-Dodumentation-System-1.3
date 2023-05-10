@@ -34,10 +34,6 @@ public class LoginController {
     public void handleLogin(ActionEvent actionEvent) {
         String usernameFromText = txtUsername.getText();
         String passwordFromText = txtPassword.getText();
-
-//        String salt = BCrypt.gensalt(15);
-//       String passwordToHash = BCrypt.hashpw("abc",salt);
-//        System.out.println(passwordToHash);
         try {
             ArrayList<User> matchingUsernames = loginModel.getAllUsers(usernameFromText);
             for (User userToMatch: matchingUsernames) {
