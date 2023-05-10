@@ -4,34 +4,41 @@
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="567.0" prefWidth="833.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SalesmenController">
    <children>
-      <TableView fx:id="tblJobs" layoutX="512.0" layoutY="97.0" prefHeight="393.0" prefWidth="276.0" styleClass="table-colum">
+      <TableView fx:id="tblJobs" layoutX="512.0" layoutY="97.0" prefHeight="393.0" prefWidth="276.0" styleClass="table-colum" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="96.0">
         <columns>
-          <TableColumn fx:id="clmJobs" prefWidth="275.0" styleClass="table-colum" text="Jobs" />
+          <TableColumn fx:id="clmJobs" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="275.0" resizable="false" styleClass="table-colum" text="Jobs" />
         </columns>
       </TableView>
-      <TableView fx:id="tblCustomer" layoutX="22.0" layoutY="97.0" prefHeight="393.0" prefWidth="400.0" styleClass="table-colum">
+      <TableView fx:id="tblCustomer" layoutX="22.0" layoutY="97.0" prefHeight="393.0" prefWidth="400.0" styleClass="table-colum" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="96.0">
         <columns>
           <TableColumn fx:id="clmName" prefWidth="118.0" styleClass="table-colum" text="Name" />
           <TableColumn fx:id="clmPhone" prefWidth="103.0" styleClass="table-colum" text="Phone" />
             <TableColumn fx:id="clmEmail" prefWidth="178.0" styleClass="table-colum" text="Email" />
         </columns>
       </TableView>
-      <Text layoutX="22.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer">
+      <Text layoutX="49.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer">
          <font>
             <Font size="14.0" />
          </font></Text>
-      <Text layoutX="512.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Jobs for the customer" wrappingWidth="186.1328125" />
-      <MFXButton buttonType="RAISED" layoutX="512.0" layoutY="500.0" prefHeight="41.0" prefWidth="276.0" text="Print PDF" />
+      <Text layoutX="512.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Jobs for the customer" wrappingWidth="186.1328125" AnchorPane.bottomAnchor="481.2353515625" AnchorPane.rightAnchor="134.8671875" AnchorPane.topAnchor="64.7646484375" />
+      <MFXButton buttonType="RAISED" layoutX="512.0" layoutY="500.0" prefHeight="41.0" prefWidth="276.0" text="Print PDF" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="45.0" />
       <MFXTextField fx:id="txtFilter" floatMode="ABOVE" layoutX="152.0" layoutY="57.0" prefHeight="29.0" prefWidth="265.0" promptText="Search" />
-      <Text layoutX="294.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="WUAW Sales Window" wrappingWidth="255.1328125">
+      <Text layoutX="317.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Salesmen Window" wrappingWidth="199.1328125" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="24.0" />
          </font></Text>
+      <ImageView fitHeight="49.0" fitWidth="167.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/Screenshot_1.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

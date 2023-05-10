@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="431.0" prefWidth="1295.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
    <children>
-      <TableView fx:id="tblUser" layoutX="52.0" layoutY="64.0" prefHeight="258.0" prefWidth="315.0" styleClass="table-colum">
+      <TableView fx:id="tblUser" layoutX="52.0" layoutY="64.0" prefHeight="258.0" prefWidth="315.0" styleClass="table-colum" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="63.0">
         <columns>
           <TableColumn fx:id="clmUsername" prefWidth="152.0" styleClass="table-colum" text="Username" />
           <TableColumn fx:id="clmRole" prefWidth="162.0" styleClass="table-colum" text="Role" />
@@ -23,36 +23,36 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TableView fx:id="tblDocument" layoutX="487.0" layoutY="64.0" prefHeight="258.0" prefWidth="315.0" styleClass="table-colum">
+      <TableView fx:id="tblDocument" layoutX="487.0" layoutY="64.0" prefHeight="258.0" prefWidth="315.0" styleClass="table-colum" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="487.0" AnchorPane.topAnchor="63.0">
         <columns>
           <TableColumn fx:id="clmTitle" prefWidth="158.0" styleClass="table-colum" text="Title" />
           <TableColumn fx:id="clmDescription" prefWidth="156.0" styleClass="table-colum" text="Description" />
         </columns>
       </TableView>
-      <MFXButton layoutX="52.0" layoutY="335.0" onAction="#handleOpenCreateUser" prefHeight="44.0" prefWidth="81.0" text="Create" />
-      <MFXButton layoutX="169.0" layoutY="336.0" onAction="#handleOpenUpdateUser" prefHeight="44.0" prefWidth="81.0" text="Edit" />
-      <MFXButton layoutX="287.0" layoutY="335.0" onAction="#handleDeleteUser" prefHeight="44.0" prefWidth="81.0" text="Delete" />
-      <MFXButton layoutX="379.0" layoutY="278.0" onAction="#handleShowWork" prefHeight="44.0" prefWidth="94.0" text="Show Work" />
-      <MFXButton layoutX="487.0" layoutY="335.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="127.0" text="Show Document" />
-      <MFXButton layoutX="721.0" layoutY="335.0" onAction="#handlePrintPDF" prefHeight="44.0" prefWidth="81.0" text="Print PDF" />
+      <MFXButton layoutX="52.0" layoutY="335.0" onAction="#handleOpenCreateUser" prefHeight="44.0" prefWidth="81.0" text="Create" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="52.0" />
+      <MFXButton layoutX="169.0" layoutY="336.0" onAction="#handleOpenUpdateUser" prefHeight="44.0" prefWidth="81.0" text="Edit" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="169.0" />
+      <MFXButton layoutX="287.0" layoutY="335.0" onAction="#handleDeleteUser" prefHeight="44.0" prefWidth="81.0" text="Delete" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="287.0" />
+      <MFXButton layoutX="379.0" layoutY="278.0" onAction="#handleShowWork" prefHeight="44.0" prefWidth="94.0" text="Show Work" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="379.0" />
+      <MFXButton layoutX="487.0" layoutY="335.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="127.0" text="Show Document" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="487.0" />
+      <MFXButton layoutX="721.0" layoutY="335.0" onAction="#handlePrintPDF" prefHeight="44.0" prefWidth="81.0" text="Print PDF" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="721.0" />
       <ImageView fitHeight="55.0" fitWidth="172.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblCustomer" layoutX="847.0" layoutY="61.0" prefHeight="258.0" prefWidth="395.0" styleClass="table-colum">
+      <TableView fx:id="tblCustomer" layoutX="847.0" layoutY="61.0" prefHeight="258.0" prefWidth="395.0" styleClass="table-colum" AnchorPane.bottomAnchor="112.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="60.0">
         <columns>
           <TableColumn fx:id="clmName" prefWidth="115.0" styleClass="table-colum" text="Name" />
           <TableColumn fx:id="clmPhone" minWidth="0.0" prefWidth="120.0" styleClass="table-colum" text="Phone" />
             <TableColumn fx:id="clmEmail" prefWidth="159.0" styleClass="table-colum" text="Email" />
         </columns>
       </TableView>
-      <MFXButton layoutX="847.0" layoutY="335.0" onAction="#handleCreateCustomer" prefHeight="44.0" prefWidth="81.0" text="Create" />
-      <MFXButton layoutX="1161.0" layoutY="335.0" onAction="#handleDeleteCustomer" prefHeight="44.0" prefWidth="81.0" text="Delete" />
-      <MFXButton layoutX="1004.0" layoutY="335.0" onAction="#handleUpdateCustomer" prefHeight="44.0" prefWidth="81.0" text="Edit" />
-      <TextField fx:id="txtSearch" layoutX="847.0" layoutY="24.0" promptText="Search" />
+      <MFXButton layoutX="847.0" layoutY="335.0" onAction="#handleCreateCustomer" prefHeight="44.0" prefWidth="81.0" text="Create" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="367.0" />
+      <MFXButton layoutX="1161.0" layoutY="335.0" onAction="#handleDeleteCustomer" prefHeight="44.0" prefWidth="81.0" text="Delete" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="53.0" />
+      <MFXButton layoutX="1004.0" layoutY="335.0" onAction="#handleUpdateCustomer" prefHeight="44.0" prefWidth="81.0" text="Edit" AnchorPane.bottomAnchor="52.0" AnchorPane.rightAnchor="210.0" />
+      <TextField fx:id="txtSearch" layoutX="847.0" layoutY="24.0" promptText="Search" AnchorPane.rightAnchor="299.0" AnchorPane.topAnchor="24.0" />
       <Text layoutX="191.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Users" />
       <Text layoutX="633.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Jobs" />
-      <Text layoutX="1013.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer" />
+      <Text layoutX="1013.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer" AnchorPane.rightAnchor="218.00830078125" AnchorPane.topAnchor="26.8134765625" />
    </children>
 </AnchorPane>
