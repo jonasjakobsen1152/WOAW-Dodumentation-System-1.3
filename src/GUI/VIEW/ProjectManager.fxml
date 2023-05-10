@@ -66,9 +66,9 @@
          </columns>
       </TableView>
 
-      <TextField fx:id="txtFilterTechnicians" layoutX="530.0" layoutY="21.0" />
-      <TextField fx:id="txtFilterSalesmen" layoutX="530.0" layoutY="21.0" />
-      <TextField fx:id="txtFilterJobs" layoutX="530.0" layoutY="21.0" />
+      <TextField fx:id="txtFilterTechnicians" alignment="CENTER" layoutX="749.0" layoutY="11.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
+      <TextField fx:id="txtFilterSalesmen" alignment="CENTER" layoutX="749.0" layoutY="11.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
+      <TextField fx:id="txtFilterJobs" alignment="CENTER" layoutX="749.0" layoutY="11.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
 
    </children>
 </AnchorPane>
