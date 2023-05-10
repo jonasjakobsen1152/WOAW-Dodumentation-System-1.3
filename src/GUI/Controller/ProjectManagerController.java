@@ -148,17 +148,15 @@ public class ProjectManagerController implements Initializable {
     public void handleAddWork(ActionEvent actionEvent) {
         selectedTechnician = tblShowTechnicians.getSelectionModel().getSelectedItem();
         selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
-        createUpdateJobModel.setCustomerAndTechnician(selectedTechnician,selectedCustomer);
+        createUpdateJobModel.setTechnician(selectedTechnician);
 
-        if (selectedCustomer == null){
-            alertUser("Choose a customer");
-        } else if (selectedTechnician == null) {
+        if (selectedTechnician == null) {
             alertUser("Choose a technician");
         }else{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateJob.fxml"));
         try {
-            createUpdateJobModel.setCustomerAndTechnician(selectedTechnician,selectedCustomer);
+            createUpdateJobModel.setTechnician(selectedTechnician);
             AnchorPane pane = loader.load();
 
             Stage dialogWindow = new Stage();
