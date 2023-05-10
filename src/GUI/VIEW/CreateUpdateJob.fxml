@@ -18,11 +18,11 @@
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblCustomers" layoutX="71.0" layoutY="62.0" prefHeight="200.0" prefWidth="330.0">
+      <TableView fx:id="tblCustomers" layoutX="71.0" layoutY="62.0" prefHeight="200.0" prefWidth="330.0" styleClass="table-colum">
         <columns>
-          <TableColumn fx:id="clmName" prefWidth="118.0" text="Name" />
-          <TableColumn fx:id="clmPhone" prefWidth="103.0" text="Phone" />
-            <TableColumn fx:id="clmEmail" prefWidth="108.0" text="Email" />
+          <TableColumn fx:id="clmName" prefWidth="118.0" styleClass="table-colum" text="Name" />
+          <TableColumn fx:id="clmPhone" prefWidth="103.0" styleClass="table-colum" text="Phone" />
+            <TableColumn fx:id="clmEmail" prefWidth="108.0" styleClass="table-colum" text="Email" />
         </columns>
       </TableView>
    </children>
