@@ -7,6 +7,7 @@ import GUI.MODEL.CreateUpdateJobModel;
 import GUI.MODEL.CreateUpdateUserModel;
 import GUI.MODEL.CustomerModel;
 import GUI.MODEL.ProjectManagerModel;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,18 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ProjectManagerController implements Initializable {
+    public MFXButton btnAddWork;
+    public MFXButton btnDeleteWork;
+    public MFXButton btnCreateTechnician;
+    public MFXButton btnDeleteTechnician;
+    public MFXButton btnCreateSalesmen;
+    public MFXButton btnDeleteCustomer;
+    public MFXButton btnCreateCustomer;
+    public MFXButton btnDeleteSalesmen;
+    public MFXButton btnShowJobs;
+    public MFXButton btnSendPDF;
+    public MFXButton btnReadJobs;
+    public MFXButton btnEditUser;
     @FXML
     private TextField txtFilter;
     @FXML
@@ -67,6 +80,7 @@ public class ProjectManagerController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         showTechnician();
         showSalesmen();
+        handleShowTechnicians(new ActionEvent());
         try {
             showCustomer();
         } catch (SQLException e) {
@@ -346,5 +360,58 @@ public class ProjectManagerController implements Initializable {
     }
 
     public void handleSendPDF(ActionEvent actionEvent) {
+    }
+
+    public void handleShowTechnicians(ActionEvent actionEvent) {
+        setVisibleFalse();
+        tblShowTechnicians.setVisible(true);
+        btnDeleteTechnician.setVisible(true);
+        btnCreateTechnician.setVisible(true);
+        btnEditUser.setVisible(true);
+        btnAddWork.setVisible(true);
+    }
+
+    public void handleShowCustomers(ActionEvent actionEvent) {
+        setVisibleFalse();
+        tblShowCustomers.setVisible(true);
+        btnDeleteCustomer.setVisible(true);
+        btnCreateCustomer.setVisible(true);
+    }
+
+    public void handleShowSalesmen(ActionEvent actionEvent) {
+        setVisibleFalse();
+        tblShowSalesmen.setVisible(true);
+        btnCreateSalesmen.setVisible(true);
+        btnDeleteSalesmen.setVisible(true);
+        btnEditUser.setVisible(true);
+
+    }
+
+    public void handleShowJob(ActionEvent actionEvent) {
+        setVisibleFalse();
+        tblShowDocument.setVisible(true);
+        btnSendPDF.setVisible(true);
+        btnShowJobs.setVisible(true);
+    }
+
+    public void setVisibleFalse(){
+        tblShowCustomers.setVisible(false);
+        tblShowDocument.setVisible(false);
+        tblShowSalesmen.setVisible(false);
+        tblShowTechnicians.setVisible(false);
+
+        btnCreateCustomer.setVisible(false);
+        btnCreateSalesmen.setVisible(false);
+        btnDeleteTechnician.setVisible(false);
+        btnDeleteSalesmen.setVisible(false);
+        btnDeleteWork.setVisible(false);
+        btnCreateTechnician.setVisible(false);
+        btnAddWork.setVisible(false);
+        btnReadJobs.setVisible(false);
+        btnSendPDF.setVisible(false);
+        btnEditUser.setVisible(false);
+        btnShowJobs.setVisible(false);
+        btnDeleteCustomer.setVisible(false);
+
     }
 }
