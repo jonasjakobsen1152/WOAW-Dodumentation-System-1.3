@@ -17,7 +17,7 @@ public class CustomerModel {
 
     private static CustomerModel instance;
 
-    private CustomerModel(){
+    private CustomerModel() throws SQLException {
         customerManager = new CustomerManager();
         customerToBeViewed = FXCollections.observableArrayList();
         adminModel = AdminModel.getInstance();
@@ -36,7 +36,7 @@ public class CustomerModel {
         alert.showAndWait();
     }
 
-    public static CustomerModel getInstance(){
+    public static CustomerModel getInstance() throws SQLException {
         if(instance == null){
             instance = new CustomerModel();
         }

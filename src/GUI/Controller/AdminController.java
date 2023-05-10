@@ -46,7 +46,12 @@ public class AdminController implements Initializable {
     private TechnicianModel technicianModel;
 
     public AdminController() {
-        adminModel = AdminModel.getInstance();
+        try {
+            adminModel = AdminModel.getInstance();
+        }catch (SQLException e){
+            e.printStackTrace();
+            alertUser("Could not get lists from database");
+        }
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -221,44 +226,53 @@ public class AdminController implements Initializable {
             alert.setHeaderText("Are you sure you want to delete: " + selectedCustomer.getName().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
-                adminModel.deleteCustomer(selectedCustomer);
-                //updateUserModel();
-                showUsersAndDocuments();
+                try {
+                    adminModel.deleteCustomer(selectedCustomer);
+                    //updateUserModel();
+                    showUsersAndDocuments();
+                }catch (SQLException e){
+                    alertUser("Could not delete customer");
+                }
             }
         }
     }
 
     public void handleUpdateCustomer(ActionEvent actionEvent) {
         selectedCustomer = tblCustomer.getSelectionModel().getSelectedItem();
-        customerModel = CustomerModel.getInstance();
         if(selectedCustomer == null){
             alertUser("Select a customer to update");
         }else {
-            customerModel.setCustomer(selectedCustomer);
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/GUI/View/Customer.fxml"));
             try {
-                AnchorPane pane = loader.load();
+                customerModel = CustomerModel.getInstance();
+                customerModel.setCustomer(selectedCustomer);
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/GUI/View/Customer.fxml"));
+                try {
+                    AnchorPane pane = loader.load();
 
 
-                CustomerController customerController = loader.getController();
-                CustomerModel.getInstance();
+                    CustomerController customerController = loader.getController();
+                    CustomerModel.getInstance();
 
-                customerController.setupUpdate(selectedCustomer);
+                    customerController.setupUpdate(selectedCustomer);
 
-                Stage dialogWindow = new Stage();
-                Scene scene = new Scene(pane);
-                dialogWindow.initModality(Modality.WINDOW_MODAL);
-                dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
-                dialogWindow.setScene(scene);
-                dialogWindow.showAndWait();
-                showUsersAndDocuments();
+                    Stage dialogWindow = new Stage();
+                    Scene scene = new Scene(pane);
+                    dialogWindow.initModality(Modality.WINDOW_MODAL);
+                    dialogWindow.initOwner((((Node) actionEvent.getSource()).getScene().getWindow()));
+                    dialogWindow.setScene(scene);
+                    dialogWindow.showAndWait();
+                    showUsersAndDocuments();
 
-            } catch (IOException e) {
-                e.printStackTrace();
-                alertUser("Error: Could not open the update customer window");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    alertUser("Error: Could not open the update customer window");
+                }
+            }catch (SQLException e){
+                alertUser("Could not open the update customer window");
             }
         }
+
 
     }
 

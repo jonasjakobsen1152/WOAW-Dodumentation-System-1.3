@@ -6,6 +6,7 @@ import BE.User;
 import BLL.AdminManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class AdminModel {
     private ObservableList<Job> documentsToBeViewed;
     private static AdminModel instance;
 
-    private AdminModel(){
+    private AdminModel() throws SQLException {
         adminManager = new AdminManager();
         usersToBeViewed = FXCollections.observableArrayList();
         usersToBeViewed.addAll(adminManager.getAllUsers());
@@ -29,18 +30,18 @@ public class AdminModel {
         documentsToBeViewed = FXCollections.observableArrayList();
         documentsToBeViewed.addAll(adminManager.getAllDocuments());
     }
-    public static AdminModel getInstance(){
+    public static AdminModel getInstance() throws SQLException {
         if(instance == null){
             instance = new AdminModel();
         }
         return instance;
     }
 
-    public ArrayList<User> getAdminList(){
+    public ArrayList<User> getAdminList() throws SQLException {
         return adminManager.getAllUsers();
     }
 
-    public ArrayList<Customer> getCustomerList(){
+    public ArrayList<Customer> getCustomerList() throws SQLException {
         return adminManager.getAllCustomer();
     }
 
@@ -50,31 +51,38 @@ public class AdminModel {
         return customerToBeViewed;
     }
 
-    public ArrayList<User> getAllUsers(){
+    public ArrayList<User> getAllUsers() throws SQLException {
         return adminManager.getAllUsers();
     }
 
-    public ArrayList<Customer> getAllCustomer(){
+    public ArrayList<Customer> getAllCustomer() throws SQLException {
         return adminManager.getAllCustomer();
     }
 
-    public ArrayList<Job> getAllDocuments(){return  adminManager.getAllDocuments();}
+    public ArrayList<Job> getAllDocuments() throws SQLException {return  adminManager.getAllDocuments();}
 
     public void deleteUser(User selectedUser) throws SQLException {
         adminManager.deleteUser(selectedUser);
         showList();
     }
 
-    public void deleteCustomer(Customer selectedCustomer){
+    public void deleteCustomer(Customer selectedCustomer) throws SQLException {
         adminManager.deleteCustomer(selectedCustomer);
         showList();
     }
     public void showList() {
-        getUsersToBeViewed().clear();
-        getUsersToBeViewed().addAll(adminManager.getAllUsers());
+        try {
+            getUsersToBeViewed().clear();
+            getUsersToBeViewed().addAll(adminManager.getAllUsers());
 
-        getCustomerToBeViewed().clear();
-        getCustomerToBeViewed().addAll(adminManager.getAllCustomer());
+            getCustomerToBeViewed().clear();
+            getCustomerToBeViewed().addAll(adminManager.getAllCustomer());
+        }catch (SQLException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Could not show list");
+            alert.setHeaderText("Could not show list");
+            alert.showAndWait();
+        }
 
     }
 

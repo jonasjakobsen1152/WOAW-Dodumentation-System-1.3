@@ -23,9 +23,9 @@ public class AdminManager {
     customerSearcher = new CustomerSearcher();
     }
 
-    public ArrayList<User> getAllUsers(){return adminDAO.getAllUsers();}
+    public ArrayList<User> getAllUsers() throws SQLException {return adminDAO.getAllUsers();}
 
-    public ArrayList<Customer> getAllCustomer(){
+    public ArrayList<Customer> getAllCustomer() throws SQLException {
         allCustomers = adminDAO.getAllCustomer();
         return allCustomers;
     }
@@ -34,11 +34,11 @@ public class AdminManager {
         adminDAO.deleteUser(selectedUser);
     }
 
-    public void deleteCustomer(Customer selectedCustomer){
+    public void deleteCustomer(Customer selectedCustomer) throws SQLException {
         adminDAO.deleteCustomer(selectedCustomer);
     }
 
-    public ArrayList<Job> getAllDocuments() {
+    public ArrayList<Job> getAllDocuments() throws SQLException {
         return adminDAO.getAllDocuments();
     }
 

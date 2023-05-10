@@ -30,7 +30,11 @@ public class CustomerController implements Initializable {
     public CustomerController customerController;
 
     public CustomerController(){
-        customerModel = CustomerModel.getInstance();
+        try {
+            customerModel = CustomerModel.getInstance();
+        }catch (SQLException e){
+            alertUser("Could not get the customer list");
+        }
     }
 
     @Override

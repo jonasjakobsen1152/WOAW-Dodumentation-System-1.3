@@ -33,7 +33,7 @@ public class AdminDAO_DB implements IAdminDAO {
     }
 
     @Override
-    public void deleteCustomer(Customer selectedCustomer) {
+    public void deleteCustomer(Customer selectedCustomer) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()) {
             String sql = "DELETE FROM Customer WHERE ID = ? AND Name = ?";
 
@@ -45,11 +45,12 @@ public class AdminDAO_DB implements IAdminDAO {
             stmt.executeUpdate();
 
         }catch (SQLException e){
+            throw new SQLException(e);
         }
     }
 
     @Override
-    public ArrayList<Customer> getAllCustomer() {
+    public ArrayList<Customer> getAllCustomer() throws SQLException {
         ArrayList<Customer> customers = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection();
@@ -67,14 +68,14 @@ public class AdminDAO_DB implements IAdminDAO {
                 Customer customer = new Customer(id,name,phone,email);
                 customers.add(customer);
             }
-        }catch (SQLException ex){
-            throw new RuntimeException();
+        }catch (SQLException e){
+            throw new SQLException(e);
         }
         return customers;
     }
 
     @Override
-    public ArrayList<Job> getAllDocuments() {
+    public ArrayList<Job> getAllDocuments() throws SQLException {
         ArrayList<Job> jobs = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection()){
@@ -95,15 +96,15 @@ public class AdminDAO_DB implements IAdminDAO {
                 Job job = new Job(id,title,userID,customerID);
                 jobs.add(job);
             }
-        }catch (SQLException ex){
-            throw new RuntimeException();
+        }catch (SQLException e){
+            throw new SQLException(e);
         }
         return jobs;
     }
 
 
     @Override
-    public ArrayList<User> getAllUsers() {
+    public ArrayList<User> getAllUsers() throws SQLException {
         ArrayList<User> users = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection();
@@ -121,8 +122,8 @@ public class AdminDAO_DB implements IAdminDAO {
                 User user = new User(id,username,password,role);
                 users.add(user);
             }
-        }catch (SQLException ex){
-            throw new RuntimeException();
+        }catch (SQLException e){
+            throw new SQLException(e);
         }
         return users;
     }

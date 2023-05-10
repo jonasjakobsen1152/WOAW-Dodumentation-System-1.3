@@ -14,7 +14,7 @@ public class CreateUpdateUserManager {
     public void createUser(String username, String password, String role) throws SQLException {
          createUpdateUserDAO.createUser(username,password,role);
     }
-    public void updateUser(User user) {
+    public void updateUser(User user) throws SQLException {
         createUpdateUserDAO.updateUser(user);
     }
 }

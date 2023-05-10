@@ -6,5 +6,5 @@ import java.sql.SQLException;
 
 public interface ICreateUpdateUserDAO {
     void createUser(String username, String password, String role) throws SQLException;
-    void updateUser(User user);
+    void updateUser(User user) throws SQLException;
 }

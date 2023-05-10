@@ -28,7 +28,7 @@ public class CreateUpdateUserDAO_DB implements ICreateUpdateUserDAO {
             throw new SQLException();
         }
     }
-    public void updateUser(User user) {
+    public void updateUser(User user) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){
             String sql = "UPDATE Users SET Username = ?, Password = ?, Role = ? WHERE ID = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -40,7 +40,7 @@ public class CreateUpdateUserDAO_DB implements ICreateUpdateUserDAO {
 
             stmt.executeUpdate();
         }catch (SQLException e){
-            throw new RuntimeException(e);
+            throw new SQLException(e);
         }
     }
 }
