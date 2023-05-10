@@ -118,7 +118,7 @@ public class ProjectManagerController implements Initializable {
             Thread thread = new Thread(task);
             thread.start();
         });
-        txtFilterTechnicians.textProperty().addListener((observable, oldValue, newValue ->{
+        txtFilterTechnicians.textProperty().addListener((observable, oldValue, newValue) ->{
             Runnable task = () -> projectManagerModel.searchTechnicians(newValue);
             Thread thread = new Thread(task);
             thread.start();

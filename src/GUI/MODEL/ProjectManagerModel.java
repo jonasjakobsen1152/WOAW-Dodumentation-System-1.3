@@ -118,6 +118,6 @@ public class ProjectManagerModel {
     public void searchTechnicians(String query) {
         List<User> searchResults = projectManagerManager.searchTechnician(query);
         customerToBeViewed.clear();
-        customerToBeViewed.addAll(searchResults);
+        //customerToBeViewed.addAll(searchResults);
     }
 }
