@@ -5,10 +5,7 @@ import BE.Job;
 import BE.User;
 import DAL.ITechnicianDAO;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,25 +19,26 @@ public class TechnicianDAO_DB implements ITechnicianDAO {
     public List<Job> getWork(User selectedUser) {
         ArrayList<Job> jobs = new ArrayList<>();
 
-        try(Connection conn = databaseConnector.getConnection();
-            Statement stmt = conn.createStatement()){
-            String sql =
-                    "SELECT j.Title " +
-                            "FROM Job j " +
-                            "INNER JOIN UserOnJob uoj ON j.ID = uoj.JobID " +
-                            "WHERE uoj.UserID = ?;";
+        try (Connection conn = databaseConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(
+                     "SELECT j.ID, j.Title, j.CustomerID " +
+                             "FROM Job j " +
+                             "INNER JOIN UserOnJob uoj ON j.ID = uoj.JobID " +
+                             "WHERE uoj.UserID = ?")) {
 
-            ResultSet rs = stmt.executeQuery(sql);
+            stmt.setInt(1, selectedUser.getId());
 
-            while(rs.next()){
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
                 int id = rs.getInt("ID");
                 String title = rs.getString("Title");
                 int customerId = rs.getInt("CustomerID");
 
-                Job job = new Job(id,title,customerId);
+                Job job = new Job(id, title, customerId);
                 jobs.add(job);
             }
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             throw new RuntimeException();
         }
         return jobs;
