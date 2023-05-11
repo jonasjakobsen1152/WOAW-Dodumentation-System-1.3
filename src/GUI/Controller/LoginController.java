@@ -39,6 +39,7 @@ public class LoginController {
             for (User userToMatch: matchingUsernames) {
                 String hashedPassword = userToMatch.getPassword();
                 if(BCrypt.checkpw(passwordFromText,hashedPassword)){ // Checks if the password is equal
+                    loginModel.setLoggedInUser(userToMatch);
                     openBasedOnRole(userToMatch);
                 }
             }
@@ -60,7 +61,7 @@ public class LoginController {
             stage.close();
         }
         else if (user.getRole().equals("Technician")) {
-        //TODO handle open technician
+        handleOpenTechnician(new ActionEvent());
             stage.close();
         }
         else if (user.getRole().equals("Sales")) {

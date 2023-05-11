@@ -1,9 +1,11 @@
 package GUI.Controller;
 
+import BE.Job;
 import BE.User;
 import GUI.MODEL.CreateUpdateUserModel;
 import GUI.MODEL.TechnicianModel;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -23,14 +25,21 @@ import java.util.ResourceBundle;
 
 public class TechnicianController implements Initializable {
 
-    public TableColumn clmTitleWork;
-    public TableView tblWork;
+    @FXML
+    private TableView<Job> tblWork;
+    @FXML
+    private TableColumn clmTitleWork;
     private TechnicianModel technicianModel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         technicianModel = TechnicianModel.getInstance();
         showWork();
+    }
+
+    public void showWork(){
+        clmTitleWork.setCellValueFactory(new PropertyValueFactory<User,String>("title"));
+        tblWork.setItems(technicianModel.getWorkToBeViewed());
     }
 
     public void handleOpenDocumentation(ActionEvent actionEvent) {
@@ -58,13 +67,6 @@ public class TechnicianController implements Initializable {
     }
 
     public void handleFinishJob(ActionEvent actionEvent) {
-    }
-
-
-    public void showWork(){
-        clmTitleWork.setCellValueFactory(new PropertyValueFactory<User,String>("title"));
-
-        tblWork.setItems(technicianModel.getWorkToBeViewed());
     }
 
 
