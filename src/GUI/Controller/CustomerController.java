@@ -87,5 +87,6 @@ public class CustomerController implements Initializable {
         txtName.setText(selectedCustomer.getName());
         txtEmail.setText(selectedCustomer.getEmail());
         txtPhoneNumber.setText(selectedCustomer.getPhone()+"");
+        txtAddress.setText(selectedCustomer.getAddress());
     }
 }

@@ -3,10 +3,7 @@ package GUI.Controller;
 import BE.Customer;
 import BE.Job;
 import BE.User;
-import GUI.MODEL.CreateUpdateJobModel;
-import GUI.MODEL.CreateUpdateUserModel;
-import GUI.MODEL.CustomerModel;
-import GUI.MODEL.ProjectManagerModel;
+import GUI.MODEL.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -62,6 +59,7 @@ public class ProjectManagerController implements Initializable {
     @FXML
     private TableColumn clmShowDocument;
     public ProjectManagerModel projectManagerModel;
+    public DocumentationModel documentationModel;
     private User selectedUser;
     CreateUpdateUserModel createUpdateUserModel;
     CreateUpdateJobModel createUpdateJobModel;
@@ -78,6 +76,7 @@ public class ProjectManagerController implements Initializable {
         }
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
         customerModel = CustomerModel.getInstance();
+        documentationModel = DocumentationModel.getInstance();
 
     }
 
@@ -374,6 +373,7 @@ public class ProjectManagerController implements Initializable {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
         try {
+            documentationModel.setSelectedJob(selectedDocument);
             AnchorPane pane = loader.load();
 
             Stage dialogWindow = new Stage();
