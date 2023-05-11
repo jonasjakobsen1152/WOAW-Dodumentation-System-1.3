@@ -56,12 +56,6 @@ public class ProjectManagerModel {
         alert.showAndWait();
     }
 
-    public void searchCustomers(String query) {
-        List<Customer> searchResults = projectManagerManager.searchCustomer(query);
-        customerToBeViewed.clear();
-        customerToBeViewed.addAll(searchResults);
-    }
-
     public ArrayList<User> getTechnicianList(){
         return projectManagerManager.getAllUsers("Technician");
     }
@@ -115,9 +109,26 @@ public class ProjectManagerModel {
         showList();
     }
 
+    public void searchCustomers(String query) {
+        List<Customer> searchResults = projectManagerManager.searchCustomer(query);
+        customerToBeViewed.clear();
+        customerToBeViewed.addAll(searchResults);
+    }
+
     public void searchTechnicians(String query) {
         List<User> searchResults = projectManagerManager.searchTechnician(query);
-        customerToBeViewed.clear();
-        //customerToBeViewed.addAll(searchResults);
+        technicianToBeViewed.clear();
+        technicianToBeViewed.addAll(searchResults);
+    }
+
+    public void searchSalesmen(String query) {
+        List<User> searchResults = projectManagerManager.searchSalesmen(query);
+        salesmenToBeViewed.clear();
+        salesmenToBeViewed.addAll(searchResults);
+    }
+    public void searchJobs(String query) {
+        List<Job> searchResults = projectManagerManager.searchJobs(query);
+        documentToBeViewed.clear();
+        documentToBeViewed.addAll(searchResults);
     }
 }

@@ -4,6 +4,9 @@ import BE.Customer;
 import BE.Job;
 import BE.User;
 import BLL.UTIL.CustomerSearcher;
+import BLL.UTIL.JobSearcher;
+import BLL.UTIL.SalesmenSearcher;
+import BLL.UTIL.TechnicianSearcher;
 import DAL.DB.ProjectManagerDAO_DB;
 import DAL.IProjectManagerDAO;
 
@@ -18,12 +21,27 @@ public class ProjectManagerManager {
 
     private ArrayList<Customer> allCustomers;
     private ArrayList<User> allTechnicians;
+    private ArrayList<User> allSalesmen;
+    private ArrayList<Job> allDocuments;
+    private TechnicianSearcher technicianSearcher;
+    private SalesmenSearcher salesmenSearcher;
+    private JobSearcher jobSearcher;
 
     public ProjectManagerManager(){
         projectManagerDAO = new ProjectManagerDAO_DB();
 
         allCustomers = new ArrayList<>();
+        allTechnicians = new ArrayList<>();
+        allSalesmen = new ArrayList<>();
         customerSearcher = new CustomerSearcher();
+        technicianSearcher = new TechnicianSearcher();
+        salesmenSearcher = new SalesmenSearcher();
+        jobSearcher = new JobSearcher();
+        allTechnicians = projectManagerDAO.getAllUsers("Technician");
+        allSalesmen = projectManagerDAO.getAllUsers("Salesmen");
+
+
+
     }
 
     public ArrayList<User> getAllUsers(String role){
@@ -35,6 +53,7 @@ public class ProjectManagerManager {
     }
 
     public ArrayList<Job> getAllDocuments() {
+        allDocuments = projectManagerDAO.getAllDocuments();
         return projectManagerDAO.getAllDocuments();
     }
 
@@ -57,8 +76,16 @@ public class ProjectManagerManager {
     }
 
     public List<User> searchTechnician(String query) {
-        //List<User> searchResult = technicianSearcher.search(allTechnicians,query);
-        //return searchResult;
-        return null;
+        List<User> searchResult = technicianSearcher.search(allTechnicians,query);
+        return searchResult;
+    }
+
+    public List<User> searchSalesmen(String query){
+        List<User> searchResult = salesmenSearcher.search(allSalesmen,query);
+        return searchResult;
+    }
+    public List<Job> searchJobs(String query){
+        List<Job> searchResult = jobSearcher.search(allDocuments,query);
+        return searchResult;
     }
 }
