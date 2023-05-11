@@ -32,10 +32,9 @@ public class TechnicianDAO_DB implements ITechnicianDAO {
             while(rs.next()){
                 int id = rs.getInt("ID");
                 String title = rs.getString("Title");
-                int userID = rs.getInt("UserID");
                 int customerId = rs.getInt("CustomerID");
 
-                Job job = new Job(id,title,userID,customerId);
+                Job job = new Job(id,title,customerId);
                 jobs.add(job);
             }
         }catch (SQLException ex){

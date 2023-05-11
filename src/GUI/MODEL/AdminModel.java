@@ -95,4 +95,16 @@ public class AdminModel {
         customerToBeViewed.clear();
         customerToBeViewed.addAll(searchResults);
     }
+
+    public void searchUsers(String query) {
+        List<User> searchResults = adminManager.searchUsers(query);
+        usersToBeViewed.clear();
+        usersToBeViewed.addAll(searchResults);
+    }
+
+    public void searchJobs(String query) {
+        List<Job> searchResults = adminManager.searchJobs(query);
+        documentsToBeViewed.clear();
+        documentsToBeViewed.addAll(searchResults);
+    }
 }

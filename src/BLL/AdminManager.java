@@ -4,6 +4,8 @@ import BE.Customer;
 import BE.Job;
 import BE.User;
 import BLL.UTIL.CustomerSearcher;
+import BLL.UTIL.JobSearcher;
+import BLL.UTIL.UserSearcher;
 import DAL.DB.AdminDAO_DB;
 import DAL.IAdminDAO;
 
@@ -16,14 +18,23 @@ public class AdminManager {
     private IAdminDAO adminDAO;
 
     private ArrayList<Customer> allCustomers;
+    private ArrayList<User> allUsers;
     private CustomerSearcher customerSearcher;
+    private UserSearcher userSearcher;
+    private JobSearcher jobSearcher;
+    private ArrayList<Job> allJobs;
     public AdminManager()
     {
         adminDAO = new AdminDAO_DB();
-    customerSearcher = new CustomerSearcher();
+        customerSearcher = new CustomerSearcher();
+        userSearcher = new UserSearcher();
+        jobSearcher = new JobSearcher();
     }
 
-    public ArrayList<User> getAllUsers() throws SQLException {return adminDAO.getAllUsers();}
+    public ArrayList<User> getAllUsers() throws SQLException {
+        allUsers = adminDAO.getAllUsers();
+        return allUsers;
+    }
 
     public ArrayList<Customer> getAllCustomer() throws SQLException {
         allCustomers = adminDAO.getAllCustomer();
@@ -39,11 +50,22 @@ public class AdminManager {
     }
 
     public ArrayList<Job> getAllDocuments() throws SQLException {
-        return adminDAO.getAllDocuments();
+        allJobs =adminDAO.getAllDocuments();
+        return allJobs;
     }
 
     public List<Customer> searchCustomers(String query) {
         List<Customer> searchResult = customerSearcher.search(allCustomers,query);
+        return searchResult;
+    }
+
+    public List<User> searchUsers(String query) {
+        List<User> searchResult = userSearcher.search(allUsers,query);
+        return searchResult;
+    }
+
+    public List<Job> searchJobs(String query) {
+        List<Job> searchResult = jobSearcher.search(allJobs,query);
         return searchResult;
     }
 }
