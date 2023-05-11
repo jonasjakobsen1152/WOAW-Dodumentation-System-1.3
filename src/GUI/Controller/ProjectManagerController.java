@@ -111,6 +111,19 @@ public class ProjectManagerController implements Initializable {
         tblShowDocument.setOnMouseClicked(event -> {
             selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
         });
+        searchListeners();
+
+
+
+
+    }
+
+    public void searchListeners(){
+        txtFilterTechnicians.textProperty().addListener((observable, oldValue, newValue) ->{
+            Runnable task = () -> projectManagerModel.searchTechnicians(newValue);
+            Thread thread = new Thread(task);
+            thread.start();
+        });
 
         txtFilter.textProperty().addListener((observable, oldValue, newValue) -> {
             Runnable task = () -> projectManagerModel.searchCustomers(newValue);
@@ -118,8 +131,15 @@ public class ProjectManagerController implements Initializable {
             Thread thread = new Thread(task);
             thread.start();
         });
-        txtFilterTechnicians.textProperty().addListener((observable, oldValue, newValue) ->{
-            Runnable task = () -> projectManagerModel.searchTechnicians(newValue);
+
+        txtFilterSalesmen.textProperty().addListener((observable, oldValue, newValue) ->{
+            Runnable task = () -> projectManagerModel.searchSalesmen(newValue);
+            Thread thread = new Thread(task);
+            thread.start();
+        });
+
+        txtFilterJobs.textProperty().addListener((observable, oldValue, newValue) ->{
+            Runnable task = () -> projectManagerModel.searchJobs(newValue);
             Thread thread = new Thread(task);
             thread.start();
         });
@@ -377,6 +397,7 @@ public class ProjectManagerController implements Initializable {
         btnCreateTechnician.setVisible(true);
         btnEditUser.setVisible(true);
         btnAddWork.setVisible(true);
+        txtFilterTechnicians.setVisible(true);
     }
 
     public void handleShowCustomers(ActionEvent actionEvent) {
@@ -393,6 +414,7 @@ public class ProjectManagerController implements Initializable {
         btnCreateSalesmen.setVisible(true);
         btnDeleteSalesmen.setVisible(true);
         btnEditUser.setVisible(true);
+        txtFilterSalesmen.setVisible(true);
 
     }
 
@@ -401,6 +423,7 @@ public class ProjectManagerController implements Initializable {
         tblShowDocument.setVisible(true);
         btnSendPDF.setVisible(true);
         btnShowJobs.setVisible(true);
+        txtFilterJobs.setVisible(true);
     }
 
     public void setVisibleFalse(){
@@ -423,6 +446,9 @@ public class ProjectManagerController implements Initializable {
         btnDeleteCustomer.setVisible(false);
 
         txtFilter.setVisible(false);
+        txtFilterTechnicians.setVisible(false);
+        txtFilterJobs.setVisible(false);
+        txtFilterSalesmen.setVisible(false);
 
     }
 
