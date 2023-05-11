@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -46,5 +47,6 @@
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
+      <TextField fx:id="txtfTitle" layoutX="556.0" layoutY="86.0" prefHeight="35.0" prefWidth="169.0" promptText="Title Of The Note:" />
    </children>
 </AnchorPane>
