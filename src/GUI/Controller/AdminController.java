@@ -40,6 +40,8 @@ public class AdminController implements Initializable {
     public TableColumn clmTitle;
     public TableView<Job> tblDocument;
     public TextField txtSearch;
+    public TextField txtSearchJobs;
+    public TextField txtSearchUsers;
     private User selectedUser;
     private Customer selectedCustomer;
     private CreateUpdateUserModel createUpdateUserModel;
@@ -62,11 +64,28 @@ public class AdminController implements Initializable {
             selectedUser = tblUser.getSelectionModel().getSelectedItem();
         });
 
-        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            Runnable task = () -> adminModel.searchCustomers(newValue);
+        searchListeners();
+    }
+
+    public void searchListeners(){
+        txtSearchUsers.textProperty().addListener((observable, oldValue, newValue) ->{
+            Runnable task = () -> adminModel.searchUsers(newValue);
             Thread thread = new Thread(task);
             thread.start();
         });
+
+        txtSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+                    Runnable task = () -> adminModel.searchCustomers(newValue);
+                    Thread thread = new Thread(task);
+                    thread.start();
+        });
+
+        txtSearchJobs.textProperty().addListener((observable, oldValue, newValue) ->{
+            Runnable task = () -> adminModel.searchJobs(newValue);
+            Thread thread = new Thread(task);
+            thread.start();
+        });
+
     }
 
     /**

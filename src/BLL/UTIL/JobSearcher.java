@@ -11,7 +11,7 @@ public class JobSearcher {
         List<Job> searchResult = new ArrayList<>();
 
         for (Job job: searchBase) {
-            if(compareToUsername(query,job)){
+            if(compareToTitle(query,job)){
                 searchResult.add(job);
             }
         }
@@ -19,7 +19,7 @@ public class JobSearcher {
         return searchResult;
     }
 
-    private boolean compareToUsername(String query, Job job){
+    private boolean compareToTitle(String query, Job job){
         return job.getTitle().toLowerCase().contains(query.toLowerCase());
     }
 }
