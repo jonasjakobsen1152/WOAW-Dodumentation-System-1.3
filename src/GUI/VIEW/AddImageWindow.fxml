@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="353.0" prefWidth="548.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.DocumentationController">
+<AnchorPane prefHeight="353.0" prefWidth="548.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AddImageController">
    <children>
       <MFXButton layoutX="181.0" layoutY="81.0" onAction="#handleChoosePicture" prefHeight="55.0" prefWidth="194.0" text="Choose An Image">
          <font>

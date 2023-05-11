@@ -1,25 +1,49 @@
 package GUI.Controller;
 
+import BE.Documentation;
+import BLL.UTIL.BCrypt;
+import GUI.MODEL.DocumentationModel;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 
 public class DocumentationController {
-    public void handleFinishDocumentation(ActionEvent actionEvent) {
+    public TextArea txtaPublicInformation;
+    public TextArea txtaPrivateinformation;
+    public TextField txtfDocumentationTitle;
+    public DocumentationModel documentationModel;
+
+    public DocumentationController(){
+        documentationModel = DocumentationModel.getInstance();
     }
 
-    public void handleFinishImage(ActionEvent actionEvent) {
-    }
-
-    public void handleChoosePicture(ActionEvent actionEvent) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select Documentation File");
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            String filePath = selectedFile.getAbsolutePath();
-            // Do something with the file path, e.g. save it or display it to the user
-            System.out.println("Selected file path: " + filePath);
+    public void handleCreateDocumentation(ActionEvent actionEvent) {
+        String title = txtfDocumentationTitle.getText();
+        String publicText = txtaPublicInformation.getText();
+        String privateText = txtaPrivateinformation.getText();
+        Documentation documentation = new Documentation(title,publicText,privateText);
+        try{
+            documentationModel.createDocumentation(documentation);
+            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.close();
+        }catch (Exception e){
+            alertUser("Could not create documentation");
+            e.printStackTrace();
         }
+
     }
+
+    private void alertUser(String error) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(error);
+        alert.setHeaderText(error + "");
+        alert.showAndWait();
+    }
+
 }

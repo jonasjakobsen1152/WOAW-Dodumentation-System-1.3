@@ -21,7 +21,7 @@
             <TableColumn fx:id="clmImages" prefWidth="282.0" styleClass="table-colum" text="Images" />
          </columns>
       </TableView>
-      <MFXButton layoutX="371.0" layoutY="121.0" onAction="#handleAddDocumentation" prefHeight="49.0" prefWidth="154.0" text="Add Device" />
+      <MFXButton layoutX="371.0" layoutY="121.0" onAction="#handleAddDocumentation" prefHeight="49.0" prefWidth="154.0" text="Add Documentation" />
       <MFXButton layoutX="371.0" layoutY="213.0" onAction="#handleUpdateDocumentation" prefHeight="49.0" prefWidth="154.0" text="Edit Documentation" />
       <MFXButton layoutX="371.0" layoutY="307.0" onAction="#handleDeleteDocumentation" prefHeight="49.0" prefWidth="154.0" text="Delete Documentation" />
       <MFXButton layoutX="909.0" layoutY="121.0" onAction="#HandleAddImage" prefHeight="49.0" prefWidth="154.0" text="Add Image" />
