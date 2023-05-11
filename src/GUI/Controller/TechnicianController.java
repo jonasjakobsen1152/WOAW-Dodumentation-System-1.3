@@ -3,6 +3,7 @@ package GUI.Controller;
 import BE.Job;
 import BE.User;
 import GUI.MODEL.CreateUpdateUserModel;
+import GUI.MODEL.LoginModel;
 import GUI.MODEL.TechnicianModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,6 +31,8 @@ public class TechnicianController implements Initializable {
     @FXML
     private TableColumn clmTitleWork;
     private TechnicianModel technicianModel;
+
+    private LoginModel loginModel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

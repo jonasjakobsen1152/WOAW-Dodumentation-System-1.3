@@ -11,13 +11,20 @@ import java.util.List;
 public class TechnicianModel {
     TechnicianManager technicianManager;
     private static TechnicianModel instance;
-    public User selectedUser;
+
+    private User selectedUser;
+
+    private LoginModel loginModel;
+
     public ObservableList<Job> workToBeViewed;
 
     private TechnicianModel(){
         technicianManager = new TechnicianManager();
+        loginModel = LoginModel.getInstance();
         workToBeViewed = FXCollections.observableArrayList();
 
+        selectedUser = loginModel.getLoggedInUser();
+        showList();
     }
 
     public static TechnicianModel getInstance(){

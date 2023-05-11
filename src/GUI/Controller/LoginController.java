@@ -3,6 +3,7 @@ package GUI.Controller;
 import BE.User;
 import BLL.UTIL.BCrypt;
 import GUI.MODEL.LoginModel;
+import GUI.MODEL.TechnicianModel;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
@@ -39,7 +40,6 @@ public class LoginController {
             for (User userToMatch: matchingUsernames) {
                 String hashedPassword = userToMatch.getPassword();
                 if(BCrypt.checkpw(passwordFromText,hashedPassword)){ // Checks if the password is equal
-                    loginModel.setLoggedInUser(userToMatch);
                     openBasedOnRole(userToMatch);
                 }
             }
@@ -52,6 +52,7 @@ public class LoginController {
 
     private void openBasedOnRole(User user){
         Stage stage = (Stage) btnLogin.getScene().getWindow();
+        loginModel.setLoggedInUser(user);
         if(user.getRole().equals("Admin")){
             handleOpenAdmin(new ActionEvent());
             stage.close();
