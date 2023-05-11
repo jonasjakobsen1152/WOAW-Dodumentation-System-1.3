@@ -23,7 +23,12 @@ public class DocumentationModel {
         return instance;
     }
 
-    public void createDocumentation(Documentation documentation) throws SQLServerException {
+    public void showList() throws SQLException {
+
+
+    }
+
+    public void createDocumentation(Documentation documentation) throws SQLException {
         documentationManager.createDocumentation(documentation,selectedJob);
     }
 

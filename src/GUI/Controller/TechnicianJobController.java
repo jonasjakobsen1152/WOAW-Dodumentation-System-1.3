@@ -34,7 +34,7 @@ public class TechnicianJobController {
             dialogWindow.showAndWait();
         }catch (IOException e){
             e.printStackTrace();
-            alertUser("Could not open the image window");
+            alertUser("Could not open the documentation window");
         }
     }
 

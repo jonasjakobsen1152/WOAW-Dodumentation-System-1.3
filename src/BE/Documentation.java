@@ -1,14 +1,34 @@
 package BE;
 
 public class Documentation {
+    public int id;
     public String title;
     public String publicText;
     public String privateText;
+    public int jobId;
 
-    public Documentation(String title, String publicText, String privateText) {
+    public Documentation(int id, String title, String publicText, String privateText, int jobId) {
+        this.id = id;
         this.title = title;
         this.publicText = publicText;
         this.privateText = privateText;
+        this.jobId = jobId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(int jobId) {
+        this.jobId = jobId;
     }
 
     public String getTitle() {

@@ -37,7 +37,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <MFXButton layoutX="361.0" layoutY="755.0" onAction="#handleFinishDocumentation" prefHeight="66.0" prefWidth="152.0" text="Finish" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="361.0">
+      <MFXButton layoutX="361.0" layoutY="755.0" onAction="#handleCreateDocumentation" prefHeight="66.0" prefWidth="152.0" text="Finish" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="361.0">
          <font>
             <Font size="18.0" />
          </font>

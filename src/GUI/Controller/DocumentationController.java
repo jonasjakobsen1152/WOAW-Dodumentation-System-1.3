@@ -27,7 +27,7 @@ public class DocumentationController {
         String title = txtfDocumentationTitle.getText();
         String publicText = txtaPublicInformation.getText();
         String privateText = txtaPrivateinformation.getText();
-        Documentation documentation = new Documentation(title,publicText,privateText);
+        Documentation documentation = new Documentation(1,title,publicText,privateText,documentationModel.getSelectedJob().getId());
         try{
             documentationModel.createDocumentation(documentation);
             Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

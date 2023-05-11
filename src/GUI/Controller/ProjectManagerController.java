@@ -64,6 +64,7 @@ public class ProjectManagerController implements Initializable {
     CreateUpdateUserModel createUpdateUserModel;
     CreateUpdateJobModel createUpdateJobModel;
     CustomerModel customerModel;
+    TechnicianJobModel technicianJobModel;
     private User selectedTechnician;
     private Customer selectedCustomer;
     private Job selectedDocument;
@@ -77,6 +78,7 @@ public class ProjectManagerController implements Initializable {
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
         customerModel = CustomerModel.getInstance();
         documentationModel = DocumentationModel.getInstance();
+        technicianJobModel = TechnicianJobModel.getInstance();
 
     }
 
@@ -374,6 +376,8 @@ public class ProjectManagerController implements Initializable {
         loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
         try {
             documentationModel.setSelectedJob(selectedDocument);
+            technicianJobModel.setSelectedJob(selectedDocument);
+
             AnchorPane pane = loader.load();
 
             Stage dialogWindow = new Stage();
