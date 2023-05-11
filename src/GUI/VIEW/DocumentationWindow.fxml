@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="883.0" prefWidth="1281.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.DocumentationController">
+   <children>
+      <Text fill="WHITE" layoutX="501.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Documentation Window" AnchorPane.leftAnchor="499.22265625" AnchorPane.rightAnchor="521.77734375" AnchorPane.topAnchor="32.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="txtaPublicInformation" layoutX="360.0" layoutY="128.0" prefHeight="267.0" prefWidth="539.0" promptText="Write here:" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="383.0" AnchorPane.topAnchor="128.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextArea>
+      <TextArea fx:id="txtaPrivateinformation" layoutX="360.0" layoutY="466.0" prefHeight="267.0" prefWidth="539.0" promptText="Write here:" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="383.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextArea>
+      <Text fill="WHITE" layoutX="361.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Public Information:" AnchorPane.leftAnchor="361.0" AnchorPane.topAnchor="90.576171875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="361.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Private Information:" AnchorPane.bottomAnchor="430.482421875" AnchorPane.leftAnchor="361.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <MFXButton layoutX="361.0" layoutY="755.0" onAction="#handleFinishDocumentation" prefHeight="66.0" prefWidth="152.0" text="Finish" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="361.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </MFXButton>
+      <ImageView fitHeight="77.0" fitWidth="232.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/Screenshot_1.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
