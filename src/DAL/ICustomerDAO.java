@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public interface ICustomerDAO {
 
-    void createCustomer(String name, int phone, String email) throws SQLException;
+    void createCustomer(String name, int phone, String email, String address) throws SQLException;
     void updateCustomer(Customer customer);
     public ArrayList<Customer> getAllCustomer() throws SQLException;
 }

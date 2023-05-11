@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CustomerController implements Initializable {
+    public TextField txtAddress;
     @FXML
     private Button btnUpdate;
     @FXML
@@ -46,8 +47,9 @@ public class CustomerController implements Initializable {
         String name = txtName.getText();
         int phone = Integer.parseInt(txtPhoneNumber.getText());
         String email = txtEmail.getText();
+        String address = txtAddress.getText();
         try {
-            customerModel.createCustomer(name, phone, email);
+            customerModel.createCustomer(name, phone, email, address);
             Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
             stage.close();
         } catch (Exception e){
@@ -67,7 +69,8 @@ public class CustomerController implements Initializable {
         String name = txtName.getText();
         int phone = Integer.parseInt(txtPhoneNumber.getText());
         String email = txtEmail.getText();
-        Customer customer = new Customer(customerModel.getSelectedCustomer().getId(),name,phone,email);
+        String address = txtAddress.getText();
+        Customer customer = new Customer(customerModel.getSelectedCustomer().getId(),name,phone,email,address);
         try {
             customerModel.updateCustomer(customer);
             Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();

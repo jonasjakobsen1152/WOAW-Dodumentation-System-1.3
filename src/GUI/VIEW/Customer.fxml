@@ -16,7 +16,8 @@
       <TextField fx:id="txtName" layoutX="160.0" layoutY="107.0" prefHeight="47.0" prefWidth="175.0" promptText="Name" />
       <TextField fx:id="txtPhoneNumber" layoutX="160.0" layoutY="183.0" prefHeight="47.0" prefWidth="175.0" promptText="Phone number" />
       <TextField fx:id="txtEmail" layoutX="160.0" layoutY="252.0" prefHeight="47.0" prefWidth="175.0" promptText="E-mail" />
-      <Button fx:id="btnCreate" layoutX="92.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleCreateCustomer" prefHeight="47.0" prefWidth="127.0" text="Create" />
-      <Button fx:id="btnUpdate" layoutX="272.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleUpdateCustomer" prefHeight="47.0" prefWidth="127.0" text="Update" />
+      <Button fx:id="btnCreate" layoutX="97.0" layoutY="393.0" mnemonicParsing="false" onAction="#handleCreateCustomer" prefHeight="47.0" prefWidth="127.0" text="Create" />
+      <Button fx:id="btnUpdate" layoutX="272.0" layoutY="393.0" mnemonicParsing="false" onAction="#handleUpdateCustomer" prefHeight="47.0" prefWidth="127.0" text="Update" />
+      <TextField fx:id="txtAddress" layoutX="160.0" layoutY="325.0" prefHeight="47.0" prefWidth="175.0" promptText="Address" />
    </children>
 </AnchorPane>

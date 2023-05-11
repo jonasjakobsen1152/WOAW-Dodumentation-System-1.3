@@ -5,12 +5,22 @@ public class Customer {
     String name;
     int phone;
     String email;
+    String address;
 
-    public Customer(int id, String name, int phone, String email) {
+    public Customer(int id, String name, int phone, String email, String address) {
         Id = id;
         this.name = name;
         this.phone = phone;
         this.email = email;
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getId() {

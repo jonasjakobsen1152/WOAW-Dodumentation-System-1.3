@@ -43,8 +43,8 @@ public class CustomerModel {
         return instance;
     }
 
-    public void createCustomer(String name, int phone, String email) throws SQLException {
-        customerManager.createCustomer(name,phone,email);
+    public void createCustomer(String name, int phone, String email, String address) throws SQLException {
+        customerManager.createCustomer(name,phone,email,address);
         showList();
     }
 

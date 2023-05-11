@@ -10,12 +10,16 @@ public class CustomerSearcher {
         List<Customer> searchResult = new ArrayList<>();
 
         for (Customer customer: searchBase) {
-            if(compareToCustomerName(query,customer) || compareToCustomerPhoneNumber(query,customer) || compareToCustomerEmail(query,customer)){
+            if(compareToCustomerName(query,customer) || compareToCustomerPhoneNumber(query,customer) || compareToCustomerEmail(query,customer) || compareToCustomerAddress(query,customer)){
                 searchResult.add(customer);
             }
         }
 
         return searchResult;
+    }
+
+    private boolean compareToCustomerAddress(String query, Customer customer) {
+        return customer.getAddress().toLowerCase().contains(query.toLowerCase());
     }
 
     private boolean compareToCustomerName(String query, Customer customer){
@@ -29,4 +33,6 @@ public class CustomerSearcher {
     private boolean compareToCustomerEmail(String query, Customer customer){
         return customer.getEmail().toLowerCase().contains(query.toLowerCase());
     }
+
+
 }

@@ -64,8 +64,9 @@ public class AdminDAO_DB implements IAdminDAO {
                 String name = rs.getString("Name");
                 int phone = Integer.parseInt(rs.getString("Phone"));
                 String email = rs.getString("Email");
+                String address = rs.getString("Address");
 
-                Customer customer = new Customer(id,name,phone,email);
+                Customer customer = new Customer(id,name,phone,email, address);
                 customers.add(customer);
             }
         }catch (SQLException e){

@@ -40,6 +40,7 @@ public class AdminController implements Initializable {
     public TableColumn clmTitle;
     public TableView<Job> tblDocument;
     public TextField txtSearch;
+    public TableColumn clmAddress;
     private User selectedUser;
     private Customer selectedCustomer;
     private CreateUpdateUserModel createUpdateUserModel;
@@ -175,6 +176,7 @@ public class AdminController implements Initializable {
         clmName.setCellValueFactory(new PropertyValueFactory<Customer,String>("name"));
         clmPhone.setCellValueFactory(new PropertyValueFactory<Customer,String>("phone"));
         clmEmail.setCellValueFactory(new PropertyValueFactory<Customer,String>("email"));
+        clmAddress.setCellValueFactory(new PropertyValueFactory<Customer,String>("address"));
 
         tblCustomer.setItems(adminModel.getCustomerToBeViewed());
 

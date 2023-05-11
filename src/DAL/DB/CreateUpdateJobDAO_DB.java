@@ -49,8 +49,9 @@ public class CreateUpdateJobDAO_DB implements ICreateUpdateJobDAO {
                 String name = rs.getString("Name");
                 int phone = rs.getInt("Phone");
                 String email = rs.getString("Email");
+                String address = rs.getString("Address");
 
-                Customer customer = new Customer(id,name,phone,email);
+                Customer customer = new Customer(id,name,phone,email,address);
                 customers.add(customer);
             }
         } catch (SQLException e) {

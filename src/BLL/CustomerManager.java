@@ -15,8 +15,8 @@ public class CustomerManager {
         customerDAO = new CustomerDAO_DB();
     }
 
-    public void createCustomer(String name, int phone, String email) throws SQLException {
-        customerDAO.createCustomer(name,phone,email);
+    public void createCustomer(String name, int phone, String email, String address) throws SQLException {
+        customerDAO.createCustomer(name,phone,email,address);
     }
     public ArrayList<Customer> getAllCustomer() throws SQLException {
         return customerDAO.getAllCustomer();
