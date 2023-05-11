@@ -14,6 +14,9 @@ public class LoginModel {
 
     public ArrayList<User> allUsers;
 
+    public User loggedInUser;
+
+
     private LoginModel() {
         loginManager = new LoginManager();
         allUsers = new ArrayList<>();
@@ -29,5 +32,13 @@ public class LoginModel {
     public ArrayList<User> getAllUsers(String usernameText) throws SQLException {
         allUsers = loginManager.getAllUsers(usernameText);
         return allUsers;
+    }
+
+    public User getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(User loggedInUser) {
+        this.loggedInUser = loggedInUser;
     }
 }

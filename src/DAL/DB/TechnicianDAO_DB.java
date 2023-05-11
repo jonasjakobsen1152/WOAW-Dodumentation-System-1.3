@@ -25,7 +25,11 @@ public class TechnicianDAO_DB implements ITechnicianDAO {
         try(Connection conn = databaseConnector.getConnection();
             Statement stmt = conn.createStatement()){
             int userId = selectedUser.getId();
-            String sql = "Select * from Job WHERE UserID =" + userId + ";";
+            String sql =
+                    "SELECT j.Title " +
+                    "FROM Job j " +
+                    "INNER JOIN UserOnJob uoj ON j.ID = uoj.JobID" +
+                    "WHERE j.CustomerID = ? AND uoj.UserID = ?;";
 
             ResultSet rs = stmt.executeQuery(sql);
 

@@ -18,22 +18,35 @@ public class CreateUpdateJobDAO_DB implements ICreateUpdateJobDAO {
     @Override
     public void createJob(String title, User selectedTechnician, Customer selectedCustomer) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){
-            String sql = "INSERT INTO Job (Title, UserID, CustomerID) VALUES (?,?,?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            System.out.println(selectedCustomer.getId());
-            System.out.println(selectedTechnician.getId());
+            // Turn off auto-commit mode to start a transaction
+            conn.setAutoCommit(false);
 
+            // Insert the job into the Job table
+            String sql = "INSERT INTO Job (Title, CustomerID) VALUES (?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1,title);
-            stmt.setInt(2,selectedTechnician.getId());
-            stmt.setInt(3,selectedCustomer.getId());
-
+            stmt.setInt(2,selectedCustomer.getId());
             stmt.executeUpdate();
+
+            // Get the primary key of the newly created job
+            ResultSet rs = stmt.getGeneratedKeys();
+            if(rs.next()){
+                int jobId = rs.getInt(1);
+
+                // Insert the user and job into the UserOnJob table
+                String sql2 = "INSERT INTO UserOnJob(JobID, UserID) VALUES (?,?)";
+                PreparedStatement stmt2 = conn.prepareStatement(sql2);
+                stmt2.setInt(1, jobId);
+                stmt2.setInt(2, selectedTechnician.getId());
+                stmt2.executeUpdate();
+            }
+
+            // Commit the transaction
+            conn.commit();
         }catch (SQLException e){
             throw new SQLException(e);
         }
-
     }
-
     @Override
     public ArrayList<Customer> getAllCustomers() throws SQLException {
         ArrayList<Customer> customers = new ArrayList<>();
