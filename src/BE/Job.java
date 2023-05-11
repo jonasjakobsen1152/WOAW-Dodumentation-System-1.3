@@ -3,13 +3,11 @@ package BE;
 public class Job {
     int id;
     String title;
-    int userId;
     int customerId;
 
-    public Job(int id, String title, int userId, int customerId) {
+    public Job(int id, String title, int customerId) {
         this.id = id;
         this.title = title;
-        this.userId = userId;
         this.customerId = customerId;
 
     }
@@ -38,20 +36,11 @@ public class Job {
         this.title = title;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     @Override
     public String toString() {
         return "Job{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", userId=" + userId +
                 ", customerId=" + customerId +
                 '}';
     }

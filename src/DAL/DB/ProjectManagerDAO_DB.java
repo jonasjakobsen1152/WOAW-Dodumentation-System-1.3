@@ -77,11 +77,10 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
             while(rs.next()){
                 int id = rs.getInt("ID");
                 String title = rs.getString("Title");
-                int userID = rs.getInt("UserID");
                 int customerID = rs.getInt("CustomerID");
 
 
-                Job job = new Job(id,title,userID,customerID);
+                Job job = new Job(id,title,customerID);
                 jobs.add(job);
             }
         }catch (SQLException ex){
