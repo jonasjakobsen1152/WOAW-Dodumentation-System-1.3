@@ -47,6 +47,6 @@
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtfTitle" layoutX="556.0" layoutY="86.0" prefHeight="35.0" prefWidth="169.0" promptText="Title Of The Note:" />
+      <TextField fx:id="txtfDocumentationTitle" layoutX="556.0" layoutY="86.0" prefHeight="35.0" prefWidth="169.0" promptText="Title Of The Note:" />
    </children>
 </AnchorPane>
