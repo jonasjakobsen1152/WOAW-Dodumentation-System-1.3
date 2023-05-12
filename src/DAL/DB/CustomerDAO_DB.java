@@ -42,8 +42,8 @@ public class CustomerDAO_DB implements ICustomerDAO {
             stmt.setString(1, customer.getName());
             stmt.setInt(2, customer.getPhone());
             stmt.setString(3, customer.getEmail());
-            stmt.setInt(4,customer.getId());
-            stmt.setString(5,customer.getAddress());
+            stmt.setString(4,customer.getAddress());
+            stmt.setInt(5,customer.getId());
 
             stmt.executeUpdate();
         }catch (SQLException e){
