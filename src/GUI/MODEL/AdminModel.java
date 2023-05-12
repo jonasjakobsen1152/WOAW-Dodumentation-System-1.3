@@ -1,12 +1,14 @@
 package GUI.MODEL;
 
 import BE.Customer;
+import BE.Documentation;
 import BE.Job;
 import BE.User;
 import BLL.AdminManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableView;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,7 +19,12 @@ public class AdminModel {
     private ObservableList<User> usersToBeViewed;
     private ObservableList<Customer> customerToBeViewed;
     private ObservableList<Job> documentsToBeViewed;
+    public ObservableList<Job> workToBeViewed;
+    public TableView<Documentation> tblWork;
+    private User selectedUser;
     private static AdminModel instance;
+
+
 
     private AdminModel() throws SQLException {
         adminManager = new AdminManager();
@@ -29,6 +36,9 @@ public class AdminModel {
 
         documentsToBeViewed = FXCollections.observableArrayList();
         documentsToBeViewed.addAll(adminManager.getAllDocuments());
+
+        workToBeViewed = FXCollections.observableArrayList();
+        workToBeViewed.addAll(adminManager.getAllDocuments());
     }
     public static AdminModel getInstance() throws SQLException {
         if(instance == null){
@@ -70,21 +80,6 @@ public class AdminModel {
         adminManager.deleteCustomer(selectedCustomer);
         showList();
     }
-    public void showList() {
-        try {
-            getUsersToBeViewed().clear();
-            getUsersToBeViewed().addAll(adminManager.getAllUsers());
-
-            getCustomerToBeViewed().clear();
-            getCustomerToBeViewed().addAll(adminManager.getAllCustomer());
-        }catch (SQLException e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Could not show list");
-            alert.setHeaderText("Could not show list");
-            alert.showAndWait();
-        }
-
-    }
 
     public ObservableList<Job> getDocumentsToBeViewed() {
         return documentsToBeViewed;
@@ -106,5 +101,36 @@ public class AdminModel {
         List<Job> searchResults = adminManager.searchJobs(query);
         documentsToBeViewed.clear();
         documentsToBeViewed.addAll(searchResults);
+    }
+
+    public void showList() {
+        try {
+            getUsersToBeViewed().clear();
+            getUsersToBeViewed().addAll(adminManager.getAllUsers());
+
+            getCustomerToBeViewed().clear();
+            getCustomerToBeViewed().addAll(adminManager.getAllCustomer());
+
+            getWorkToBeViewed().clear();
+            getWorkToBeViewed().addAll(adminManager.getWork(getSelectedUser()));
+        }catch (SQLException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Could not show list");
+            alert.setHeaderText("Could not show list");
+            alert.showAndWait();
+        }
+
+    }
+    public User getSelectedUser() {
+        return selectedUser;
+    }
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
+    }
+    public ObservableList<Job> getWorkToBeViewed(){return workToBeViewed;}
+
+
+    public List<Job> getWork() {
+        return adminManager.getWork(getSelectedUser());
     }
 }

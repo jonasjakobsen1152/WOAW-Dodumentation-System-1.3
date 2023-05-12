@@ -6,7 +6,6 @@ import BE.User;
 import GUI.MODEL.AdminModel;
 import GUI.MODEL.CreateUpdateUserModel;
 import GUI.MODEL.CustomerModel;
-import GUI.MODEL.TechnicianModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,11 +42,12 @@ public class AdminController implements Initializable {
     public TableColumn clmAddress;
     public TextField txtSearchJobs;
     public TextField txtSearchUsers;
+    public TableColumn clmTitleWork;
+    public TableView<Job> tblWork;
     private User selectedUser;
     private Customer selectedCustomer;
     private CreateUpdateUserModel createUpdateUserModel;
     private CustomerModel customerModel;
-    private TechnicianModel technicianModel;
 
     public AdminController() {
         try {
@@ -298,17 +298,17 @@ public class AdminController implements Initializable {
 
     }
 
-    public void handleShowWork(ActionEvent actionEvent) {
+    public void handleShowWork(ActionEvent actionEvent) throws SQLException {
+
         selectedUser = tblUser.getSelectionModel().getSelectedItem();
         if(selectedUser == null || !selectedUser.getRole().equals("Technician")){
             alertUser("Select a technician from the user table");
             System.out.println(selectedUser);
         }else{
-            technicianModel = TechnicianModel.getInstance();
-            technicianModel.setSelectedUser(selectedUser);
-            technicianModel.showList();
+            adminModel.setSelectedUser(selectedUser);
+            adminModel.showList();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/GUI/View/Technician.fxml"));
+            loader.setLocation(getClass().getResource("/GUI/View/AdminTechnicianJobWindow.fxml"));
             try {
                 AnchorPane pane = loader.load();
                 Stage dialogWindow = new Stage();
@@ -318,7 +318,7 @@ public class AdminController implements Initializable {
 
             } catch (IOException e) {
                 e.printStackTrace();
-                alertUser("Error: Could not open the technician window");
+                alertUser("Error: Could not open the admin technician job window");
             }
         }
     }

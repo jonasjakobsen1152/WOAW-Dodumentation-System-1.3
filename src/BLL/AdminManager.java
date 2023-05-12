@@ -68,4 +68,8 @@ public class AdminManager {
         List<Job> searchResult = jobSearcher.search(allJobs,query);
         return searchResult;
     }
+
+    public List<Job> getWork(User selectedUser) {
+        return adminDAO.getWork(selectedUser);
+    }
 }
