@@ -40,4 +40,18 @@ public class TechnicianJobDAO_DB implements ITechnicianJobDAO {
         }
 
     }
+
+    @Override
+    public void deleteDocumentation(Documentation selectedDocumentation) throws SQLException {
+        try (Connection conn = databaseConnector.getConnection()){
+            String sql = "DELETE FROM Document WHERE ID = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,selectedDocumentation.getId());
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new SQLException(e);
+        }
+    }
 }
