@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface ITechnicianJobDAO {
     List<Documentation> getDocumentation(Job selectedJob) throws SQLException;
+
+    void deleteDocumentation(Documentation selectedDocumentation) throws SQLException;
 }

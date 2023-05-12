@@ -17,4 +17,8 @@ public class TechnicianJobManager {
     public List<Documentation> getDocumentation(Job selectedJob) throws SQLException {
         return technicianJobDAO.getDocumentation(selectedJob);
     }
+
+    public void deleteDocumentation(Documentation selectedDocumentation) throws SQLException {
+        technicianJobDAO.deleteDocumentation(selectedDocumentation);
+    }
 }

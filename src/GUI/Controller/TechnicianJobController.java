@@ -1,6 +1,7 @@
 package GUI.Controller;
 
 import BE.Documentation;
+import GUI.MODEL.DocumentationModel;
 import GUI.MODEL.TechnicianJobModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -28,13 +29,19 @@ public class TechnicianJobController implements Initializable {
     public TableColumn clmNotes;
     public TableView<Documentation> tblNotes;
     public TechnicianJobModel technicianJobModel;
+    public Documentation selectedDocumentation;
+    public DocumentationModel documentationModel;
 
     public TechnicianJobController() throws SQLException {
         technicianJobModel = TechnicianJobModel.getInstance();
+        documentationModel = DocumentationModel.getInstance();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         showDocumentation();
+        tblNotes.setOnMouseClicked(event -> {
+            selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
+        });
     }
 
     public void handleAddDocumentation(ActionEvent actionEvent) {
@@ -58,10 +65,29 @@ public class TechnicianJobController implements Initializable {
     }
 
     public void handleUpdateDocumentation(ActionEvent actionEvent) {
+        selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
+        if(selectedDocumentation == null){
+            alertUser("Select a customer to update");
+        }else {
+            documentationModel.setSelectedDocumentation(selectedDocumentation);
+            
+        }
+
     }
 
     public void handleDeleteDocumentation(ActionEvent actionEvent) {
-    }
+        selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
+        if(selectedDocumentation == null){
+            alertUser("Select a customer to delete");
+        }else {
+            try {
+                technicianJobModel.deleteDocumentation(selectedDocumentation);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                alertUser("Could not delete documentation");
+            }
+        }
+        }
 
     public void handleDeleteImage(ActionEvent actionEvent) {
     }

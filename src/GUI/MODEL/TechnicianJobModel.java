@@ -41,4 +41,8 @@ public class TechnicianJobModel {
     }
     public ObservableList<Documentation> getDocumentationsToBeViewed(){return documentationsToBeViewed;}
 
+    public void deleteDocumentation(Documentation selectedDocumentation) throws SQLException {
+        technicianJobManager.deleteDocumentation(selectedDocumentation);
+        showList();
+    }
 }

@@ -38,4 +38,7 @@ public class DocumentationModel {
     public Job getSelectedJob(){
         return selectedJob;
     }
+
+    public void setSelectedDocumentation(Documentation selectedDocumentation) {
+    }
 }
