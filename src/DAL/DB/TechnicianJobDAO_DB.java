@@ -17,11 +17,10 @@ public class TechnicianJobDAO_DB implements ITechnicianJobDAO {
     @Override
     public List<Documentation> getDocumentation(Job selectedJob) throws SQLException {
         ArrayList<Documentation> documentations = new ArrayList<>();
-        try (Connection conn = databaseConnector.getConnection()){
-            String sql = "SElECT * FROM Document WHERE JobID = (?)";
-            PreparedStatement stmt = conn.prepareStatement(sql);
+        try (Connection conn = databaseConnector.getConnection();
+            Statement stmt = conn.createStatement()){
+            String sql = "SElECT * FROM Document WHERE JobID ="+selectedJob.getId()+";";
 
-            stmt.setInt(1,selectedJob.getId());
 
             ResultSet rs = stmt.executeQuery(sql);
 

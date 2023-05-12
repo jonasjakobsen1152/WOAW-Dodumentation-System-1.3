@@ -10,26 +10,26 @@ import java.sql.SQLException;
 public class DocumentationModel {
     private static DocumentationModel instance;
     public DocumentationManager documentationManager;
+    public TechnicianJobModel technicianJobModel;
     public Job selectedJob;
 
-    public DocumentationModel(){
+    public DocumentationModel() throws SQLException {
         documentationManager = new DocumentationManager();
+        technicianJobModel = TechnicianJobModel.getInstance();
+
     }
 
-    public static DocumentationModel getInstance() {
+    public static DocumentationModel getInstance() throws SQLException {
         if(instance == null){
             instance = new DocumentationModel();
         }
         return instance;
     }
 
-    public void showList() throws SQLException {
-
-
-    }
 
     public void createDocumentation(Documentation documentation) throws SQLException {
         documentationManager.createDocumentation(documentation,selectedJob);
+        technicianJobModel.showList();
     }
 
     public void setSelectedJob(Job selectedDocument) {

@@ -1,26 +1,41 @@
 package GUI.Controller;
 
+import BE.Documentation;
+import GUI.MODEL.TechnicianJobModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class TechnicianJobController {
+public class TechnicianJobController implements Initializable {
     public TableColumn clmImages;
     public TableView tblImages;
     public TableColumn clmNotes;
-    public TableView tblNotes;
+    public TableView<Documentation> tblNotes;
+    public TechnicianJobModel technicianJobModel;
 
+    public TechnicianJobController() throws SQLException {
+        technicianJobModel = TechnicianJobModel.getInstance();
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        showDocumentation();
+    }
 
     public void handleAddDocumentation(ActionEvent actionEvent) {
         try {
@@ -36,6 +51,10 @@ public class TechnicianJobController {
             e.printStackTrace();
             alertUser("Could not open the documentation window");
         }
+    }
+    public void showDocumentation(){
+        clmNotes.setCellValueFactory(new PropertyValueFactory<Documentation,String>("title"));
+        tblNotes.setItems(technicianJobModel.getDocumentationsToBeViewed());
     }
 
     public void handleUpdateDocumentation(ActionEvent actionEvent) {
@@ -72,5 +91,6 @@ public class TechnicianJobController {
         alert.setHeaderText(error + "");
         alert.showAndWait();
     }
+
 
 }

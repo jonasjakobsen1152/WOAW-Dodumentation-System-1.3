@@ -14,10 +14,11 @@ public class TechnicianJobModel {
     public TechnicianJobManager technicianJobManager;
     public LoginModel loginModel;
     public Job selectedJob;
-    public TechnicianJobModel() throws SQLException {
+    public TechnicianJobModel() {
         documentationsToBeViewed = FXCollections.observableArrayList();
         loginModel = LoginModel.getInstance();
         technicianJobManager = new TechnicianJobManager();
+
         
     }
 
@@ -38,5 +39,6 @@ public class TechnicianJobModel {
     public Job getSelectedJob(){
         return selectedJob;
     }
+    public ObservableList<Documentation> getDocumentationsToBeViewed(){return documentationsToBeViewed;}
 
 }

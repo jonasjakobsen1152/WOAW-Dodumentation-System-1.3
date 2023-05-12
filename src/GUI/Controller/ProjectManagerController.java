@@ -78,7 +78,6 @@ public class ProjectManagerController implements Initializable {
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
         customerModel = CustomerModel.getInstance();
         documentationModel = DocumentationModel.getInstance();
-        technicianJobModel = TechnicianJobModel.getInstance();
 
     }
 
@@ -374,9 +373,12 @@ public class ProjectManagerController implements Initializable {
     public void handleShowJobs(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
+        selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
         try {
+            technicianJobModel = TechnicianJobModel.getInstance();
             documentationModel.setSelectedJob(selectedDocument);
             technicianJobModel.setSelectedJob(selectedDocument);
+            technicianJobModel.showList();
 
             AnchorPane pane = loader.load();
 
@@ -388,6 +390,9 @@ public class ProjectManagerController implements Initializable {
         catch (IOException e) {
             e.printStackTrace();
             alertUser("Error: Could not open the technician job window");
+        }catch (SQLException e){
+            e.printStackTrace();
+            alertUser("Could not get the documentation list from the database");
         }
     }
 

@@ -54,4 +54,15 @@ public class Documentation {
     public void setPrivateText(String privateText) {
         this.privateText = privateText;
     }
+
+    @Override
+    public String toString() {
+        return "Documentation{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", publicText='" + publicText + '\'' +
+                ", privateText='" + privateText + '\'' +
+                ", jobId=" + jobId +
+                '}';
+    }
 }

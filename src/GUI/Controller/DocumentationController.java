@@ -12,6 +12,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.sql.SQLException;
 
 public class DocumentationController {
     public TextArea txtaPublicInformation;
@@ -19,7 +20,7 @@ public class DocumentationController {
     public TextField txtfDocumentationTitle;
     public DocumentationModel documentationModel;
 
-    public DocumentationController(){
+    public DocumentationController() throws SQLException {
         documentationModel = DocumentationModel.getInstance();
     }
 
