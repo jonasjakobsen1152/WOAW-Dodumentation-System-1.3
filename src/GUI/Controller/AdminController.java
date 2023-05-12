@@ -303,7 +303,6 @@ public class AdminController implements Initializable {
         selectedUser = tblUser.getSelectionModel().getSelectedItem();
         if(selectedUser == null || !selectedUser.getRole().equals("Technician")){
             alertUser("Select a technician from the user table");
-            System.out.println(selectedUser);
         }else{
             adminModel.setSelectedUser(selectedUser);
             adminModel.showList();

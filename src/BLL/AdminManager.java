@@ -50,8 +50,12 @@ public class AdminManager {
     }
 
     public ArrayList<Job> getAllDocuments() throws SQLException {
-        allJobs =adminDAO.getAllDocuments();
+        allJobs = adminDAO.getAllDocuments();
         return allJobs;
+    }
+
+    public List<Job> getWork(User selectedUser) {
+        return adminDAO.getWork(selectedUser);
     }
 
     public List<Customer> searchCustomers(String query) {
@@ -67,9 +71,5 @@ public class AdminManager {
     public List<Job> searchJobs(String query) {
         List<Job> searchResult = jobSearcher.search(allJobs,query);
         return searchResult;
-    }
-
-    public List<Job> getWork(User selectedUser) {
-        return adminDAO.getWork(selectedUser);
     }
 }

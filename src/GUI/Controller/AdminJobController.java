@@ -68,7 +68,7 @@ public class AdminJobController implements Initializable {
 
     private void showDocument() {
         clmTitleWork.setCellValueFactory(new PropertyValueFactory<Job, String>("title"));
-        tblWork.setItems(adminModel.getDocumentsToBeViewed());
+        tblWork.setItems(adminModel.getWorkToBeViewed());
     }
 
     private void alertUser(String error) {

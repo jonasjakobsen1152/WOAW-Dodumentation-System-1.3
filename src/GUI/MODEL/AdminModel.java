@@ -19,8 +19,7 @@ public class AdminModel {
     private ObservableList<User> usersToBeViewed;
     private ObservableList<Customer> customerToBeViewed;
     private ObservableList<Job> documentsToBeViewed;
-    public ObservableList<Job> workToBeViewed;
-    public TableView<Documentation> tblWork;
+    private ObservableList<Job> workToBeViewed;
     private User selectedUser;
     private static AdminModel instance;
 
@@ -65,12 +64,6 @@ public class AdminModel {
         return adminManager.getAllUsers();
     }
 
-    public ArrayList<Customer> getAllCustomer() throws SQLException {
-        return adminManager.getAllCustomer();
-    }
-
-    public ArrayList<Job> getAllDocuments() throws SQLException {return  adminManager.getAllDocuments();}
-
     public void deleteUser(User selectedUser) throws SQLException {
         adminManager.deleteUser(selectedUser);
         showList();
@@ -111,8 +104,6 @@ public class AdminModel {
             getCustomerToBeViewed().clear();
             getCustomerToBeViewed().addAll(adminManager.getAllCustomer());
 
-            getWorkToBeViewed().clear();
-            getWorkToBeViewed().addAll(adminManager.getWork(getSelectedUser()));
         }catch (SQLException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Could not show list");
@@ -127,10 +118,10 @@ public class AdminModel {
     public void setSelectedUser(User selectedUser) {
         this.selectedUser = selectedUser;
     }
-    public ObservableList<Job> getWorkToBeViewed(){return workToBeViewed;}
-
-
-    public List<Job> getWork() {
-        return adminManager.getWork(getSelectedUser());
+    public ObservableList<Job> getWorkToBeViewed(){
+        workToBeViewed.clear();
+        workToBeViewed.addAll(adminManager.getWork(selectedUser));
+        return workToBeViewed;
     }
+
 }
