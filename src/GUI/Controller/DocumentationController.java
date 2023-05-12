@@ -3,6 +3,7 @@ package GUI.Controller;
 import BE.Documentation;
 import BLL.UTIL.BCrypt;
 import GUI.MODEL.DocumentationModel;
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
@@ -19,6 +20,8 @@ public class DocumentationController {
     public TextArea txtaPrivateinformation;
     public TextField txtfDocumentationTitle;
     public DocumentationModel documentationModel;
+    public MFXButton btnUpdate;
+    public MFXButton btnFinish;
 
     public DocumentationController() throws SQLException {
         documentationModel = DocumentationModel.getInstance();
@@ -47,4 +50,28 @@ public class DocumentationController {
         alert.showAndWait();
     }
 
+    public void setupUpdate(Documentation selectedDocumentation) {
+        btnFinish.setVisible(false);
+        txtaPublicInformation.setText(selectedDocumentation.getPublicText());
+        txtfDocumentationTitle.setText(selectedDocumentation.getTitle());
+        txtaPrivateinformation.setText(selectedDocumentation.getPrivateText());
+    }
+
+    public void handleUpdateDocumentation(ActionEvent actionEvent) {
+        String title = txtfDocumentationTitle.getText();
+        String publicTxt = txtaPublicInformation.getText();
+        String privateTxt = txtaPrivateinformation.getText();
+        try {
+            documentationModel.updateDocumentation(title, publicTxt, privateTxt);
+            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+            stage.close();
+        }catch (SQLException e){
+            alertUser("Could not the update documentation");
+            e.printStackTrace();
+        }
+    }
+
+    public void setupCreate(Documentation selectedDocumentation) {
+        btnFinish.setVisible(false);
+    }
 }

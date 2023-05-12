@@ -12,6 +12,7 @@ public class DocumentationModel {
     public DocumentationManager documentationManager;
     public TechnicianJobModel technicianJobModel;
     public Job selectedJob;
+    public Documentation selectedDocumentation;
 
     public DocumentationModel() throws SQLException {
         documentationManager = new DocumentationManager();
@@ -40,5 +41,12 @@ public class DocumentationModel {
     }
 
     public void setSelectedDocumentation(Documentation selectedDocumentation) {
+        this.selectedDocumentation = selectedDocumentation;
+    }
+
+    public void updateDocumentation(String title, String publicTxt, String privateTxt) throws SQLException {
+        Documentation documentation = new Documentation(selectedDocumentation.id,title,publicTxt,privateTxt,selectedDocumentation.getJobId());
+        documentationManager.updateDocumentation(documentation);
+        technicianJobModel.showList();
     }
 }

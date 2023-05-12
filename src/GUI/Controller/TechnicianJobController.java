@@ -1,9 +1,11 @@
 package GUI.Controller;
 
 import BE.Documentation;
+import GUI.MODEL.CustomerModel;
 import GUI.MODEL.DocumentationModel;
 import GUI.MODEL.TechnicianJobModel;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -45,10 +47,14 @@ public class TechnicianJobController implements Initializable {
     }
 
     public void handleAddDocumentation(ActionEvent actionEvent) {
+        selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/DocumentationWindow.fxml"));
             AnchorPane pane = loader.load();
 
+            DocumentationController documentationController = loader.getController();
+
+            documentationController.setupCreate(selectedDocumentation);
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
@@ -70,7 +76,28 @@ public class TechnicianJobController implements Initializable {
             alertUser("Select a customer to update");
         }else {
             documentationModel.setSelectedDocumentation(selectedDocumentation);
-            
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/DocumentationWindow.fxml"));
+            try{
+                AnchorPane pane = loader.load();
+
+                DocumentationController documentationController = loader.getController();
+                documentationModel.getInstance();
+
+                documentationController.setupUpdate(selectedDocumentation);
+
+                Stage dialogWindow = new Stage();
+                Scene scene = new Scene(pane);
+                dialogWindow.setScene(scene);
+                dialogWindow.show();
+
+            }catch (SQLException e){
+                e.printStackTrace();
+                alertUser("Could not open update documentation window");
+            }catch (IOException e){
+                e.printStackTrace();
+                alertUser("Could not open update documentation window");
+            }
         }
 
     }

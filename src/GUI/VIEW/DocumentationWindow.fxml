@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="883.0" prefWidth="1281.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.DocumentationController">
    <children>
       <Text fill="WHITE" layoutX="501.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Documentation Window" AnchorPane.leftAnchor="499.22265625" AnchorPane.rightAnchor="521.77734375" AnchorPane.topAnchor="32.0">
@@ -37,7 +36,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <MFXButton layoutX="361.0" layoutY="755.0" onAction="#handleCreateDocumentation" prefHeight="66.0" prefWidth="152.0" text="Finish" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="361.0">
+      <MFXButton fx:id="btnFinish" layoutX="361.0" layoutY="755.0" onAction="#handleCreateDocumentation" prefHeight="66.0" prefWidth="152.0" text="Finish" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="361.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -48,5 +47,10 @@
          </image>
       </ImageView>
       <TextField fx:id="txtfDocumentationTitle" layoutX="556.0" layoutY="86.0" prefHeight="35.0" prefWidth="169.0" promptText="Title Of The Note:" />
+      <MFXButton fx:id="btnUpdate" layoutX="364.0" layoutY="752.0" onAction="#handleUpdateDocumentation" prefHeight="66.0" prefWidth="152.0" text="Finish">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </MFXButton>
    </children>
 </AnchorPane>

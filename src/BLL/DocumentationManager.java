@@ -17,4 +17,8 @@ public class DocumentationManager {
     public void createDocumentation(Documentation documentation, Job selectedJob) throws SQLException {
         documentationDAO.createDocumentation(documentation, selectedJob);
     }
+
+    public void updateDocumentation(Documentation documentation) throws SQLException {
+        documentationDAO.updateDocumentation(documentation);
+    }
 }

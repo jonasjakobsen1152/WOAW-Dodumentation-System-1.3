@@ -32,4 +32,22 @@ public class DocumentationDAO_DB implements IDocumentationDAO {
             throw new SQLException();
         }
     }
+
+    @Override
+    public void updateDocumentation(Documentation documentation) throws SQLException {
+        try(Connection conn = databaseConnector.getConnection()){
+            String sql = "UPDATE Document SET Title = ?, PublicNote = ?, PrivateNote = ?, JobID = ? WHERE ID = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1,documentation.getTitle());
+            stmt.setString(2,documentation.getPublicText());
+            stmt.setString(3,documentation.getPrivateText());
+            stmt.setInt(4,documentation.getJobId());
+            stmt.setInt(5,documentation.getId());
+
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new SQLException(e);
+        }
+    }
 }
