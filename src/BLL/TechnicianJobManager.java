@@ -1,8 +1,8 @@
 package BLL;
 
 import BE.Documentation;
+import BE.JobImage;
 import BE.Job;
-import BE.User;
 import DAL.DB.TechnicianJobDAO_DB;
 import DAL.ITechnicianJobDAO;
 
@@ -20,5 +20,9 @@ public class TechnicianJobManager {
 
     public void deleteDocumentation(Documentation selectedDocumentation) throws SQLException {
         technicianJobDAO.deleteDocumentation(selectedDocumentation);
+    }
+
+    public List<JobImage> getImages(Job selectedJob) throws SQLException {
+        return technicianJobDAO.getImages(selectedJob);
     }
 }

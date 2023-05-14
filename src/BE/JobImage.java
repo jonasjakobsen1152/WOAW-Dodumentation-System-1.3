@@ -1,16 +1,18 @@
 package BE;
 
-public class Image {
+import java.util.Arrays;
+
+public class JobImage {
     int id;
     String title;
-    String filePath;
+    private byte[] data;
     int jobId;
     String privacy;
 
-    public Image(int id, String title, String filePath, int jobId, String privacy) {
+    public JobImage(int id, String title, byte[] data, int jobId, String privacy) {
         this.id = id;
         this.title = title;
-        this.filePath = filePath;
+        this.data = data;
         this.jobId = jobId;
         this.privacy = privacy;
     }
@@ -31,12 +33,12 @@ public class Image {
         this.title = title;
     }
 
-    public String getFilePath() {
-        return filePath;
+    public byte[] getData() {
+        return data;
     }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
+    public void setData(byte[] data) {
+        this.data = data;
     }
 
     public int getJobId() {
@@ -53,5 +55,16 @@ public class Image {
 
     public void setPrivacy(String privacy) {
         this.privacy = privacy;
+    }
+
+    @Override
+    public String toString() {
+        return "JobImage{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", data=" + Arrays.toString(data) +
+                ", jobId=" + jobId +
+                ", privacy='" + privacy + '\'' +
+                '}';
     }
 }

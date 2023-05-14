@@ -1,38 +1,38 @@
 package GUI.Controller;
 
 import BE.Documentation;
-import GUI.MODEL.CustomerModel;
+import BE.JobImage;
 import GUI.MODEL.DocumentationModel;
 import GUI.MODEL.TechnicianJobModel;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TechnicianJobController implements Initializable {
     public TableColumn clmImages;
-    public TableView tblImages;
+    public TableView<JobImage> tblImages;
     public TableColumn clmNotes;
     public TableView<Documentation> tblNotes;
     public TechnicianJobModel technicianJobModel;
     public Documentation selectedDocumentation;
+    public JobImage selectedJobImage;
     public DocumentationModel documentationModel;
+    public ImageView imgImage;
 
     public TechnicianJobController() throws SQLException {
         technicianJobModel = TechnicianJobModel.getInstance();
@@ -43,6 +43,16 @@ public class TechnicianJobController implements Initializable {
         showDocumentation();
         tblNotes.setOnMouseClicked(event -> {
             selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
+        });
+        tblImages.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->{
+            selectedJobImage = tblImages.getSelectionModel().getSelectedItem();
+            byte[] imageData = selectedJobImage.getData();
+            ByteArrayInputStream byteArray = new ByteArrayInputStream(imageData);
+            Image image = new Image(byteArray);
+            imgImage = new ImageView();
+
+            System.out.println(selectedJobImage.getData().toString());
+            imgImage.setImage(image);
         });
     }
 
@@ -68,6 +78,9 @@ public class TechnicianJobController implements Initializable {
     public void showDocumentation(){
         clmNotes.setCellValueFactory(new PropertyValueFactory<Documentation,String>("title"));
         tblNotes.setItems(technicianJobModel.getDocumentationsToBeViewed());
+
+        clmImages.setCellValueFactory(new PropertyValueFactory<JobImage, String>("title"));
+        tblImages.setItems(technicianJobModel.getImagesToBeViewed());
     }
 
     public void handleUpdateDocumentation(ActionEvent actionEvent) {
