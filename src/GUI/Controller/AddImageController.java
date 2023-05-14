@@ -11,10 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 
 public class AddImageController {
@@ -60,7 +57,13 @@ public class AddImageController {
             File file = new File(filePath);
             try {
                 FileInputStream fileInput = new FileInputStream(file);
-                this.data = new byte[fileInput.available()];
+                ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+                while ((bytesRead = fileInput.read(buffer)) != -1) {
+                    byteOutput.write(buffer, 0, bytesRead);
+                }
+                data = byteOutput.toByteArray();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
                 alertUser("Could not find file");

@@ -5,6 +5,7 @@ import BE.JobImage;
 import GUI.MODEL.DocumentationModel;
 import GUI.MODEL.TechnicianJobModel;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -15,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
@@ -33,6 +35,8 @@ public class TechnicianJobController implements Initializable {
     public JobImage selectedJobImage;
     public DocumentationModel documentationModel;
     public ImageView imgImage;
+    @FXML
+    private Pane imagePane;
 
     public TechnicianJobController() throws SQLException {
         technicianJobModel = TechnicianJobModel.getInstance();
@@ -49,7 +53,6 @@ public class TechnicianJobController implements Initializable {
             byte[] imageData = selectedJobImage.getData();
             ByteArrayInputStream byteArray = new ByteArrayInputStream(imageData);
             Image image = new Image(byteArray);
-            imgImage = new ImageView();
 
             System.out.println(selectedJobImage.getData().toString());
             imgImage.setImage(image);

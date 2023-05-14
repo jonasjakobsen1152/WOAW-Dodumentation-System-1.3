@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<AnchorPane prefHeight="353.0" prefWidth="548.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AddImageController">
+<AnchorPane prefHeight="353.0" prefWidth="548.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AddImageController">
    <children>
       <MFXButton layoutX="181.0" layoutY="81.0" onAction="#handleChoosePicture" prefHeight="55.0" prefWidth="194.0" text="Choose An Image">
          <font>
@@ -22,7 +18,7 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <CheckBox layoutX="181.0" layoutY="236.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="194.0" text="Make This Picture Private?">
+      <CheckBox fx:id="checkBox" layoutX="181.0" layoutY="236.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="194.0" text="Make This Picture Private?">
          <font>
             <Font size="14.0" />
          </font>

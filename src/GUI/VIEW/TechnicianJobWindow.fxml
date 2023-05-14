@@ -34,6 +34,10 @@
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgImage" fitHeight="255.0" fitWidth="267.0" layoutX="1097.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" />
+      <Pane fx:id="imagePane" layoutX="1063.0" layoutY="187.0" prefHeight="269.0" prefWidth="300.0">
+         <children>
+            <ImageView fx:id="imgImage" fitHeight="255.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

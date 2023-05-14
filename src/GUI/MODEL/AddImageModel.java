@@ -8,9 +8,11 @@ import java.sql.SQLException;
 public class AddImageModel {
     private static AddImageModel instance;
     public AddImageManager addImageManager;
+    public TechnicianJobModel technicianJobModel;
 
-    private AddImageModel() {
+    private AddImageModel() throws SQLException {
         addImageManager = new AddImageManager();
+        technicianJobModel = TechnicianJobModel.getInstance();
     }
 
     public static AddImageModel getInstance() throws SQLException {
@@ -22,5 +24,6 @@ public class AddImageModel {
 
     public void addImage(JobImage jobImage) throws SQLException {
         addImageManager.addImage(jobImage);
+        technicianJobModel.showList();
     }
 }
