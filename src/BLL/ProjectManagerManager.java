@@ -5,6 +5,7 @@ import BLL.UTIL.*;
 import DAL.DB.ProjectManagerDAO_DB;
 import DAL.IProjectManagerDAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +85,7 @@ public class ProjectManagerManager {
         return searchResult;
     }
 
-    public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) {
+    public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
         PDFCreator pdfCreator = new PDFCreator();
         pdfCreator.printPDF(allNotes,allImages);
     }

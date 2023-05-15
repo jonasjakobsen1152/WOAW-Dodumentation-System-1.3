@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -130,7 +131,7 @@ public class ProjectManagerModel {
         documentToBeViewed.addAll(searchResults);
     }
 
-    public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) {
+    public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
         projectManagerManager.printPDF(allNotes,allImages);
     }
 }

@@ -77,6 +77,7 @@ public class ProjectManagerController implements Initializable {
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
         customerModel = CustomerModel.getInstance();
         documentationModel = DocumentationModel.getInstance();
+        technicianJobModel = TechnicianJobModel.getInstance();
     }
 
     @Override
@@ -478,6 +479,11 @@ public class ProjectManagerController implements Initializable {
         allNotes.addAll(technicianJobModel.getDocumentationsToBeViewed());
         allImages.addAll(technicianJobModel.getImagesToBeViewed());
 
-        projectManagerModel.printPDF(allNotes,allImages);
+        try {
+            projectManagerModel.printPDF(allNotes, allImages);
+        } catch (IOException e) {
+            e.printStackTrace();
+            alertUser("Could not print pdf");
+        }
     }
 }
