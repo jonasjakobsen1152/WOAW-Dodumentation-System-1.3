@@ -3,9 +3,7 @@ package GUI.Controller;
 import BE.Customer;
 import BE.Job;
 import BE.User;
-import GUI.MODEL.AdminModel;
-import GUI.MODEL.CreateUpdateUserModel;
-import GUI.MODEL.CustomerModel;
+import GUI.MODEL.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -46,12 +44,17 @@ public class AdminController implements Initializable {
     public TableView<Job> tblWork;
     private User selectedUser;
     private Customer selectedCustomer;
+    private Job selectedJob;
     private CreateUpdateUserModel createUpdateUserModel;
     private CustomerModel customerModel;
+    private TechnicianJobModel technicianJobModel;
+    private DocumentationModel documentationModel;
 
     public AdminController() {
         try {
             adminModel = AdminModel.getInstance();
+            technicianJobModel = TechnicianJobModel.getInstance();
+            documentationModel = DocumentationModel.getInstance();
         }catch (SQLException e){
             e.printStackTrace();
             alertUser("Could not get lists from database");
@@ -63,6 +66,9 @@ public class AdminController implements Initializable {
 
         tblUser.setOnMouseClicked(event -> {
             selectedUser = tblUser.getSelectionModel().getSelectedItem();
+        });
+        tblDocument.setOnMouseClicked(event -> {
+            selectedJob = tblDocument.getSelectionModel().getSelectedItem();
         });
 
         searchListeners();
@@ -212,6 +218,29 @@ public class AdminController implements Initializable {
     }
 
     public void handleShowDocument(ActionEvent actionEvent) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
+        selectedJob = tblDocument.getSelectionModel().getSelectedItem();
+        try {
+            technicianJobModel = TechnicianJobModel.getInstance();
+            documentationModel.setSelectedJob(selectedJob);
+            technicianJobModel.setSelectedJob(selectedJob);
+            technicianJobModel.showList();
+
+            AnchorPane pane = loader.load();
+
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            alertUser("Error: Could not open the technician job window");
+        }catch (SQLException e){
+            e.printStackTrace();
+            alertUser("Could not get the documentation list from the database");
+        }
     }
 
     public void handlePrintPDF(ActionEvent actionEvent) {
