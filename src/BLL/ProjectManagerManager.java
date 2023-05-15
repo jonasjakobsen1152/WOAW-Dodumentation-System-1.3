@@ -1,12 +1,7 @@
 package BLL;
 
-import BE.Customer;
-import BE.Job;
-import BE.User;
-import BLL.UTIL.CustomerSearcher;
-import BLL.UTIL.JobSearcher;
-import BLL.UTIL.SalesmenSearcher;
-import BLL.UTIL.TechnicianSearcher;
+import BE.*;
+import BLL.UTIL.*;
 import DAL.DB.ProjectManagerDAO_DB;
 import DAL.IProjectManagerDAO;
 
@@ -87,5 +82,10 @@ public class ProjectManagerManager {
     public List<Job> searchJobs(String query){
         List<Job> searchResult = jobSearcher.search(allDocuments,query);
         return searchResult;
+    }
+
+    public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) {
+        PDFCreator pdfCreator = new PDFCreator();
+        pdfCreator.printPDF(allNotes,allImages);
     }
 }

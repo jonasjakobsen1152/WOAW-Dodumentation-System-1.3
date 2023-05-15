@@ -51,7 +51,10 @@ public class AddImageController {
     public void handleChoosePicture(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select Documentation File");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images",
+                "*.png", "*.jpg", "*.gif", "*.tif", "*.bmp"));
         File selectedFile = fileChooser.showOpenDialog(null);
+
         if (selectedFile != null) {
             String filePath = selectedFile.getAbsolutePath();
             File file = new File(filePath);
