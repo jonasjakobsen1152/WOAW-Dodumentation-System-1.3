@@ -22,8 +22,7 @@
       <MFXButton layoutX="371.0" layoutY="213.0" onAction="#handleUpdateDocumentation" prefHeight="49.0" prefWidth="154.0" text="Edit Documentation" />
       <MFXButton layoutX="371.0" layoutY="307.0" onAction="#handleDeleteDocumentation" prefHeight="49.0" prefWidth="154.0" text="Delete Documentation" />
       <MFXButton layoutX="909.0" layoutY="121.0" onAction="#HandleAddImage" prefHeight="49.0" prefWidth="154.0" text="Add Image" />
-      <MFXButton layoutX="909.0" layoutY="213.0" onAction="#HandleUpdateImage" prefHeight="49.0" prefWidth="154.0" text="Edit Image" />
-      <MFXButton layoutX="909.0" layoutY="307.0" onAction="#handleDeleteImage" prefHeight="49.0" prefWidth="154.0" text="Delete Image" />
+      <MFXButton layoutX="909.0" layoutY="213.0" onAction="#handleDeleteImage" prefHeight="49.0" prefWidth="154.0" text="Delete Image" />
       <Text fill="WHITE" layoutX="526.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-area" text="Job Window">
          <font>
             <Font size="24.0" />

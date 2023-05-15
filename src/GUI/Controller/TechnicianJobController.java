@@ -153,9 +153,6 @@ public class TechnicianJobController implements Initializable {
         }
     }
 
-    public void HandleUpdateImage(ActionEvent actionEvent) {
-    }
-
     public void HandleAddImage(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AddImageWindow.fxml"));
