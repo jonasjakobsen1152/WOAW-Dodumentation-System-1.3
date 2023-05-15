@@ -72,6 +72,6 @@ public class DocumentationController {
     }
 
     public void setupCreate(Documentation selectedDocumentation) {
-        btnFinish.setVisible(false);
+        btnUpdate.setVisible(false);
     }
 }

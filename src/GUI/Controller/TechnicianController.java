@@ -2,9 +2,7 @@ package GUI.Controller;
 
 import BE.Job;
 import BE.User;
-import GUI.MODEL.CreateUpdateUserModel;
-import GUI.MODEL.LoginModel;
-import GUI.MODEL.TechnicianModel;
+import GUI.MODEL.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +21,7 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TechnicianController implements Initializable {
@@ -35,10 +34,24 @@ public class TechnicianController implements Initializable {
     private User selectedUser;
 
     private LoginModel loginModel;
+    private TechnicianJobModel technicianJobModel;
+    private DocumentationModel documentationModel;
+    public Job selectedJob;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         technicianModel = TechnicianModel.getInstance();
+        try {
+            technicianJobModel = TechnicianJobModel.getInstance();
+            documentationModel = DocumentationModel.getInstance();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            alertUser("Could not get list");
+        }
+        tblWork.setOnMouseClicked(event -> {
+            selectedJob = tblWork.getSelectionModel().getSelectedItem();
+        });
+
         showWork();
     }
 
@@ -50,7 +63,13 @@ public class TechnicianController implements Initializable {
     public void handleOpenDocumentation(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
+        selectedJob = tblWork.getSelectionModel().getSelectedItem();
         try {
+            technicianJobModel = TechnicianJobModel.getInstance();
+            documentationModel.setSelectedJob(selectedJob);
+            technicianJobModel.setSelectedJob(selectedJob);
+            technicianJobModel.showList();
+
             AnchorPane pane = loader.load();
 
             Stage dialogWindow = new Stage();
@@ -61,6 +80,9 @@ public class TechnicianController implements Initializable {
         catch (IOException e) {
             e.printStackTrace();
             alertUser("Error: Could not open the technician job window");
+        }catch (SQLException e){
+            e.printStackTrace();
+            alertUser("Could not get the documentation list from the database");
         }
     }
 

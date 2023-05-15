@@ -49,9 +49,11 @@ public class AdminController implements Initializable {
     private CustomerModel customerModel;
     private TechnicianJobModel technicianJobModel;
     private DocumentationModel documentationModel;
+    private LoginModel loginModel;
 
     public AdminController() {
         try {
+            loginModel = LoginModel.getInstance();
             adminModel = AdminModel.getInstance();
             technicianJobModel = TechnicianJobModel.getInstance();
             documentationModel = DocumentationModel.getInstance();
@@ -66,6 +68,7 @@ public class AdminController implements Initializable {
 
         tblUser.setOnMouseClicked(event -> {
             selectedUser = tblUser.getSelectionModel().getSelectedItem();
+            loginModel.setLoggedInUser(selectedUser);
         });
         tblDocument.setOnMouseClicked(event -> {
             selectedJob = tblDocument.getSelectionModel().getSelectedItem();

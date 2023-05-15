@@ -2,9 +2,10 @@ package GUI.Controller;
 
 import BE.Documentation;
 import BE.Job;
-import GUI.MODEL.AdminModel;
-import GUI.MODEL.TechnicianModel;
+import BE.User;
+import GUI.MODEL.*;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -17,6 +18,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,35 +26,51 @@ import java.util.ResourceBundle;
 
 public class AdminJobController implements Initializable {
 
-    public TableColumn clmTitleWork;
-    public TableView<Job> tblWork;
-    private AdminModel adminModel;
-    public void AdminJobController(){
-        try {
-            adminModel = AdminModel.getInstance();
-        } catch (SQLException e){
-            e.printStackTrace();
-            alertUser("Could not open the documentation window");
-        }
-    }
+    @FXML
+    private TableView<Job> tblWork;
+    @FXML
+    private TableColumn clmTitleWork;
+    private TechnicianModel technicianModel;
+    private User selectedUser;
+
+    private LoginModel loginModel;
+    private TechnicianJobModel technicianJobModel;
+    private DocumentationModel documentationModel;
+    public Job selectedJob;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        technicianModel = TechnicianModel.getInstance();
         try {
-            adminModel = AdminModel.getInstance();
+            technicianJobModel = TechnicianJobModel.getInstance();
+            documentationModel = DocumentationModel.getInstance();
         } catch (SQLException e) {
-            alertUser("Was not able to show technician job");
             e.printStackTrace();
+            alertUser("Could not get list");
         }
-        showDocument();
+        tblWork.setOnMouseClicked(event -> {
+            selectedJob = tblWork.getSelectionModel().getSelectedItem();
+        });
+
+
+        showWork();
     }
 
-
+    public void showWork(){
+        clmTitleWork.setCellValueFactory(new PropertyValueFactory<User,String>("title"));
+        tblWork.setItems(technicianModel.getWorkToBeViewed());
+    }
 
     public void handleOpenDocumentation(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
+        selectedJob = tblWork.getSelectionModel().getSelectedItem();
         try {
+            technicianJobModel = TechnicianJobModel.getInstance();
+            documentationModel.setSelectedJob(selectedJob);
+            technicianJobModel.setSelectedJob(selectedJob);
+            technicianJobModel.showList();
+
             AnchorPane pane = loader.load();
 
             Stage dialogWindow = new Stage();
@@ -63,12 +81,10 @@ public class AdminJobController implements Initializable {
         catch (IOException e) {
             e.printStackTrace();
             alertUser("Error: Could not open the technician job window");
+        }catch (SQLException e){
+            e.printStackTrace();
+            alertUser("Could not get the documentation list from the database");
         }
-    }
-
-    private void showDocument() {
-        clmTitleWork.setCellValueFactory(new PropertyValueFactory<Job, String>("title"));
-        tblWork.setItems(adminModel.getWorkToBeViewed());
     }
 
     private void alertUser(String error) {
@@ -78,8 +94,26 @@ public class AdminJobController implements Initializable {
         alert.showAndWait();
     }
 
-    public void handleFinishJob(ActionEvent actionEvent) {
+    public void handleFinishJob(ActionEvent event) {
+        // Retrieve the selected job from the UI
+        Job selectedJob = tblWork.getSelectionModel().getSelectedItem();
+        if (selectedJob == null) {
+            // No job is selected, do nothing
+            return;
+        }
+
+        // Show a confirmation dialog
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to finish this job?",
+                "Confirm Finish Job", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+            // User canceled, do nothing
+            return;
+        }
+        technicianModel.finishJob(selectedJob);
+
     }
+
+
 
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
