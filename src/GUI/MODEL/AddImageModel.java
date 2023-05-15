@@ -24,6 +24,7 @@ public class AddImageModel {
 
     public void addImage(JobImage jobImage) throws SQLException {
         addImageManager.addImage(jobImage);
+        //Uses the showlist method from the technicianJobModel to show the new image in the technicianJobWindow
         technicianJobModel.showList();
     }
 }

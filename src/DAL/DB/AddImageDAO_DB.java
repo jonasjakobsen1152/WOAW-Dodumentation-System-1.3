@@ -13,6 +13,13 @@ public class AddImageDAO_DB implements IAddImageDAO {
         myDatabaseConnector = new MyDatabaseConnector();
     }
 
+    /**
+     * Called when the user is done creating an image.
+     * Adds a new image to the database in the Image table.
+     * Uses SQL
+     * @param jobImage
+     * @throws SQLException
+     */
     @Override
     public void addImage(JobImage jobImage) throws SQLException {
         try(Connection conn = myDatabaseConnector.getConnection()){
