@@ -26,7 +26,7 @@ public class TechnicianJobManager {
         return technicianJobDAO.getImages(selectedJob);
     }
 
-    public void deleteImage(JobImage selectedJobImage) {
+    public void deleteImage(JobImage selectedJobImage) throws SQLException {
         technicianJobDAO.deleteImage(selectedJobImage);
     }
 }

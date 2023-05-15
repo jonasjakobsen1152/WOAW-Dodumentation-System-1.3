@@ -70,7 +70,8 @@ public class TechnicianJobModel {
         return imagesToBeViewed;
     }
 
-    public void deleteImage(JobImage selectedJobImage) {
+    public void deleteImage(JobImage selectedJobImage) throws SQLException {
         technicianJobManager.deleteImage(selectedJobImage);
+        showList();
     }
 }

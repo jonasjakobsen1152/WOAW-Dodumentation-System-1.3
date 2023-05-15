@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -23,6 +24,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class TechnicianJobController implements Initializable {
@@ -47,8 +49,10 @@ public class TechnicianJobController implements Initializable {
         showDocumentation();
         tblNotes.setOnMouseClicked(event -> {
             selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
+            tblImages.getSelectionModel().clearSelection();
         });
-        tblImages.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) ->{
+        tblImages.setOnMouseClicked(event ->{
+            tblNotes.getSelectionModel().clearSelection();
             selectedJobImage = tblImages.getSelectionModel().getSelectedItem();
             byte[] imageData = selectedJobImage.getData();
             ByteArrayInputStream byteArray = new ByteArrayInputStream(imageData);
@@ -134,8 +138,19 @@ public class TechnicianJobController implements Initializable {
         selectedJobImage = tblImages.getSelectionModel().getSelectedItem();
         if(selectedJobImage == null){
             alertUser("Please choose an image to delete");
+        }else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedJobImage.getTitle().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                try {
+                    technicianJobModel.deleteImage(selectedJobImage);
+                }catch (SQLException e){
+                    alertUser("Could not delete Image from the database");
+                }
+            }
         }
-        technicianJobModel.deleteImage(selectedJobImage);
     }
 
     public void HandleUpdateImage(ActionEvent actionEvent) {

@@ -82,7 +82,16 @@ public class TechnicianJobDAO_DB implements ITechnicianJobDAO {
     }
 
     @Override
-    public void deleteImage(JobImage selectedJobImage) {
-        
+    public void deleteImage(JobImage selectedJobImage) throws SQLException {
+        try(Connection conn = databaseConnector.getConnection()){
+            String sql = "DELETE FROM Image WHERE ID = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, selectedJobImage.getId());
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw  new SQLException(e);
+        }
     }
 }
