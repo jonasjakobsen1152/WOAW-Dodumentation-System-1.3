@@ -80,4 +80,9 @@ public class TechnicianJobDAO_DB implements ITechnicianJobDAO {
             throw new SQLException(e);
         }
     }
+
+    @Override
+    public void deleteImage(JobImage selectedJobImage) {
+        
+    }
 }

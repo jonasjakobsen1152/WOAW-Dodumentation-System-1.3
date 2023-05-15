@@ -69,4 +69,8 @@ public class TechnicianJobModel {
     public ObservableList<JobImage> getImagesToBeViewed() {
         return imagesToBeViewed;
     }
+
+    public void deleteImage(JobImage selectedJobImage) {
+        technicianJobManager.deleteImage(selectedJobImage);
+    }
 }

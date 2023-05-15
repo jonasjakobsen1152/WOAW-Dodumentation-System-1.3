@@ -25,4 +25,8 @@ public class TechnicianJobManager {
     public List<JobImage> getImages(Job selectedJob) throws SQLException {
         return technicianJobDAO.getImages(selectedJob);
     }
+
+    public void deleteImage(JobImage selectedJobImage) {
+        technicianJobDAO.deleteImage(selectedJobImage);
+    }
 }

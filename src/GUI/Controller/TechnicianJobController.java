@@ -53,8 +53,6 @@ public class TechnicianJobController implements Initializable {
             byte[] imageData = selectedJobImage.getData();
             ByteArrayInputStream byteArray = new ByteArrayInputStream(imageData);
             Image image = new Image(byteArray);
-
-            System.out.println(selectedJobImage.getData().toString());
             imgImage.setImage(image);
         });
     }
@@ -133,6 +131,11 @@ public class TechnicianJobController implements Initializable {
         }
 
     public void handleDeleteImage(ActionEvent actionEvent) {
+        selectedJobImage = tblImages.getSelectionModel().getSelectedItem();
+        if(selectedJobImage == null){
+            alertUser("Please choose an image to delete");
+        }
+        technicianJobModel.deleteImage(selectedJobImage);
     }
 
     public void HandleUpdateImage(ActionEvent actionEvent) {

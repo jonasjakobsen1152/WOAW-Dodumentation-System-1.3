@@ -13,4 +13,6 @@ public interface ITechnicianJobDAO {
     void deleteDocumentation(Documentation selectedDocumentation) throws SQLException;
 
     List<JobImage> getImages(Job selectedJob) throws SQLException;
+
+    void deleteImage(JobImage selectedJobImage);
 }
