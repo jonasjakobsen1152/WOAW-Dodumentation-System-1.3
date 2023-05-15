@@ -51,8 +51,6 @@ public class TechnicianDAO_DB implements ITechnicianDAO {
             stmt.setInt(1, selectedJob.getId());
             stmt.executeUpdate();
 
-            PreparedStatement stmt2 = conn.prepareStatement("UPDATE UserOnJob");
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
