@@ -15,4 +15,8 @@ public class TechnicianManager {
     public List<Job> getWork(User selectedUser) {
         return technicianDAO.getWork(selectedUser);
     }
+
+    public void finishJob(Job selectedJob) {
+        technicianDAO.finishJob(selectedJob);
+    }
 }

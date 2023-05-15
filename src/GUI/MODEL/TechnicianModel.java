@@ -54,5 +54,8 @@ public class TechnicianModel {
     }
 
 
-
+    public void finishJob(Job selectedJob) {
+        technicianManager.finishJob(selectedJob);
+        showList();
+    }
 }

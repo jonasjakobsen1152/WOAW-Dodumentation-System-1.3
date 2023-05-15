@@ -43,5 +43,19 @@ public class TechnicianDAO_DB implements ITechnicianDAO {
         }
         return jobs;
     }
+
+    @Override
+    public void finishJob(Job selectedJob) {
+        try(Connection conn = databaseConnector.getConnection()){
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM UserOnJob WHERE JobID = ?");
+            stmt.setInt(1, selectedJob.getId());
+            stmt.executeUpdate();
+
+            PreparedStatement stmt2 = conn.prepareStatement("UPDATE UserOnJob");
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

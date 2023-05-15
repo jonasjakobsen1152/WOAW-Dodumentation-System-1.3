@@ -20,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,6 +32,7 @@ public class TechnicianController implements Initializable {
     @FXML
     private TableColumn clmTitleWork;
     private TechnicianModel technicianModel;
+    private User selectedUser;
 
     private LoginModel loginModel;
 
@@ -69,8 +71,25 @@ public class TechnicianController implements Initializable {
         alert.showAndWait();
     }
 
-    public void handleFinishJob(ActionEvent actionEvent) {
+    public void handleFinishJob(ActionEvent event) {
+        // Retrieve the selected job from the UI
+        Job selectedJob = tblWork.getSelectionModel().getSelectedItem();
+        if (selectedJob == null) {
+            // No job is selected, do nothing
+            return;
+        }
+
+        // Show a confirmation dialog
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to finish this job?",
+                "Confirm Finish Job", JOptionPane.YES_NO_OPTION);
+        if (confirm != JOptionPane.YES_OPTION) {
+            // User canceled, do nothing
+            return;
+        }
+        technicianModel.finishJob(selectedJob);
+
     }
+
 
 
     public void handleLogOut(ActionEvent actionEvent) {
