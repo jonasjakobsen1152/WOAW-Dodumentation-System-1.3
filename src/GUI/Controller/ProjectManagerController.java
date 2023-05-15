@@ -1,8 +1,6 @@
 package GUI.Controller;
 
-import BE.Customer;
-import BE.Job;
-import BE.User;
+import BE.*;
 import GUI.MODEL.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
@@ -20,6 +18,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -78,7 +77,6 @@ public class ProjectManagerController implements Initializable {
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
         customerModel = CustomerModel.getInstance();
         documentationModel = DocumentationModel.getInstance();
-
     }
 
     @Override
@@ -89,7 +87,8 @@ public class ProjectManagerController implements Initializable {
         try {
             showCustomer();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            alertUser("Experienced a problem while loading Customers up");
         }
         showDocument();
 
@@ -112,10 +111,6 @@ public class ProjectManagerController implements Initializable {
             selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
         });
         searchListeners();
-
-
-
-
     }
 
     public void searchListeners(){
@@ -127,7 +122,6 @@ public class ProjectManagerController implements Initializable {
 
         txtFilter.textProperty().addListener((observable, oldValue, newValue) -> {
             Runnable task = () -> projectManagerModel.searchCustomers(newValue);
-
             Thread thread = new Thread(task);
             thread.start();
         });
@@ -396,9 +390,6 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
-    public void handleSendPDF(ActionEvent actionEvent) {
-    }
-
     public void handleShowTechnicians(ActionEvent actionEvent) {
         setVisibleFalse();
         tblShowTechnicians.setVisible(true);
@@ -476,5 +467,17 @@ public class ProjectManagerController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void handlePrintPDF(ActionEvent actionEvent) {
+        technicianJobModel.setSelectedJob(selectedDocument);
+        technicianJobModel.showList();
+        ArrayList<Documentation> allNotes = new ArrayList<>();
+        ArrayList<JobImage> allImages = new ArrayList<>();
+
+        allNotes.addAll(technicianJobModel.getDocumentationsToBeViewed());
+        allImages.addAll(technicianJobModel.getImagesToBeViewed());
+
+        projectManagerModel.printPDF(allNotes,allImages);
     }
 }

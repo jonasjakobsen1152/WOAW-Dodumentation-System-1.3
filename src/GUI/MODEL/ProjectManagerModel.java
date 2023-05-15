@@ -1,8 +1,6 @@
 package GUI.MODEL;
 
-import BE.Customer;
-import BE.Job;
-import BE.User;
+import BE.*;
 import BLL.ProjectManagerManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -130,5 +128,9 @@ public class ProjectManagerModel {
         List<Job> searchResults = projectManagerManager.searchJobs(query);
         documentToBeViewed.clear();
         documentToBeViewed.addAll(searchResults);
+    }
+
+    public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) {
+        projectManagerManager.printPDF(allNotes,allImages);
     }
 }
