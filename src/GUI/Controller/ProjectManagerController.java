@@ -67,6 +67,7 @@ public class ProjectManagerController implements Initializable {
     private User selectedTechnician;
     private Customer selectedCustomer;
     private Job selectedDocument;
+    public TableView<User> tblUser;
 
     public ProjectManagerController() throws SQLException {
         try {
@@ -484,6 +485,30 @@ public class ProjectManagerController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
             alertUser("Could not print pdf");
+        }
+    }
+
+    public void handleShowWork(ActionEvent actionEvent) {
+        selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
+        if(selectedUser == null || !selectedUser.getRole().equals("Technician")){
+            alertUser("Select a technician from the user table");
+        }else{
+            try {
+            projectManagerModel.setSelectedUser(selectedUser);
+            projectManagerModel.showList();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/ProjectTechnicianJobWindow.fxml"));
+
+                AnchorPane pane = loader.load();
+                Stage dialogWindow = new Stage();
+                Scene scene = new Scene(pane);
+                dialogWindow.setScene(scene);
+                dialogWindow.show();
+
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+                alertUser("Error: Could not open the project technician job window");
+            }
         }
     }
 }

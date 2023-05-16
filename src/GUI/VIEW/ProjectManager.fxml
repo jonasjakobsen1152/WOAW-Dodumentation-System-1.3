@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="701.0" prefWidth="1061.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.ProjectManagerController">
+<AnchorPane prefHeight="701.0" prefWidth="1061.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.ProjectManagerController">
    <children>
       <TableView fx:id="tblShowTechnicians" layoutX="664.0" layoutY="74.0" prefHeight="533.0" prefWidth="350.0" styleClass="table-colum" AnchorPane.bottomAnchor="94.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="73.0">
         <columns>
@@ -36,7 +40,7 @@
             <TableColumn fx:id="clmShowDocument" prefWidth="348.0" styleClass="table-colum" text="Jobs" />
          </columns>
       </TableView>
-      <MFXButton fx:id="btnShowJobs" layoutX="636.0" layoutY="619.0" onAction="#handleShowJobs" prefHeight="48.0" prefWidth="126.0" text="Show Jobs" AnchorPane.bottomAnchor="34.0" AnchorPane.rightAnchor="299.0" />
+      <MFXButton fx:id="btnShowJobs" layoutX="636.0" layoutY="619.0" onAction="#handleShowJobs" prefHeight="48.0" prefWidth="126.0" text="Show Documentation" AnchorPane.bottomAnchor="34.0" AnchorPane.rightAnchor="299.0" />
       <MFXButton fx:id="btnSendPDF" layoutX="776.0" layoutY="619.0" onAction="#handlePrintPDF" prefHeight="48.0" prefWidth="126.0" text="Print PDF" AnchorPane.bottomAnchor="34.0" AnchorPane.rightAnchor="159.0" />
       <TextField fx:id="txtFilter" alignment="CENTER" layoutX="749.0" layoutY="11.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="11.0" />
       <MFXButton fx:id="btnReadJobs" layoutX="912.0" layoutY="619.0" onAction="#handleReadJob" prefHeight="48.0" prefWidth="126.0" text="Read Jobs" AnchorPane.bottomAnchor="34.0" AnchorPane.rightAnchor="23.0" />
@@ -62,9 +66,10 @@
          </columns>
       </TableView>
 
-      <TextField fx:id="txtFilterTechnicians" alignment="CENTER" layoutX="749.0" layoutY="11.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
-      <TextField fx:id="txtFilterSalesmen" alignment="CENTER" layoutX="749.0" layoutY="11.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
-      <TextField fx:id="txtFilterJobs" alignment="CENTER" layoutX="749.0" layoutY="11.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
+      <TextField fx:id="txtFilterTechnicians" alignment="CENTER" layoutX="747.0" layoutY="13.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
+      <TextField fx:id="txtFilterSalesmen" alignment="CENTER" layoutX="747.0" layoutY="13.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
+      <TextField fx:id="txtFilterJobs" alignment="CENTER" layoutX="747.0" layoutY="13.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
+      <MFXButton layoutX="528.0" layoutY="493.0" onAction="#handleShowWork" prefHeight="48.0" prefWidth="126.0" text="Show Work" />
 
    </children>
 </AnchorPane>
