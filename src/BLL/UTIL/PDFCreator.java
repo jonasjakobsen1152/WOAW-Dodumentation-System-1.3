@@ -95,10 +95,6 @@ public class PDFCreator {
         return images;
     }
 
-    public static void main(String[] args){
-
-    }
-
     public void printPrivatePDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
         ArrayList<ImageAndTitle> convertedImages = convertImages(allImages); // Converts the images so they can be added to pdf
 
@@ -118,17 +114,12 @@ public class PDFCreator {
         for (Documentation note: allNotes) {
             textCounter++;
             Paragraph p1 = new Paragraph(textCounter + ". "+ note.title).setBold().setFontSize(15);
-            Paragraph p2 = new Paragraph( note.publicText + "\r\n");
+            Paragraph p2 = new Paragraph( note.publicText);
             Cell cell = new Cell();
             cell.add(p1);
             cell.add(p2);
-            Paragraph privateInformation = new Paragraph("Private PDF information for note nr. " + textCounter + ":");
-            privateInformation.setFontSize(10);
-            Cell privateCell = new Cell();
-            privateCell.add(privateInformation);
 
             textTable.addCell(cell);
-            textTable.addCell(privateCell);
         }
         document.add(textTable);
 
