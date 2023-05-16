@@ -6,11 +6,18 @@
 
 <AnchorPane prefHeight="750.0" prefWidth="1000.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.DrawingController">
    <children>
-      <MFXButton layoutX="116.0" layoutY="668.0" onAction="#handleClearCanvas" prefHeight="40.0" prefWidth="100.0" text="Clear" />
-      <MFXButton layoutX="216.0" layoutY="668.0" onAction="#handleSetRed" prefHeight="40.0" prefWidth="100.0" text="Red pencil" />
+      <MFXButton layoutX="107.0" layoutY="664.0" onAction="#handleClearCanvas" prefHeight="40.0" prefWidth="100.0" text="Clear" />
+      <MFXButton layoutX="207.0" layoutY="664.0" onAction="#handleSetRed" prefHeight="40.0" prefWidth="100.0" text="Red pencil" />
       <AnchorPane layoutX="107.0" layoutY="52.0" prefHeight="200.0" prefWidth="200.0" styleClass="canvas">
          <children>
             <Canvas fx:id="canvas" height="600.0" onMouseDragged="#handleDraw" onMousePressed="#handleStartDrawing" styleClass="canvas" width="800.0" />
          </children></AnchorPane>
+      <MFXButton layoutX="307.0" layoutY="664.0" onAction="#handleSetBlue" prefHeight="40.0" prefWidth="100.0" text="Blue pencil" />
+      <MFXButton layoutX="407.0" layoutY="664.0" onAction="#handleSetGreen" prefHeight="40.0" prefWidth="100.0" text="Green pencil" />
+      <MFXButton layoutX="507.0" layoutY="664.0" onAction="#handleSetBrown" prefHeight="40.0" prefWidth="100.0" text="Brown pencil" />
+      <MFXButton layoutX="607.0" layoutY="664.0" onAction="#handleSetWhite" prefHeight="40.0" prefWidth="100.0" text="White pencil" />
+      <MFXButton layoutX="707.0" layoutY="664.0" onAction="#handleSetBlack" prefHeight="40.0" prefWidth="100.0" text="Black pencil" />
+      <MFXButton layoutX="807.0" layoutY="664.0" onAction="#handleSetYellow" prefHeight="40.0" prefWidth="100.0" text="Yellow pencil" />
+      <MFXButton layoutX="21.0" layoutY="52.0" onAction="#handleSaveDrawing" prefHeight="40.0" prefWidth="70.0" text="Save Image" />
    </children>
 </AnchorPane>
