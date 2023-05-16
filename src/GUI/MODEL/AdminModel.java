@@ -124,4 +124,8 @@ public class AdminModel {
         return workToBeViewed;
     }
 
+    public void deleteJob(Job selectedJob) {
+        adminManager.deleteJob(selectedJob);
+        showList();
+    }
 }

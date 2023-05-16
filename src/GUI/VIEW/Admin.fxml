@@ -33,8 +33,8 @@
         <MFXButton layoutX="146.0" layoutY="431.0" onAction="#handleOpenUpdateUser" prefHeight="44.0" prefWidth="127.0" text="Edit" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="146.0" />
         <MFXButton layoutX="290.0" layoutY="335.0" onAction="#handleDeleteUser" prefHeight="44.0" prefWidth="127.0" text="Delete" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="289.0" />
         <MFXButton layoutX="403.0" layoutY="366.0" onAction="#handleShowWork" prefHeight="44.0" prefWidth="94.0" text="Show Work" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="403.0" />
-        <MFXButton layoutX="524.0" layoutY="431.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="127.0" text="Show Document" AnchorPane.bottomAnchor="53.0" AnchorPane.leftAnchor="524.0" />
-        <MFXButton layoutX="725.0" layoutY="430.0" onAction="#handlePrintPDF" prefHeight="44.0" prefWidth="127.0" text="Print PDF" AnchorPane.bottomAnchor="54.0" AnchorPane.leftAnchor="725.0" />
+        <MFXButton layoutX="486.0" layoutY="428.0" onAction="#handleShowDocument" prefHeight="44.0" prefWidth="127.0" text="Show Document" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="486.0" />
+        <MFXButton layoutX="760.0" layoutY="428.0" onAction="#handlePrintPDF" prefHeight="44.0" prefWidth="127.0" text="Print PDF" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="760.0" />
         <ImageView fitHeight="55.0" fitWidth="172.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@Images/Screenshot_1.png" />
@@ -58,5 +58,6 @@
         <MFXButton layoutX="1227.0" layoutY="14.0" onAction="#handleLogOut" prefHeight="44.0" prefWidth="127.0" text="Log Out" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="14.0" />
         <TextField fx:id="txtSearchJobs" layoutX="509.0" layoutY="37.0" promptText="Search" />
         <TextField fx:id="txtSearchUsers" layoutX="242.0" layoutY="37.0" promptText="Search" />
+      <MFXButton layoutX="625.0" layoutY="425.0" onAction="#handleDeleteJob" prefHeight="44.0" prefWidth="127.0" text="Delete" />
     </children>
 </AnchorPane>

@@ -391,4 +391,29 @@ public class AdminController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void handleDeleteJob(ActionEvent actionEvent) {
+        selectedJob = tblDocument.getSelectionModel().getSelectedItem();
+        if (selectedJob == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select a job");
+            alert.setHeaderText("Choose a job to delete");
+            alert.show();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedJob.getTitle().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                try {
+                    adminModel.deleteJob(selectedJob);
+                    //updateUserModel();
+                    showUsersAndDocuments();
+                }catch (SQLException e){
+                    alertUser("Could not delete job");
+                }
+            }
+        }
+    }
 }

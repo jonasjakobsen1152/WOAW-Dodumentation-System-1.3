@@ -18,4 +18,6 @@ public interface IAdminDAO {
     ArrayList<Job> getAllDocuments() throws SQLException;
 
     List<Job> getWork(User selectedUser);
+
+    void deleteJob(Job selectedJob);
 }

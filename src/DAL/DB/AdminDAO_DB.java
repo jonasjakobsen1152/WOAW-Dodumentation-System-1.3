@@ -46,6 +46,11 @@ public class AdminDAO_DB implements IAdminDAO {
     }
 
     @Override
+    public void deleteJob(Job selectedJob) {
+        
+    }
+
+    @Override
     public ArrayList<Job> getAllDocuments() throws SQLException {
         ArrayList<Job> jobs = new ArrayList<>();
 

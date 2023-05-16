@@ -72,4 +72,8 @@ public class AdminManager {
         List<Job> searchResult = jobSearcher.search(allJobs,query);
         return searchResult;
     }
+
+    public void deleteJob(Job selectedJob) {
+        adminDAO.deleteJob(selectedJob);
+    }
 }

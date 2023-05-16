@@ -43,7 +43,7 @@ public class AddImageController {
         if(checkBox.isSelected()){
             privacy = "private";
         }else {
-            privacy = "pulbic";
+            privacy = "public";
         }
         try {
             JobImage jobImage = new JobImage(id, title, data, jobId, privacy);
