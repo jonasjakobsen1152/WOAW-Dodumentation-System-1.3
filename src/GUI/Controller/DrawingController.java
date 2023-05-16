@@ -20,7 +20,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class DrawingController {
-    
+
     @FXML
     private Canvas canvas;
     private GraphicsContext gc;
