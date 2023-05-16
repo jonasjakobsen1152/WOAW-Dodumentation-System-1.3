@@ -500,6 +500,20 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    public void handlePrintPublicPDF(ActionEvent actionEvent) {
+        technicianJobModel.setSelectedJob(selectedDocument);
+        technicianJobModel.showList();
+        ArrayList<Documentation> allNotes = new ArrayList<>();
+        ArrayList<JobImage> allImages = new ArrayList<>();
+
+        try {
+            projectManagerModel.printPrivatePDF(allNotes, allImages);
+        } catch (IOException e) {
+            e.printStackTrace();
+            alertUser("Could not print pdf");
+        }
+    }
+
     public void handleShowWork(ActionEvent actionEvent) {
         selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
         if(selectedUser == null || !selectedUser.getRole().equals("Technician")){
@@ -524,8 +538,5 @@ public class ProjectManagerController implements Initializable {
                 alertUser("Error: Could not open the project technician job window");
             }
         }
-    }
-
-    public void handlePrintPublicPDF(ActionEvent actionEvent) {
     }
 }

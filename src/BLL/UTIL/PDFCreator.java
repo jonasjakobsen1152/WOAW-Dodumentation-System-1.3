@@ -17,6 +17,7 @@ import com.itextpdf.layout.property.HorizontalAlignment;
 
 import java.awt.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -98,4 +99,63 @@ public class PDFCreator {
 
     }
 
+    public void printPrivatePDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
+        ArrayList<ImageAndTitle> convertedImages = convertImages(allImages); // Converts the images so they can be added to pdf
+
+        //Creates a pdf called Ticket.pdf if already created it overrides the already existing Ticket.pdf
+        PdfWriter pdfWriter = new PdfWriter("Public.pdf");
+        PdfDocument pdfDocument = new PdfDocument(pdfWriter);
+        //Creates a document for writing
+        pdfDocument.setDefaultPageSize(PageSize.A4);
+        pdfDocument.addNewPage();
+
+        Document document = new Document(pdfDocument);
+
+        float[] textWidth = {400f};
+        Table textTable = new Table(textWidth);
+        textTable.setHorizontalAlignment(HorizontalAlignment.CENTER);
+        int textCounter = 0;
+        for (Documentation note: allNotes) {
+            textCounter++;
+            Paragraph p1 = new Paragraph(textCounter + ". "+ note.title).setBold().setFontSize(15);
+            Paragraph p2 = new Paragraph( note.publicText + "\r\n");
+            Cell cell = new Cell();
+            cell.add(p1);
+            cell.add(p2);
+            Paragraph privateInformation = new Paragraph("Private PDF information for note nr. " + textCounter + ":");
+            privateInformation.setFontSize(10);
+            Cell privateCell = new Cell();
+            privateCell.add(privateInformation);
+
+            textTable.addCell(cell);
+            textTable.addCell(privateCell);
+        }
+        document.add(textTable);
+
+        float[] width = {100f,400f};
+        Table table = new Table(width);
+        table.setHorizontalAlignment(HorizontalAlignment.LEFT);
+
+        int counter = 0;
+        for (ImageAndTitle imageAndTitle: convertedImages) {
+            System.out.println(imageAndTitle.getPrivacy());
+            if(imageAndTitle.getPrivacy() == "Public") {
+                counter++;
+                Paragraph paragraph = new Paragraph(counter + ". " + imageAndTitle.getTitle());
+                paragraph.setBold().setFontSize(15);
+                Cell cell = new Cell();
+                cell.add(paragraph);
+
+                table.addCell(new Cell().add(paragraph));
+                Image image = imageAndTitle.getImage().setAutoScale(true);
+                table.addCell(new Cell().add(image));
+            }
+        }
+        document.add(table);
+
+        document.close();
+
+        File file = new File("Public.pdf");
+        Desktop.getDesktop().open(file);
+    }
 }
