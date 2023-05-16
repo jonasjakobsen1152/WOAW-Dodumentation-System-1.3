@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -135,8 +136,12 @@ public class ProjectManagerModel {
     public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
         projectManagerManager.printPDF(allNotes,allImages);
     }
+    public void printPrivatePDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
+        projectManagerManager.printPrivatePDF(allNotes,allImages);
+    }
 
     public void setSelectedUser(User selectedUser) {
         this.selectedUser = selectedUser;
     }
+
 }
