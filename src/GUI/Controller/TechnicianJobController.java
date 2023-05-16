@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -177,4 +178,19 @@ public class TechnicianJobController implements Initializable {
     }
 
 
+    public void handleOpenDrawing(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/DrawingWindow.fxml"));
+            AnchorPane pane = loader.load();
+
+
+            Stage dialogWindow = new Stage();
+            Scene scene = new Scene(pane);
+            dialogWindow.setScene(scene);
+            dialogWindow.showAndWait();
+        }catch (IOException e){
+            e.printStackTrace();
+            alertUser("Could not open the drawing window");
+        }
+    }
 }

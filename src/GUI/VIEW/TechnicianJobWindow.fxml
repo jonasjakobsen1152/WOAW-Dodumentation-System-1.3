@@ -42,5 +42,6 @@
             <ImageView fx:id="imgImage" fitHeight="511.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
+      <MFXButton layoutX="909.0" layoutY="307.0" onAction="#handleOpenDrawing" prefHeight="49.0" prefWidth="154.0" text="Draw" />
    </children>
 </AnchorPane>

@@ -42,4 +42,8 @@
 .choice-box{
     -fx-fill: black;
 }
+.canvas {
+    -fx-background-color: white;
+}
+
 
