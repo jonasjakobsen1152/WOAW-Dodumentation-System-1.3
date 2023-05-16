@@ -2,10 +2,11 @@ package BLL;
 
 import BE.*;
 import BLL.UTIL.*;
+import BLL.UTIL.PDFStrategies.PrivatePDFStrategy;
+import BLL.UTIL.PDFStrategies.PublicPDFStrategy;
 import DAL.DB.ProjectManagerDAO_DB;
 import DAL.IProjectManagerDAO;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class ProjectManagerManager {
     private SalesmenSearcher salesmenSearcher;
     private JobSearcher jobSearcher;
 
+    private PDFCreator pdfCreator;
+
     public ProjectManagerManager(){
         projectManagerDAO = new ProjectManagerDAO_DB();
 
@@ -37,8 +40,7 @@ public class ProjectManagerManager {
         allTechnicians = projectManagerDAO.getAllUsers("Technician");
         allSalesmen = projectManagerDAO.getAllUsers("Salesmen");
 
-
-
+        pdfCreator = new PDFCreator(new PublicPDFStrategy());
     }
 
     public ArrayList<User> getAllUsers(String role){
@@ -86,17 +88,21 @@ public class ProjectManagerManager {
         return searchResult;
     }
 
-    public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
-        PDFCreator pdfCreator = new PDFCreator();
-        pdfCreator.printPDF(allNotes,allImages);
+    public void setPDFStrategy(String privacy) {
+        if(privacy.equals("private")){
+            pdfCreator.setStrategy(new PrivatePDFStrategy());
+        }
+        else {
+            pdfCreator.setStrategy(new PublicPDFStrategy());
+        }
     }
 
-    public void printPrivatePDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
-        PDFCreator pdfCreator = new PDFCreator();
-        pdfCreator.printPrivatePDF(allNotes,allImages);
+    public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
+        pdfCreator.printPDF(allNotes,allImages);
     }
 
     public void deleteJob(Job selectedJob) throws SQLException {
         projectManagerDAO.deleteJob(selectedJob);
     }
+
 }

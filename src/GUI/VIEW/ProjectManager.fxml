@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="701.0" prefWidth="1061.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.ProjectManagerController">
+<AnchorPane prefHeight="701.0" prefWidth="1061.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.ProjectManagerController">
    <children>
       <TableView fx:id="tblShowTechnicians" layoutX="664.0" layoutY="74.0" prefHeight="533.0" prefWidth="350.0" styleClass="table-colum" AnchorPane.bottomAnchor="94.0" AnchorPane.rightAnchor="47.0" AnchorPane.topAnchor="73.0">
         <columns>
@@ -70,8 +71,9 @@
       <TextField fx:id="txtFilterSalesmen" alignment="CENTER" layoutX="747.0" layoutY="13.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
       <TextField fx:id="txtFilterJobs" alignment="CENTER" layoutX="747.0" layoutY="13.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
       <MFXButton fx:id="btnShowWork" layoutX="528.0" layoutY="493.0" onAction="#handleShowWork" prefHeight="48.0" prefWidth="126.0" text="Show Work" />
-      <MFXButton fx:id="btnPublicPDF" layoutX="908.0" layoutY="619.0" onAction="#handlePrintPublicPDF" prefHeight="48.0" prefWidth="126.0" text="Print Public PDF" AnchorPane.bottomAnchor="34.0" AnchorPane.rightAnchor="27.0" />
       <MFXButton fx:id="btnDeleteJob" layoutX="528.0" layoutY="556.0" onAction="#handleDeleteJob" prefHeight="48.0" prefWidth="126.0" text="Delete Job" />
+      <MFXCheckbox fx:id="checkBoxPDF" layoutX="905.0" layoutY="668.0" onAction="#handleSetPDFStrategy" />
+      <Text fx:id="txtPDFText" layoutX="633.0" layoutY="682.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Should PDF be printed with private information?" />
 
    </children>
 </AnchorPane>

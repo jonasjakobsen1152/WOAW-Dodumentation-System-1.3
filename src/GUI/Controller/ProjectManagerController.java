@@ -3,6 +3,7 @@ package GUI.Controller;
 import BE.*;
 import GUI.MODEL.*;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,6 +44,8 @@ public class ProjectManagerController implements Initializable {
     public MFXButton btnPublicPDF;
     public MFXButton btnShowWork;
     public MFXButton btnDeleteJob;
+    public MFXCheckbox checkBoxPDF;
+    public Text txtPDFText;
     @FXML
     private TextField txtFilter;
     @FXML
@@ -433,8 +437,9 @@ public class ProjectManagerController implements Initializable {
         btnSendPDF.setVisible(true);
         btnShowJobs.setVisible(true);
         txtFilterJobs.setVisible(true);
-        btnPublicPDF.setVisible(true);
         btnDeleteJob.setVisible(true);
+        checkBoxPDF.setVisible(true);
+        txtPDFText.setVisible(true);
     }
 
     public void setVisibleFalse() {
@@ -450,7 +455,6 @@ public class ProjectManagerController implements Initializable {
         btnDeleteWork.setVisible(false);
         btnCreateTechnician.setVisible(false);
         btnAddWork.setVisible(false);
-        btnPublicPDF.setVisible(false);
         btnReadJobs.setVisible(false);
         btnSendPDF.setVisible(false);
         btnEditUser.setVisible(false);
@@ -458,6 +462,8 @@ public class ProjectManagerController implements Initializable {
         btnDeleteCustomer.setVisible(false);
         btnShowWork.setVisible(false);
         btnDeleteJob.setVisible(false);
+        checkBoxPDF.setVisible(false);
+        txtPDFText.setVisible(false);
 
 
         txtFilter.setVisible(false);
@@ -484,37 +490,36 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
-    public void handlePrintPDF(ActionEvent actionEvent) {
-        technicianJobModel.setSelectedJob(selectedDocument);
-        technicianJobModel.showList();
-        ArrayList<Documentation> allNotes = new ArrayList<>();
-        ArrayList<JobImage> allImages = new ArrayList<>();
-
-        allNotes.addAll(technicianJobModel.getDocumentationsToBeViewed());
-        allImages.addAll(technicianJobModel.getImagesToBeViewed());
-
-        try {
-            projectManagerModel.printPDF(allNotes, allImages);
-        } catch (IOException e) {
-            e.printStackTrace();
-            alertUser("Could not print pdf");
+    public void handleSetPDFStrategy(ActionEvent actionEvent) {
+        if(checkBoxPDF.isSelected()){
+            projectManagerModel.setPDFStrategy("private");
         }
+        else
+        {
+            projectManagerModel.setPDFStrategy("public");
+        }
+
     }
 
-    public void handlePrintPublicPDF(ActionEvent actionEvent) {
-        technicianJobModel.setSelectedJob(selectedDocument);
-        technicianJobModel.showList();
-        ArrayList<Documentation> allNotes = new ArrayList<>();
-        ArrayList<JobImage> allImages = new ArrayList<>();
+    public void handlePrintPDF(ActionEvent actionEvent) {
+        if(selectedDocument == null){
+            alertUser("Please select a Technician");
+        }
+        else {
+            technicianJobModel.setSelectedJob(selectedDocument);
+            technicianJobModel.showList();
+            ArrayList<Documentation> allNotes = new ArrayList<>();
+            ArrayList<JobImage> allImages = new ArrayList<>();
 
-        allNotes.addAll(technicianJobModel.getDocumentationsToBeViewed());
-        allImages.addAll(technicianJobModel.getImagesToBeViewed());
+            allNotes.addAll(technicianJobModel.getDocumentationsToBeViewed());
+            allImages.addAll(technicianJobModel.getImagesToBeViewed());
 
-        try {
-            projectManagerModel.printPrivatePDF(allNotes, allImages);
-        } catch (IOException e) {
-            e.printStackTrace();
-            alertUser("Could not print pdf");
+            try {
+                projectManagerModel.printPDF(allNotes, allImages);
+            } catch (IOException e) {
+                e.printStackTrace();
+                alertUser("Could not print pdf");
+            }
         }
     }
 
