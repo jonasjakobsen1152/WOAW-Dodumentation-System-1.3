@@ -65,6 +65,7 @@ public class ProjectManagerController implements Initializable {
     CreateUpdateJobModel createUpdateJobModel;
     CustomerModel customerModel;
     TechnicianJobModel technicianJobModel;
+    LoginModel loginModel;
     private User selectedTechnician;
     private Customer selectedCustomer;
     private Job selectedDocument;
@@ -80,6 +81,7 @@ public class ProjectManagerController implements Initializable {
         customerModel = CustomerModel.getInstance();
         documentationModel = DocumentationModel.getInstance();
         technicianJobModel = TechnicianJobModel.getInstance();
+        loginModel = LoginModel.getInstance();
     }
 
     @Override
@@ -97,6 +99,7 @@ public class ProjectManagerController implements Initializable {
 
         tblShowTechnicians.setOnMouseClicked(event -> {
             selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
+            loginModel.setLoggedInUser(selectedUser);
             tblShowSalesmen.getSelectionModel().clearSelection();
 
         });
