@@ -351,7 +351,7 @@ public class AdminController implements Initializable {
 
     }
 
-    public void handleShowWork(ActionEvent actionEvent) throws SQLException {
+    public void handleShowWork(ActionEvent actionEvent) {
 
         selectedUser = tblUser.getSelectionModel().getSelectedItem();
         if(selectedUser == null || !selectedUser.getRole().equals("Technician")){

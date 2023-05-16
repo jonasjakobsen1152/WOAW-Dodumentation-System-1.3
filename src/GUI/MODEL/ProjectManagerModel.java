@@ -18,6 +18,7 @@ public class ProjectManagerModel {
     private ObservableList<Customer> customerToBeViewed;
     private ObservableList<Job> documentToBeViewed;
     private static ProjectManagerModel instance;
+    private User selectedUser;
 
     private ProjectManagerModel()  {
         projectManagerManager = new ProjectManagerManager();
@@ -133,5 +134,9 @@ public class ProjectManagerModel {
 
     public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
         projectManagerManager.printPDF(allNotes,allImages);
+    }
+
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
     }
 }
