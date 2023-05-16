@@ -95,4 +95,8 @@ public class ProjectManagerManager {
         PDFCreator pdfCreator = new PDFCreator();
         pdfCreator.printPrivatePDF(allNotes,allImages);
     }
+
+    public void deleteJob(Job selectedJob) throws SQLException {
+        projectManagerDAO.deleteJob(selectedJob);
+    }
 }

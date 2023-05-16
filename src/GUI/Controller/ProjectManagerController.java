@@ -41,6 +41,7 @@ public class ProjectManagerController implements Initializable {
     public TextField txtFilterJobs;
     public MFXButton btnPublicPDF;
     public MFXButton btnShowWork;
+    public MFXButton btnDeleteJob;
     @FXML
     private TextField txtFilter;
     @FXML
@@ -72,6 +73,7 @@ public class ProjectManagerController implements Initializable {
     private Customer selectedCustomer;
     private Job selectedDocument;
     public TableView<User> tblUser;
+    public Job selectedJob;
 
     public ProjectManagerController() throws SQLException {
         try {
@@ -122,8 +124,8 @@ public class ProjectManagerController implements Initializable {
         searchListeners();
     }
 
-    public void searchListeners(){
-        txtFilterTechnicians.textProperty().addListener((observable, oldValue, newValue) ->{
+    public void searchListeners() {
+        txtFilterTechnicians.textProperty().addListener((observable, oldValue, newValue) -> {
             Runnable task = () -> projectManagerModel.searchTechnicians(newValue);
             Thread thread = new Thread(task);
             thread.start();
@@ -135,13 +137,13 @@ public class ProjectManagerController implements Initializable {
             thread.start();
         });
 
-        txtFilterSalesmen.textProperty().addListener((observable, oldValue, newValue) ->{
+        txtFilterSalesmen.textProperty().addListener((observable, oldValue, newValue) -> {
             Runnable task = () -> projectManagerModel.searchSalesmen(newValue);
             Thread thread = new Thread(task);
             thread.start();
         });
 
-        txtFilterJobs.textProperty().addListener((observable, oldValue, newValue) ->{
+        txtFilterJobs.textProperty().addListener((observable, oldValue, newValue) -> {
             Runnable task = () -> projectManagerModel.searchJobs(newValue);
             Thread thread = new Thread(task);
             thread.start();
@@ -163,8 +165,7 @@ public class ProjectManagerController implements Initializable {
             Scene scene = new Scene(pane);
             dialogWindow.setScene(scene);
             dialogWindow.show();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             alertUser("Error: Could not open the create user window");
         }
     }
@@ -183,41 +184,40 @@ public class ProjectManagerController implements Initializable {
 
         if (selectedTechnician == null) {
             alertUser("Choose a technician");
-        }else{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateJob.fxml"));
-        try {
-            createUpdateJobModel.setTechnician(selectedTechnician);
-            AnchorPane pane = loader.load();
+        } else {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateJob.fxml"));
+            try {
+                createUpdateJobModel.setTechnician(selectedTechnician);
+                AnchorPane pane = loader.load();
 
-            Stage dialogWindow = new Stage();
-            Scene scene = new Scene(pane);
-            dialogWindow.setScene(scene);
-            dialogWindow.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            alertUser("Error: Could not open the job creation window");
-        }
+                Stage dialogWindow = new Stage();
+                Scene scene = new Scene(pane);
+                dialogWindow.setScene(scene);
+                dialogWindow.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                alertUser("Error: Could not open the job creation window");
+            }
         }
 
     }
 
     public void handleDeleteWork(ActionEvent actionEvent) {
         selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
-        if (selectedDocument == null){
+        if (selectedDocument == null) {
             alertUser("Select a job");
-        }else{
+        } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
             alert.setHeaderText("Are you sure you want to delete: " + selectedDocument.getTitle().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
-            if (action.get() == ButtonType.OK){
+            if (action.get() == ButtonType.OK) {
                 try {
 
                     projectManagerModel.deleteDocument(selectedDocument);
                     showDocument();
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     alertUser("Could not delete work");
                     e.printStackTrace();
                 }
@@ -250,7 +250,7 @@ public class ProjectManagerController implements Initializable {
                     projectManagerModel.deleteUser(selectedUser);
                     //updateUserModel();
                     showTechnician();
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     alertUser("Could not delete technician");
                 }
             }
@@ -264,14 +264,14 @@ public class ProjectManagerController implements Initializable {
             alert.setTitle("Select a user");
             alert.setHeaderText("Choose a user to delete");
             alert.show();
-        }  else {
+        } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
             alert.setHeaderText("Are you sure you want to delete: " + selectedCustomer.getName().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
-                try{
-                projectManagerModel.deleteCustomer(selectedCustomer);
+                try {
+                    projectManagerModel.deleteCustomer(selectedCustomer);
 
                     showCustomer();
                 } catch (SQLException e) {
@@ -308,7 +308,7 @@ public class ProjectManagerController implements Initializable {
                     projectManagerModel.deleteUser(selectedUser);
                     //updateUserModel();
                     showSalesmen();
-                }catch (SQLException e){
+                } catch (SQLException e) {
                     alertUser("Could not delete salesmen");
                     e.printStackTrace();
                 }
@@ -342,12 +342,12 @@ public class ProjectManagerController implements Initializable {
     public void handleReadJob(ActionEvent actionEvent) {
     }
 
-    private void showTechnician(){
+    private void showTechnician() {
         clmShowTechnicians.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         tblShowTechnicians.setItems(projectManagerModel.getTechnicianToBeViewed());
     }
 
-    private void showSalesmen(){
+    private void showSalesmen() {
         clmShowSalesmen.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         tblShowSalesmen.setItems(projectManagerModel.getSalesmenToBeViewed());
     }
@@ -367,7 +367,7 @@ public class ProjectManagerController implements Initializable {
             Scene scene = new Scene(pane);
             dialogWindow.setScene(scene);
             dialogWindow.show();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             alertUser("Could not open the customer window");
         }
@@ -389,11 +389,10 @@ public class ProjectManagerController implements Initializable {
             Scene scene = new Scene(pane);
             dialogWindow.setScene(scene);
             dialogWindow.show();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             alertUser("Error: Could not open the technician job window");
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             alertUser("Could not get the documentation list from the database");
         }
@@ -435,9 +434,10 @@ public class ProjectManagerController implements Initializable {
         btnShowJobs.setVisible(true);
         txtFilterJobs.setVisible(true);
         btnPublicPDF.setVisible(true);
+        btnDeleteJob.setVisible(true);
     }
 
-    public void setVisibleFalse(){
+    public void setVisibleFalse() {
         tblShowCustomers.setVisible(false);
         tblShowDocument.setVisible(false);
         tblShowSalesmen.setVisible(false);
@@ -457,6 +457,7 @@ public class ProjectManagerController implements Initializable {
         btnShowJobs.setVisible(false);
         btnDeleteCustomer.setVisible(false);
         btnShowWork.setVisible(false);
+        btnDeleteJob.setVisible(false);
 
 
         txtFilter.setVisible(false);
@@ -516,16 +517,16 @@ public class ProjectManagerController implements Initializable {
 
     public void handleShowWork(ActionEvent actionEvent) {
         selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
-        if(selectedUser == null || !selectedUser.getRole().equals("Technician")){
+        if (selectedUser == null || !selectedUser.getRole().equals("Technician")) {
             alertUser("Select a technician from the user table");
-        }else{
+        } else {
             try {
                 technicianModel = TechnicianModel.getInstance();
-            technicianModel.setSelectedUser(selectedUser);
+                technicianModel.setSelectedUser(selectedUser);
 
-            technicianModel.showList();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/GUI/View/ProjectTechnicianJobWindow.fxml"));
+                technicianModel.showList();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/GUI/View/ProjectTechnicianJobWindow.fxml"));
 
                 AnchorPane pane = loader.load();
                 Stage dialogWindow = new Stage();
@@ -536,6 +537,30 @@ public class ProjectManagerController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
                 alertUser("Error: Could not open the project technician job window");
+            }
+        }
+    }
+
+    public void handleDeleteJob(ActionEvent actionEvent) {
+        selectedJob = tblShowDocument.getSelectionModel().getSelectedItem();
+        if (selectedJob == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Select a Job");
+            alert.setHeaderText("Choose a Job to delete");
+            alert.show();
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Warning");
+            alert.setHeaderText("Are you sure you want to delete: " + selectedJob.getTitle().concat("?"));
+            Optional<ButtonType> action = alert.showAndWait();
+            if (action.get() == ButtonType.OK) {
+                try {
+                    projectManagerModel.deleteJob(selectedJob);
+                } catch (SQLException e) {
+                    alertUser("Could not delete the job");
+                    e.printStackTrace();
+                }
             }
         }
     }

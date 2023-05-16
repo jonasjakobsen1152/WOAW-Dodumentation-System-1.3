@@ -144,4 +144,8 @@ public class ProjectManagerModel {
         this.selectedUser = selectedUser;
     }
 
+    public void deleteJob(Job selectedJob) throws SQLException {
+        projectManagerManager.deleteJob(selectedJob);
+        showList();
+    }
 }

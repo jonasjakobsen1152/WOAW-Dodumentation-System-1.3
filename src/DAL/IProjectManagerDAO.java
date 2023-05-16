@@ -19,4 +19,5 @@ public interface IProjectManagerDAO {
     void deleteDocument(Job selectedDocument);
 
     void deleteCustomer(Customer selectedCustomer) throws SQLException;
+    void deleteJob(Job selectedJob) throws SQLException;
 }
