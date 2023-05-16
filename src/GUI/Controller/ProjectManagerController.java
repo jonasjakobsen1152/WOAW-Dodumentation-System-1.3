@@ -405,6 +405,7 @@ public class ProjectManagerController implements Initializable {
         btnEditUser.setVisible(true);
         btnAddWork.setVisible(true);
         txtFilterTechnicians.setVisible(true);
+        btnShowWork.setVisible(true);
     }
 
     public void handleShowCustomers(ActionEvent actionEvent) {
@@ -453,6 +454,7 @@ public class ProjectManagerController implements Initializable {
         btnEditUser.setVisible(false);
         btnShowJobs.setVisible(false);
         btnDeleteCustomer.setVisible(false);
+        btnShowWork.setVisible(false);
 
 
         txtFilter.setVisible(false);
