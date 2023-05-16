@@ -408,7 +408,6 @@ public class AdminController implements Initializable {
             if (action.get() == ButtonType.OK) {
                 try {
                     adminModel.deleteJob(selectedJob);
-                    //updateUserModel();
                     showUsersAndDocuments();
                 }catch (SQLException e){
                     alertUser("Could not delete job");

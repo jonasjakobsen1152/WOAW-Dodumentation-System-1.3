@@ -104,6 +104,9 @@ public class AdminModel {
             getCustomerToBeViewed().clear();
             getCustomerToBeViewed().addAll(adminManager.getAllCustomer());
 
+            getDocumentsToBeViewed().clear();
+            getDocumentsToBeViewed().addAll(adminManager.getAllDocuments());
+
         }catch (SQLException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Could not show list");
@@ -124,7 +127,7 @@ public class AdminModel {
         return workToBeViewed;
     }
 
-    public void deleteJob(Job selectedJob) {
+    public void deleteJob(Job selectedJob) throws SQLException {
         adminManager.deleteJob(selectedJob);
         showList();
     }

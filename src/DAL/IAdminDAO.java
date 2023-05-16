@@ -19,5 +19,5 @@ public interface IAdminDAO {
 
     List<Job> getWork(User selectedUser);
 
-    void deleteJob(Job selectedJob);
+    void deleteJob(Job selectedJob) throws SQLException;
 }

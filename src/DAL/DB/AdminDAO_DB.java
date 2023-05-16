@@ -46,9 +46,22 @@ public class AdminDAO_DB implements IAdminDAO {
     }
 
     @Override
-    public void deleteJob(Job selectedJob) {
-        
+    public void deleteJob(Job selectedJob) throws SQLException {
+        try(Connection conn = databaseConnector.getConnection()) {
+            String sql = "DELETE FROM Job WHERE ID = ?";
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,selectedJob.getId());
+
+
+            stmt.executeUpdate();
+
+        }catch (SQLException e){
+            throw new SQLException(e);
+        }
     }
+
 
     @Override
     public ArrayList<Job> getAllDocuments() throws SQLException {

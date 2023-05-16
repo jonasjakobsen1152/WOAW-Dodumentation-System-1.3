@@ -73,7 +73,7 @@ public class AdminManager {
         return searchResult;
     }
 
-    public void deleteJob(Job selectedJob) {
+    public void deleteJob(Job selectedJob) throws SQLException {
         adminDAO.deleteJob(selectedJob);
     }
 }
