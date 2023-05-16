@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.DrawingController">
+   <children>
+      <MFXButton layoutX="116.0" layoutY="668.0" onAction="#handleClearCanvas" prefHeight="40.0" prefWidth="100.0" text="Clear" />
+      <MFXButton layoutX="216.0" layoutY="668.0" onAction="#handleSetRed" prefHeight="40.0" prefWidth="100.0" text="Red pencil" />
+      <AnchorPane layoutX="107.0" layoutY="52.0" prefHeight="200.0" prefWidth="200.0" styleClass="canvas">
+         <children>
+            <Canvas fx:id="canvas" height="600.0" onMouseDragged="#handleDraw" onMousePressed="#handleStartDrawing" styleClass="canvas" width="800.0" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

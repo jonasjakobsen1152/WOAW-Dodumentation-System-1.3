@@ -23,6 +23,9 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * The admin controller is used to control the admin window
+ */
 public class AdminController implements Initializable {
 
     public TableView<User> tblUser;
@@ -77,6 +80,10 @@ public class AdminController implements Initializable {
         searchListeners();
     }
 
+    /**
+     * This method is used for all the search functions for the different tables in the admin window.
+     * The method uses different threads to avoid a slow application.
+     */
     public void searchListeners(){
         txtSearchUsers.textProperty().addListener((observable, oldValue, newValue) ->{
             Runnable task = () -> adminModel.searchUsers(newValue);
@@ -161,6 +168,9 @@ public class AdminController implements Initializable {
         }
     }
 
+    /**
+     *This method is used to delete the selected user from the user table.
+     */
     public void handleDeleteUser(ActionEvent actionEvent) {
         selectedUser = tblUser.getSelectionModel().getSelectedItem();
         if (selectedUser == null) {
@@ -186,7 +196,6 @@ public class AdminController implements Initializable {
                     alertUser("Could not delete the user");
                     e.printStackTrace();
                 }
-                //updateUserModel();
                 showUsersAndDocuments();
             }
         }
@@ -213,6 +222,9 @@ public class AdminController implements Initializable {
         tblDocument.setItems(adminModel.getDocumentsToBeViewed());
     }
 
+    /**
+     * Called when an error occurs and is used to show a alert window telling the user what is wrong
+     */
     private void alertUser(String error) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(error);
@@ -220,6 +232,9 @@ public class AdminController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Used to open the TechnicianJobWindow and sets the selectedJob.
+     */
     public void handleShowDocument(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
@@ -249,6 +264,9 @@ public class AdminController implements Initializable {
     public void handlePrintPDF(ActionEvent actionEvent) {
     }
 
+    /**
+     * Opens the customer window
+     */
     public void handleCreateCustomer(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Customer.fxml"));
@@ -266,6 +284,9 @@ public class AdminController implements Initializable {
         }
     }
 
+    /**
+     * Deletes the selected customer
+     */
     public void handleDeleteCustomer(ActionEvent actionEvent) {
         selectedCustomer = tblCustomer.getSelectionModel().getSelectedItem();
         if (selectedCustomer == null) {
