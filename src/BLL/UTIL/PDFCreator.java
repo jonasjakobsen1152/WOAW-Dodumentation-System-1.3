@@ -88,7 +88,7 @@ public class PDFCreator {
             ImageData imageDataFactory = ImageDataFactory.create(imageData);
             Image image = new Image(imageDataFactory);
 
-            ImageAndTitle imageAndTitle = new ImageAndTitle(image, imageToConvert.getTitle());
+            ImageAndTitle imageAndTitle = new ImageAndTitle(image, imageToConvert.getTitle(), imageToConvert.getPrivacy());
             images.add(imageAndTitle);
         }
         return images;

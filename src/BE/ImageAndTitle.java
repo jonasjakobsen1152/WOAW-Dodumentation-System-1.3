@@ -8,9 +8,12 @@ public class ImageAndTitle {
     private com.itextpdf.layout.element.Image image;
     private String title;
 
-    public ImageAndTitle(com.itextpdf.layout.element.Image image, String title) {
+    private String privacy;
+
+    public ImageAndTitle(Image image, String title, String privacy) {
         this.image = image;
         this.title = title;
+        this.privacy = privacy;
     }
 
     public Image getImage() {
@@ -27,5 +30,13 @@ public class ImageAndTitle {
 
     public void setTitle(String string) {
         this.title = string;
+    }
+
+    public String getPrivacy() {
+        return privacy;
+    }
+
+    public void setPrivacy(String privacy) {
+        this.privacy = privacy;
     }
 }
