@@ -40,6 +40,7 @@ public class ProjectManagerController implements Initializable {
     public TextField txtFilterSalesmen;
     public TextField txtFilterJobs;
     public MFXButton btnPublicPDF;
+    public MFXButton btnShowWork;
     @FXML
     private TextField txtFilter;
     @FXML
@@ -449,6 +450,7 @@ public class ProjectManagerController implements Initializable {
         btnEditUser.setVisible(false);
         btnShowJobs.setVisible(false);
         btnDeleteCustomer.setVisible(false);
+
 
         txtFilter.setVisible(false);
         txtFilterTechnicians.setVisible(false);
