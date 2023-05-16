@@ -23,7 +23,7 @@ public class ProjectManagerJobController implements Initializable {
     private TableColumn clmTitleWork;
     private TechnicianModel technicianModel;
     private TechnicianJobModel technicianJobModel;
-    private Job selectedJob;
+    public Job selectedJob;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
