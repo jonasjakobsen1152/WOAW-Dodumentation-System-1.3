@@ -67,6 +67,7 @@ public class ProjectManagerController implements Initializable {
     CustomerModel customerModel;
     TechnicianJobModel technicianJobModel;
     LoginModel loginModel;
+    TechnicianModel technicianModel;
     private User selectedTechnician;
     private Customer selectedCustomer;
     private Job selectedDocument;
@@ -101,6 +102,7 @@ public class ProjectManagerController implements Initializable {
         tblShowTechnicians.setOnMouseClicked(event -> {
             selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
             loginModel.setLoggedInUser(selectedUser);
+            System.out.println(selectedUser.getUsername());
             tblShowSalesmen.getSelectionModel().clearSelection();
 
         });
@@ -504,8 +506,10 @@ public class ProjectManagerController implements Initializable {
             alertUser("Select a technician from the user table");
         }else{
             try {
-            projectManagerModel.setSelectedUser(selectedUser);
-            projectManagerModel.showList();
+                technicianModel = TechnicianModel.getInstance();
+            technicianModel.setSelectedUser(selectedUser);
+
+            technicianModel.showList();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/GUI/View/ProjectTechnicianJobWindow.fxml"));
 
@@ -515,7 +519,7 @@ public class ProjectManagerController implements Initializable {
                 dialogWindow.setScene(scene);
                 dialogWindow.show();
 
-            } catch (SQLException | IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
                 alertUser("Error: Could not open the project technician job window");
             }
