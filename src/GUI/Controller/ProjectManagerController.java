@@ -507,6 +507,9 @@ public class ProjectManagerController implements Initializable {
         ArrayList<Documentation> allNotes = new ArrayList<>();
         ArrayList<JobImage> allImages = new ArrayList<>();
 
+        allNotes.addAll(technicianJobModel.getDocumentationsToBeViewed());
+        allImages.addAll(technicianJobModel.getImagesToBeViewed());
+
         try {
             projectManagerModel.printPrivatePDF(allNotes, allImages);
         } catch (IOException e) {

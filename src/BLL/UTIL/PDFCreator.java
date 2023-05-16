@@ -70,7 +70,7 @@ public class PDFCreator {
             Cell cell = new Cell();
             cell.add(paragraph);
 
-            table.addCell(new Cell().add(paragraph));
+            table.addCell(cell);
             Image image = imageAndTitle.getImage().setAutoScale(true);
             table.addCell(new Cell().add(image));
         }
@@ -114,7 +114,7 @@ public class PDFCreator {
         for (Documentation note: allNotes) {
             textCounter++;
             Paragraph p1 = new Paragraph(textCounter + ". "+ note.title).setBold().setFontSize(15);
-            Paragraph p2 = new Paragraph( note.publicText);
+            Paragraph p2 = new Paragraph(note.publicText);
             Cell cell = new Cell();
             cell.add(p1);
             cell.add(p2);
@@ -130,7 +130,7 @@ public class PDFCreator {
         int counter = 0;
         for (ImageAndTitle imageAndTitle: convertedImages) {
             System.out.println(imageAndTitle.getPrivacy());
-            if(imageAndTitle.getPrivacy() == "Public") {
+            if(imageAndTitle.getPrivacy().equals("public")) {
                 counter++;
                 Paragraph paragraph = new Paragraph(counter + ". " + imageAndTitle.getTitle());
                 paragraph.setBold().setFontSize(15);
