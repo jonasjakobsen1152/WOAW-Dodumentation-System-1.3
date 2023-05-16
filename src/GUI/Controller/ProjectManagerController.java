@@ -39,6 +39,7 @@ public class ProjectManagerController implements Initializable {
     public TextField txtFilterTechnicians;
     public TextField txtFilterSalesmen;
     public TextField txtFilterJobs;
+    public MFXButton btnPublicPDF;
     @FXML
     private TextField txtFilter;
     @FXML
@@ -426,6 +427,7 @@ public class ProjectManagerController implements Initializable {
         btnSendPDF.setVisible(true);
         btnShowJobs.setVisible(true);
         txtFilterJobs.setVisible(true);
+        btnPublicPDF.setVisible(true);
     }
 
     public void setVisibleFalse(){
@@ -441,6 +443,7 @@ public class ProjectManagerController implements Initializable {
         btnDeleteWork.setVisible(false);
         btnCreateTechnician.setVisible(false);
         btnAddWork.setVisible(false);
+        btnPublicPDF.setVisible(false);
         btnReadJobs.setVisible(false);
         btnSendPDF.setVisible(false);
         btnEditUser.setVisible(false);
@@ -510,5 +513,8 @@ public class ProjectManagerController implements Initializable {
                 alertUser("Error: Could not open the project technician job window");
             }
         }
+    }
+
+    public void handlePrintPublicPDF(ActionEvent actionEvent) {
     }
 }

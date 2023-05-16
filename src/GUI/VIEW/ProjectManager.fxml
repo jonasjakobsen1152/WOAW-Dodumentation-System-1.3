@@ -70,6 +70,7 @@
       <TextField fx:id="txtFilterSalesmen" alignment="CENTER" layoutX="747.0" layoutY="13.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
       <TextField fx:id="txtFilterJobs" alignment="CENTER" layoutX="747.0" layoutY="13.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" />
       <MFXButton layoutX="528.0" layoutY="493.0" onAction="#handleShowWork" prefHeight="48.0" prefWidth="126.0" text="Show Work" />
+      <MFXButton fx:id="btnPublicPDF" layoutX="908.0" layoutY="619.0" onAction="#handlePrintPublicPDF" prefHeight="48.0" prefWidth="126.0" text="Print Public PDF" AnchorPane.bottomAnchor="34.0" AnchorPane.rightAnchor="27.0" />
 
    </children>
 </AnchorPane>
