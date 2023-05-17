@@ -57,7 +57,6 @@ public class PublicPDFStrategy implements PDFStrategy {
 
         int counter = 0;
         for (ImageAndTitle imageAndTitle: convertedImages) {
-            System.out.println(imageAndTitle.getPrivacy());
             if(imageAndTitle.getPrivacy().equals("public")) {
                 counter++;
                 //Adds a paragraph with the title of the image
