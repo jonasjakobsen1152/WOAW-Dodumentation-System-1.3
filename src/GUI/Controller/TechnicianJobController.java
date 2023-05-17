@@ -92,7 +92,7 @@ public class TechnicianJobController implements Initializable {
     public void handleUpdateDocumentation(ActionEvent actionEvent) {
         selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
         if(selectedDocumentation == null){
-            alertUser("Select a customer to update");
+            alertUser("Select a documentation to update");
         }else {
             documentationModel.setSelectedDocumentation(selectedDocumentation);
             FXMLLoader loader = new FXMLLoader();
@@ -124,7 +124,7 @@ public class TechnicianJobController implements Initializable {
     public void handleDeleteDocumentation(ActionEvent actionEvent) {
         selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
         if(selectedDocumentation == null){
-            alertUser("Select a customer to delete");
+            alertUser("Select a documentation to delete");
         }else {
             try {
                 technicianJobModel.deleteDocumentation(selectedDocumentation);

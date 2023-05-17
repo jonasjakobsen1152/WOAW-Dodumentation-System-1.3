@@ -236,28 +236,32 @@ public class AdminController implements Initializable {
      * Used to open the TechnicianJobWindow and sets the selectedJob.
      */
     public void handleShowDocument(ActionEvent actionEvent) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
-        selectedJob = tblDocument.getSelectionModel().getSelectedItem();
-        try {
-            technicianJobModel = TechnicianJobModel.getInstance();
-            documentationModel.setSelectedJob(selectedJob);
-            technicianJobModel.setSelectedJob(selectedJob);
-            technicianJobModel.showList();
+        if(selectedJob == null) {
+            alertUser("Please select a job");
+        } else {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
+            selectedJob = tblDocument.getSelectionModel().getSelectedItem();
+            try {
+                technicianJobModel = TechnicianJobModel.getInstance();
+                documentationModel.setSelectedJob(selectedJob);
+                technicianJobModel.setSelectedJob(selectedJob);
+                technicianJobModel.showList();
 
-            AnchorPane pane = loader.load();
+                AnchorPane pane = loader.load();
 
-            Stage dialogWindow = new Stage();
-            Scene scene = new Scene(pane);
-            dialogWindow.setScene(scene);
-            dialogWindow.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-            alertUser("Error: Could not open the technician job window");
-        }catch (SQLException e){
-            e.printStackTrace();
-            alertUser("Could not get the documentation list from the database");
+                Stage dialogWindow = new Stage();
+                Scene scene = new Scene(pane);
+                dialogWindow.setScene(scene);
+                dialogWindow.show();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+                alertUser("Error: Could not open the technician job window");
+            }catch (SQLException e){
+                e.printStackTrace();
+                alertUser("Could not get the documentation list from the database");
+            }
         }
     }
 
