@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,7 +125,11 @@ public class AdminModel {
         showList();
     }
 
-    public void printPDF(Job selectedJob) throws SQLException {
+    public void printPDF(Job selectedJob) throws SQLException, IOException {
         adminManager.printPDF(selectedJob);
+    }
+
+    public void setPDFStrategy(String privacy) {
+        adminManager.setPDFStrategy(privacy);
     }
 }

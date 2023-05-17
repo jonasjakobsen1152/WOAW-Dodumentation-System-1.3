@@ -10,6 +10,7 @@ import BLL.UTIL.UserSearcher;
 import DAL.DB.AdminDAO_DB;
 import DAL.IAdminDAO;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,10 +76,12 @@ public class AdminManager {
         adminDAO.deleteJob(selectedJob);
     }
 
-    public void printPDF(Job selectedJob) throws SQLException {
+    public void printPDF(Job selectedJob) throws SQLException, IOException {
         ArrayList<Documentation> allNotes = adminDAO.getAllDocumentation(selectedJob);
         ArrayList<JobImage> allImages = adminDAO.getAllJobImages(selectedJob);
+        pdfCreator.printPDF(allNotes,allImages);
+    }
 
-
+    public void setPDFStrategy(String privacy) {
     }
 }

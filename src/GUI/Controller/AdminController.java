@@ -428,15 +428,21 @@ public class AdminController implements Initializable {
         else{
             try {
                 adminModel.printPDF(selectedJob);
-            } catch (SQLException e) {
-                e.printStackTrace();
+            } catch (SQLException | IOException e) {
                 alertUser("could not print pdf");
+                e.printStackTrace();
             }
         }
 
     }
 
     public void handlePDFSetStrategy(ActionEvent actionEvent) {
-
+        if(checkBoxPDF.isSelected()){
+            adminModel.setPDFStrategy("private");
+        }
+        else
+        {
+            adminModel.setPDFStrategy("public");
+        }
     }
 }
