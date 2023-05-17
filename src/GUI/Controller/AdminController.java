@@ -276,8 +276,7 @@ public class AdminController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Customer.fxml"));
             AnchorPane pane = loader.load();
-            CustomerController customerController = loader.getController();
-            customerController.removeUpdate();
+
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
@@ -422,20 +421,20 @@ public class AdminController implements Initializable {
         }
     }
 
-//    public void handlePrintPDF(ActionEvent actionEvent) {
-//        if(selectedJob == null){
-//            alertUser("Please select a Job");
-//        }
-//        else{
-//            try {
-//                adminModel.printPDF(selectedJob);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//                alertUser("could not print pdf");
-//            }
-//        }
-//
-//    }
+    public void handlePrintPDF(ActionEvent actionEvent) {
+        if(selectedJob == null){
+            alertUser("Please select a Job");
+        }
+        else{
+            try {
+                adminModel.printPDF(selectedJob);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                alertUser("could not print pdf");
+            }
+        }
+
+    }
 
     public void handlePDFSetStrategy(ActionEvent actionEvent) {
     }

@@ -124,7 +124,7 @@ public class AdminModel {
         showList();
     }
 
-    public void printPDF(Job selectedJob) {
+    public void printPDF(Job selectedJob) throws SQLException {
         adminManager.printPDF(selectedJob);
     }
 }
