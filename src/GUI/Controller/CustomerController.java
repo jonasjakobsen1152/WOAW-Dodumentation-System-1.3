@@ -93,4 +93,8 @@ public class CustomerController implements Initializable {
         txtPhoneNumber.setText(selectedCustomer.getPhone()+"");
         txtAddress.setText(selectedCustomer.getAddress());
     }
+
+    public void removeUpdate() {
+        btnUpdate.setVisible(false);
+    }
 }

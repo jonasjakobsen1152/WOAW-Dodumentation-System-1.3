@@ -276,7 +276,8 @@ public class AdminController implements Initializable {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Customer.fxml"));
             AnchorPane pane = loader.load();
-
+            CustomerController customerController = loader.getController();
+            customerController.removeUpdate();
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
