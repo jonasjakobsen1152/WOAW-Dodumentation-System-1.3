@@ -110,4 +110,7 @@ public class SalesmenController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    public void handlePrintPDF(ActionEvent actionEvent) {
+    }
 }
