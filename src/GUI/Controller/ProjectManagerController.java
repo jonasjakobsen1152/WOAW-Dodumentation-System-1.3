@@ -379,6 +379,9 @@ public class ProjectManagerController implements Initializable {
     public void handleShowJobs(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
+        if(selectedDocument == null){
+            alertUser("Please select a document");
+        } else {
         selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
         try {
             technicianJobModel = TechnicianJobModel.getInstance();
@@ -398,6 +401,7 @@ public class ProjectManagerController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
             alertUser("Could not get the documentation list from the database");
+        }
         }
     }
 
@@ -502,7 +506,7 @@ public class ProjectManagerController implements Initializable {
 
     public void handlePrintPDF(ActionEvent actionEvent) {
         if(selectedDocument == null){
-            alertUser("Please select a Technician");
+            alertUser("Please select a job to print");
         }
         else {
             technicianJobModel.setSelectedJob(selectedDocument);
