@@ -73,6 +73,7 @@ public class ProjectManagerController implements Initializable {
     TechnicianJobModel technicianJobModel;
     LoginModel loginModel;
     TechnicianModel technicianModel;
+    CreateUpdateUserController createUpdateUserController;
     private User selectedTechnician;
     private Customer selectedCustomer;
     private Job selectedDocument;
@@ -163,6 +164,9 @@ public class ProjectManagerController implements Initializable {
         loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateUser.fxml"));
         try {
             AnchorPane pane = loader.load();
+            CreateUpdateUserController createUpdateUserController = loader.getController();
+
+            createUpdateUserController.removeUpdate();
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
@@ -327,7 +331,6 @@ public class ProjectManagerController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CreateUpdateUser.fxml"));
                 AnchorPane pane = loader.load();
 
-                CreateUpdateUserController createUpdateUserController = loader.getController();
                 createUpdateUserController.setupUpdate(selectedUser);
 
                 Stage dialogWindow = new Stage();
