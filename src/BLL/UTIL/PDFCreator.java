@@ -1,4 +1,4 @@
-package BLL;
+package BLL.UTIL;
 
 import BE.Documentation;
 import BE.JobImage;
@@ -7,7 +7,7 @@ import BLL.UTIL.PDFStrategies.PDFStrategy;
 import java.io.IOException;
 import java.util.ArrayList;
 
-class PDFCreator {
+public class PDFCreator {
     private PDFStrategy strategy;
 
     public PDFCreator(PDFStrategy strategy) {
