@@ -3,6 +3,7 @@ package GUI.Controller;
 import BE.Customer;
 import BE.Job;
 import GUI.MODEL.SalesMenModel;
+import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class SalesmenController implements Initializable {
+    @FXML
+    private MFXCheckbox checkBox;
     @FXML
     private TableView<Job> tblJobs;
     @FXML
@@ -117,6 +120,16 @@ public class SalesmenController implements Initializable {
         }
     }
 
+    public void handleCheckBox(ActionEvent actionEvent) {
+        if(checkBox.isSelected()){
+            salesMenModel.setPDFStrategy("private");
+        }
+        else
+        {
+            salesMenModel.setPDFStrategy("public");
+        }
+    }
+
     public void handlePrintPDF(ActionEvent actionEvent) {
         if(selectedJob == null){
             alertUser("Please select a Job");
@@ -124,10 +137,11 @@ public class SalesmenController implements Initializable {
         else{
             try {
                 salesMenModel.printPDF(selectedJob);
-            } catch (SQLException e) {
+            } catch (SQLException | IOException e) {
                 e.printStackTrace();
-                alertUser("could not print pdf33");
+                alertUser("could not print pdf");
             }
         }
     }
+
 }

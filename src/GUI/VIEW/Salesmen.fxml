@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,14 +11,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="567.0" prefWidth="833.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SalesmenController">
+<AnchorPane prefHeight="604.0" prefWidth="833.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.SalesmenController">
    <children>
-      <TableView fx:id="tblJobs" layoutX="512.0" layoutY="97.0" prefHeight="393.0" prefWidth="276.0" styleClass="table-colum" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="96.0">
+      <TableView fx:id="tblJobs" layoutX="512.0" layoutY="105.0" prefHeight="407.0" prefWidth="276.0" styleClass="table-colum" AnchorPane.bottomAnchor="95.0" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="102.0">
         <columns>
           <TableColumn fx:id="clmJobs" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="275.0" resizable="false" styleClass="table-colum" text="Jobs" />
         </columns>
       </TableView>
-      <TableView fx:id="tblCustomer" layoutX="22.0" layoutY="97.0" prefHeight="393.0" prefWidth="400.0" styleClass="table-colum" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="96.0">
+      <TableView fx:id="tblCustomer" layoutX="28.0" layoutY="102.0" prefHeight="414.0" prefWidth="400.0" styleClass="table-colum" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="99.0">
         <columns>
           <TableColumn fx:id="clmName" prefWidth="118.0" styleClass="table-colum" text="Name" />
           <TableColumn fx:id="clmPhone" prefWidth="103.0" styleClass="table-colum" text="Phone" />
@@ -29,7 +30,7 @@
             <Font size="14.0" />
          </font></Text>
       <Text layoutX="512.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Jobs for the customer" wrappingWidth="186.1328125" AnchorPane.bottomAnchor="481.2353515625" AnchorPane.rightAnchor="134.8671875" AnchorPane.topAnchor="64.7646484375" />
-      <MFXButton buttonType="RAISED" layoutX="512.0" layoutY="500.0" onAction="#handlePrintPDF" prefHeight="41.0" prefWidth="276.0" text="Print PDF" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="45.0" />
+      <MFXButton buttonType="RAISED" layoutX="508.0" layoutY="513.0" onAction="#handlePrintPDF" prefHeight="41.0" prefWidth="276.0" text="Print PDF" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="49.0" />
       <MFXTextField fx:id="txtFilter" floatMode="ABOVE" layoutX="152.0" layoutY="57.0" prefHeight="29.0" prefWidth="265.0" promptText="Search" />
       <Text layoutX="317.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Salesmen Window" wrappingWidth="199.1328125" AnchorPane.topAnchor="14.0">
          <font>
@@ -41,5 +42,7 @@
          </image>
       </ImageView>
       <MFXButton layoutX="23.0" layoutY="500.0" onAction="#handleLogOut" prefHeight="49.0" prefWidth="116.0" text="Log Out" AnchorPane.bottomAnchor="18.951171875" AnchorPane.leftAnchor="23.0" />
+      <MFXCheckbox fx:id="checkBox" layoutX="753.0" layoutY="558.0" onAction="#handleCheckBox" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="52.0" />
+      <Text layoutX="560.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Should pdf print private content" wrappingWidth="178.77777099609375" />
    </children>
 </AnchorPane>
