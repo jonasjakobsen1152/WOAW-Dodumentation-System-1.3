@@ -39,10 +39,6 @@ public class CreateUpdateJobController implements Initializable {
 
         });
     }
-
-    public void handleUpdateJob(ActionEvent actionEvent) {
-
-    }
     private void alertUser(String error) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(error);
