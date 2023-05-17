@@ -102,19 +102,18 @@ public class TechnicianController implements Initializable {
         // Retrieve the selected job from the UI
         Job selectedJob = tblWork.getSelectionModel().getSelectedItem();
         if (selectedJob == null) {
-            // No job is selected, do nothing
-            return;
-        }
+            alertUser("Please select a job to finish");
 
-        // Show a confirmation dialog
-        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to finish this job?",
-                "Confirm Finish Job", JOptionPane.YES_NO_OPTION);
-        if (confirm != JOptionPane.YES_OPTION) {
-            // User canceled, do nothing
-            return;
+        } else {
+            // Show a confirmation dialog
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to finish this job?",
+                    "Confirm Finish Job", JOptionPane.YES_NO_OPTION);
+            if (confirm != JOptionPane.YES_OPTION) {
+                // User canceled, do nothing
+                return;
+            }
+            technicianModel.finishJob(selectedJob);
         }
-        technicianModel.finishJob(selectedJob);
-
     }
 
 
