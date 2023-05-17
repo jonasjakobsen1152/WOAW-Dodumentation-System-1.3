@@ -3,6 +3,9 @@ package BLL;
 import BE.*;
 import BLL.UTIL.CustomerSearcher;
 import BLL.UTIL.JobSearcher;
+import BLL.UTIL.PDFCreator;
+import BLL.UTIL.PDFStrategies.PrivatePDFStrategy;
+import BLL.UTIL.PDFStrategies.PublicPDFStrategy;
 import BLL.UTIL.UserSearcher;
 import DAL.DB.AdminDAO_DB;
 import DAL.IAdminDAO;
@@ -19,12 +22,16 @@ public class AdminManager {
     private UserSearcher userSearcher;
     private JobSearcher jobSearcher;
     private ArrayList<Job> allJobs;
+
+    private PDFCreator pdfCreator;
     public AdminManager()
     {
         adminDAO = new AdminDAO_DB();
         customerSearcher = new CustomerSearcher();
         userSearcher = new UserSearcher();
         jobSearcher = new JobSearcher();
+
+        pdfCreator = new PDFCreator(new PrivatePDFStrategy());
     }
 
     public ArrayList<User> getAllUsers() throws SQLException {
@@ -71,5 +78,7 @@ public class AdminManager {
     public void printPDF(Job selectedJob) throws SQLException {
         ArrayList<Documentation> allNotes = adminDAO.getAllDocumentation(selectedJob);
         ArrayList<JobImage> allImages = adminDAO.getAllJobImages(selectedJob);
+
+
     }
 }

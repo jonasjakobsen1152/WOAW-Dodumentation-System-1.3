@@ -437,5 +437,6 @@ public class AdminController implements Initializable {
     }
 
     public void handlePDFSetStrategy(ActionEvent actionEvent) {
+
     }
 }
