@@ -68,8 +68,8 @@ public class AdminManager {
         adminDAO.deleteJob(selectedJob);
     }
 
-    public void printPDF(Job selectedJob) {
+    public void printPDF(Job selectedJob) throws SQLException {
         ArrayList<Documentation> allNotes = adminDAO.getAllDocumentation(selectedJob);
-        //ArrayList<JobImage> allImages = adminDAO.getAllJobImages(selectedJob);
+        ArrayList<JobImage> allImages = adminDAO.getAllJobImages(selectedJob);
     }
 }

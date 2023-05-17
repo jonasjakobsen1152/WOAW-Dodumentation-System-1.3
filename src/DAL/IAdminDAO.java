@@ -1,9 +1,6 @@
 package DAL;
 
-import BE.Customer;
-import BE.Documentation;
-import BE.Job;
-import BE.User;
+import BE.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,5 +19,7 @@ public interface IAdminDAO {
 
     void deleteJob(Job selectedJob) throws SQLException;
 
-    ArrayList<Documentation> getAllDocumentation(Job selectedJob);
+    ArrayList<Documentation> getAllDocumentation(Job selectedJob) throws SQLException;
+
+    ArrayList<JobImage> getAllJobImages(Job selectedJob) throws SQLException;
 }

@@ -1,8 +1,6 @@
 package DAL.DB;
 
-import BE.Customer;
-import BE.Job;
-import BE.User;
+import BE.*;
 import DAL.IAdminDAO;
 
 import java.sql.*;
@@ -57,6 +55,58 @@ public class AdminDAO_DB implements IAdminDAO {
 
             stmt.executeUpdate();
 
+        }catch (SQLException e){
+            throw new SQLException(e);
+        }
+    }
+
+    @Override
+    public ArrayList<Documentation> getAllDocumentation(Job selectedJob) throws SQLException {
+        ArrayList<Documentation> documentations = new ArrayList<>();
+        try (Connection conn = databaseConnector.getConnection();
+             Statement stmt = conn.createStatement()){
+            String sql = "SElECT * FROM Document WHERE JobID ="+selectedJob.getId()+";";
+
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                int id = rs.getInt("ID");
+                String title = rs.getString("Title");
+                String publicNote = rs.getString("PublicNote");
+                String privateNote = rs.getString("PrivateNote");
+                int jobId = rs.getInt("JobID");
+
+                Documentation documentation = new Documentation(id,title,publicNote,privateNote,jobId);
+                documentations.add(documentation);
+            }
+            return documentations;
+        }catch (SQLException e){
+            throw new SQLException(e);
+        }
+    }
+
+    @Override
+    public ArrayList<JobImage> getAllJobImages(Job selectedJob) throws SQLException {
+        try(Connection conn = databaseConnector.getConnection()){
+            ArrayList<JobImage> jobImages = new ArrayList<>();
+            String sql = "SELECT * FROM Image WHERE JobID =" +selectedJob.getId()+";";
+
+            Statement stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while(rs.next()){
+                int id = rs.getInt("ID");
+                String title = rs.getString("Title");
+                byte[] bytes = rs.getBytes("ImageData");
+                int jobId = rs.getInt("JobID");
+                String privacy = rs.getString("Private");
+
+                JobImage jobImage = new JobImage(id,title,bytes,jobId,privacy);
+                jobImages.add(jobImage);
+            }
+            return jobImages;
         }catch (SQLException e){
             throw new SQLException(e);
         }
