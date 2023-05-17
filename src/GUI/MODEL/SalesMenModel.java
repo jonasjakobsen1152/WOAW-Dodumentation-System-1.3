@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableListBase;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,11 @@ public class SalesMenModel {
         customerToBeViewed.addAll(searchResults);
     }
 
-    public void printPDF(Job selectedJob) throws SQLException {
+    public void printPDF(Job selectedJob) throws SQLException, IOException {
         salesmenManager.printPDF(selectedJob);
+    }
+
+    public void setPDFStrategy(String privacy) {
+        salesmenManager.setPDFStrategy(privacy);
     }
 }
