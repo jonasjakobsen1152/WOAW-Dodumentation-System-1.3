@@ -22,11 +22,11 @@ public class CustomerController implements Initializable {
     @FXML
     private Button btnCreate;
     @FXML
-    private TextField txtEmail;
+    public TextField txtEmail;
     @FXML
-    private TextField txtPhoneNumber;
+    public TextField txtPhoneNumber;
     @FXML
-    private TextField txtName;
+    public TextField txtName;
     public CustomerModel customerModel;
     public CustomerController customerController;
 
@@ -44,6 +44,7 @@ public class CustomerController implements Initializable {
     }
 
     public void handleCreateCustomer(ActionEvent actionEvent) throws SQLException {
+        
         String name = txtName.getText();
         int phone = Integer.parseInt(txtPhoneNumber.getText());
         String email = txtEmail.getText();
