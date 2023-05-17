@@ -1,8 +1,6 @@
 package BLL;
 
-import BE.Customer;
-import BE.Job;
-import BE.User;
+import BE.*;
 import BLL.UTIL.CustomerSearcher;
 import BLL.UTIL.JobSearcher;
 import BLL.UTIL.UserSearcher;
@@ -14,9 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminManager {
-    public ArrayList<Customer> getAllCustomer;
     private IAdminDAO adminDAO;
-
     private ArrayList<Customer> allCustomers;
     private ArrayList<User> allUsers;
     private CustomerSearcher customerSearcher;
@@ -49,15 +45,10 @@ public class AdminManager {
         adminDAO.deleteCustomer(selectedCustomer);
     }
 
-    public ArrayList<Job> getAllDocuments() throws SQLException {
-        allJobs = adminDAO.getAllDocuments();
+    public ArrayList<Job> getAllJobs() throws SQLException {
+        allJobs = adminDAO.getAllJobs();
         return allJobs;
     }
-
-    public List<Job> getWork(User selectedUser) {
-        return adminDAO.getWork(selectedUser);
-    }
-
     public List<Customer> searchCustomers(String query) {
         List<Customer> searchResult = customerSearcher.search(allCustomers,query);
         return searchResult;
@@ -75,5 +66,10 @@ public class AdminManager {
 
     public void deleteJob(Job selectedJob) throws SQLException {
         adminDAO.deleteJob(selectedJob);
+    }
+
+    public void printPDF(Job selectedJob) {
+        ArrayList<Documentation> allNotes = adminDAO.getAllDocumentation(selectedJob);
+        //ArrayList<JobImage> allImages = adminDAO.getAllJobImages(selectedJob);
     }
 }

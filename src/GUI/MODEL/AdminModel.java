@@ -19,7 +19,6 @@ public class AdminModel {
     private ObservableList<User> usersToBeViewed;
     private ObservableList<Customer> customerToBeViewed;
     private ObservableList<Job> documentsToBeViewed;
-    private ObservableList<Job> workToBeViewed;
     private User selectedUser;
     private static AdminModel instance;
 
@@ -34,10 +33,8 @@ public class AdminModel {
         customerToBeViewed.addAll(adminManager.getAllCustomer());
 
         documentsToBeViewed = FXCollections.observableArrayList();
-        documentsToBeViewed.addAll(adminManager.getAllDocuments());
+        documentsToBeViewed.addAll(adminManager.getAllJobs());
 
-        workToBeViewed = FXCollections.observableArrayList();
-        workToBeViewed.addAll(adminManager.getAllDocuments());
     }
     public static AdminModel getInstance() throws SQLException {
         if(instance == null){
@@ -105,7 +102,7 @@ public class AdminModel {
             getCustomerToBeViewed().addAll(adminManager.getAllCustomer());
 
             getDocumentsToBeViewed().clear();
-            getDocumentsToBeViewed().addAll(adminManager.getAllDocuments());
+            getDocumentsToBeViewed().addAll(adminManager.getAllJobs());
 
         }catch (SQLException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -121,14 +118,13 @@ public class AdminModel {
     public void setSelectedUser(User selectedUser) {
         this.selectedUser = selectedUser;
     }
-    public ObservableList<Job> getWorkToBeViewed(){
-        workToBeViewed.clear();
-        workToBeViewed.addAll(adminManager.getWork(selectedUser));
-        return workToBeViewed;
-    }
 
     public void deleteJob(Job selectedJob) throws SQLException {
         adminManager.deleteJob(selectedJob);
         showList();
+    }
+
+    public void printPDF(Job selectedJob) {
+        adminManager.printPDF(selectedJob);
     }
 }

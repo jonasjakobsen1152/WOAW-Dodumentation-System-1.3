@@ -1,10 +1,13 @@
 package GUI.Controller;
 
 import BE.Customer;
+import BE.Documentation;
 import BE.Job;
 import BE.User;
 import GUI.MODEL.*;
+import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -19,6 +22,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -43,8 +47,8 @@ public class AdminController implements Initializable {
     public TableColumn clmAddress;
     public TextField txtSearchJobs;
     public TextField txtSearchUsers;
-    public TableColumn clmTitleWork;
-    public TableView<Job> tblWork;
+    @FXML
+    private MFXCheckbox checkBoxPDF;
     private User selectedUser;
     private Customer selectedCustomer;
     private Job selectedJob;
@@ -265,9 +269,6 @@ public class AdminController implements Initializable {
         }
     }
 
-    public void handlePrintPDF(ActionEvent actionEvent) {
-    }
-
     /**
      * Opens the customer window
      */
@@ -418,5 +419,23 @@ public class AdminController implements Initializable {
                 }
             }
         }
+    }
+
+    public void handlePrintPDF(ActionEvent actionEvent) {
+        if(selectedJob == null){
+            alertUser("Please select a Job");
+        }
+        else{
+            try {
+                adminModel.printPDF(selectedJob);
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+                alertUser("could not print pdf");
+            }
+        }
+
+    }
+
+    public void handlePDFSetStrategy(ActionEvent actionEvent) {
     }
 }

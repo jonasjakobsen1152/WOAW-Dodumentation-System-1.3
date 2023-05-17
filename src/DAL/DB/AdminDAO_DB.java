@@ -64,7 +64,7 @@ public class AdminDAO_DB implements IAdminDAO {
 
 
     @Override
-    public ArrayList<Job> getAllDocuments() throws SQLException {
+    public ArrayList<Job> getAllJobs() throws SQLException {
         ArrayList<Job> jobs = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection()){

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -59,5 +60,7 @@
         <TextField fx:id="txtSearchJobs" layoutX="509.0" layoutY="37.0" promptText="Search" />
         <TextField fx:id="txtSearchUsers" layoutX="242.0" layoutY="37.0" promptText="Search" />
       <MFXButton layoutX="625.0" layoutY="425.0" onAction="#handleDeleteJob" prefHeight="44.0" prefWidth="127.0" text="Delete" />
+      <MFXCheckbox fx:id="checkBoxPDF" layoutX="843.0" layoutY="484.0" onAction="#handlePDFSetStrategy" styleClass="text" />
+      <Text layoutX="616.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Should PDF contain private information?" />
     </children>
 </AnchorPane>

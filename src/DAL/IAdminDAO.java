@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface IAdminDAO {
+    ArrayList<Job> getAllJobs() throws SQLException;
+
     public void deleteUser(User user) throws SQLException;
     public ArrayList<User> getAllUsers() throws SQLException;
     public void deleteCustomer(Customer customer) throws SQLException;
 
     ArrayList<Customer> getAllCustomer() throws SQLException;
-
-    ArrayList<Job> getAllDocuments() throws SQLException;
 
     List<Job> getWork(User selectedUser);
 

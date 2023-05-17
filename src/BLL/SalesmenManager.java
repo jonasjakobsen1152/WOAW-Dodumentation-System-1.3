@@ -59,9 +59,8 @@ public class SalesmenManager {
     }
 
     public void printPDF(Job selectedJob) throws SQLException, IOException {
-        ArrayList<JobImage> allImages = salesmenDAO.getAllJobImages(selectedJob);
         ArrayList<Documentation> allNotes = salesmenDAO.getallDocuments(selectedJob);
-
+        ArrayList<JobImage> allImages = salesmenDAO.getAllJobImages(selectedJob);
         pdfCreator.printPDF(allNotes,allImages);
     }
 
