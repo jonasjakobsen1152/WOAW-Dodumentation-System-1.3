@@ -40,7 +40,7 @@ public class ProjectManagerManager {
         allTechnicians = projectManagerDAO.getAllUsers("Technician");
         allSalesmen = projectManagerDAO.getAllUsers("Salesmen");
 
-        pdfCreator = new PDFCreator(new PublicPDFStrategy());
+        pdfCreator = new PDFCreator(new PublicPDFStrategy()); // Default sets the strategy to be the one with the least amount of information
     }
 
     public ArrayList<User> getAllUsers(String role){
