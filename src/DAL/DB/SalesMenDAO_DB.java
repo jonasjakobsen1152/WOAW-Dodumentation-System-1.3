@@ -47,7 +47,7 @@ public class SalesMenDAO_DB implements ISalesmenDAO {
         ArrayList<Job> jobs = new ArrayList<>();
 
         try(Connection conn = databaseConnector.getConnection()){
-            String sql = "SELECT * FROM Job WHERE ID = ?";
+            String sql = "SELECT * FROM Job WHERE CustomerID = ?";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -59,6 +59,7 @@ public class SalesMenDAO_DB implements ISalesmenDAO {
                 int id = rs.getInt("ID");
                 String title = rs.getString("Title");
                 int customerID = rs.getInt("CustomerID");
+
 
 
                 Job job = new Job(id,title,customerID);
