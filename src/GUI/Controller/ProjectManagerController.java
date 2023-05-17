@@ -331,6 +331,7 @@ public class ProjectManagerController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/CreateUpdateUser.fxml"));
                 AnchorPane pane = loader.load();
 
+                CreateUpdateUserController createUpdateUserController = loader.getController();
                 createUpdateUserController.setupUpdate(selectedUser);
 
                 Stage dialogWindow = new Stage();
