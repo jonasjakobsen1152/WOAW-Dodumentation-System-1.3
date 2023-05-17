@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
 
 public class SalesmenController implements Initializable {
     @FXML
-    private TableView tblJobs;
+    private TableView<Job> tblJobs;
     @FXML
     private TableColumn clmJobs;
     @FXML
@@ -40,6 +40,8 @@ public class SalesmenController implements Initializable {
     private MFXTextField txtFilter;
     SalesMenModel salesMenModel;
     Customer selectedCustomer;
+
+    Job selectedJob;
 
 
 
@@ -72,6 +74,10 @@ public class SalesmenController implements Initializable {
                 alertUser("There was a problem collecting the jobs");
                 e.printStackTrace();
             }
+        });
+
+        tblJobs.getSelectionModel().selectedItemProperty().addListener(observable -> {
+            selectedJob = tblJobs.getSelectionModel().getSelectedItem();
         });
     }
 
@@ -112,5 +118,16 @@ public class SalesmenController implements Initializable {
     }
 
     public void handlePrintPDF(ActionEvent actionEvent) {
+        if(selectedJob == null){
+            alertUser("Please select a Job");
+        }
+        else{
+            try {
+                salesMenModel.printPDF(selectedJob);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                alertUser("could not print pdf33");
+            }
+        }
     }
 }

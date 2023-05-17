@@ -1,7 +1,9 @@
 package BLL;
 
 import BE.Customer;
+import BE.Documentation;
 import BE.Job;
+import BE.JobImage;
 import BLL.UTIL.CustomerSearcher;
 import DAL.DB.SalesMenDAO_DB;
 import DAL.ICustomerDAO;
@@ -37,5 +39,11 @@ public class SalesmenManager {
     public List<Customer> searchCustomers(String query) {
         List<Customer> searchResult = customerSearcher.search(allCustomers,query);
         return searchResult;
+    }
+
+    public void printPDF(Job selectedJob) throws SQLException {
+        ArrayList<JobImage> jobImages = salesmenDAO.getAllJobImages(selectedJob);
+        ArrayList<Documentation> allNotes = salesmenDAO.getallDocuments(selectedJob);
+
     }
 }

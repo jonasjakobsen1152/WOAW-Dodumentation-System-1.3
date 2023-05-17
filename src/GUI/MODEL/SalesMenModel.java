@@ -52,4 +52,8 @@ public class SalesMenModel {
         customerToBeViewed.clear();
         customerToBeViewed.addAll(searchResults);
     }
+
+    public void printPDF(Job selectedJob) throws SQLException {
+        salesmenManager.printPDF(selectedJob);
+    }
 }
