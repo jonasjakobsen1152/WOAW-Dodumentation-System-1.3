@@ -12,5 +12,6 @@
     <orderEntry type="library" name="microsoft.sqlserver.mssql.jdbc" level="project" />
     <orderEntry type="library" name="itextpdf.layout" level="project" />
     <orderEntry type="library" name="slf4j.simple" level="project" />
+    <orderEntry type="library" name="junit.jupiter" level="project" />
   </component>
 </module>
