@@ -46,20 +46,24 @@ public class CreateUpdateUserController implements Initializable {
     }
 
     public void handleCreateUser(ActionEvent actionEvent) {
-        String username = txtUsername.getText();
-        String password = txtPassword.getText();
-        String role = cbRole.getValue();
-        String salt = BCrypt.gensalt(15);
-        String passwordToHash = BCrypt.hashpw(password,salt);
-        try{
-            createUpdateUserModel.createUser(username,passwordToHash,role);
-            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-            stage.close();
-        }catch (Exception e){
-            alertUser("Could not create a user");
-            e.printStackTrace();
+        System.out.println(cbRole.getValue());
+        if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty() || cbRole.getValue() == null) {
+            alertUser("Please fill out the information");
+        } else {
+            String username = txtUsername.getText();
+            String password = txtPassword.getText();
+            String role = cbRole.getValue();
+            String salt = BCrypt.gensalt(15);
+            String passwordToHash = BCrypt.hashpw(password,salt);
+            try{
+                createUpdateUserModel.createUser(username,passwordToHash,role);
+                Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+                stage.close();
+            }catch (Exception e){
+                alertUser("Could not create a user");
+                e.printStackTrace();
+            }
         }
-
     }
 
 

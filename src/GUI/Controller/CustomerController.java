@@ -43,19 +43,22 @@ public class CustomerController implements Initializable {
 
     }
 
-    public void handleCreateCustomer(ActionEvent actionEvent) throws SQLException {
-        
-        String name = txtName.getText();
-        int phone = Integer.parseInt(txtPhoneNumber.getText());
-        String email = txtEmail.getText();
-        String address = txtAddress.getText();
-        try {
-            customerModel.createCustomer(name, phone, email, address);
-            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-            stage.close();
-        } catch (Exception e){
-            e.printStackTrace();
-            alertUser("Could not create Customer");
+    public void handleCreateCustomer(ActionEvent actionEvent) {
+        if(txtName.getText().isEmpty() || txtPhoneNumber.getText().isEmpty() || txtEmail.getText().isEmpty()|| txtAddress.getText().isEmpty()) {
+            alertUser("Please fill out the information about the customer");
+        } else {
+            String name = txtName.getText();
+            int phone = Integer.parseInt(txtPhoneNumber.getText());
+            String email = txtEmail.getText();
+            String address = txtAddress.getText();
+            try {
+                customerModel.createCustomer(name, phone, email, address);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                alertUser("Could not create Customer");
+            }
         }
     }
 
