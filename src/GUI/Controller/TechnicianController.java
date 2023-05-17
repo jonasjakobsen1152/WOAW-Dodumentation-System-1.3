@@ -60,17 +60,22 @@ public class TechnicianController implements Initializable {
         tblWork.setItems(technicianModel.getWorkToBeViewed());
     }
 
-    public void handleOpenDocumentation(ActionEvent actionEvent) {
+    public void handleOpenDocumentation(ActionEvent actionEvent) throws SQLException {
+        if(selectedJob == null){
+            alertUser("Please select a job");
+        } else
+        try{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
         selectedJob = tblWork.getSelectionModel().getSelectedItem();
-        try {
+
             technicianJobModel = TechnicianJobModel.getInstance();
             documentationModel.setSelectedJob(selectedJob);
             technicianJobModel.setSelectedJob(selectedJob);
             technicianJobModel.showList();
 
             AnchorPane pane = loader.load();
+
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);

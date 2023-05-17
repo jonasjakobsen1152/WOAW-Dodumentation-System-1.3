@@ -29,7 +29,7 @@
             <Font size="14.0" />
          </font></Text>
       <Text layoutX="512.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Jobs for the customer" wrappingWidth="186.1328125" AnchorPane.bottomAnchor="481.2353515625" AnchorPane.rightAnchor="134.8671875" AnchorPane.topAnchor="64.7646484375" />
-      <MFXButton buttonType="RAISED" layoutX="512.0" layoutY="500.0" prefHeight="41.0" prefWidth="276.0" text="Print PDF" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="45.0" />
+      <MFXButton buttonType="RAISED" layoutX="512.0" layoutY="500.0" onAction="#handlePrintPDF" prefHeight="41.0" prefWidth="276.0" text="Print PDF" AnchorPane.bottomAnchor="26.0" AnchorPane.rightAnchor="45.0" />
       <MFXTextField fx:id="txtFilter" floatMode="ABOVE" layoutX="152.0" layoutY="57.0" prefHeight="29.0" prefWidth="265.0" promptText="Search" />
       <Text layoutX="317.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Salesmen Window" wrappingWidth="199.1328125" AnchorPane.topAnchor="14.0">
          <font>
