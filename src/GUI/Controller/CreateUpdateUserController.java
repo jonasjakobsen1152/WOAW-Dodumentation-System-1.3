@@ -60,6 +60,7 @@ public class CreateUpdateUserController implements Initializable {
                 stage.close();
             }catch (Exception e){
                 alertUser("Could not create a user");
+                // So the programmer can see what error is
                 e.printStackTrace();
             }
         }
