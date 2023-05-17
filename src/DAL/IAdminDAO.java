@@ -1,6 +1,7 @@
 package DAL;
 
 import BE.Customer;
+import BE.Documentation;
 import BE.Job;
 import BE.User;
 
@@ -20,4 +21,6 @@ public interface IAdminDAO {
     List<Job> getWork(User selectedUser);
 
     void deleteJob(Job selectedJob) throws SQLException;
+
+    ArrayList<Documentation> getAllDocumentation(Job selectedJob);
 }

@@ -421,20 +421,20 @@ public class AdminController implements Initializable {
         }
     }
 
-    public void handlePrintPDF(ActionEvent actionEvent) {
-        if(selectedJob == null){
-            alertUser("Please select a Job");
-        }
-        else{
-            try {
-                adminModel.printPDF(selectedJob);
-            } catch (SQLException | IOException e) {
-                e.printStackTrace();
-                alertUser("could not print pdf");
-            }
-        }
-
-    }
+//    public void handlePrintPDF(ActionEvent actionEvent) {
+//        if(selectedJob == null){
+//            alertUser("Please select a Job");
+//        }
+//        else{
+//            try {
+//                adminModel.printPDF(selectedJob);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//                alertUser("could not print pdf");
+//            }
+//        }
+//
+//    }
 
     public void handlePDFSetStrategy(ActionEvent actionEvent) {
     }
