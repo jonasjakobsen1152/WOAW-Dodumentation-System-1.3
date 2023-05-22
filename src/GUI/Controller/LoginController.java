@@ -65,7 +65,7 @@ public class LoginController {
         handleOpenTechnician(new ActionEvent());
             stage.close();
         }
-        else if (user.getRole().equals("Sales")) {
+        else if (user.getRole().equals("Salesmen")) {
             handleOpenSales(new ActionEvent());
             stage.close();
         }
