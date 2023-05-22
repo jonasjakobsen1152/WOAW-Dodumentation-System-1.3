@@ -67,7 +67,7 @@ public class LoginController implements Initializable {
             handleOpenAdmin(new ActionEvent());
             stage.close();
         }
-        else if (user.getRole().equals("ProjectManager")) {
+        else if (user.getRole().equals("Project Manager")) {
             handleOpenProjectManager(new ActionEvent());
             stage.close();
         }
