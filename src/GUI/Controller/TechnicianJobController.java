@@ -153,6 +153,7 @@ public class TechnicianJobController implements Initializable {
             if (action.get() == ButtonType.OK) {
                 try {
                     technicianJobModel.deleteImage(selectedJobImage);
+                    imgImage.setImage(null);
                 }catch (SQLException e){
                     alertUser("Could not delete Image from the database");
                 }
