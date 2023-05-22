@@ -40,6 +40,8 @@ public class SalesmenController implements Initializable {
     @FXML
     private TableColumn clmName;
     @FXML
+    private TableColumn clmAdress;
+    @FXML
     private MFXTextField txtFilter;
     SalesMenModel salesMenModel;
     Customer selectedCustomer;
@@ -93,6 +95,7 @@ public class SalesmenController implements Initializable {
         clmName.setCellValueFactory(new PropertyValueFactory<Customer,String>("Name"));
         clmPhone.setCellValueFactory(new PropertyValueFactory<Customer,Integer>("Phone"));
         clmEmail.setCellValueFactory(new PropertyValueFactory<Customer,String>("Email"));
+        clmAdress.setCellValueFactory(new PropertyValueFactory<Customer,String>("Address"));
         tblCustomer.setItems(salesMenModel.getCustomerToBeViewed());
     }
 
