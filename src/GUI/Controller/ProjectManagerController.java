@@ -48,6 +48,7 @@ public class ProjectManagerController implements Initializable {
     public MFXCheckbox checkBoxPDF;
     public Text txtPDFText;
     public MFXButton btnEditCustomer;
+    public MFXButton btnAddTechnicianToJob;
     @FXML
     private TextField txtFilter;
     @FXML
@@ -122,10 +123,12 @@ public class ProjectManagerController implements Initializable {
         });
         tblShowCustomers.setOnMouseClicked(event -> {
             selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
+            projectManagerModel.setSelectedCustomer(selectedCustomer);
 
         });
         tblShowDocument.setOnMouseClicked(event -> {
             selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
+            projectManagerModel.setSelectedJob(selectedDocument);
         });
         searchListeners();
     }
@@ -458,6 +461,7 @@ public class ProjectManagerController implements Initializable {
         btnShowJobs.setVisible(true);
         txtFilterJobs.setVisible(true);
         btnDeleteJob.setVisible(true);
+        btnAddTechnicianToJob.setVisible(true);
         checkBoxPDF.setVisible(true);
         txtPDFText.setVisible(true);
     }
@@ -483,6 +487,7 @@ public class ProjectManagerController implements Initializable {
         btnShowWork.setVisible(false);
         btnDeleteJob.setVisible(false);
         btnEditCustomer.setVisible(false);
+        btnAddTechnicianToJob.setVisible(false);
 
         checkBoxPDF.setVisible(false);
 
@@ -628,6 +633,35 @@ public class ProjectManagerController implements Initializable {
                 }
             }catch (SQLException e){
                 alertUser("Could not open the update customer window");
+            }
+        }
+    }
+
+    public void handleAddTechToJob(ActionEvent actionEvent) {
+        selectedJob = tblShowDocument.getSelectionModel().getSelectedItem();
+        if(selectedJob == null){
+            alertUser("Select a Job to add a technician to it");
+        }else {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/GUI/View/AddTechToJob.fxml"));
+            try {
+                AnchorPane pane = loader.load();
+
+
+                //AddTechToJobController addTechToJobController = loader.getController();
+
+
+
+                Stage dialogWindow = new Stage();
+                Scene scene = new Scene(pane);
+                dialogWindow.initModality(Modality.WINDOW_MODAL);
+                dialogWindow.initOwner((((Node) actionEvent.getSource()).getScene().getWindow()));
+                dialogWindow.setScene(scene);
+                dialogWindow.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                alertUser("Error: Could not open the add technician to job window");
             }
         }
     }

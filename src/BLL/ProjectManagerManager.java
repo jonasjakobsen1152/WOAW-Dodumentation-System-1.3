@@ -105,4 +105,7 @@ public class ProjectManagerManager {
         projectManagerDAO.deleteJob(selectedJob);
     }
 
+    public void addTechToJob(User selectedTechnician, Job selectedJob) throws SQLException {
+        projectManagerDAO.addTechToJob(selectedTechnician, selectedJob);
+    }
 }

@@ -75,6 +75,7 @@
       <MFXCheckbox fx:id="checkBoxPDF" layoutX="905.0" layoutY="668.0" onAction="#handleSetPDFStrategy" />
       <Text fx:id="txtPDFText" layoutX="633.0" layoutY="682.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Should PDF be printed with private information?" />
       <MFXButton fx:id="btnEditCustomer" layoutX="908.0" layoutY="617.0" onAction="#handleOpenEditCustomer" prefHeight="48.0" prefWidth="126.0" text="Edit Customer" />
+      <MFXButton fx:id="btnAddTechnicianToJob" layoutX="908.0" layoutY="617.0" onAction="#handleAddTechToJob" prefHeight="48.0" prefWidth="126.0" text="Add Technician" />
 
    </children>
 </AnchorPane>

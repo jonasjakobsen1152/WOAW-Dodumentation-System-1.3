@@ -4,9 +4,7 @@ import BE.Customer;
 import BE.Job;
 import BE.User;
 import DAL.IProjectManagerDAO;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
-import javax.management.relation.Role;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -152,6 +150,24 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         }catch (SQLException e){
             throw new SQLException(e);
         }
+    }
+
+    @Override
+    public void addTechToJob(User selectedTechnician, Job selectedJob) throws SQLException {
+        try (Connection conn = databaseConnector.getConnection()){
+            String sql = "INSERT INTO UserOnJob (JobID, UserID) VALUES (?,?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1,selectedJob.getId());
+            stmt.setInt(2,selectedTechnician.getId());
+
+            stmt.executeUpdate();
+
+        }catch (SQLException e){
+            throw new SQLException(e);
+
+        }
+
     }
 }
 

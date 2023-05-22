@@ -19,6 +19,8 @@ public class ProjectManagerModel {
     private ObservableList<Customer> customerToBeViewed;
     private ObservableList<Job> documentToBeViewed;
     private static ProjectManagerModel instance;
+    private Customer selectedCustomer;
+    private Job selectedJob;
 
     private ProjectManagerModel()  {
         projectManagerManager = new ProjectManagerManager();
@@ -143,5 +145,21 @@ public class ProjectManagerModel {
     public void setPDFStrategy(String privacy) {
         projectManagerManager.setPDFStrategy(privacy);
 
+    }
+
+    public void setSelectedCustomer(Customer selectedCustomer) {
+        this.selectedCustomer = selectedCustomer;
+    }
+    public Customer getSelectedCustomer(){
+        return selectedCustomer;
+    }
+
+    public void addTechToJob(User selectedTechnician) throws SQLException {
+        projectManagerManager.addTechToJob(selectedTechnician, selectedJob);
+        showList();
+    }
+
+    public void setSelectedJob(Job selectedJob) {
+        this.selectedJob = selectedJob;
     }
 }

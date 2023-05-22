@@ -3,7 +3,6 @@ package DAL;
 import BE.Customer;
 import BE.Job;
 import BE.User;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,4 +19,6 @@ public interface IProjectManagerDAO {
 
     void deleteCustomer(Customer selectedCustomer) throws SQLException;
     void deleteJob(Job selectedJob) throws SQLException;
+
+    void addTechToJob(User selectedTechnician, Job selectedJob) throws SQLException;
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="496.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AddTechToJobController">
+   <children>
+      <TableView fx:id="tblTechnicians" layoutX="92.0" layoutY="47.0" prefHeight="288.0" prefWidth="417.0">
+        <columns>
+          <TableColumn fx:id="clmUsername" prefWidth="416.0" text="Username" />
+        </columns>
+      </TableView>
+      <MFXButton layoutX="237.0" layoutY="387.0" onAction="#handleAddTechToJob" prefHeight="48.0" prefWidth="127.0" text="Add technician" />
+   </children>
+</AnchorPane>
