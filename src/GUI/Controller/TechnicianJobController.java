@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -19,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
@@ -74,6 +76,8 @@ public class TechnicianJobController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.showAndWait();
         }catch (IOException e){
@@ -107,6 +111,8 @@ public class TechnicianJobController implements Initializable {
 
                 Stage dialogWindow = new Stage();
                 Scene scene = new Scene(pane);
+                dialogWindow.initModality(Modality.WINDOW_MODAL);
+                dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
                 dialogWindow.setScene(scene);
                 dialogWindow.show();
 
@@ -162,6 +168,8 @@ public class TechnicianJobController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.showAndWait();
         }catch (IOException e){
@@ -186,6 +194,8 @@ public class TechnicianJobController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.showAndWait();
         }catch (IOException e){

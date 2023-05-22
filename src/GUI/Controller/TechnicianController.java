@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -79,6 +80,8 @@ public class TechnicianController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.show();
         }

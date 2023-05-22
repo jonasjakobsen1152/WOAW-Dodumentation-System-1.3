@@ -126,6 +126,8 @@ public class AdminController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.show();
         }
@@ -162,6 +164,8 @@ public class AdminController implements Initializable {
 
                 Stage dialogWindow = new Stage();
                 Scene scene = new Scene(pane);
+                dialogWindow.initModality(Modality.WINDOW_MODAL);
+                dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
                 dialogWindow.setScene(scene);
                 dialogWindow.show();
 
@@ -256,6 +260,8 @@ public class AdminController implements Initializable {
 
                 Stage dialogWindow = new Stage();
                 Scene scene = new Scene(pane);
+                dialogWindow.initModality(Modality.WINDOW_MODAL);
+                dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
                 dialogWindow.setScene(scene);
                 dialogWindow.show();
             }
@@ -280,6 +286,8 @@ public class AdminController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.showAndWait();
             showUsersAndDocuments();
@@ -370,6 +378,8 @@ public class AdminController implements Initializable {
                 AnchorPane pane = loader.load();
                 Stage dialogWindow = new Stage();
                 Scene scene = new Scene(pane);
+                dialogWindow.initModality(Modality.WINDOW_MODAL);
+                dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
                 dialogWindow.setScene(scene);
                 dialogWindow.show();
 

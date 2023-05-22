@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -170,6 +171,8 @@ public class ProjectManagerController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.show();
         } catch (IOException e) {
@@ -200,6 +203,8 @@ public class ProjectManagerController implements Initializable {
 
                 Stage dialogWindow = new Stage();
                 Scene scene = new Scene(pane);
+                dialogWindow.initModality(Modality.WINDOW_MODAL);
+                dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
                 dialogWindow.setScene(scene);
                 dialogWindow.show();
             } catch (IOException e) {
@@ -336,6 +341,8 @@ public class ProjectManagerController implements Initializable {
 
                 Stage dialogWindow = new Stage();
                 Scene scene = new Scene(pane);
+                dialogWindow.initModality(Modality.WINDOW_MODAL);
+                dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
                 dialogWindow.setScene(scene);
                 dialogWindow.show();
             } catch (IOException e) {
@@ -372,6 +379,8 @@ public class ProjectManagerController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.show();
         } catch (IOException e) {
@@ -397,6 +406,8 @@ public class ProjectManagerController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            dialogWindow.initModality(Modality.WINDOW_MODAL);
+            dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
             dialogWindow.setScene(scene);
             dialogWindow.show();
         } catch (IOException e) {
@@ -546,6 +557,8 @@ public class ProjectManagerController implements Initializable {
                 AnchorPane pane = loader.load();
                 Stage dialogWindow = new Stage();
                 Scene scene = new Scene(pane);
+                dialogWindow.initModality(Modality.WINDOW_MODAL);
+                dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
                 dialogWindow.setScene(scene);
                 dialogWindow.show();
 
