@@ -40,7 +40,7 @@ public class AdminController implements Initializable {
     public TableColumn clmName;
     public TableColumn clmPhone;
     public TableColumn clmEmail;
-    public TableColumn clmDescription;
+    
     public TableColumn clmTitle;
     public TableView<Job> tblDocument;
     public TextField txtSearch;
