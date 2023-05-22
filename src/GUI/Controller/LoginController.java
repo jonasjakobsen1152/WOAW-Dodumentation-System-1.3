@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class LoginController implements Initializable {
     public Button btnProject;
     public Button btnSakes;
     public Button btnTech;
+    public Text txtLoginFailed;
     @FXML
     private MFXTextField txtUsername;
     @FXML
@@ -49,6 +51,9 @@ public class LoginController implements Initializable {
                 String hashedPassword = userToMatch.getPassword();
                 if(BCrypt.checkpw(passwordFromText,hashedPassword)){ // Checks if the password is equal
                     openBasedOnRole(userToMatch);
+                }
+                else {
+                    txtLoginFailed.setVisible(true);
                 }
             }
         } catch (SQLException e) {
@@ -154,5 +159,6 @@ public class LoginController implements Initializable {
         btnSakes.setVisible(false);
         btnProject.setVisible(false);
         btnTech.setVisible(false);
+        txtLoginFailed.setVisible(false);
     }
 }

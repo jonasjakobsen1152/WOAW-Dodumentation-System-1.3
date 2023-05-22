@@ -16,6 +16,11 @@
             <MFXButton fx:id="btnLogin" buttonType="RAISED" layoutX="200.0" layoutY="255.0" onAction="#handleLogin" prefHeight="49.0" prefWidth="120.0" text="Login" />
             <MFXTextField fx:id="txtUsername" alignment="BOTTOM_CENTER" floatMode="ABOVE" layoutX="140.0" layoutY="72.0" prefHeight="49.0" prefWidth="241.0" promptText="Username" />
             <MFXTextField fx:id="txtPassword" alignment="TOP_CENTER" floatMode="ABOVE" layoutX="140.0" layoutY="155.0" prefHeight="49.0" prefWidth="241.0" promptText="Password" />
+            <Text fx:id="txtLoginFailed" fill="RED" layoutX="219.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Failed Login" wrappingWidth="83.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <Text fill="WHITE" layoutX="239.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Documentation System">
