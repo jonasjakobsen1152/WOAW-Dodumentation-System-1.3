@@ -23,14 +23,14 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button layoutX="563.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOpenAdmin" text="Admin window" />
-      <Button layoutX="561.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleOpenProjectManager" text="Project Window" />
+      <Button fx:id="btnAdmin" layoutX="563.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleOpenAdmin" text="Admin window" />
+      <Button fx:id="btnProject" layoutX="561.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleOpenProjectManager" text="Project Window" />
       <ImageView fitHeight="49.0" fitWidth="130.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
-      <Button layoutX="562.0" layoutY="108.0" mnemonicParsing="false" onAction="#handleOpenSales" prefHeight="28.0" prefWidth="116.0" text="Sales" />
-      <Button layoutX="585.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleOpenTechnician" text="Technician" />
+      <Button fx:id="btnSakes" layoutX="562.0" layoutY="108.0" mnemonicParsing="false" onAction="#handleOpenSales" prefHeight="28.0" prefWidth="116.0" text="Sales" />
+      <Button fx:id="btnTech" layoutX="585.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleOpenTechnician" text="Technician" />
    </children>
 </AnchorPane>
