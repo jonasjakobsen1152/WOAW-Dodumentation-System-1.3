@@ -47,6 +47,7 @@ public class ProjectManagerController implements Initializable {
     public MFXButton btnDeleteJob;
     public MFXCheckbox checkBoxPDF;
     public Text txtPDFText;
+    public MFXButton btnEditCustomer;
     @FXML
     private TextField txtFilter;
     @FXML
@@ -436,6 +437,7 @@ public class ProjectManagerController implements Initializable {
         tblShowCustomers.setVisible(true);
         btnDeleteCustomer.setVisible(true);
         btnCreateCustomer.setVisible(true);
+        btnEditCustomer.setVisible(true);
         txtFilter.setVisible(true);
     }
 
@@ -480,10 +482,11 @@ public class ProjectManagerController implements Initializable {
         btnDeleteCustomer.setVisible(false);
         btnShowWork.setVisible(false);
         btnDeleteJob.setVisible(false);
+        btnEditCustomer.setVisible(false);
+
         checkBoxPDF.setVisible(false);
+
         txtPDFText.setVisible(false);
-
-
         txtFilter.setVisible(false);
         txtFilterTechnicians.setVisible(false);
         txtFilterJobs.setVisible(false);
@@ -589,6 +592,42 @@ public class ProjectManagerController implements Initializable {
                     alertUser("Could not delete the job");
                     e.printStackTrace();
                 }
+            }
+        }
+    }
+
+    public void handleOpenEditCustomer(ActionEvent actionEvent) {
+        selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
+        if(selectedCustomer == null){
+            alertUser("Select a customer to update");
+        }else {
+            try {
+                customerModel = CustomerModel.getInstance();
+                customerModel.setCustomer(selectedCustomer);
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/GUI/View/Customer.fxml"));
+                try {
+                    AnchorPane pane = loader.load();
+
+
+                    CustomerController customerController = loader.getController();
+                    CustomerModel.getInstance();
+
+                    customerController.setupUpdate(selectedCustomer);
+
+                    Stage dialogWindow = new Stage();
+                    Scene scene = new Scene(pane);
+                    dialogWindow.initModality(Modality.WINDOW_MODAL);
+                    dialogWindow.initOwner((((Node) actionEvent.getSource()).getScene().getWindow()));
+                    dialogWindow.setScene(scene);
+                    dialogWindow.showAndWait();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    alertUser("Error: Could not open the update customer window");
+                }
+            }catch (SQLException e){
+                alertUser("Could not open the update customer window");
             }
         }
     }
