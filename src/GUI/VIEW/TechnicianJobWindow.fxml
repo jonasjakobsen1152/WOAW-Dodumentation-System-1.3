@@ -12,21 +12,21 @@
 
 <AnchorPane prefHeight="627.0" prefWidth="1413.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.TechnicianJobController">
    <children>
-      <TableView fx:id="tblNotes" layoutX="58.0" layoutY="91.0" prefHeight="511.0" prefWidth="284.0" styleClass="table-colum">
+      <TableView fx:id="tblNotes" layoutX="58.0" layoutY="91.0" prefHeight="511.0" prefWidth="284.0" styleClass="table-colum" AnchorPane.bottomAnchor="28.0" AnchorPane.topAnchor="91.0">
          <columns>
             <TableColumn fx:id="clmNotes" prefWidth="282.0" styleClass="table-colum" text="Documentation" />
          </columns>
       </TableView>
-      <TableView fx:id="tblImages" layoutX="591.0" layoutY="91.0" prefHeight="511.0" prefWidth="284.0" styleClass="table-colum">
+      <TableView fx:id="tblImages" layoutX="591.0" layoutY="91.0" prefHeight="511.0" prefWidth="284.0" styleClass="table-colum" AnchorPane.bottomAnchor="25.0" AnchorPane.topAnchor="88.0">
          <columns>
             <TableColumn fx:id="clmImages" prefWidth="282.0" styleClass="table-colum" text="Images" />
          </columns>
       </TableView>
-      <MFXButton layoutX="371.0" layoutY="121.0" onAction="#handleAddDocumentation" prefHeight="49.0" prefWidth="154.0" text="Add Documentation" />
-      <MFXButton layoutX="371.0" layoutY="213.0" onAction="#handleUpdateDocumentation" prefHeight="49.0" prefWidth="154.0" text="Edit Documentation" />
-      <MFXButton layoutX="371.0" layoutY="307.0" onAction="#handleDeleteDocumentation" prefHeight="49.0" prefWidth="154.0" text="Delete Documentation" />
-      <MFXButton layoutX="909.0" layoutY="121.0" onAction="#HandleAddImage" prefHeight="49.0" prefWidth="154.0" text="Add Image" />
-      <MFXButton layoutX="909.0" layoutY="213.0" onAction="#handleDeleteImage" prefHeight="49.0" prefWidth="154.0" text="Delete Image" />
+      <MFXButton layoutX="371.0" layoutY="121.0" onAction="#handleAddDocumentation" prefHeight="49.0" prefWidth="154.0" text="Add Documentation" AnchorPane.topAnchor="121.0" />
+      <MFXButton layoutX="371.0" layoutY="213.0" onAction="#handleUpdateDocumentation" prefHeight="49.0" prefWidth="154.0" text="Edit Documentation" AnchorPane.topAnchor="213.0" />
+      <MFXButton layoutX="371.0" layoutY="307.0" onAction="#handleDeleteDocumentation" prefHeight="49.0" prefWidth="154.0" text="Delete Documentation" AnchorPane.topAnchor="307.0" />
+      <MFXButton layoutX="909.0" layoutY="121.0" onAction="#HandleAddImage" prefHeight="49.0" prefWidth="154.0" text="Add Image" AnchorPane.topAnchor="121.0" />
+      <MFXButton layoutX="909.0" layoutY="213.0" onAction="#handleDeleteImage" prefHeight="49.0" prefWidth="154.0" text="Delete Image" AnchorPane.topAnchor="213.0" />
       <Text fill="WHITE" layoutX="526.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-area" text="Job Window">
          <font>
             <Font size="24.0" />
@@ -42,6 +42,6 @@
             <ImageView fx:id="imgImage" fitHeight="511.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
-      <MFXButton layoutX="909.0" layoutY="307.0" onAction="#handleOpenDrawing" prefHeight="49.0" prefWidth="154.0" text="Draw" />
+      <MFXButton layoutX="909.0" layoutY="307.0" onAction="#handleOpenDrawing" prefHeight="49.0" prefWidth="154.0" text="Draw" AnchorPane.topAnchor="307.0" />
    </children>
 </AnchorPane>

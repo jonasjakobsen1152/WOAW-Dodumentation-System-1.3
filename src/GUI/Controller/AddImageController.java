@@ -38,6 +38,10 @@ public class AddImageController {
     public void handleFinishImage(ActionEvent actionEvent) {
         int id = 1;
         String title = txtfImageTitle.getText();
+        if(title.isEmpty() || data == null){
+            alertUser("Please select a Image and write a title");
+            return;
+        }
         int jobId = technicianJobModel.getSelectedJob().getId();
         //If the checkbox is checked then set the image to private,if not set it to public
         if(checkBox.isSelected()){

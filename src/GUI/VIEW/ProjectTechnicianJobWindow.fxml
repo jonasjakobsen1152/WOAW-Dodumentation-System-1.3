@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="547.0" prefWidth="670.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.ProjectManagerJobController">
     <children>
-        <TableView fx:id="tblWork" layoutX="48.0" layoutY="59.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="462.0" prefWidth="579.0" styleClass="table-colum" AnchorPane.bottomAnchor="29.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="46.0" AnchorPane.topAnchor="56.0">
+        <TableView fx:id="tblWork" layoutX="48.0" layoutY="59.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="462.0" prefWidth="579.0" styleClass="table-colum" AnchorPane.bottomAnchor="29.0" AnchorPane.topAnchor="56.0">
             <columns>
                 <TableColumn fx:id="clmTitleWork" maxWidth="1.7976931348623157E308" prefWidth="580.86328125" styleClass="table-colum" text="Title" />
             </columns>
