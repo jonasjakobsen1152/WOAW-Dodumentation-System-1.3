@@ -18,12 +18,12 @@
           <TableColumn fx:id="clmJobs" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="275.0" resizable="false" styleClass="table-colum" text="Jobs" />
         </columns>
       </TableView>
-      <TableView fx:id="tblCustomer" layoutX="37.0" layoutY="111.0" prefHeight="396.0" prefWidth="575.0" styleClass="table-colum" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="108.0">
+      <TableView fx:id="tblCustomer" layoutX="40.0" layoutY="114.0" prefHeight="390.0" prefWidth="642.0" styleClass="table-colum" AnchorPane.bottomAnchor="103.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="111.0">
         <columns>
           <TableColumn fx:id="clmName" prefWidth="118.0" styleClass="table-colum" text="Name" />
           <TableColumn fx:id="clmPhone" prefWidth="116.0" styleClass="table-colum" text="Phone" />
-            <TableColumn fx:id="clmEmail" prefWidth="165.0" styleClass="table-colum" text="Email" />
-            <TableColumn fx:id="clmAdress" prefWidth="174.0" styleClass="table-colum" text="Address" />
+            <TableColumn fx:id="clmEmail" prefWidth="180.0" styleClass="table-colum" text="Email" />
+            <TableColumn fx:id="clmAdress" prefWidth="226.0" styleClass="table-colum" text="Address" />
         </columns>
       </TableView>
       <Text layoutX="49.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer">
