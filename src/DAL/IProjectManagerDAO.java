@@ -20,5 +20,5 @@ public interface IProjectManagerDAO {
     void deleteCustomer(Customer selectedCustomer) throws SQLException;
     void deleteJob(Job selectedJob) throws SQLException;
 
-    void addTechToJob(User selectedTechnician) throws SQLException;
+    void addTechToJob(User selectedTechnician, Job selectedJob) throws SQLException;
 }
