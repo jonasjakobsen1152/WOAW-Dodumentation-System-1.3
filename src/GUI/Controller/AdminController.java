@@ -320,9 +320,9 @@ public class AdminController implements Initializable {
             if (action.get() == ButtonType.OK) {
                 try {
                     adminModel.deleteCustomer(selectedCustomer);
-                    //updateUserModel();
                     showUsersAndDocuments();
                 }catch (SQLException e){
+                    e.printStackTrace();
                     alertUser("Could not delete customer");
                 }
             }
