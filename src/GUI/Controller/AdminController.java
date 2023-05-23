@@ -361,6 +361,7 @@ public class AdminController implements Initializable {
                     alertUser("Error: Could not open the update customer window");
                 }
             }catch (SQLException e){
+                e.printStackTrace();
                 alertUser("Could not open the update customer window");
             }
         }
