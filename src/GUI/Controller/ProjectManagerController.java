@@ -534,6 +534,7 @@ public class ProjectManagerController implements Initializable {
             loginStage.show();
         } catch (IOException e) {
             e.printStackTrace();
+            alertUser("Could not log out");
         }
     }
 

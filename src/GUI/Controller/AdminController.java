@@ -283,6 +283,10 @@ public class AdminController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Customer.fxml"));
             AnchorPane pane = loader.load();
 
+            CustomerController customerController = loader.getController();
+            CustomerModel.getInstance();
+
+            customerController.removeUpdate();
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
@@ -291,7 +295,7 @@ public class AdminController implements Initializable {
             dialogWindow.setScene(scene);
             dialogWindow.showAndWait();
             showUsersAndDocuments();
-        }catch (IOException e){
+        }catch (IOException | SQLException e){
             e.printStackTrace();
             alertUser("Could not open the customer window");
         }
@@ -316,9 +320,9 @@ public class AdminController implements Initializable {
             if (action.get() == ButtonType.OK) {
                 try {
                     adminModel.deleteCustomer(selectedCustomer);
-                    //updateUserModel();
                     showUsersAndDocuments();
                 }catch (SQLException e){
+                    e.printStackTrace();
                     alertUser("Could not delete customer");
                 }
             }
@@ -357,6 +361,7 @@ public class AdminController implements Initializable {
                     alertUser("Error: Could not open the update customer window");
                 }
             }catch (SQLException e){
+                e.printStackTrace();
                 alertUser("Could not open the update customer window");
             }
         }
