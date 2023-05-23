@@ -35,6 +35,15 @@ public class SalesmenManager {
         pdfCreator = new PDFCreator(new PrivatePDFStrategy());
     }
 
+    public void setPDFStrategy(String privacy) {
+        if(privacy.equals("private")){
+            pdfCreator.setStrategy(new PrivatePDFStrategy());
+        }
+        else {
+            pdfCreator.setStrategy(new PublicPDFStrategy());
+        }
+    }
+
     public ArrayList<Customer> getAllCustomer() throws SQLException {
         allCustomers = salesmenDAO.getAllCustomers();
         return allCustomers;
@@ -49,14 +58,6 @@ public class SalesmenManager {
         return searchResult;
     }
 
-    public void setPDFStrategy(String privacy) {
-        if(privacy.equals("private")){
-            pdfCreator.setStrategy(new PrivatePDFStrategy());
-        }
-        else {
-            pdfCreator.setStrategy(new PublicPDFStrategy());
-        }
-    }
 
     public void printPDF(Job selectedJob) throws SQLException, IOException {
         ArrayList<Documentation> allNotes = salesmenDAO.getallDocuments(selectedJob);
