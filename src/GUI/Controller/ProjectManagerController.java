@@ -26,6 +26,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import static javafx.scene.paint.Color.GRAY;
+
 public class ProjectManagerController implements Initializable {
     public MFXButton btnAddWork;
     public MFXButton btnDeleteWork;
@@ -49,6 +51,10 @@ public class ProjectManagerController implements Initializable {
     public Text txtPDFText;
     public MFXButton btnEditCustomer;
     public MFXButton btnAddTechnicianToJob;
+    public MFXButton btnTechnician;
+    public MFXButton btnCustomer;
+    public MFXButton btnSalesmen;
+    public MFXButton btnJobs;
     @FXML
     private TextField txtFilter;
     @FXML
@@ -426,6 +432,7 @@ public class ProjectManagerController implements Initializable {
 
     public void handleShowTechnicians(ActionEvent actionEvent) {
         setVisibleFalse();
+        String clickedButtonStyle = "-fx-background-color: #fa9f1c;";
         tblShowTechnicians.setVisible(true);
         btnDeleteTechnician.setVisible(true);
         btnCreateTechnician.setVisible(true);
@@ -433,29 +440,36 @@ public class ProjectManagerController implements Initializable {
         btnAddWork.setVisible(true);
         txtFilterTechnicians.setVisible(true);
         btnShowWork.setVisible(true);
+        btnTechnician.getStylesheets().clear();
+        btnTechnician.setStyle(clickedButtonStyle);
     }
 
     public void handleShowCustomers(ActionEvent actionEvent) {
         setVisibleFalse();
+        String clickedButtonStyle = "-fx-background-color: #fa9f1c;";
         tblShowCustomers.setVisible(true);
         btnDeleteCustomer.setVisible(true);
         btnCreateCustomer.setVisible(true);
         btnEditCustomer.setVisible(true);
         txtFilter.setVisible(true);
+        btnCustomer.setStyle(clickedButtonStyle);
     }
 
     public void handleShowSalesmen(ActionEvent actionEvent) {
         setVisibleFalse();
+        String clickedButtonStyle = "-fx-background-color: #fa9f1c;";
         tblShowSalesmen.setVisible(true);
         btnCreateSalesmen.setVisible(true);
         btnDeleteSalesmen.setVisible(true);
         btnEditUser.setVisible(true);
         txtFilterSalesmen.setVisible(true);
+        btnSalesmen.setStyle(clickedButtonStyle);
 
     }
 
     public void handleShowJob(ActionEvent actionEvent) {
         setVisibleFalse();
+        String clickedButtonStyle = "-fx-background-color: #fa9f1c;";
         tblShowDocument.setVisible(true);
         btnSendPDF.setVisible(true);
         btnShowJobs.setVisible(true);
@@ -464,9 +478,12 @@ public class ProjectManagerController implements Initializable {
         btnAddTechnicianToJob.setVisible(true);
         checkBoxPDF.setVisible(true);
         txtPDFText.setVisible(true);
+        btnJobs.setStyle(clickedButtonStyle);
     }
 
     public void setVisibleFalse() {
+        String normalButtonStyle = "-fx-background-color: D65A31;";
+
         tblShowCustomers.setVisible(false);
         tblShowDocument.setVisible(false);
         tblShowSalesmen.setVisible(false);
@@ -488,6 +505,10 @@ public class ProjectManagerController implements Initializable {
         btnDeleteJob.setVisible(false);
         btnEditCustomer.setVisible(false);
         btnAddTechnicianToJob.setVisible(false);
+        btnTechnician.setStyle(normalButtonStyle);
+        btnCustomer.setStyle(normalButtonStyle);
+        btnJobs.setStyle(normalButtonStyle);
+        btnSalesmen.setStyle(normalButtonStyle);
 
         checkBoxPDF.setVisible(false);
 

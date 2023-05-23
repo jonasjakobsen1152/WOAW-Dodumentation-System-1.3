@@ -6,6 +6,12 @@
 .button {
     -fx-background-color: D65A31;
 }
+.button:hover{
+    -fx-background-color: #fa9f1c;
+}
+.btnClicked{
+    -fx-background-color: orange;
+}
 .text-area {
     -fx-background-color: white;
 }
@@ -45,5 +51,6 @@
 .canvas {
     -fx-background-color: white;
 }
+
 
 
