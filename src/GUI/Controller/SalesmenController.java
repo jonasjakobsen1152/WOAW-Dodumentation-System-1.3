@@ -124,6 +124,7 @@ public class SalesmenController implements Initializable {
     }
 
     public void handleCheckBox(ActionEvent actionEvent) {
+        //Sets the strategy for the printed pdf.
         if(checkBox.isSelected()){
             salesMenModel.setPDFStrategy("private");
         }
@@ -134,12 +135,13 @@ public class SalesmenController implements Initializable {
     }
 
     public void handlePrintPDF(ActionEvent actionEvent) {
-        if(selectedJob == null){
+        if(selectedJob == null){ // Checks if selectedJob is null and alerts user if it is.
             alertUser("Please select a Job");
         }
         else{
             try {
                 salesMenModel.printPDF(selectedJob);
+                // Sends down the selectedJob as its ID links it to the documentation regarding the job.
             } catch (SQLException | IOException e) {
                 e.printStackTrace();
                 alertUser("could not print pdf");
