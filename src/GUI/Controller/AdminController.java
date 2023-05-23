@@ -283,6 +283,10 @@ public class AdminController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Customer.fxml"));
             AnchorPane pane = loader.load();
 
+            CustomerController customerController = loader.getController();
+            CustomerModel.getInstance();
+
+            customerController.removeUpdate();
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
@@ -291,7 +295,7 @@ public class AdminController implements Initializable {
             dialogWindow.setScene(scene);
             dialogWindow.showAndWait();
             showUsersAndDocuments();
-        }catch (IOException e){
+        }catch (IOException | SQLException e){
             e.printStackTrace();
             alertUser("Could not open the customer window");
         }
