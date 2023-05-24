@@ -23,6 +23,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the login window
+ */
 public class LoginController implements Initializable {
     public Button btnAdmin;
     public Button btnProject;
@@ -42,10 +45,24 @@ public class LoginController implements Initializable {
 
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        btnAdmin.setVisible(false);
+        btnSakes.setVisible(false);
+        btnProject.setVisible(false);
+        btnTech.setVisible(false);
+        txtLoginFailed.setVisible(false);
+    }
+
+    /**
+     * This method handles the login function
+     * @param actionEvent
+     */
     public void handleLogin(ActionEvent actionEvent) {
         String usernameFromText = txtUsername.getText();
         String passwordFromText = txtPassword.getText();
         try {
+            //Gets a list of users that has the same username as the one that was written in the username text field.
             ArrayList<User> matchingUsernames = loginModel.getAllUsers(usernameFromText);
             for (User userToMatch: matchingUsernames) {
                 String hashedPassword = userToMatch.getPassword();
@@ -65,6 +82,11 @@ public class LoginController implements Initializable {
 
     }
 
+    /**
+     * This method is used to open a specific window based on the user that is logged in.
+     * It checks the users role and then opens the right window.
+     * @param user
+     */
     private void openBasedOnRole(User user){
         Stage stage = (Stage) btnLogin.getScene().getWindow();
         loginModel.setLoggedInUser(user);
@@ -86,6 +108,10 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * This method opens the salesmen window
+     * @param actionEvent
+     */
     public void handleOpenSales(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/VIEW/Salesmen.fxml"));
@@ -101,6 +127,10 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * This method opens the admin window
+     * @param actionEvent
+     */
     public void handleOpenAdmin(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/VIEW/Admin.fxml"));
@@ -116,6 +146,10 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * This method opens project manager window
+     * @param actionEvent
+     */
     public void handleOpenProjectManager(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/VIEW/ProjectManager.fxml"));
@@ -138,6 +172,10 @@ public class LoginController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * This method opens the technician window
+     * @param actionEvent
+     */
     public void handleOpenTechnician(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/VIEW/Technician.fxml"));
@@ -153,12 +191,5 @@ public class LoginController implements Initializable {
         }
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        btnAdmin.setVisible(false);
-        btnSakes.setVisible(false);
-        btnProject.setVisible(false);
-        btnTech.setVisible(false);
-        txtLoginFailed.setVisible(false);
-    }
+
 }
