@@ -53,19 +53,23 @@ public class CreateUpdateJobController implements Initializable {
      * @param actionEvent
      */
     public void handleCreateJob(ActionEvent actionEvent) {
-        String title = txtTitle.getText();
-        User selectedTechnician = createUpdateJobModel.getSelectedTechnician();
-        if (selectedCustomer == null){
-            alertUser("Select a customer from the list");
+        if (txtTitle.getText().isEmpty()){
+            alertUser("Write something in the text field to create a job");
         }else {
-            try {
-                createUpdateJobModel.createJob(title, selectedTechnician, selectedCustomer);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                alertUser("Cant create job");
+            String title = txtTitle.getText();
+            User selectedTechnician = createUpdateJobModel.getSelectedTechnician();
+            if (selectedCustomer == null) {
+                alertUser("Select a customer from the list");
+            } else {
+                try {
+                    createUpdateJobModel.createJob(title, selectedTechnician, selectedCustomer);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    alertUser("Cant create job");
+                }
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
             }
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.close();
         }
     }
 
