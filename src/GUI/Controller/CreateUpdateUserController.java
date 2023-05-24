@@ -21,6 +21,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the create update user window
+ */
 public class CreateUpdateUserController implements Initializable {
     @FXML
     private TextField txtUsername;
@@ -41,10 +44,15 @@ public class CreateUpdateUserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //Sets the values for the available choices in the choicebox.
         ObservableList<String> availableChoices = FXCollections.observableArrayList("Technician", "Salesmen", "Project Manager","Admin");
         cbRole.setItems(availableChoices);
     }
 
+    /**
+     * This method is used to create a new user based on the information that the user writes.
+     * @param actionEvent
+     */
     public void handleCreateUser(ActionEvent actionEvent) {
         if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty() || cbRole.getValue() == null) {
             alertUser("Please fill out the information");
@@ -67,7 +75,10 @@ public class CreateUpdateUserController implements Initializable {
     }
 
 
-
+    /**
+     * This method is used to edit/update a user based on the information the user writes
+     * @param actionEvent
+     */
     public void handleUpdateUser(ActionEvent actionEvent) {
         if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty() || cbRole.getValue() == null) {
             alertUser("Please fill out the information");
