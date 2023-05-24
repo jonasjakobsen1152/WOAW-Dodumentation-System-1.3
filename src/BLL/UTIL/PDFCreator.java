@@ -15,10 +15,11 @@ public class PDFCreator {
     }
 
     public void setStrategy(PDFStrategy strategy) {
-        this.strategy = strategy;
+        this.strategy = strategy; //Used to set the chosen strategy
     }
 
+
     public void printPDF(ArrayList<Documentation> allNotes, ArrayList<JobImage> allImages) throws IOException {
-        strategy.printPDF(allNotes, allImages);
+        strategy.printPDF(allNotes, allImages); // Uses the set strategy to use the method printPDF.
     }
 }

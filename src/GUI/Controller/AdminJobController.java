@@ -24,6 +24,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the admin technician job window
+ */
 public class AdminJobController implements Initializable {
 
     @FXML
@@ -72,6 +75,10 @@ public class AdminJobController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * This method is used to finish the selected job
+     * @param event
+     */
     public void handleFinishJob(ActionEvent event) {
         // Retrieve the selected job from the UI
         Job selectedJob = tblWork.getSelectionModel().getSelectedItem();
@@ -92,7 +99,10 @@ public class AdminJobController implements Initializable {
     }
 
 
-
+    /**
+     * This method is used to log out of the current user.
+     * @param actionEvent
+     */
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();

@@ -24,6 +24,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the salesmen window
+ */
 public class SalesmenController implements Initializable {
     @FXML
     private MFXCheckbox checkBox;
@@ -64,13 +67,16 @@ public class SalesmenController implements Initializable {
         showJobs();
 
 
+        //A listener that is used to search for customers
         txtFilter.textProperty().addListener((observable, oldValue, newValue) -> {
+            //Uses a new thread so application doesn't slow down.
             Runnable task = () -> salesMenModel.searchCustomers(newValue);
 
             Thread thread = new Thread(task);
             thread.start();
         });
 
+        //A listener that used to set the jobs that is linked up to the selected customer.
         tblCustomer.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             selectedCustomer = newValue;
             try {
@@ -91,6 +97,9 @@ public class SalesmenController implements Initializable {
         clmJobs.setCellValueFactory(new PropertyValueFactory<Job,String>("Title"));
     }
 
+    /**
+     * This method is used set the values for the table and its coloums.
+     */
     private void showCustomers(){
         clmName.setCellValueFactory(new PropertyValueFactory<Customer,String>("Name"));
         clmPhone.setCellValueFactory(new PropertyValueFactory<Customer,Integer>("Phone"));
@@ -123,6 +132,10 @@ public class SalesmenController implements Initializable {
         }
     }
 
+    /**
+     * This method is used to set the strategy based on if the checkbox is checked or not.
+     * @param actionEvent
+     */
     public void handleCheckBox(ActionEvent actionEvent) {
         //Sets the strategy for the printed pdf.
         if(checkBox.isSelected()){
@@ -134,6 +147,10 @@ public class SalesmenController implements Initializable {
         }
     }
 
+    /**
+     * This method is used to print a pdf
+     * @param actionEvent
+     */
     public void handlePrintPDF(ActionEvent actionEvent) {
         if(selectedJob == null){ // Checks if selectedJob is null and alerts user if it is.
             alertUser("Please select a Job");

@@ -19,6 +19,9 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * This class is used to control the drawing window.
+ */
 public class DrawingController {
 
     @FXML

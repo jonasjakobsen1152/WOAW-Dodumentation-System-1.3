@@ -32,7 +32,7 @@ public class SalesmenManager {
         allCustomers = new ArrayList<>();
         customerSearcher = new CustomerSearcher();
 
-        pdfCreator = new PDFCreator(new PrivatePDFStrategy());
+        pdfCreator = new PDFCreator(new PublicPDFStrategy()); // Default sets the strategy to be the one with the least amount of information
     }
 
     public void setPDFStrategy(String privacy) {

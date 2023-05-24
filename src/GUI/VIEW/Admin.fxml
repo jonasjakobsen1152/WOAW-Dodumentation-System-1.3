@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="528.0" prefWidth="1555.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
+<AnchorPane prefHeight="528.0" prefWidth="1640.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.AdminController">
     <children>
         <TableView fx:id="tblUser" layoutX="56.0" layoutY="74.0" prefHeight="338.0" prefWidth="335.0" styleClass="table-colum" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="73.0">
             <columns>
@@ -40,7 +40,7 @@
                 <Image url="@Images/Screenshot_1.png" />
             </image>
         </ImageView>
-        <TableView fx:id="tblCustomer" layoutX="923.0" layoutY="76.0" prefHeight="334.0" prefWidth="574.0" styleClass="table-colum" AnchorPane.bottomAnchor="119.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="75.0">
+        <TableView fx:id="tblCustomer" layoutX="961.0" layoutY="73.0" prefHeight="340.0" prefWidth="574.0" styleClass="table-colum" AnchorPane.bottomAnchor="118.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="70.0">
             <columns>
                 <TableColumn fx:id="clmName" prefWidth="115.0" styleClass="table-colum" text="Name" />
                 <TableColumn fx:id="clmPhone" minWidth="0.0" prefWidth="120.0" styleClass="table-colum" text="Phone" />
@@ -48,18 +48,21 @@
             <TableColumn fx:id="clmAddress" prefWidth="178.0" styleClass="table-colum" text="Address" />
             </columns>
         </TableView>
-        <MFXButton layoutX="920.0" layoutY="429.0" onAction="#handleCreateCustomer" prefHeight="44.0" prefWidth="127.0" text="Create" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="508.0" />
-        <MFXButton layoutX="1367.0" layoutY="428.0" onAction="#handleDeleteCustomer" prefHeight="44.0" prefWidth="127.0" text="Delete" AnchorPane.bottomAnchor="56.0" AnchorPane.rightAnchor="61.0" />
-        <MFXButton layoutX="1144.0" layoutY="429.0" onAction="#handleUpdateCustomer" prefHeight="44.0" prefWidth="127.0" text="Edit" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="284.0" />
-        <TextField fx:id="txtSearch" layoutX="926.0" layoutY="37.0" promptText="Search" AnchorPane.rightAnchor="299.0" AnchorPane.topAnchor="37.0" />
-        <Text layoutX="192.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Users" />
+        <MFXButton layoutX="934.0" layoutY="429.0" onAction="#handleCreateCustomer" prefHeight="44.0" prefWidth="127.0" text="Create" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="579.0" />
+        <MFXButton layoutX="1432.0" layoutY="429.0" onAction="#handleDeleteCustomer" prefHeight="44.0" prefWidth="127.0" text="Delete" AnchorPane.bottomAnchor="55.0" AnchorPane.rightAnchor="81.0" />
+        <MFXButton layoutX="1184.0" layoutY="433.0" onAction="#handleUpdateCustomer" prefHeight="44.0" prefWidth="127.0" text="Edit" AnchorPane.bottomAnchor="51.0" AnchorPane.rightAnchor="329.0" />
+        <TextField fx:id="txtSearch" layoutX="1380.0" layoutY="39.0" promptText="Search" AnchorPane.rightAnchor="111.0" AnchorPane.topAnchor="39.0" />
+        <Text layoutX="194.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Users" />
         <Text layoutX="668.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Jobs" />
-        <Text layoutX="1090.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer" AnchorPane.rightAnchor="220.00830078125" AnchorPane.topAnchor="40.0" />
-        <MFXButton layoutX="1227.0" layoutY="14.0" onAction="#handleLogOut" prefHeight="44.0" prefWidth="127.0" text="Log Out" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="14.0" />
-        <TextField fx:id="txtSearchJobs" layoutX="509.0" layoutY="37.0" promptText="Search" />
-        <TextField fx:id="txtSearchUsers" layoutX="242.0" layoutY="37.0" promptText="Search" />
+        <Text layoutX="1210.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="headline" text="Customer" AnchorPane.rightAnchor="366.00830078125" AnchorPane.topAnchor="43.8134765625" />
+        <MFXButton layoutX="1539.0" layoutY="10.0" onAction="#handleLogOut" prefHeight="44.0" prefWidth="94.0" text="Log Out" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="10.0" />
+        <TextField fx:id="txtSearchJobs" layoutX="723.0" layoutY="38.0" promptText="Search" />
+        <TextField fx:id="txtSearchUsers" layoutX="244.0" layoutY="43.0" promptText="Search" />
       <MFXButton layoutX="625.0" layoutY="428.0" onAction="#handleDeleteJob" prefHeight="44.0" prefWidth="127.0" text="Delete" AnchorPane.bottomAnchor="56.0" />
       <MFXCheckbox fx:id="checkBoxPDF" layoutX="843.0" layoutY="484.0" onAction="#handlePDFSetStrategy" styleClass="text" AnchorPane.bottomAnchor="24.0" />
-      <Text layoutX="616.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Should PDF contain private information?" AnchorPane.bottomAnchor="24.0" />
+      <Text layoutX="554.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Should PDF contain private information?" AnchorPane.bottomAnchor="24.0">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
     </children>
 </AnchorPane>

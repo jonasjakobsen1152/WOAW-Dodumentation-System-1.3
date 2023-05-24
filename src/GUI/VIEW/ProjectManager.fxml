@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import io.github.palexdev.materialfx.controls.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="701.0" prefWidth="837.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.ProjectManagerController">
+<AnchorPane prefHeight="701.0" prefWidth="837.0" styleClass="backgroundWithBorder" stylesheets="@Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.ProjectManagerController">
    <children>
       <TableView fx:id="tblShowTechnicians" layoutX="433.0" layoutY="74.0" prefHeight="533.0" prefWidth="350.0" styleClass="table-colum" AnchorPane.bottomAnchor="99.0" AnchorPane.topAnchor="74.0">
         <columns>
@@ -18,26 +23,56 @@
             <TableColumn fx:id="clmShowSalesmen" prefWidth="348.0" styleClass="table-colum" text="Salesmen" />
          </columns>
       </TableView>
-      <MFXButton fx:id="btnAddWork" layoutX="300.0" layoutY="554.0" onAction="#handleAddWork" prefHeight="48.0" prefWidth="126.0" text="Add Work" AnchorPane.bottomAnchor="99.0" />
-      <MFXButton fx:id="btnDeleteWork" layoutX="556.0" layoutY="614.0" onAction="#handleDeleteWork" prefHeight="48.0" prefWidth="115.0" text="Delete Work" AnchorPane.bottomAnchor="39.0" />
-      <MFXButton fx:id="btnCreateTechnician" layoutX="405.0" layoutY="614.0" onAction="#handleOpenCreateUser" prefHeight="48.0" prefWidth="126.0" text="Create Technician" AnchorPane.bottomAnchor="39.0" />
+      <MFXButton fx:id="btnAddWork" layoutX="303.0" layoutY="551.0" onAction="#handleAddWork" prefHeight="48.0" prefWidth="126.0" text="Add Work" AnchorPane.bottomAnchor="102.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <MFXButton fx:id="btnDeleteWork" layoutX="556.0" layoutY="614.0" onAction="#handleDeleteWork" prefHeight="48.0" prefWidth="115.0" text="Delete Work" AnchorPane.bottomAnchor="39.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <MFXButton fx:id="btnCreateTechnician" layoutX="405.0" layoutY="614.0" onAction="#handleOpenCreateUser" prefHeight="48.0" prefWidth="126.0" text="Create" AnchorPane.bottomAnchor="39.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
       <Text fill="WHITE" layoutX="206.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Manager Window" AnchorPane.topAnchor="20.1015625">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <MFXButton fx:id="btnDeleteTechnician" layoutX="545.0" layoutY="614.0" onAction="#handleDeleteTechnician" prefHeight="48.0" prefWidth="126.0" text="Delete Technician" AnchorPane.bottomAnchor="39.0" />
-      <MFXButton fx:id="btnCreateSalesmen" layoutX="405.0" layoutY="614.0" onAction="#handleOpenCreateUser" prefHeight="48.0" prefWidth="126.0" text="Create Salesmen" AnchorPane.bottomAnchor="39.0" />
-      <MFXButton fx:id="btnDeleteCustomer" layoutX="545.0" layoutY="614.0" onAction="#handleDeleteCustomer" prefHeight="48.0" prefWidth="126.0" text="Delete Customer" AnchorPane.bottomAnchor="39.0" />
-      <MFXButton fx:id="btnCreateCustomer" layoutX="405.0" layoutY="614.0" onAction="#handleOpenCustomer" prefHeight="48.0" prefWidth="126.0" stylesheets="@Main.css" text="Create Customer" AnchorPane.bottomAnchor="39.0" />
-      <MFXButton fx:id="btnDeleteSalesmen" layoutX="545.0" layoutY="614.0" onAction="#handleDeleteSalesmen" prefHeight="48.0" prefWidth="126.0" text="Delete Salesmen" AnchorPane.bottomAnchor="39.0" />
+      <MFXButton fx:id="btnDeleteTechnician" layoutX="545.0" layoutY="614.0" onAction="#handleDeleteTechnician" prefHeight="48.0" prefWidth="126.0" text="Delete" AnchorPane.bottomAnchor="39.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <MFXButton fx:id="btnCreateSalesmen" layoutX="405.0" layoutY="614.0" onAction="#handleOpenCreateUser" prefHeight="48.0" prefWidth="126.0" text="Create" AnchorPane.bottomAnchor="39.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <MFXButton fx:id="btnDeleteCustomer" layoutX="545.0" layoutY="614.0" onAction="#handleDeleteCustomer" prefHeight="48.0" prefWidth="126.0" text="Delete" AnchorPane.bottomAnchor="39.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <MFXButton fx:id="btnCreateCustomer" layoutX="405.0" layoutY="614.0" onAction="#handleOpenCustomer" prefHeight="48.0" prefWidth="126.0" stylesheets="@Main.css" text="Create" AnchorPane.bottomAnchor="39.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <MFXButton fx:id="btnDeleteSalesmen" layoutX="545.0" layoutY="614.0" onAction="#handleDeleteSalesmen" prefHeight="48.0" prefWidth="126.0" text="Delete" AnchorPane.bottomAnchor="39.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
       <TableView fx:id="tblShowDocument" layoutX="433.0" layoutY="74.0" prefHeight="533.0" prefWidth="350.0" styleClass="table-colum" AnchorPane.bottomAnchor="99.0" AnchorPane.topAnchor="74.0">
          <columns>
             <TableColumn fx:id="clmShowDocument" prefWidth="348.0" styleClass="table-colum" text="Jobs" />
          </columns>
       </TableView>
-      <MFXButton fx:id="btnShowJobs" layoutX="405.0" layoutY="614.0" onAction="#handleShowJobs" prefHeight="48.0" prefWidth="126.0" text="Show Documentation" AnchorPane.bottomAnchor="39.0" />
-      <MFXButton fx:id="btnSendPDF" layoutX="545.0" layoutY="614.0" onAction="#handlePrintPDF" prefHeight="48.0" prefWidth="126.0" text="Print PDF" AnchorPane.bottomAnchor="39.0" />
+      <MFXButton fx:id="btnShowJobs" layoutX="405.0" layoutY="614.0" onAction="#handleShowJobs" prefHeight="48.0" prefWidth="126.0" text="Documentation" AnchorPane.bottomAnchor="39.0">
+         <font>
+            <Font size="14.0" />
+         </font></MFXButton>
+      <MFXButton fx:id="btnSendPDF" layoutX="545.0" layoutY="614.0" onAction="#handlePrintPDF" prefHeight="48.0" prefWidth="126.0" text="Print PDF" AnchorPane.bottomAnchor="39.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
       <TextField fx:id="txtFilter" alignment="CENTER" layoutX="510.0" layoutY="16.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" AnchorPane.topAnchor="15.0" />
       <MFXButton fx:id="btnReadJobs" layoutX="681.0" layoutY="614.0" onAction="#handleReadJob" prefHeight="48.0" prefWidth="126.0" text="Read Jobs" AnchorPane.bottomAnchor="38.0" />
       <ImageView fitHeight="73.0" fitWidth="149.0" layoutX="40.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
@@ -45,14 +80,32 @@
             <Image url="@Images/Screenshot_1.png" />
          </image>
       </ImageView>
-      <MFXButton fx:id="btnEditUser" layoutX="680.0" layoutY="614.0" onAction="#handleOpenUpdateUser" prefHeight="48.0" prefWidth="126.0" text="Edit User" AnchorPane.bottomAnchor="38.0" />
-      <AnchorPane layoutX="15.0" layoutY="91.0" prefHeight="560.0" prefWidth="200.0" styleClass="table-colum" AnchorPane.leftAnchor="20.0">
+      <MFXButton fx:id="btnEditUser" layoutX="680.0" layoutY="614.0" onAction="#handleOpenUpdateUser" prefHeight="48.0" prefWidth="126.0" text="Edit User" AnchorPane.bottomAnchor="38.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <AnchorPane layoutX="31.0" layoutY="80.0" prefHeight="522.0" prefWidth="200.0" styleClass="table-colum" AnchorPane.leftAnchor="28.0">
          <children>
-            <MFXButton fx:id="btnTechnician" layoutX="37.0" layoutY="38.0" onAction="#handleShowTechnicians" prefHeight="48.0" prefWidth="126.0" text="Technician" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="38.0" />
-            <MFXButton fx:id="btnCustomer" layoutX="37.0" layoutY="141.0" onAction="#handleShowCustomers" prefHeight="48.0" prefWidth="126.0" text="Customer" AnchorPane.bottomAnchor="371.0" AnchorPane.leftAnchor="37.0" />
-            <MFXButton fx:id="btnSalesmen" layoutX="37.0" layoutY="250.0" onAction="#handleShowSalesmen" prefHeight="48.0" prefWidth="126.0" text="Salesmen" AnchorPane.bottomAnchor="262.0" AnchorPane.leftAnchor="37.0" />
-            <MFXButton fx:id="btnJobs" layoutX="37.0" layoutY="359.0" onAction="#handleShowJob" prefHeight="48.0" prefWidth="126.0" text="Jobs" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="37.0" />
-            <MFXButton layoutX="37.0" layoutY="471.0" onAction="#handleLogOut" prefHeight="48.0" prefWidth="126.0" text="Log Out" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="37.0" />
+            <MFXButton fx:id="btnTechnician" layoutX="37.0" layoutY="38.0" onAction="#handleShowTechnicians" prefHeight="48.0" prefWidth="126.0" text="Technician" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="38.0">
+               <font>
+                  <Font size="16.0" />
+               </font></MFXButton>
+            <MFXButton fx:id="btnCustomer" layoutX="37.0" layoutY="139.0" onAction="#handleShowCustomers" prefHeight="48.0" prefWidth="126.0" text="Customer" AnchorPane.bottomAnchor="335.0" AnchorPane.leftAnchor="37.0">
+               <font>
+                  <Font size="16.0" />
+               </font></MFXButton>
+            <MFXButton fx:id="btnSalesmen" layoutX="39.0" layoutY="237.0" onAction="#handleShowSalesmen" prefHeight="48.0" prefWidth="126.0" text="Salesmen" AnchorPane.bottomAnchor="237.0" AnchorPane.leftAnchor="39.0">
+               <font>
+                  <Font size="16.0" />
+               </font></MFXButton>
+            <MFXButton fx:id="btnJobs" layoutX="38.0" layoutY="340.0" onAction="#handleShowJob" prefHeight="48.0" prefWidth="126.0" text="Jobs" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="38.0">
+               <font>
+                  <Font size="16.0" />
+               </font></MFXButton>
+            <MFXButton layoutX="37.0" layoutY="471.0" onAction="#handleLogOut" prefHeight="48.0" prefWidth="126.0" text="Log Out" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="37.0">
+               <font>
+                  <Font size="16.0" />
+               </font></MFXButton>
          </children>
       </AnchorPane>
 
@@ -65,12 +118,27 @@
       <TextField fx:id="txtFilterTechnicians" alignment="CENTER" layoutX="511.0" layoutY="15.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" AnchorPane.topAnchor="15.0" />
       <TextField fx:id="txtFilterSalesmen" alignment="CENTER" layoutX="511.0" layoutY="15.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" AnchorPane.topAnchor="15.0" />
       <TextField fx:id="txtFilterJobs" alignment="CENTER" layoutX="511.0" layoutY="15.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" AnchorPane.topAnchor="15.0" />
-      <MFXButton fx:id="btnShowWork" layoutX="300.0" layoutY="491.0" onAction="#handleShowWork" prefHeight="48.0" prefWidth="126.0" text="Show Work" AnchorPane.bottomAnchor="162.0" AnchorPane.leftAnchor="300.0" />
-      <MFXButton fx:id="btnDeleteJob" layoutX="300.0" layoutY="554.0" onAction="#handleDeleteJob" prefHeight="48.0" prefWidth="126.0" text="Delete Job" AnchorPane.bottomAnchor="99.0" AnchorPane.leftAnchor="297.0" />
-      <MFXCheckbox fx:id="checkBoxPDF" layoutX="677.0" layoutY="666.0" onAction="#handleSetPDFStrategy" AnchorPane.bottomAnchor="17.0" />
-      <Text fx:id="txtPDFText" layoutX="405.0" layoutY="680.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Should PDF be printed with private information?" AnchorPane.bottomAnchor="17.0" />
-      <MFXButton fx:id="btnEditCustomer" layoutX="680.0" layoutY="615.0" onAction="#handleOpenEditCustomer" prefHeight="48.0" prefWidth="126.0" text="Edit Customer" AnchorPane.bottomAnchor="38.0" />
-      <MFXButton fx:id="btnAddTechnicianToJob" layoutX="680.0" layoutY="615.0" onAction="#handleAddTechToJob" prefHeight="48.0" prefWidth="126.0" text="Add Technician" AnchorPane.bottomAnchor="38.0" />
+      <MFXButton fx:id="btnShowWork" layoutX="300.0" layoutY="491.0" onAction="#handleShowWork" prefHeight="48.0" prefWidth="126.0" text="Show Work" AnchorPane.bottomAnchor="162.0" AnchorPane.leftAnchor="300.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <MFXButton fx:id="btnDeleteJob" layoutX="303.0" layoutY="548.0" onAction="#handleDeleteJob" prefHeight="48.0" prefWidth="126.0" text="Delete Job" AnchorPane.bottomAnchor="105.0" AnchorPane.leftAnchor="303.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <MFXCheckbox fx:id="checkBoxPDF" layoutX="755.0" layoutY="669.0" onAction="#handleSetPDFStrategy" AnchorPane.bottomAnchor="12.0" />
+      <Text fx:id="txtPDFText" layoutX="405.0" layoutY="687.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Should PDF be printed with private information?" AnchorPane.bottomAnchor="7.0">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
+      <MFXButton fx:id="btnEditCustomer" layoutX="680.0" layoutY="615.0" onAction="#handleOpenEditCustomer" prefHeight="48.0" prefWidth="126.0" text="Edit" AnchorPane.bottomAnchor="38.0">
+         <font>
+            <Font size="16.0" />
+         </font></MFXButton>
+      <MFXButton fx:id="btnAddTechnicianToJob" layoutX="680.0" layoutY="615.0" onAction="#handleAddTechToJob" prefHeight="48.0" prefWidth="126.0" text="Add Technician" AnchorPane.bottomAnchor="38.0">
+         <font>
+            <Font size="14.0" />
+         </font></MFXButton>
 
    </children>
 </AnchorPane>

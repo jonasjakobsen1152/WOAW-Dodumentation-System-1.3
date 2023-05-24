@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.sql.SQLException;
 
+/**
+ * This class is used to control the documentation window
+ */
 public class DocumentationController {
     public TextArea txtaPublicInformation;
     public TextArea txtaPrivateinformation;
@@ -27,18 +30,26 @@ public class DocumentationController {
         documentationModel = DocumentationModel.getInstance();
     }
 
+    /**
+     * This method is used to create documentation for the selected job.
+     * @param actionEvent
+     */
     public void handleCreateDocumentation(ActionEvent actionEvent) {
-        String title = txtfDocumentationTitle.getText();
-        String publicText = txtaPublicInformation.getText();
-        String privateText = txtaPrivateinformation.getText();
-        Documentation documentation = new Documentation(1,title,publicText,privateText,documentationModel.getSelectedJob().getId());
-        try{
-            documentationModel.createDocumentation(documentation);
-            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-            stage.close();
-        }catch (Exception e){
-            alertUser("Could not create documentation");
-            e.printStackTrace();
+        if (txtaPublicInformation.getText().isEmpty() || txtaPrivateinformation.getText().isEmpty() || txtfDocumentationTitle.getText().isEmpty()){
+            alertUser("Write at least one symbol in every text field");
+        }else {
+            String title = txtfDocumentationTitle.getText();
+            String publicText = txtaPublicInformation.getText();
+            String privateText = txtaPrivateinformation.getText();
+            Documentation documentation = new Documentation(1, title, publicText, privateText, documentationModel.getSelectedJob().getId());
+            try {
+                documentationModel.createDocumentation(documentation);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
+            } catch (Exception e) {
+                alertUser("Could not create documentation");
+                e.printStackTrace();
+            }
         }
 
     }
@@ -57,17 +68,25 @@ public class DocumentationController {
         txtaPrivateinformation.setText(selectedDocumentation.getPrivateText());
     }
 
+    /**
+     *
+     * @param actionEvent
+     */
     public void handleUpdateDocumentation(ActionEvent actionEvent) {
-        String title = txtfDocumentationTitle.getText();
-        String publicTxt = txtaPublicInformation.getText();
-        String privateTxt = txtaPrivateinformation.getText();
-        try {
-            documentationModel.updateDocumentation(title, publicTxt, privateTxt);
-            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-            stage.close();
-        }catch (SQLException e){
-            alertUser("Could not the update documentation");
-            e.printStackTrace();
+        if (txtaPublicInformation.getText().isEmpty() || txtaPrivateinformation.getText().isEmpty() || txtfDocumentationTitle.getText().isEmpty()){
+            alertUser("Write at least one symbol in every text field");
+        }else {
+            String title = txtfDocumentationTitle.getText();
+            String publicTxt = txtaPublicInformation.getText();
+            String privateTxt = txtaPrivateinformation.getText();
+            try {
+                documentationModel.updateDocumentation(title, publicTxt, privateTxt);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
+            } catch (SQLException e) {
+                alertUser("Could not the update documentation");
+                e.printStackTrace();
+            }
         }
     }
 

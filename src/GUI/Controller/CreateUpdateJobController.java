@@ -14,6 +14,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the create update job window.
+ */
 public class CreateUpdateJobController implements Initializable {
 
     public TextField txtTitle;
@@ -27,7 +30,6 @@ public class CreateUpdateJobController implements Initializable {
 
     public CreateUpdateJobController() throws SQLException {
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
-        //lblUser.setText(createUpdateJobModel.getSelectedTechnician().getUsername());
 
     }
 
@@ -46,23 +48,34 @@ public class CreateUpdateJobController implements Initializable {
         alert.showAndWait();
     }
 
-    public void handleCreateJob(ActionEvent actionEvent) throws SQLException {
-        String title = txtTitle.getText();
-        User selectedTechnician = createUpdateJobModel.getSelectedTechnician();
-        if (selectedCustomer == null){
-            alertUser("Select a customer from the list");
+    /**
+     * This method is used to create a new job.
+     * @param actionEvent
+     */
+    public void handleCreateJob(ActionEvent actionEvent) {
+        if (txtTitle.getText().isEmpty()){
+            alertUser("Write something in the text field to create a job");
         }else {
-            try {
-                createUpdateJobModel.createJob(title, selectedTechnician, selectedCustomer);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                alertUser("Cant create job");
+            String title = txtTitle.getText();
+            User selectedTechnician = createUpdateJobModel.getSelectedTechnician();
+            if (selectedCustomer == null) {
+                alertUser("Select a customer from the list");
+            } else {
+                try {
+                    createUpdateJobModel.createJob(title, selectedTechnician, selectedCustomer);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    alertUser("Cant create job");
+                }
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
             }
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.close();
         }
     }
 
+    /**
+     * This method is used to set the values of the table view.
+     */
     private void showCustomer() {
         clmName.setCellValueFactory(new PropertyValueFactory<Customer, String>("Name"));
         clmPhone.setCellValueFactory(new PropertyValueFactory<Customer,String>("Phone"));
