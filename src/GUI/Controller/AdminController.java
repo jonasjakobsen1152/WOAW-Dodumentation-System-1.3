@@ -252,6 +252,7 @@ public class AdminController implements Initializable {
             selectedJob = tblDocument.getSelectionModel().getSelectedItem();
             try {
                 technicianJobModel = TechnicianJobModel.getInstance();
+                //Sets the selected job to the selected job so that other windows can use it
                 documentationModel.setSelectedJob(selectedJob);
                 technicianJobModel.setSelectedJob(selectedJob);
                 technicianJobModel.showList();
@@ -329,6 +330,10 @@ public class AdminController implements Initializable {
         }
     }
 
+    /**
+     * This method is used to open the customer window
+     * @param actionEvent
+     */
     public void handleUpdateCustomer(ActionEvent actionEvent) {
         selectedCustomer = tblCustomer.getSelectionModel().getSelectedItem();
         if(selectedCustomer == null){
@@ -369,6 +374,10 @@ public class AdminController implements Initializable {
 
     }
 
+    /**
+     * This method is used to show the work of the chosen technician.
+     * @param actionEvent
+     */
     public void handleShowWork(ActionEvent actionEvent) {
 
         selectedUser = tblUser.getSelectionModel().getSelectedItem();
@@ -395,6 +404,10 @@ public class AdminController implements Initializable {
         }
     }
 
+    /**
+     * This method is used to log out of the current user and open the login window again.
+     * @param actionEvent
+     */
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
@@ -412,6 +425,10 @@ public class AdminController implements Initializable {
         }
     }
 
+    /**
+     * This method deletes the selected job.
+     * @param actionEvent
+     */
     public void handleDeleteJob(ActionEvent actionEvent) {
         selectedJob = tblDocument.getSelectionModel().getSelectedItem();
         if (selectedJob == null) {
@@ -436,6 +453,10 @@ public class AdminController implements Initializable {
         }
     }
 
+    /**
+     * This method is used to print a pdf file
+     * @param actionEvent
+     */
     public void handlePrintPDF(ActionEvent actionEvent) {
         if(selectedJob == null){
             alertUser("Please select a Job");
@@ -451,6 +472,10 @@ public class AdminController implements Initializable {
 
     }
 
+    /**
+     * This method is used to set the strategy for the pdf.
+     * @param actionEvent
+     */
     public void handlePDFSetStrategy(ActionEvent actionEvent) {
         if(checkBoxPDF.isSelected()){
             adminModel.setPDFStrategy("private");

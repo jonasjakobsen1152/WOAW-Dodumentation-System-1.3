@@ -15,6 +15,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to add technicians to jobs.
+ */
 public class AddTechToJobController implements Initializable {
     public TableView<User> tblTechnicians;
     public User selectedTechnician;
@@ -37,6 +40,10 @@ public class AddTechToJobController implements Initializable {
             selectedTechnician = tblTechnicians.getSelectionModel().getSelectedItem();
         });
     }
+    /**
+     * This method adds a technician to a job
+     * @param actionEvent
+     */
     public void handleAddTechToJob(ActionEvent actionEvent) {
         selectedTechnician = tblTechnicians.getSelectionModel().getSelectedItem();
         if(selectedTechnician == null){
