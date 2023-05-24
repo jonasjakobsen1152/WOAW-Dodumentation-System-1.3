@@ -38,8 +38,7 @@ public class AdminJobController implements Initializable {
     private DocumentationModel documentationModel;
     public Job selectedJob;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public AdminJobController(){
         technicianModel = TechnicianModel.getInstance();
         try {
             technicianJobModel = TechnicianJobModel.getInstance();
@@ -48,6 +47,10 @@ public class AdminJobController implements Initializable {
             e.printStackTrace();
             alertUser("Could not get list");
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         tblWork.setOnMouseClicked(event -> {
             selectedJob = tblWork.getSelectionModel().getSelectedItem();
         });

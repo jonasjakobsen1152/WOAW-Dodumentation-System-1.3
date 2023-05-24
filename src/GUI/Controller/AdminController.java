@@ -55,6 +55,7 @@ public class AdminController implements Initializable {
     private CreateUpdateUserModel createUpdateUserModel;
     private CustomerModel customerModel;
     private TechnicianJobModel technicianJobModel;
+    private TechnicianModel technicianModel;
     private DocumentationModel documentationModel;
     private LoginModel loginModel;
 
@@ -63,6 +64,7 @@ public class AdminController implements Initializable {
             loginModel = LoginModel.getInstance();
             adminModel = AdminModel.getInstance();
             technicianJobModel = TechnicianJobModel.getInstance();
+            technicianModel = TechnicianModel.getInstance();
             documentationModel = DocumentationModel.getInstance();
         }catch (SQLException e){
             e.printStackTrace();
@@ -376,6 +378,8 @@ public class AdminController implements Initializable {
             alertUser("Select a technician from the user table");
         }else{
             adminModel.setSelectedUser(selectedUser);
+            technicianModel.setSelectedUser(selectedUser);
+            technicianModel.showList();
             adminModel.showList();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/GUI/View/AdminTechnicianJobWindow.fxml"));
