@@ -15,6 +15,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the customer window
+ */
 public class CustomerController implements Initializable {
     public TextField txtAddress;
     @FXML
@@ -43,7 +46,12 @@ public class CustomerController implements Initializable {
 
     }
 
+    /**
+     * This method is used to create a new customer.
+     * @param actionEvent
+     */
     public void handleCreateCustomer(ActionEvent actionEvent) {
+        //Checks if the text fields are empty, if they are tell the user to write something in them.
         if(txtName.getText().isEmpty() || txtPhoneNumber.getText().isEmpty() || txtEmail.getText().isEmpty()|| txtAddress.getText().isEmpty()) {
             alertUser("Please fill out the information about the customer");
         } else {
@@ -69,23 +77,35 @@ public class CustomerController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * This method is used to edit/update a customer.
+     * @param actionEvent
+     */
     public void handleUpdateCustomer(ActionEvent actionEvent) {
-        String name = txtName.getText();
-        int phone = Integer.parseInt(txtPhoneNumber.getText());
-        String email = txtEmail.getText();
-        String address = txtAddress.getText();
-        Customer customer = new Customer(customerModel.getSelectedCustomer().getId(),name,phone,email,address);
-        try {
-            customerModel.updateCustomer(customer);
-            Stage stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
-            stage.close();
-        } catch (Exception e){
-            e.printStackTrace();
-            alertUser("Could not update Customer");
+        //Checks if the text fields are empty, if they are tell the user to write something in them.
+        if(txtName.getText().isEmpty() || txtPhoneNumber.getText().isEmpty() || txtEmail.getText().isEmpty()|| txtAddress.getText().isEmpty()) {
+            alertUser("Please fill out the information about the customer");
+        } else {
+            String name = txtName.getText();
+            int phone = Integer.parseInt(txtPhoneNumber.getText());
+            String email = txtEmail.getText();
+            String address = txtAddress.getText();
+            Customer customer = new Customer(customerModel.getSelectedCustomer().getId(), name, phone, email, address);
+            try {
+                customerModel.updateCustomer(customer);
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                stage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                alertUser("Could not update Customer");
+            }
         }
     }
 
-
+    /**
+     * Sets the text in the text field to the selected customers values.
+     * @param selectedCustomer
+     */
     public void setupUpdate(Customer selectedCustomer) {
         btnCreate.setVisible(false);
         txtName.setText(selectedCustomer.getName());
