@@ -14,6 +14,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the create update job window.
+ */
 public class CreateUpdateJobController implements Initializable {
 
     public TextField txtTitle;
@@ -27,7 +30,6 @@ public class CreateUpdateJobController implements Initializable {
 
     public CreateUpdateJobController() throws SQLException {
         createUpdateJobModel = CreateUpdateJobModel.getInstance();
-        //lblUser.setText(createUpdateJobModel.getSelectedTechnician().getUsername());
 
     }
 
@@ -46,7 +48,11 @@ public class CreateUpdateJobController implements Initializable {
         alert.showAndWait();
     }
 
-    public void handleCreateJob(ActionEvent actionEvent) throws SQLException {
+    /**
+     * This method is used to create a new job.
+     * @param actionEvent
+     */
+    public void handleCreateJob(ActionEvent actionEvent) {
         String title = txtTitle.getText();
         User selectedTechnician = createUpdateJobModel.getSelectedTechnician();
         if (selectedCustomer == null){
@@ -63,6 +69,9 @@ public class CreateUpdateJobController implements Initializable {
         }
     }
 
+    /**
+     * This method is used to set the values of the table view.
+     */
     private void showCustomer() {
         clmName.setCellValueFactory(new PropertyValueFactory<Customer, String>("Name"));
         clmPhone.setCellValueFactory(new PropertyValueFactory<Customer,String>("Phone"));
