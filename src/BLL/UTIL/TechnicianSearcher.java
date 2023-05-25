@@ -5,6 +5,9 @@ import BE.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Used to search for technicians
+ */
 public class TechnicianSearcher {
 
     public List<User> search(ArrayList<User> searchBase, String query) {

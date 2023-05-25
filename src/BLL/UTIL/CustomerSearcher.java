@@ -5,6 +5,9 @@ import BE.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Used to search for customers
+ */
 public class CustomerSearcher {
     public List<Customer> search(ArrayList<Customer> searchBase, String query) {
         List<Customer> searchResult = new ArrayList<>();

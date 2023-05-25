@@ -7,6 +7,9 @@ import BLL.UTIL.PDFStrategies.PDFStrategy;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Used to create pdfs
+ */
 public class PDFCreator {
     private PDFStrategy strategy;
 

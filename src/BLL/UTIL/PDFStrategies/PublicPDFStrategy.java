@@ -94,6 +94,11 @@ public class PublicPDFStrategy implements PDFStrategy {
         return textTable;
     }
 
+    /**
+     * Used to convert byte data into an image and add it to an arraylist
+     * @param allImages
+     * @return
+     */
     @Override
     public ArrayList<ImageAndTitle> convertImages(ArrayList<JobImage> allImages) {
         ArrayList<ImageAndTitle> images = new ArrayList<>();

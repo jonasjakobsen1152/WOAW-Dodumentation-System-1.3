@@ -6,6 +6,9 @@ import BE.User;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Used to search for jobs
+ */
 public class JobSearcher {
     public List<Job> search(ArrayList<Job> searchBase, String query) {
         List<Job> searchResult = new ArrayList<>();
