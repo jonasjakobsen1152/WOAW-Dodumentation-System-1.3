@@ -30,9 +30,11 @@ public class ProjectManagerManager {
     public ProjectManagerManager(){
         projectManagerDAO = new ProjectManagerDAO_DB();
 
+        //Lists of the information that has something to do with the thing that is seached
         allCustomers = new ArrayList<>();
         allTechnicians = new ArrayList<>();
         allSalesmen = new ArrayList<>();
+        //Creates searchers
         customerSearcher = new CustomerSearcher();
         technicianSearcher = new TechnicianSearcher();
         salesmenSearcher = new SalesmenSearcher();
