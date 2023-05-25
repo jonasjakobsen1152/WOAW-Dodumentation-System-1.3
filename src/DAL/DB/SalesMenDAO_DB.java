@@ -18,6 +18,11 @@ public class SalesMenDAO_DB implements ISalesmenDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
+    /**
+     * Gets all the customers from the database.
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<Customer> getAllCustomers() throws SQLException {
         ArrayList<Customer> customers = new ArrayList<>();
@@ -42,6 +47,12 @@ public class SalesMenDAO_DB implements ISalesmenDAO {
         return customers;
     }
 
+    /**
+     * Gets all the jobs from the database
+     * @param selectedCustomer
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<Job> getAllJobs(Customer selectedCustomer) throws SQLException {
         ArrayList<Job> jobs = new ArrayList<>();
@@ -60,8 +71,6 @@ public class SalesMenDAO_DB implements ISalesmenDAO {
                 String title = rs.getString("Title");
                 int customerID = rs.getInt("CustomerID");
 
-
-
                 Job job = new Job(id,title,customerID);
                 jobs.add(job);
             }
@@ -69,6 +78,12 @@ public class SalesMenDAO_DB implements ISalesmenDAO {
         return jobs;
     }
 
+    /**
+     * Gets all the images based on the selected jobs' id.
+     * @param selectedJob
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<JobImage> getAllJobImages(Job selectedJob) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){
@@ -95,6 +110,9 @@ public class SalesMenDAO_DB implements ISalesmenDAO {
         }
     }
 
+    /**
+     * Gets all the notes from the database based on the selected jobs' id.
+     */
     @Override
     public ArrayList<Documentation> getallDocuments(Job selectedJob) throws SQLException {
         ArrayList<Documentation> documentations = new ArrayList<>();

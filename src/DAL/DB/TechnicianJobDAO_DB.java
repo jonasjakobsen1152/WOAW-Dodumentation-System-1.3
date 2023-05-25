@@ -14,6 +14,13 @@ public class TechnicianJobDAO_DB implements ITechnicianJobDAO {
     public TechnicianJobDAO_DB(){
         databaseConnector = new MyDatabaseConnector();
     }
+
+    /**
+     * Gets all the notes from the database based on the selected job
+     * @param selectedJob
+     * @return
+     * @throws SQLException
+     */
     @Override
     public List<Documentation> getDocumentation(Job selectedJob) throws SQLException {
         ArrayList<Documentation> documentations = new ArrayList<>();
@@ -41,6 +48,11 @@ public class TechnicianJobDAO_DB implements ITechnicianJobDAO {
 
     }
 
+    /**
+     * Deletes the selected notes from the database.
+     * @param selectedDocumentation
+     * @throws SQLException
+     */
     @Override
     public void deleteDocumentation(Documentation selectedDocumentation) throws SQLException {
         try (Connection conn = databaseConnector.getConnection()){
@@ -55,6 +67,12 @@ public class TechnicianJobDAO_DB implements ITechnicianJobDAO {
         }
     }
 
+    /**
+     * Gets images from the database based on the selected job.
+     * @param selectedJob
+     * @return
+     * @throws SQLException
+     */
     @Override
     public List<JobImage> getImages(Job selectedJob) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){
@@ -81,6 +99,11 @@ public class TechnicianJobDAO_DB implements ITechnicianJobDAO {
         }
     }
 
+    /**
+     * Deletes the selected image from the database.
+     * @param selectedJobImage
+     * @throws SQLException
+     */
     @Override
     public void deleteImage(JobImage selectedJobImage) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){

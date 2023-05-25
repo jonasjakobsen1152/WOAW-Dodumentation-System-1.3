@@ -16,6 +16,13 @@ public class DocumentationDAO_DB implements IDocumentationDAO {
     public DocumentationDAO_DB(){
         databaseConnector = new MyDatabaseConnector();
     }
+
+    /**
+     * Creates new notes in the database
+     * @param documentation
+     * @param selectedJob
+     * @throws SQLException
+     */
     @Override
     public void createDocumentation(Documentation documentation, Job selectedJob) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){
@@ -33,6 +40,11 @@ public class DocumentationDAO_DB implements IDocumentationDAO {
         }
     }
 
+    /**
+     * Changes the values of some notes in the database
+     * @param documentation
+     * @throws SQLException
+     */
     @Override
     public void updateDocumentation(Documentation documentation) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){

@@ -14,6 +14,11 @@ public class AdminDAO_DB implements IAdminDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
+    /**
+     * Gets jobs from the database based on the selected user.
+     * @param selectedUser
+     * @return
+     */
     @Override
     public List<Job> getWork(User selectedUser) {
         ArrayList<Job> jobs = new ArrayList<>();
@@ -43,6 +48,11 @@ public class AdminDAO_DB implements IAdminDAO {
         return jobs;
     }
 
+    /**
+     * Deletes the selected job from the database.
+     * @param selectedJob
+     * @throws SQLException
+     */
     @Override
     public void deleteJob(Job selectedJob) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()) {
@@ -60,6 +70,12 @@ public class AdminDAO_DB implements IAdminDAO {
         }
     }
 
+    /**
+     * Gets the documentation from the database based on the selected job
+     * @param selectedJob
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<Documentation> getAllDocumentation(Job selectedJob) throws SQLException {
         ArrayList<Documentation> documentations = new ArrayList<>();
@@ -86,6 +102,12 @@ public class AdminDAO_DB implements IAdminDAO {
         }
     }
 
+    /**
+     * Gets all the images that is linked to the selected job from the database.
+     * @param selectedJob
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<JobImage> getAllJobImages(Job selectedJob) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){
@@ -113,6 +135,11 @@ public class AdminDAO_DB implements IAdminDAO {
     }
 
 
+    /**
+     * Gets all the jobs from the database
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<Job> getAllJobs() throws SQLException {
         ArrayList<Job> jobs = new ArrayList<>();
@@ -139,6 +166,9 @@ public class AdminDAO_DB implements IAdminDAO {
         return jobs;
     }
 
+    /**
+     * Deletes the selected user from the database
+     */
     @Override
     public void deleteUser(User selectedUser) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()) {
@@ -156,6 +186,11 @@ public class AdminDAO_DB implements IAdminDAO {
         }
     }
 
+    /**
+     * Deletes the selected customer from the database
+     * @param selectedCustomer
+     * @throws SQLException
+     */
     @Override
     public void deleteCustomer(Customer selectedCustomer) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()) {
@@ -173,6 +208,11 @@ public class AdminDAO_DB implements IAdminDAO {
         }
     }
 
+    /**
+     * Gets all the customers from the database
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<Customer> getAllCustomer() throws SQLException {
         ArrayList<Customer> customers = new ArrayList<>();
@@ -199,7 +239,11 @@ public class AdminDAO_DB implements IAdminDAO {
         return customers;
     }
 
-
+    /**
+     * Gets all the users from the database
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<User> getAllUsers() throws SQLException {
         ArrayList<User> users = new ArrayList<>();

@@ -15,6 +15,14 @@ public class CustomerDAO_DB implements ICustomerDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
+    /**
+     * Creates a new customer in the database
+     * @param name
+     * @param phone
+     * @param email
+     * @param address
+     * @throws SQLException
+     */
     @Override
     public void createCustomer(String name, int phone, String email, String address) throws SQLException {
         try (Connection conn = databaseConnector.getConnection()) {
@@ -33,6 +41,10 @@ public class CustomerDAO_DB implements ICustomerDAO {
         }
     }
 
+    /**
+     * Changes the values of a customer en the database
+     * @param customer
+     */
     @Override
     public void updateCustomer(Customer customer) {
         try(Connection conn = databaseConnector.getConnection()){
@@ -51,7 +63,11 @@ public class CustomerDAO_DB implements ICustomerDAO {
         }
     }
 
-
+    /**
+     * Gets all the customers from the database
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<Customer> getAllCustomer() throws SQLException {
         ArrayList<Customer> customers = new ArrayList<>();

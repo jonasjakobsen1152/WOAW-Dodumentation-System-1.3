@@ -16,7 +16,6 @@ public class AddImageDAO_DB implements IAddImageDAO {
     /**
      * Called when the user is done creating an image.
      * Adds a new image to the database in the Image table.
-     * Uses SQL
      * @param jobImage
      * @throws SQLException
      */

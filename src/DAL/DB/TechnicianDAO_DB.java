@@ -15,6 +15,12 @@ public class TechnicianDAO_DB implements ITechnicianDAO {
     public TechnicianDAO_DB(){
         databaseConnector = new MyDatabaseConnector();
     }
+
+    /**
+     * Gets all the jobs based on the selected user.
+     * @param selectedUser
+     * @return
+     */
     @Override
     public List<Job> getWork(User selectedUser) {
         ArrayList<Job> jobs = new ArrayList<>();
@@ -44,6 +50,10 @@ public class TechnicianDAO_DB implements ITechnicianDAO {
         return jobs;
     }
 
+    /**
+     * This is used to mark a job as finished why removing all the technicians from the job.
+     * @param selectedJob
+     */
     @Override
     public void finishJob(Job selectedJob) {
         try(Connection conn = databaseConnector.getConnection()){

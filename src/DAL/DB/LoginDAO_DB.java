@@ -14,6 +14,12 @@ public class LoginDAO_DB implements ILoginDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
+    /**
+     * Gets all the users from the database based on the written username in the username text field.
+     * @param usernameText
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<User> getAllUsers(String usernameText) throws SQLException {
         ArrayList<User> allUsers = new ArrayList<>();

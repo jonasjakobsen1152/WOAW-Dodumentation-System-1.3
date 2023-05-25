@@ -15,6 +15,13 @@ public class CreateUpdateJobDAO_DB implements ICreateUpdateJobDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
+    /**
+     * Creates a new job in the database
+     * @param title
+     * @param selectedTechnician
+     * @param selectedCustomer
+     * @throws SQLException
+     */
     @Override
     public void createJob(String title, User selectedTechnician, Customer selectedCustomer) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){
@@ -47,6 +54,12 @@ public class CreateUpdateJobDAO_DB implements ICreateUpdateJobDAO {
             throw new SQLException(e);
         }
     }
+
+    /**
+     * Gets all the customers from the database.
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<Customer> getAllCustomers() throws SQLException {
         ArrayList<Customer> customers = new ArrayList<>();

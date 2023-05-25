@@ -16,6 +16,11 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
+    /**
+     * Gets all the users from the database based on the role.
+     * @param role
+     * @return
+     */
     @Override
     public ArrayList<User> getAllUsers(String role) {
         ArrayList<User> users = new ArrayList<>();
@@ -43,6 +48,11 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         }
         return users;
     }
+
+    /**
+     * Deletes the selected user from the database
+     * @param selectedUser
+     */
     @Override
     public void deleteUser(User selectedUser) {
         try(Connection conn = databaseConnector.getConnection()) {
@@ -60,6 +70,10 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         }
     }
 
+    /**
+     * Gets all the jobs from the database.
+     * @return
+     */
     @Override
     public ArrayList<Job> getAllDocuments() {
         ArrayList<Job> jobs = new ArrayList<>();
@@ -87,6 +101,11 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         return jobs;
     }
 
+    /**
+     * Gets all the customers from the database.
+     * @return
+     * @throws SQLException
+     */
     @Override
     public ArrayList<Customer> getAllCustomers() throws SQLException {
         ArrayList<Customer> customers = new ArrayList<>();
@@ -111,6 +130,10 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         return customers;
     }
 
+    /**
+     * Deletes the selected job from the database.
+     * @param selectedDocument
+     */
     @Override
     public void deleteDocument(Job selectedDocument) {
         try(Connection conn = databaseConnector.getConnection()) {
@@ -123,6 +146,11 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         }
     }
 
+    /**
+     * Deletes the selected customer from the database.
+     * @param selectedCustomer
+     * @throws SQLException
+     */
     @Override
     public void deleteCustomer(Customer selectedCustomer) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){
@@ -135,6 +163,11 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         }
     }
 
+    /**
+     * Deletes the selected job from the database.
+     * @param selectedJob
+     * @throws SQLException
+     */
     @Override
     public void deleteJob(Job selectedJob) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()) {
@@ -152,6 +185,12 @@ public class ProjectManagerDAO_DB implements IProjectManagerDAO {
         }
     }
 
+    /**
+     * This is used to add a technician to a job.
+     * @param selectedTechnician
+     * @param selectedJob
+     * @throws SQLException
+     */
     @Override
     public void addTechToJob(User selectedTechnician, Job selectedJob) throws SQLException {
         try (Connection conn = databaseConnector.getConnection()){

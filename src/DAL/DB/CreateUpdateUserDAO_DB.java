@@ -13,6 +13,13 @@ public class CreateUpdateUserDAO_DB implements ICreateUpdateUserDAO {
         databaseConnector = new MyDatabaseConnector();
     }
 
+    /**
+     * Creates a new user in the database
+     * @param username
+     * @param password
+     * @param role
+     * @throws SQLException
+     */
     @Override
     public void createUser(String username, String password, String role) throws SQLException {
         try (Connection conn = databaseConnector.getConnection()){
@@ -28,6 +35,12 @@ public class CreateUpdateUserDAO_DB implements ICreateUpdateUserDAO {
             throw new SQLException();
         }
     }
+
+    /**
+     * Changes the values of a user in the database
+     * @param user
+     * @throws SQLException
+     */
     public void updateUser(User user) throws SQLException {
         try(Connection conn = databaseConnector.getConnection()){
             String sql = "UPDATE Users SET Username = ?, Password = ?, Role = ? WHERE ID = ?";
