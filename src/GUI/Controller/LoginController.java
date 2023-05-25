@@ -47,6 +47,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //These buttons are used for easy access to the different windows. They were used for developing the application
         btnAdmin.setVisible(false);
         btnSakes.setVisible(false);
         btnProject.setVisible(false);

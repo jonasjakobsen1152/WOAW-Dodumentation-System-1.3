@@ -115,6 +115,10 @@ public class SalesmenController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Used to log out of the current user and open the login window again
+     * @param actionEvent
+     */
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();

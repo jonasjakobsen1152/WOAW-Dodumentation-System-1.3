@@ -30,6 +30,9 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the technician job window
+ */
 public class TechnicianJobController implements Initializable {
     public TableColumn clmImages;
     public TableView<JobImage> tblImages;
@@ -40,8 +43,7 @@ public class TechnicianJobController implements Initializable {
     public JobImage selectedJobImage;
     public DocumentationModel documentationModel;
     public ImageView imgImage;
-    @FXML
-    private Pane imagePane;
+
 
     public TechnicianJobController() throws SQLException {
         technicianJobModel = TechnicianJobModel.getInstance();
@@ -54,16 +56,25 @@ public class TechnicianJobController implements Initializable {
             selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
             tblImages.getSelectionModel().clearSelection();
         });
+        //Used to show the image that is clicked in the image table
         tblImages.setOnMouseClicked(event ->{
             tblNotes.getSelectionModel().clearSelection();
             selectedJobImage = tblImages.getSelectionModel().getSelectedItem();
+            //Gets the byte data from the selected image and sets it to the imageData variable
             byte[] imageData = selectedJobImage.getData();
+            //Converts the byte data into a byte array
             ByteArrayInputStream byteArray = new ByteArrayInputStream(imageData);
+            //Creates a new image based on the byte array
             Image image = new Image(byteArray);
+            //Shows the created image in the image view
             imgImage.setImage(image);
         });
     }
 
+    /**
+     * Used to open the documentation window where the user can add notes for the job
+     * @param actionEvent
+     */
     public void handleAddDocumentation(ActionEvent actionEvent) {
         selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
         try {
@@ -72,6 +83,7 @@ public class TechnicianJobController implements Initializable {
 
             DocumentationController documentationController = loader.getController();
 
+            //Used to remove the update button in the documentation window
             documentationController.setupCreate(selectedDocumentation);
 
             Stage dialogWindow = new Stage();
@@ -85,14 +97,23 @@ public class TechnicianJobController implements Initializable {
             alertUser("Could not open the documentation window");
         }
     }
+
+    /**
+     * Used to set the items in the table views for notes and images.
+     */
     public void showDocumentation(){
+        //For notes
         clmNotes.setCellValueFactory(new PropertyValueFactory<Documentation,String>("title"));
         tblNotes.setItems(technicianJobModel.getDocumentationsToBeViewed());
-
+        //For images
         clmImages.setCellValueFactory(new PropertyValueFactory<JobImage, String>("title"));
         tblImages.setItems(technicianJobModel.getImagesToBeViewed());
     }
 
+    /**
+     * Used to open the documentation window where the user can edit notes for the job
+     * @param actionEvent
+     */
     public void handleUpdateDocumentation(ActionEvent actionEvent) {
         selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
         if(selectedDocumentation == null){
@@ -107,6 +128,7 @@ public class TechnicianJobController implements Initializable {
                 DocumentationController documentationController = loader.getController();
                 documentationModel.getInstance();
 
+                //Used to remove the create button in the documentation window
                 documentationController.setupUpdate(selectedDocumentation);
 
                 Stage dialogWindow = new Stage();
@@ -127,6 +149,10 @@ public class TechnicianJobController implements Initializable {
 
     }
 
+    /**
+     * Deletes the chosen documentation
+     * @param actionEvent
+     */
     public void handleDeleteDocumentation(ActionEvent actionEvent) {
         selectedDocumentation = tblNotes.getSelectionModel().getSelectedItem();
         if(selectedDocumentation == null){
@@ -141,6 +167,10 @@ public class TechnicianJobController implements Initializable {
         }
         }
 
+    /**
+     * Deletes the chosen image
+     * @param actionEvent
+     */
     public void handleDeleteImage(ActionEvent actionEvent) {
         selectedJobImage = tblImages.getSelectionModel().getSelectedItem();
         if(selectedJobImage == null){
@@ -161,6 +191,10 @@ public class TechnicianJobController implements Initializable {
         }
     }
 
+    /**
+     * Used to open the add image window where the user can add new images to the application.
+     * @param actionEvent
+     */
     public void HandleAddImage(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/AddImageWindow.fxml"));
@@ -186,7 +220,10 @@ public class TechnicianJobController implements Initializable {
         alert.showAndWait();
     }
 
-
+    /**
+     * Used to open the drawing window where the user can draw images and save them.
+     * @param actionEvent
+     */
     public void handleOpenDrawing(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/DrawingWindow.fxml"));

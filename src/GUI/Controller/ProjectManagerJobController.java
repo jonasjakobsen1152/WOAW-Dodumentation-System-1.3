@@ -15,6 +15,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the Project Technician Job window.
+ */
 public class ProjectManagerJobController implements Initializable {
 
     @FXML
@@ -34,12 +37,12 @@ public class ProjectManagerJobController implements Initializable {
             e.printStackTrace();
             alertUser("Could not get list");
         }
-        tblWork.setOnMouseClicked(event -> {
-            selectedJob = tblWork.getSelectionModel().getSelectedItem();
-        });
         showWork();
     }
 
+    /**
+     * Shows the work of the technician that was selected in the project manager window
+     */
     public void showWork(){
         clmTitleWork.setCellValueFactory(new PropertyValueFactory<User,String>("title"));
         tblWork.setItems(technicianModel.getWorkToBeViewed());

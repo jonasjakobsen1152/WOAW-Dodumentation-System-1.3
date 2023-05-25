@@ -25,6 +25,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to control the technician window
+ */
 public class TechnicianController implements Initializable {
 
     @FXML
@@ -56,12 +59,19 @@ public class TechnicianController implements Initializable {
         showWork();
     }
 
+    /**
+     * Used to show the jobs of the logged in technician
+     */
     public void showWork(){
         clmTitleWork.setCellValueFactory(new PropertyValueFactory<User,String>("title"));
         tblWork.setItems(technicianModel.getWorkToBeViewed());
     }
 
-    public void handleOpenDocumentation(ActionEvent actionEvent) throws SQLException {
+    /**
+     * This method is ued to open the documentation window based on the chosen job
+     * @param actionEvent
+     */
+    public void handleOpenDocumentation(ActionEvent actionEvent){
         if(selectedJob == null){
             alertUser("Please select a job");
         } else
@@ -71,6 +81,7 @@ public class TechnicianController implements Initializable {
         selectedJob = tblWork.getSelectionModel().getSelectedItem();
 
             technicianJobModel = TechnicianJobModel.getInstance();
+            //Sets the selected job so the documentation window knows what job is chosen.
             documentationModel.setSelectedJob(selectedJob);
             technicianJobModel.setSelectedJob(selectedJob);
             technicianJobModel.showList();
@@ -80,8 +91,10 @@ public class TechnicianController implements Initializable {
 
             Stage dialogWindow = new Stage();
             Scene scene = new Scene(pane);
+            //This is used to stop the user from clicking any other window while the documentation window is open.
             dialogWindow.initModality(Modality.WINDOW_MODAL);
             dialogWindow.initOwner((((Node)actionEvent.getSource()).getScene().getWindow()));
+
             dialogWindow.setScene(scene);
             dialogWindow.show();
         }
@@ -108,11 +121,11 @@ public class TechnicianController implements Initializable {
             alertUser("Please select a job to finish");
 
         } else {
-            // Show a confirmation dialog
+            // Show a confirmation alert
             int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to finish this job?",
                     "Confirm Finish Job", JOptionPane.YES_NO_OPTION);
             if (confirm != JOptionPane.YES_OPTION) {
-                // User canceled, do nothing
+                // If the confirm button isn't click then don't finish the job
                 return;
             }
             technicianModel.finishJob(selectedJob);
@@ -120,7 +133,10 @@ public class TechnicianController implements Initializable {
     }
 
 
-
+    /**
+     * Used to log out of the current logged in user and open the login window again.
+     * @param actionEvent
+     */
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
