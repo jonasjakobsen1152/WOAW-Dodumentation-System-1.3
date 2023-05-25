@@ -28,6 +28,9 @@ import java.util.ResourceBundle;
 
 import static javafx.scene.paint.Color.GRAY;
 
+/**
+ * This class is used to control the project manager window
+ */
 public class ProjectManagerController implements Initializable {
     public MFXButton btnAddWork;
     public MFXButton btnDeleteWork;
@@ -39,12 +42,10 @@ public class ProjectManagerController implements Initializable {
     public MFXButton btnDeleteSalesmen;
     public MFXButton btnShowJobs;
     public MFXButton btnSendPDF;
-    public MFXButton btnReadJobs;
     public MFXButton btnEditUser;
     public TextField txtFilterTechnicians;
     public TextField txtFilterSalesmen;
     public TextField txtFilterJobs;
-    public MFXButton btnPublicPDF;
     public MFXButton btnShowWork;
     public MFXButton btnDeleteJob;
     public MFXCheckbox checkBoxPDF;
@@ -76,17 +77,14 @@ public class ProjectManagerController implements Initializable {
     public ProjectManagerModel projectManagerModel;
     public DocumentationModel documentationModel;
     private User selectedUser;
-    CreateUpdateUserModel createUpdateUserModel;
     CreateUpdateJobModel createUpdateJobModel;
     CustomerModel customerModel;
     TechnicianJobModel technicianJobModel;
     LoginModel loginModel;
     TechnicianModel technicianModel;
-    CreateUpdateUserController createUpdateUserController;
     private User selectedTechnician;
     private Customer selectedCustomer;
     private Job selectedDocument;
-    public TableView<User> tblUser;
     public Job selectedJob;
 
     public ProjectManagerController() throws SQLException {
@@ -114,7 +112,14 @@ public class ProjectManagerController implements Initializable {
             alertUser("Experienced a problem while loading Customers up");
         }
         showDocument();
+        lambdaMouseClick();
+        searchListeners();
+    }
 
+    /**
+     * Used to check if an object is clicked in the tables
+     */
+    public void lambdaMouseClick(){
         tblShowTechnicians.setOnMouseClicked(event -> {
             selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
             loginModel.setLoggedInUser(selectedUser);
@@ -136,9 +141,11 @@ public class ProjectManagerController implements Initializable {
             selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
             projectManagerModel.setSelectedJob(selectedDocument);
         });
-        searchListeners();
     }
 
+    /**
+     * Used for the different search functions so the user can search through the different tables.
+     */
     public void searchListeners() {
         txtFilterTechnicians.textProperty().addListener((observable, oldValue, newValue) -> {
             Runnable task = () -> projectManagerModel.searchTechnicians(newValue);
@@ -170,6 +177,10 @@ public class ProjectManagerController implements Initializable {
         tblShowDocument.setItems(projectManagerModel.getDocumentsToBeViewed());
     }
 
+    /**
+     * Used to open the create update user window where the user can create new user.
+     * @param actionEvent
+     */
     public void handleOpenCreateUser(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/CreateUpdateUser.fxml"));
@@ -177,6 +188,7 @@ public class ProjectManagerController implements Initializable {
             AnchorPane pane = loader.load();
             CreateUpdateUserController createUpdateUserController = loader.getController();
 
+            //Used to remove the update button in the create update user window.
             createUpdateUserController.removeUpdate();
 
             Stage dialogWindow = new Stage();
@@ -197,11 +209,12 @@ public class ProjectManagerController implements Initializable {
         alert.showAndWait();
     }
 
+    /**
+     * Used to open the create update job window where the user can create a new job
+     * @param actionEvent
+     */
     public void handleAddWork(ActionEvent actionEvent) {
         selectedTechnician = tblShowTechnicians.getSelectionModel().getSelectedItem();
-        selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
-        createUpdateJobModel.setTechnician(selectedTechnician);
-
         if (selectedTechnician == null) {
             alertUser("Choose a technician");
         } else {
@@ -225,18 +238,23 @@ public class ProjectManagerController implements Initializable {
 
     }
 
+    /**
+     * Used to delete the selected job
+     * @param actionEvent
+     */
     public void handleDeleteWork(ActionEvent actionEvent) {
         selectedDocument = tblShowDocument.getSelectionModel().getSelectedItem();
         if (selectedDocument == null) {
             alertUser("Select a job");
         } else {
+            //Warns the user about the current action
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
             alert.setHeaderText("Are you sure you want to delete: " + selectedDocument.getTitle().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
+            //If ok is clicked then proceed with deleting the job
             if (action.get() == ButtonType.OK) {
                 try {
-
                     projectManagerModel.deleteDocument(selectedDocument);
                     showDocument();
                 } catch (SQLException e) {
@@ -247,6 +265,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Deletes the selected technician
+     * @param actionEvent
+     */
     public void handleDeleteTechnician(ActionEvent actionEvent) {
         selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
         if (selectedUser == null) {
@@ -254,23 +276,15 @@ public class ProjectManagerController implements Initializable {
             alert.setTitle("Select a user");
             alert.setHeaderText("Choose a user to delete");
             alert.show();
-        } else if (Objects.equals(selectedUser.getRole(), "Admin")) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Warning");
-            alert.setHeaderText("You cant delete an Admin user");
-            alert.show();
-
-        } else {
+        }
+        else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
             alert.setHeaderText("Are you sure you want to delete: " + selectedUser.getUsername().concat("?"));
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
                 try {
-
-
                     projectManagerModel.deleteUser(selectedUser);
-                    //updateUserModel();
                     showTechnician();
                 } catch (SQLException e) {
                     alertUser("Could not delete technician");
@@ -279,6 +293,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Deletes the selected customer
+     * @param actionEvent
+     */
     public void handleDeleteCustomer(ActionEvent actionEvent) {
         selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
         if (selectedCustomer == null) {
@@ -294,7 +312,6 @@ public class ProjectManagerController implements Initializable {
             if (action.get() == ButtonType.OK) {
                 try {
                     projectManagerModel.deleteCustomer(selectedCustomer);
-
                     showCustomer();
                 } catch (SQLException e) {
                     alertUser("Could not delete customer");
@@ -304,7 +321,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
-
+    /**
+     * Deletes the selected salesmen
+     * @param actionEvent
+     */
     public void handleDeleteSalesmen(ActionEvent actionEvent) {
         selectedUser = tblShowSalesmen.getSelectionModel().getSelectedItem();
         if (selectedUser == null) {
@@ -312,12 +332,6 @@ public class ProjectManagerController implements Initializable {
             alert.setTitle("Select a user");
             alert.setHeaderText("Choose a user to delete");
             alert.show();
-        } else if (Objects.equals(selectedUser.getRole(), "Admin")) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Warning");
-            alert.setHeaderText("You cant delete an Admin user");
-            alert.show();
-
         } else {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Warning");
@@ -325,10 +339,7 @@ public class ProjectManagerController implements Initializable {
             Optional<ButtonType> action = alert.showAndWait();
             if (action.get() == ButtonType.OK) {
                 try {
-
-
                     projectManagerModel.deleteUser(selectedUser);
-                    //updateUserModel();
                     showSalesmen();
                 } catch (SQLException e) {
                     alertUser("Could not delete salesmen");
@@ -338,6 +349,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Opens the create update user window where the user can edit/update a user.
+     * @param actionEvent
+     */
     public void handleOpenUpdateUser(ActionEvent actionEvent) {
         if (selectedUser == null) {
             alertUser("Please select a user to edit");
@@ -347,6 +362,7 @@ public class ProjectManagerController implements Initializable {
                 AnchorPane pane = loader.load();
 
                 CreateUpdateUserController createUpdateUserController = loader.getController();
+                //Removes the create button in the create update user window.
                 createUpdateUserController.setupUpdate(selectedUser);
 
                 Stage dialogWindow = new Stage();
@@ -362,25 +378,34 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
-
-    public void handleReadJob(ActionEvent actionEvent) {
-    }
-
+    /**
+     * Used to show all the technicians in the technician table
+     */
     private void showTechnician() {
         clmShowTechnicians.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         tblShowTechnicians.setItems(projectManagerModel.getTechnicianToBeViewed());
     }
 
+    /**
+     * Used to show all the salesmen in the salesmen table
+     */
     private void showSalesmen() {
         clmShowSalesmen.setCellValueFactory(new PropertyValueFactory<User, String>("username"));
         tblShowSalesmen.setItems(projectManagerModel.getSalesmenToBeViewed());
     }
 
+    /**
+     * Used to show all the customers in the customers table
+     */
     private void showCustomer() throws SQLException {
         clmShowCustomers.setCellValueFactory(new PropertyValueFactory<Customer, String>("Name"));
         tblShowCustomers.setItems(projectManagerModel.getCustomerToBeViewed());
     }
 
+    /**
+     * Used to open the customer window
+     * @param actionEvent
+     */
     public void handleOpenCustomer(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/View/Customer.fxml"));
@@ -399,6 +424,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Used to open the technician job window where the user can see information about the selected job
+     * @param actionEvent
+     */
     public void handleShowJobs(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/GUI/View/TechnicianJobWindow.fxml"));
@@ -430,6 +459,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Used to show the technician table and the buttons that is used with that table.
+     * @param actionEvent
+     */
     public void handleShowTechnicians(ActionEvent actionEvent) {
         setVisibleFalse();
         String clickedButtonStyle = "-fx-background-color: #fa9f1c;";
@@ -444,6 +477,10 @@ public class ProjectManagerController implements Initializable {
         btnTechnician.setStyle(clickedButtonStyle);
     }
 
+    /**
+     * Used to show the customer table and the buttons that is used with that table.
+     * @param actionEvent
+     */
     public void handleShowCustomers(ActionEvent actionEvent) {
         setVisibleFalse();
         String clickedButtonStyle = "-fx-background-color: #fa9f1c;";
@@ -455,6 +492,10 @@ public class ProjectManagerController implements Initializable {
         btnCustomer.setStyle(clickedButtonStyle);
     }
 
+    /**
+     * Used to show the salesmen table and the buttons that is used with that table.
+     * @param actionEvent
+     */
     public void handleShowSalesmen(ActionEvent actionEvent) {
         setVisibleFalse();
         String clickedButtonStyle = "-fx-background-color: #fa9f1c;";
@@ -467,6 +508,10 @@ public class ProjectManagerController implements Initializable {
 
     }
 
+    /**
+     * Used to show the job table and the buttons that is used with that table.
+     * @param actionEvent
+     */
     public void handleShowJob(ActionEvent actionEvent) {
         setVisibleFalse();
         String clickedButtonStyle = "-fx-background-color: #fa9f1c;";
@@ -481,14 +526,20 @@ public class ProjectManagerController implements Initializable {
         btnJobs.setStyle(clickedButtonStyle);
     }
 
+    /**
+     * This method is used to hide most of the buttons and all of the tables.
+     * it is used in combination with the methods handleShowJob, handleShowTechnicians, handleShowSalesmen and handleShowCustomer
+     */
     public void setVisibleFalse() {
         String normalButtonStyle = "-fx-background-color: D65A31;";
 
+        //Hides all of the tables
         tblShowCustomers.setVisible(false);
         tblShowDocument.setVisible(false);
         tblShowSalesmen.setVisible(false);
         tblShowTechnicians.setVisible(false);
 
+        //Hides all of the buttons
         btnCreateCustomer.setVisible(false);
         btnCreateSalesmen.setVisible(false);
         btnDeleteTechnician.setVisible(false);
@@ -496,7 +547,6 @@ public class ProjectManagerController implements Initializable {
         btnDeleteWork.setVisible(false);
         btnCreateTechnician.setVisible(false);
         btnAddWork.setVisible(false);
-        btnReadJobs.setVisible(false);
         btnSendPDF.setVisible(false);
         btnEditUser.setVisible(false);
         btnShowJobs.setVisible(false);
@@ -512,6 +562,7 @@ public class ProjectManagerController implements Initializable {
 
         checkBoxPDF.setVisible(false);
 
+        //Hides all of the Search fields
         txtPDFText.setVisible(false);
         txtFilter.setVisible(false);
         txtFilterTechnicians.setVisible(false);
@@ -520,6 +571,10 @@ public class ProjectManagerController implements Initializable {
 
     }
 
+    /**
+     * Used to log out the logged in user and open the login window again.
+     * @param actionEvent
+     */
     public void handleLogOut(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
@@ -538,6 +593,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Used to change the strategy for the pdf printing based on if the checkbox is checked or not.
+     * @param actionEvent
+     */
     public void handleSetPDFStrategy(ActionEvent actionEvent) {
         if(checkBoxPDF.isSelected()){
             projectManagerModel.setPDFStrategy("private");
@@ -549,6 +608,10 @@ public class ProjectManagerController implements Initializable {
 
     }
 
+    /**
+     * Used to print a new pdf
+     * @param actionEvent
+     */
     public void handlePrintPDF(ActionEvent actionEvent) {
         if(selectedDocument == null){
             alertUser("Please select a job to print");
@@ -559,10 +622,12 @@ public class ProjectManagerController implements Initializable {
             ArrayList<Documentation> allNotes = new ArrayList<>();
             ArrayList<JobImage> allImages = new ArrayList<>();
 
+            //Gets all the notes and images from the selected job
             allNotes.addAll(technicianJobModel.getDocumentationsToBeViewed());
             allImages.addAll(technicianJobModel.getImagesToBeViewed());
 
             try {
+                //Prints the pdf based on the notes and images.
                 projectManagerModel.printPDF(allNotes, allImages);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -571,6 +636,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Used to open the project technician job window
+     * @param actionEvent
+     */
     public void handleShowWork(ActionEvent actionEvent) {
         selectedUser = tblShowTechnicians.getSelectionModel().getSelectedItem();
         if (selectedUser == null || !selectedUser.getRole().equals("Technician")) {
@@ -599,6 +668,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Used to delete the selected job from the job table.
+     * @param actionEvent
+     */
     public void handleDeleteJob(ActionEvent actionEvent) {
         selectedJob = tblShowDocument.getSelectionModel().getSelectedItem();
         if (selectedJob == null) {
@@ -623,6 +696,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Used to open the customer window where the user can edit/update customers.
+     * @param actionEvent
+     */
     public void handleOpenEditCustomer(ActionEvent actionEvent) {
         selectedCustomer = tblShowCustomers.getSelectionModel().getSelectedItem();
         if(selectedCustomer == null){
@@ -640,6 +717,7 @@ public class ProjectManagerController implements Initializable {
                     CustomerController customerController = loader.getController();
                     CustomerModel.getInstance();
 
+                    //Hides the create button in the customer window.
                     customerController.setupUpdate(selectedCustomer);
 
                     Stage dialogWindow = new Stage();
@@ -659,6 +737,10 @@ public class ProjectManagerController implements Initializable {
         }
     }
 
+    /**
+     * Used to add technicians to a job
+     * @param actionEvent
+     */
     public void handleAddTechToJob(ActionEvent actionEvent) {
         selectedJob = tblShowDocument.getSelectionModel().getSelectedItem();
         if(selectedJob == null){
@@ -668,11 +750,6 @@ public class ProjectManagerController implements Initializable {
             loader.setLocation(getClass().getResource("/GUI/View/AddTechToJob.fxml"));
             try {
                 AnchorPane pane = loader.load();
-
-
-                //AddTechToJobController addTechToJobController = loader.getController();
-
-
 
                 Stage dialogWindow = new Stage();
                 Scene scene = new Scene(pane);

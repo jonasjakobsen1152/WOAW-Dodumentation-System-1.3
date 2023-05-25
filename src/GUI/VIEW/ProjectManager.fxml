@@ -74,7 +74,6 @@
             <Font size="16.0" />
          </font></MFXButton>
       <TextField fx:id="txtFilter" alignment="CENTER" layoutX="510.0" layoutY="16.0" prefHeight="48.0" prefWidth="190.0" promptText="Search" AnchorPane.topAnchor="15.0" />
-      <MFXButton fx:id="btnReadJobs" layoutX="681.0" layoutY="614.0" onAction="#handleReadJob" prefHeight="48.0" prefWidth="126.0" text="Read Jobs" AnchorPane.bottomAnchor="38.0" />
       <ImageView fitHeight="73.0" fitWidth="149.0" layoutX="40.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/Screenshot_1.png" />
