@@ -32,7 +32,7 @@ public class AdminManager {
         userSearcher = new UserSearcher();
         jobSearcher = new JobSearcher();
 
-        pdfCreator = new PDFCreator(new PrivatePDFStrategy());
+        pdfCreator = new PDFCreator(new PublicPDFStrategy()); // Default sets the strategy to be the one with the least amount of information
     }
 
     public ArrayList<User> getAllUsers() throws SQLException {
@@ -83,5 +83,11 @@ public class AdminManager {
     }
 
     public void setPDFStrategy(String privacy) {
+        if(privacy.equals("private")){
+            pdfCreator.setStrategy(new PrivatePDFStrategy());
+        }
+        else {
+            pdfCreator.setStrategy(new PublicPDFStrategy());
+        }
     }
 }
