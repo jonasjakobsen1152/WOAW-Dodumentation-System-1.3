@@ -60,17 +60,16 @@ public class TechnicianJobController implements Initializable {
         tblImages.setOnMouseClicked(event ->{
             tblNotes.getSelectionModel().clearSelection();
             selectedJobImage = tblImages.getSelectionModel().getSelectedItem();
-            if(selectedJobImage == null){
-                return;
+            if(selectedJobImage != null){
+                //Gets the byte data from the selected image and sets it to the imageData variable
+                byte[] imageData = selectedJobImage.getData();
+                //Converts the byte data into a byte array
+                ByteArrayInputStream byteArray = new ByteArrayInputStream(imageData);
+                //Creates a new image based on the byte array
+                Image image = new Image(byteArray);
+                //Shows the created image in the image view
+                imgImage.setImage(image);
             }
-            //Gets the byte data from the selected image and sets it to the imageData variable
-            byte[] imageData = selectedJobImage.getData();
-            //Converts the byte data into a byte array
-            ByteArrayInputStream byteArray = new ByteArrayInputStream(imageData);
-            //Creates a new image based on the byte array
-            Image image = new Image(byteArray);
-            //Shows the created image in the image view
-            imgImage.setImage(image);
         });
     }
 
