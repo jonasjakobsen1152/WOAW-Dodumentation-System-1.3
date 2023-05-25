@@ -14,7 +14,6 @@ public class CreateUpdateJobModel {
     public User selectedTechnician;
     public Customer selectedCustomer;
     public CreateUpdateJobManager createUpdateJobManager;
-    private ObservableList<Job> JobToBeViewed;
     private ObservableList<Customer> customerToBeViewed;
     private ProjectManagerModel projectManagerModel;
     public CreateUpdateJobModel() throws SQLException {

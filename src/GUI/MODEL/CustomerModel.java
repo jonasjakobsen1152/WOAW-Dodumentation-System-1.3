@@ -55,10 +55,6 @@ public class CustomerModel {
 
     }
 
-    public ObservableList<Customer> getCustomerToBeViewed() {
-        return customerToBeViewed;
-    }
-
     public Customer getSelectedCustomer(){
         return selectedCustomer;
     }
